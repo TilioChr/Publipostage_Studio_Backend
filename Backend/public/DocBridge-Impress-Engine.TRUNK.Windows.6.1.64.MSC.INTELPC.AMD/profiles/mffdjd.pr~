@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffdjd xmlns="http://www.compart.com/ns/mff/djd" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for both input and output.-->
+
+   <globals>
+      <!--The element "optimizepa" controls the page optimization in the
+                PA.-->
+
+      <optimizepa value="IfDifferentTypes"/>
+
+      <!--<optimizepaoptions>        
+         <ignoreitems value="TEXT,IMAGE"/>
+      </optimizepaoptions>-->
+      <!--A replacement character that is to be used if the requested character is
+                not included in the font-->
+
+      <defaultchar char="0020"/>
+
+      <!--round rules for ptround-->
+      <!--<round>        
+         <rule name="EVENPT" method="Math" digit="0"/>
+      </round>-->
+   </globals>
+
+   <!--Defines a font list containing all the font related profile
+                settings.-->
+
+   <fontlist>
+      <font family="XeroxStandard" encoding="XRX_DEFAULT">
+         <!--<face devname="L0112B"/>-->
+      </font>
+   </fontlist>
+
+   <!--Technical settings of the input file structure.-->
+
+   <input>
+      <!--Valid values for "type": DEFAULT, STREAM (Data with delimiter), RECORD
+                (Data in records only), RECORD_VBM (Data in records only - special format),
+                RECORD_V2 (Data in records only special format), BLOCKED (Data in blocks and
+                records), BARRNJE (Barr NJE Format) BARRS370 (Barr S/370 File Format - word length),
+                BARRS370B (Barr S/370 File Format - byte length), PCFILE (processing 0x0D, 0x0A and
+                0x0C as PCC if not present), X1F63 (Special format). Valid values for
+                "allowspacedelimiter": FALSE or TRUE - flag to be able to read invalid inline
+                resource with delimiter byte 0x20 or 0x40 Example: <fileformat type="stream"
+                value="0x0D0A" /> for line data with line delimiter 0x0D0A-->
+
+      <fileformat type="Default"/>
+
+      <!-- The "ConvertEncoding" element describes the information to convert input
+                data. The attributes "ianaFrom" and "ianaTo" determine the used code pages for the
+                converion. Example for a conversion from ASCII to EBCDIC: <ConvertEncoding
+                ianaFrom="IBM850" ianaTo="IBM500" /> -->
+
+      <ConvertEncoding/>
+      <jsl filename="">
+         <!--Element for PDL definitions (like PDE, CME or STK) to be used
+                in addition to the initial JSL.-->
+         <!--<additional filename=""/>-->
+      </jsl>
+
+      <!--Name of Job to use (required)-->
+
+      <job name="DFLT"/>
+
+      <!--The "djde" element describes the behaviour for DJDE blocks and commands.
+                The boolean parameter "pagechange" controls the page change by pageoriented DJDE
+                commands. If set to TRUE, a pageoriented DJDE command causes an immediate page
+                change when a PCC is pesent. This is the default behaviour of the LCDS filter.
+                However, some (metacode) cases may require the value FALSE in order to work as
+                designed. The parameter "imagecoordinates" describes the used coordinate system for
+                positioning images.-->
+
+      <djde pagechange="true" imagecoordinates="Standard"/>
+
+      <!--Controls the behaviour of overprinted lines and the position of the
+                line(s). By default this is determined by the JSL, but there is a customer desired
+                behaviour that can not be controled by the JSL. Valid values are: Jsl,
+                Jslcurrentfont, Auto or Align. Jsl: Uses JSL overprint with print offset. Auto: Uses
+                print offset of the last font. Jslcurrentfont: Uses JSL overprint without print
+                offset. Align: Behaviour is consistent with JSL but the lines are aligned top.
+            -->
+
+      <overprint value="Jsl"/>
+      <channels respectEmptyLinesForSkip="false"/>
+
+      <!--The element "pagedefinition" determines the correct positioning of text and
+                images on the page. The attribute "name" specifies the name of the page
+                definition.-->
+
+      <pagedefinitionlist>
+         <!--The element "pagedefinition" determines the correct positioning of text and
+                images on the page. The attribute "name" specifies the name of the page
+                definition.-->
+
+         <pagedefinition name="default">
+            <!--The declaration of a paper size. The paper size can be
+                specified either by the name of a standard paper size with orientation or by numeric
+                specification of width and length. If no paper size is specified, the default paper
+                size "A4" is used.-->
+            <!--Attribute: format @comment: The name of a standard paper size. Examples for possible
+                values are "A4" and "LETTER". The default value is "A4".-->
+            <!--Attribute: orientation @comment: The page orientation of a standard paper size. Supported
+                values of this attribute are "Portrait", "Landscape", "RevPortrait", and
+                "RevLandscape". The default value is "Portrait".-->
+
+            <papersize format="A4" orientation="Portrait"/>
+
+            <!--The declaration of sheet margins.-->
+            <!--Attribute: left @comment: The width of the left sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+            <!--Attribute: bottom @comment: The height of the bottom sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+
+            <margins left="0 tw" bottom="0 tw"/>
+         </pagedefinition>
+      </pagedefinitionlist>
+
+      <!--Controls how the DJDE comments ("C") are parsed. Since in some cases the
+                comments do not satisfy the specification, a method to fix the parsing is required.
+                Valid values of the commentprocessing "type" are: Default: The comment is parsed as
+                indicated by the specification. A comment ends if an ';' or ',' is found. EndOfLine:
+                The comment ends at the end of the line (record). EndOfLineRemoveTrailer: The
+                comment ends at the end of the line (record), but addtional blanks are removed and
+                the DJDE END command is removed from the comment. -->
+
+      <commentprocessing type="Default"/>
+
+      <!--Specifies how overlays are processed. With the value TRUE, the overlay is
+                referenced and processed as a unit. With FALSE, the overlay is resolved into
+                components (text, graphics, paths etc.) and added to the page content.-->
+
+      <overlayasreference value="false"/>
+
+      <!-- Specifies the codepage of the comment in the input LCDS file. Only ASCII
+                DJDE commands are supported. For EBCDIC DJDE commands the Xerox translation table is
+                used. -->
+      <!--<commentsdefaultcodepage iana="ISO-8859-1"/>-->
+      <!--The element "fonthandling" has the following attributes:
+                "useformsxaslines": TRUE: FORMSX/FORMS$ text items are replaced by lines etc. FALSE:
+                The text items for font FORMSX/FORMS$ remain unchanged. "useformsxaspattern": TRUE:
+                Dither patterns of FORMSX/FORMS$ text items are replaced. FALSE: The text items for
+                font FORMSX/FORMS$ addformfonts remain unchanged. TRUE: Precede fonts of form in
+                metacode font list. FALSE: Use only metacode font list. "illegalfontindex": AUTO:
+                Selection based on program rules. USEFIRST: The first font in the font list is used
+                if an illegal fontindex is found. USECURRENT: The current font is used if an illegal
+                fontindex is found.-->
+
+      <fonthandling useformsxaslines="false" useformsxaspattern="false" addformfonts="true" illegalfontindex="Auto"/>
+
+      <!--Used to reset the line data offset to the page origin using metacode. Valid
+                values are: DEFAULT: Determine offset by papersize. US: Use the american line data
+                offset. EU: Use the european line data offset. -->
+
+      <metacode linedataoffsettype="Default"/>
+
+      <!--Determines whether the empty first page is suppressed. If the value of this
+                element is set to TRUE, the first empty page (even if it contains printed spaces)
+                will be suppressed. -->
+
+      <suppressemptyfirstpage value="false"/>
+
+      <!--Determines whether all (completely!) empty pages are suppressed. If the
+                value of this element is set to TRUE, all empty pages will be
+                suppressed.-->
+
+      <suppressemptypages value="false"/>
+   </input>
+
+   <!--technical settings of the output file structure-->
+
+   <output>
+      <!--Valid values for "type": DEFAULT, STREAM (Data with delimiter), RECORD
+                (Data in records only), RECORD_VBM (Data in records only - special format),
+                RECORD_V2 (Data in records only special format), BLOCKED (Data in blocks and
+                records), BARRNJE (Barr NJE Format) BARRS370 (Barr S/370 File Format - word length),
+                BARRS370B (Barr S/370 File Format - byte length), X1F63 (Special
+                format).-->
+
+      <fileformat type="Record_vbm"/>
+
+      <!--The attribute filename specifies the name of inital jsl file (required).
+                The attribute "overwrite" gives the name of the JSL file that overwrites the inital
+                settings.-->
+
+      <jsl filename="default"/>
+
+      <!--Name of Job to use (required)-->
+
+      <job name="DFLT"/>
+
+      <!--Controls handling of archive fields. Valid values are "NOT",
+                "NOPRINT" or "COMMENT".-->
+
+      <writearchivefields value="Not"/>
+
+      <!--The element "pagedefinition" determines the correct positioning of text and
+                images on the page. The attribute "name" specifies the name of the page
+                definition.-->
+
+      <pagedefinitionlist>
+         <!--The element "pagedefinition" determines the correct positioning of text and
+                images on the page. The attribute "name" specifies the name of the page
+                definition.-->
+
+         <pagedefinition name="Default">
+            <!--The declaration of a paper size. The paper size can be
+                specified either by the name of a standard paper size with orientation or by numeric
+                specification of width and length. If no paper size is specified, the default paper
+                size "A4" is used.-->
+            <!--Attribute: format @comment: The name of a standard paper size. Examples for possible
+                values are "A4" and "LETTER". The default value is "A4".-->
+            <!--Attribute: orientation @comment: The page orientation of a standard paper size. Supported
+                values of this attribute are "Portrait", "Landscape", "RevPortrait", and
+                "RevLandscape". The default value is "Portrait".-->
+
+            <papersize format="A4" orientation="Portrait"/>
+
+            <!--The declaration of sheet margins.-->
+            <!--Attribute: left @comment: The width of the left sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+            <!--Attribute: bottom @comment: The height of the bottom sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+
+            <margins left="0 mm" bottom="0 mm"/>
+         </pagedefinition>
+      </pagedefinitionlist>
+
+      <!--Maximum difference in pt (points) between source and target
+                character positions.-->
+
+      <characteraccuracy value="0.0"/>
+
+      <!--Text items with attribute hscale can be processed in two
+                different ways.-->
+
+      <horizontalscaling value="CharSpacing"/>
+
+      <!--The element "fonthandling" specifies when and how text elements and fonts
+                are handled when creating metacode output.-->
+
+      <fonthandling default="Auto" useformsxaslines="false" useformsxaspattern="false"/>
+
+      <!-- For writing images in metacode you can decide to write images or inline
+                graphics on the page. -->
+
+      <usegraphics value="false"/>
+
+      <!--Defines the default dithering mehod, which will be used to convert colored
+                images to bilevel images.-->
+
+      <dithermethod default="Clustered" parameter="4"/>
+
+      <!--Gamma correction for gray patterns. Intermediate values are interpolated.
+                If no value is specified, no correction will be done.-->
+
+      <gammalist>
+         <gammavalue from="0" to="0"/>
+         <gammavalue from="255" to="255"/>
+      </gammalist>
+   </output>
+
+   <format>
+      <!--Specifies the codepage of the input LCDS file (if required). To be used
+                carefully! If no codepage is specified, the codepage indicated in the JSL is used.
+                For EBCDIC/ASCII the Xerox translation table is used.-->
+      <!--<codepage iana="ISO-8859-1"/>-->
+   </format>
+
+   <!--Defines the list of paths to the resource files.-->
+
+   <resourcelist>
+      <!--The element "fileslist" defines the list of file definitions.-->
+
+      <fileslist>
+         <!--Sets the resource path (location for FNT, FRM, JSL, LGO and IMG
+                files).-->
+
+         <files path="." type="XeroxFont" extension="FNT" casecontrol="Ignore" resolution="300"/>
+         <files path="." type="XeroxLogo" extension="LGO" casecontrol="Ignore"/>
+         <files path="." type="XeroxForm" extension="FRM" casecontrol="Ignore"/>
+         <files path="." type="Jsl" extension="JSL" casecontrol="Ignore"/>
+         <files path="." type="XeroxImage" extension="IMG" casecontrol="Ignore"/>
+      </fileslist>
+   </resourcelist>
+
+   <!--The element mapps the paper source trays to Compart
+                names.-->
+
+   <traylist>
+      <inputtrays>
+         <!--The element mapps tray IDs and JSL or DJD commands to Compart
+                names.-->
+         <!--<inputtray deviceid="0" name="MAIN" devicename="WEISS"/>-->
+         <!--The element mapps tray IDs and JSL or DJD commands to Compart
+                names.-->
+         <!--<inputtray deviceid="1" name="AUX" devicename="FARBIG"/>-->
+      </inputtrays>
+      <outputtrays>
+         <!-- possible values for the attribute name are 'BIN', 'TRAY' and 'EXPORT' and
+                define a mapping to the output tray device name -->
+         <!--<outputtray deviceid="0" name="TRAY" devicename="SAMPLE"/>-->
+      </outputtrays>
+   </traylist>
+
+   <!--Sets the font code page definition for setting unicode text by
+                encoding.-->
+
+   <encodinglist>
+      <encoding name="XRX_DEFAULT" iana="ISO-8859-1">
+         <!--<entry code="0x30" unc="30"/>-->
+         <!--<entry code="0x31" unc="31"/>-->
+      </encoding>
+   </encodinglist>
+
+   <!--Mapping list for highlight color name to RGB value-->
+
+   <highlightcolorlist>
+      <!--In metacode it is possible to use named highlight colors. The default color
+                is specified in the profile and can be replaced. Attributes: "name": expects the
+                name of the highlight color as string. "rgb": Expects a valid RGB
+                value.-->
+
+      <highlightcolor name="default" rgb="#00000000"/>
+   </highlightcolorlist>
+</mffdjd>

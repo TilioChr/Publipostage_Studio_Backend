@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/cpurires">
+   <xs:element name="mffcpurires">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="UrlHandlingConfiguration" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">The 'UrlHandlingConfiguration' element contains the
+                configuration for the URI resolving. </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="UriMappings" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">The 'UriMappings' element could have one or more 'UriMapping'
+                elements. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="UriMapping" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">The 'UriMapping' element controls the mapping of a given URI
+                to an URL.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="from" use="required" type="xs:string"/>
+                                    <xs:attribute name="to" use="required" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="HttpHeaderRulesSets" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">
+                
+            </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">
+                
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="HttpHeaderRules" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">The 'HttpHeaderRules' element could have one or more
+                'HttpHeaderRule' elements. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">
+                
+            </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="HttpHeaderRule" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="en-US"> Add http header to be passed to the server in the HTTP
+                request. </xs:documentation>
+                                             <xs:documentation xml:lang="de-DE"> Geen Sie den HTTP-Header an, der bei der HTTP-Anfrage an den
+                Server übergeben werden soll. </xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="headerName" use="required" type="xs:string"/>
+                                             <xs:attribute name="headerValue" use="required" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="match" default="cpres:impress:foo" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="version" default="1.0" type="xs:string"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

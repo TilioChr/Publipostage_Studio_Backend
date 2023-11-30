@@ -1,0 +1,300 @@
+@page: first {
+    size: A4;
+    margin-left: 2cm;
+    margin-right: 2cm;
+    margin-top: 1cm;
+    margin-bottom: 1cm;
+    @top-left {
+        border-bottom: none;
+        content: none;
+    }
+    @top-center {
+        border-bottom: none;
+    }
+    @top-right {
+        border-bottom: none;
+    }
+    @bottom-left {
+        content: none;
+    }
+    @bottom-right {
+        content: none;
+    }
+}
+
+@media print {
+    
+    /*.QuerverweisDE a::after {
+        content: ", vgl. Seite " target-counter(attr(href), page);
+        
+    }
+    
+    .QuerverweisEN a::after {
+        content: ", see page " target-counter(attr(href), page);
+    }
+    
+    .QuerverweisFR a::after {
+        content: ", cf. page " target-counter(attr(href), page);
+    }*/
+    
+    .QuerverweisDE, .QuerverweisFR, .QuerverweisEN {
+        color: #E60000;
+    }
+    
+    body {
+        font-family: "Source Sans Pro";
+        padding: 0;
+        margin: .25cm 0;
+        counter-reset: c1;
+        column-count: 2;
+        column-gap: .5cm;
+        column-fill: auto;
+    }
+
+    /* -------------------  First Page  --------------------- */
+    .firstPage, .aliasSidebar {
+        margin: 0;
+        padding: 0;
+        column-span: all;
+        page-break-after: always;
+    }
+
+    .firstPage img {
+        width: 57.5mm;
+        height: 14mm;
+        margin-left: 11.25cm;
+    }
+
+    .header p {
+        margin-top: 8cm;
+        margin-bottom: .5cm;
+        text-align: center;
+        color: #E60000;
+        font-size: 30pt;
+        font-weight: normal;
+    }
+    .header p:nth-child(2) {
+        color: black;
+        font-size: 10pt;
+        margin: 0;
+    }
+
+    .info {
+        margin-top: 9cm;
+    }
+    .info p {
+        margin: 0;
+        padding: 0;
+        color: black;
+        text-align: left;
+        font-weight: normal;
+        font-size: 10pt;
+    }
+    .info p:nth-child(1) {
+        margin-bottom: .5cm;
+    }
+    .info p:nth-child(7) {
+        margin-bottom: .5cm;
+    }
+
+    /* -------------------  Table of Contents  --------------------- */
+    
+
+    nav.navtoc {
+        counter-reset: heading1;
+        page-break-after: always;
+        font-family: "Source Sans Pro";
+        font-weight: normal;
+        font-size: 11pt;
+    }
+
+    nav.navtoc > p {
+        margin-top: 0;
+        margin-bottom: .5cm;
+        color: #E60000;
+        font-family: "Source Sans Pro Light";
+        font-weight: normal;
+        font-size: 18pt;
+    }
+
+    nav.navtoc ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    /* Leader */
+    nav.navtoc ul li a::after {
+        content: leader('.') target-counter(attr(href), page);
+    }    
+    nav.navtoc ul li {
+        text-align: justify;
+        text-align-last: justify;
+    }
+    nav.navtoc ul li::before {
+        display: inline-block;
+        text-align: left;
+    }
+    
+    /* H1 */
+    nav.navtoc ul > li {
+        font-weight: bold;
+        margin-top: .15cm;
+    }    
+
+    nav.navtoc ul > li::before {
+        counter-increment: heading1;
+        content: counter(heading1) " ";
+        counter-reset: heading2;
+        padding-right: .5cm;
+    }
+    
+    /* H2 */
+    nav.navtoc ul > li > ul > li {
+        font-weight: normal;
+        margin-top: .15cm;
+    }
+    
+    nav.navtoc ul > li > ul > li::before {
+        counter-increment: heading2;
+        content: counter(heading1) "." counter(heading2) " ";
+        counter-reset: heading3;
+        padding-right: .5cm;
+        margin-left: .8cm;
+    }
+
+    /* H3 */
+    nav.navtoc ul > li > ul > li > ul > li {
+        font-weight: normal;
+        margin-top: .15cm;
+
+    }
+    
+    nav.navtoc ul > li > ul > li > ul > li::before {
+        counter-increment: heading3;
+        content: counter(heading1) "." counter(heading2) "." counter(heading3) " ";
+        counter-reset: heading4;
+        padding-right: .5cm;
+        margin-left: 1.9cm;
+    }
+    nav.navtoc ul > li > ul > li > ul > li + li {
+        margin-top: .1cm;
+    }
+    
+    
+    /* to align the titles vertically */
+    nav.navtoc ul > li:nth-child(10)::before,
+    nav.navtoc ul > li:nth-child(11)::before, 
+    nav.navtoc ul > li:nth-child(12)::before {
+        padding-right: .3cm;
+    }
+
+    /* -------------------  All other styles  --------------------- */
+    .text {
+        margin: 0;
+        padding: 0;
+        page-break-before: always;
+    }
+
+    .empty {
+        page-break-after: always;
+    }
+    
+    
+
+    h1 {
+        color: #E60000;
+        margin: 0;
+        counter-increment: c1;
+        counter-reset: c2;
+        font-size: 16pt;
+
+    }
+
+    h2 {
+        color: black;
+        padding: 0;
+        counter-increment: c2;
+        counter-reset: c3;
+        font-size: 14pt;
+    }
+
+    h3 {
+        color: #3f3f3f;
+        margin: 0;
+        counter-increment: c3;
+        counter-reset: c4;
+        font-size: 14pt;
+    }
+
+
+    h1::before,
+    h2::before,
+    h3::before {
+        display: inline-block;
+        text-align: left;
+        margin-right: .25cm;
+    }
+    
+    h1, h2, h3 {
+        padding: 0;
+        margin: 0;
+        font-weight: normal;
+        page-break-before: auto;
+        page-break-after: avoid;
+        /*background-color: aqua;*/
+    }
+
+
+    .text h1::before {
+        content: counter(c1) " ";
+    }
+
+    .text h2::before {
+        content: counter(c1) "." counter(c2) " ";
+    }
+
+    .text h3::before {
+        content: counter(c1) "." counter(c2) "." counter(c3) " ";
+    }
+
+    .textblock p, .list {
+        font-family: "Source Sans Pro Light";
+        font-weight: normal;
+    }
+
+    .textblock {
+        margin: .5em 0 1em 0;
+        /*background-color: greenyellow;*/
+    }
+    .textblock p {
+        margin: 0;
+    }
+    .textblock p+p {
+        margin: .05em 0 0 0;
+    }
+
+    .list {
+        list-style-type: none;
+        padding-left: .5cm;
+        margin: 0 0 .45em 0;
+    }
+    .list li {
+        margin: 0;
+        padding: 0;
+    }
+
+    .textblock ul > li::before {
+        color: #E60000;
+        content: "■ ";
+        font-size: 20pt;
+    }
+
+    #top {
+        /* SVG should not show in print */
+        display: none;
+    }
+    #download {
+        display: none;
+    }
+}

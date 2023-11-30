@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+  xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+  <head>
+    <title>Select drop-down</title>
+    <style type="text/css">
+      @import url("../../common/cp-sample-style.css");</style>
+  </head>
+  <body>
+    <xi:include href="../../common/standardheader.dfb"/>
+    <h1>Select drop-down</h1>
+    <p>This example shows how a select list (select) is rendered without any additional styling,
+      with the default settings.</p>
+    <br />
+    <p><strong>&lt;select></strong> is used to create a drop-down list.</p>
+    <p>Choose your favorite ice cream flavor</p>
+    <select id="icecream-select">
+      <option value="">--Please choose an option--</option>
+      <option value="chocolate">Chocolate</option>
+      <option value="vanilla">Vanilla</option>
+      <option value="straciatella">Straciatella</option>
+      <option value="strawberry">Strawberry</option>
+      <option value="raspberry">Raspberry</option>
+      <option value="mango">Mango</option>
+    </select>
+  </body>
+</html>

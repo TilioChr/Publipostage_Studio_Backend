@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title xml:lang="en">DFF Document with Embedded External Document</title>
+        <meta name="dc.title" content="DFF Document with Embedded External Document" xml:lang="en" />
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <div class="sample">
+            <p> Pulvinar non pellentesque pellentesque nisi nascetur elementum platea turpis, eu,
+                pulvinar et, a mauris, etiam vel, facilisis mus, egestas in dapibus sagittis ac
+                mattis. Phasellus massa cum, habitasse augue sagittis, turpis penatibus auctor
+                sagittis aenean in! Aenean porta tincidunt ultricies est lorem, facilisis dignissim
+                tempor auctor ut sociis pulvinar eros egestas eros placerat habitasse, mid sed
+                mattis velit platea aliquam, purus lorem, lacus et integer, natoque augue a,
+                facilisis augue, mattis cras! A pid mattis lorem urna rhoncus. Elementum tincidunt,
+                mus elementum turpis quis ridiculus eu odio egestas, elit auctor turpis mus platea
+                sed, rhoncus tempor, augue dictumst phasellus tortor, ac. Massa sagittis sociis
+                integer mid magna a turpis pellentesque, placerat lundium! Lacus, enim mus odio
+                placerat? Nec cursus augue. </p>
+            <p> Pulvinar non pellentesque pellentesque nisi nascetur elementum platea turpis, eu,
+                pulvinar et, a mauris, etiam vel, facilisis mus, egestas in dapibus sagittis ac
+                mattis. Phasellus massa cum, habitasse augue sagittis, turpis penatibus auctor
+                sagittis aenean in! Aenean porta tincidunt ultricies est lorem, facilisis dignissim
+                tempor auctor ut sociis pulvinar eros egestas eros placerat habitasse, mid sed
+                mattis velit platea aliquam, purus lorem, lacus et integer, natoque augue a,
+                facilisis augue, mattis cras! A pid mattis lorem urna rhoncus. Elementum tincidunt,
+                mus elementum turpis quis ridiculus eu odio egestas, elit auctor turpis mus platea
+                sed, rhoncus tempor, augue dictumst phasellus tortor, ac. Massa sagittis sociis
+                integer mid magna a turpis pellentesque, placerat lundium! Lacus, enim mus odio
+                placerat? Nec cursus augue. </p>
+            <p> Pulvinar non pellentesque pellentesque nisi nascetur elementum platea turpis, eu,
+                pulvinar et, a mauris, etiam vel, facilisis mus, egestas in dapibus sagittis ac
+                mattis. Phasellus massa cum, habitasse augue sagittis, turpis penatibus auctor
+                sagittis aenean in! Aenean porta tincidunt ultricies est lorem, facilisis dignissim
+                tempor auctor ut sociis pulvinar eros egestas eros placerat habitasse, mid sed
+                mattis velit platea aliquam, purus lorem, lacus et integer, natoque augue a,
+                facilisis augue, mattis cras! A pid mattis lorem urna rhoncus. Elementum tincidunt,
+                mus elementum turpis quis ridiculus eu odio egestas, elit auctor turpis mus platea
+                sed, rhoncus tempor, augue dictumst phasellus tortor, ac. Massa sagittis sociis
+                integer mid magna a turpis pellentesque, placerat lundium! Lacus, enim mus odio
+                placerat? Nec cursus augue. </p>
+        </div>
+        <dff:external-document src="DocBridge-View-DataSheet-2019-03.pdf"/>
+    </body>
+</html>

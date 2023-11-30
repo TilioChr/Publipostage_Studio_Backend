@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="84px" height="84px"
+	 viewBox="0 0 84 84" enable-background="new 0 0 84 84" xml:space="preserve">
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  x="0" y="4" height="43" width="48" bottomLeftOrigin="true"></sliceSourceBounds>
+	</sfw>
+</metadata>
+<title>icon-news-a</title>
+<g>
+	<g>
+		<path fill="none" stroke="#DF000F" stroke-linecap="square" d="M37.5,31.5h18 M37.5,52.5h18 M37.5,38.5h18 M37.5,45.5h18"/>
+		<path fill="none" stroke="#DF000F" d="M28,31.434V21h37v34.994c0.002,3.867-3.131,7.004-6.998,7.006C58,63,58,63,57.998,63H24"/>
+		<path fill="none" stroke="#DF000F" d="M18,55.143V31h10v27.002c-0.002,2.76-2.24,4.997-5,4.998c-2.76,0-5-2.236-5-4.996V55.143z"
+			/>
+	</g>
+</g>
+</svg>

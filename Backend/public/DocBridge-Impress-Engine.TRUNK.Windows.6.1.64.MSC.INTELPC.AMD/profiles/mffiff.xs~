@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/iff">
+   <xs:element name="mffiff">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct or dummy device names must be specified </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="arial" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Type1"/>
+                                             <xs:enumeration value="TrueType"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="Arial" type="xs:string"/>
+                           <xs:attribute name="serifstyle" default="Serif">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Serif"/>
+                                    <xs:enumeration value="SansSerif"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="spacing" default="Monospaced">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Monospaced"/>
+                                    <xs:enumeration value="Proportional"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"), Dateiendung
+                ("extension") und Auflösung ("resolution") sind optional. Je mehr Angaben gemacht
+                werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="truetype" type="xs:string"/>
+                                    <xs:attribute name="extension" default="ttf" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="imagedefaultres" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="rx" default="72" type="xs:integer"/>
+                           <xs:attribute name="ry" default="72" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fullcolorrendering" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">fullcolorrendering may be "Auto" or "None". The option is used if output is
+                monochrome. If fullcolorrendering is "Auto", and there are colored items, the
+                Presentation Area is rendered first to a full-page colored RGB image before being
+                rendered to a monochrome image. The disadvantage can be a performance decrease. Use
+                this option if there are unwanted differences in gray areas on the page. Default is
+                None. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="None">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="None"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinition" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="resolution" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="rx" default="300" type="xs:integer"/>
+                                    <xs:attribute name="ry" default="300" type="xs:integer"/>
+                                    <xs:attribute name="asInput" default="none" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="en-US">This attribute determines the resolution to be
+                used</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="imagetype" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">imagetype may be "Monochrome", "GrayScale", "Palette", "Rgb" or "Cmyk".
+                Default value is "monochrome". keepfullpageimage: if true, the image type for the
+                full page size image from input will be kept. default is true.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="Monochrome">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Monochrome"/>
+                                    <xs:enumeration value="GrayScale"/>
+                                    <xs:enumeration value="Palette"/>
+                                    <xs:enumeration value="Rgb"/>
+                                    <xs:enumeration value="Cmyk"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="keepfullpageimage" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="imageresample" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Image resampling: imageresample mode: default, lanczos, hermite,
+                catmullrom, bicubic. The image resampling can be set in images which have 8, 24 or
+                32 bits per pixel. The default can be applied in all image types. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="mode" default="Default">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Default"/>
+                                    <xs:enumeration value="Lanczos"/>
+                                    <xs:enumeration value="Hermite"/>
+                                    <xs:enumeration value="Catmullrom"/>
+                                    <xs:enumeration value="Bicubic"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="imagecompressions" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="imagecompression" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">Control image compression type. Incompatible types are ignored Multiple
+                xml-imagecompression-elements are allowed (basically one for every possible
+                (bitsperpixel, colorformat) pairing. Valid values for bits per pixel: "1", "4", "8",
+                "24", "32" Valid values for colorformat: "grayscale", "palette", "rgb", "cmyk"
+                Monochrome is 1 bitperpixel grayscale. Valid values for compression are: "default",
+                "none", "rle", "lzw", "packbits", "ccittrle", "faxg3", "faxg4", "mmr", "ipfix",
+                "jpeg", "pcd", "jpegnew", "zip", "jp2", "jbig2" Incompatible or not supported
+                compressions are ignored</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="bitsperpixel" default="1">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:integer">
+                                             <xs:enumeration value="1"/>
+                                             <xs:enumeration value="4"/>
+                                             <xs:enumeration value="8"/>
+                                             <xs:enumeration value="24"/>
+                                             <xs:enumeration value="32"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="colorformat" default="GrayScale">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="GrayScale"/>
+                                             <xs:enumeration value="Palette"/>
+                                             <xs:enumeration value="Rgb"/>
+                                             <xs:enumeration value="Cmyk"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="compression" default="Default">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Default"/>
+                                             <xs:enumeration value="None"/>
+                                             <xs:enumeration value="Rle"/>
+                                             <xs:enumeration value="Lzw"/>
+                                             <xs:enumeration value="PackBits"/>
+                                             <xs:enumeration value="Ccittrle"/>
+                                             <xs:enumeration value="FaxG3"/>
+                                             <xs:enumeration value="FaxG4"/>
+                                             <xs:enumeration value="Mmr"/>
+                                             <xs:enumeration value="IpFix"/>
+                                             <xs:enumeration value="Jpeg"/>
+                                             <xs:enumeration value="Pcd"/>
+                                             <xs:enumeration value="JpegNew"/>
+                                             <xs:enumeration value="Zip"/>
+                                             <xs:enumeration value="Jp2"/>
+                                             <xs:enumeration value="Jbig2"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="keeporiginal" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="imageoutputhorizontalpixelalignment" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="8" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="imageoutputverticalpixelalignment" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="8" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="PPM" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">PPM file format has two encodings: "binary" and "ascii"</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="encoding" default="binary">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="binary"/>
+                                    <xs:enumeration value="ascii"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="jpegquality" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">0..100</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="90">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:integer">
+                                    <xs:minInclusive value="0"/>
+                                    <xs:maxInclusive value="100"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="rastersettype" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">may be "screen", "screenmodified", "afp", "afpmodified", roughw0, roughw15,
+                roughw45, roughw75, finew0, finew15, finew45 or finew75</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="Screen">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Afp"/>
+                                    <xs:enumeration value="AfpModified"/>
+                                    <xs:enumeration value="Roughw0"/>
+                                    <xs:enumeration value="Roughw15"/>
+                                    <xs:enumeration value="Roughw45"/>
+                                    <xs:enumeration value="Roughw75"/>
+                                    <xs:enumeration value="Finew0"/>
+                                    <xs:enumeration value="Finew15"/>
+                                    <xs:enumeration value="Finew45"/>
+                                    <xs:enumeration value="Finew75"/>
+                                    <xs:enumeration value="Screen"/>
+                                    <xs:enumeration value="ScreenModified"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="gammalist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">gamma correction for gray patterns; intermediate values are
+                interpolated if no value is specified, no correction will be done
+                Default:</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="gammavalue" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="from" default="0" type="xs:integer"/>
+                                    <xs:attribute name="to" default="0" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="TextRendering" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">TextRendering allows to configure text rendering settings. Option
+                antiAliasing enables usage of anti-aliasing for text rendering. Anti-aliasing can be
+                enabled to achive better quality in the output. Default value is 'false'.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="antiAliasing" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="highlightcolorlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Mapping list for highlight color name to RGB value</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="highlightcolor" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">red</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="RED" type="xs:string"/>
+                           <xs:attribute name="foreground-rgb" default="#00FF0000" type="xs:string"/>
+                           <xs:attribute name="background-rgb" default="#00FFFFFF" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

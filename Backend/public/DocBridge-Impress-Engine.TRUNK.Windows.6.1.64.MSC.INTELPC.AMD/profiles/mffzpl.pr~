@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffzpl xmlns="http://www.compart.com/ns/mff/zpl" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for both input and output.-->
+
+   <globals>
+      <!--The optimization of overlapping graphics
+                objects.-->
+      <!--Attribute: value @comment: The control of optimization of overlapping graphics objects.
+                Valid values are "Always", "Never", and "IfDifferentTypes". The default value is
+                "Always". The value "Always" enables the graphics object optimization within pages
+                and "Never" disables it. "IfDifferentTypes" enables graphics object optimization
+                exactly if the format type of input and output is different. Graphics object
+                optimization combines overlapping objects, adapts color to the capabilites of the
+                output device, often improves visual appearance of the result, but slows down
+                conversions substantially.-->
+
+      <optimizepa value="ifDifferentTypes"/>
+
+      <!--character to be used when the requested character is not in the printer resident
+        font-->
+
+      <defaultchar char="003F"/>
+   </globals>
+
+   <!--Subelements of element "fontlist" contain definitions of fonts used to generate
+        ZPL output file. Attribute "devname" is used to map printer fonts.-->
+
+   <fontlist>
+      <!--<font family="" serifstyle="sansSerif" spacing="proportional">        
+         <face devname="" weight="medium" width="normal" style="upright"/>
+      </font>-->
+   </fontlist>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--Determines the Dithering method for conversions of color images to black
+                and white. Valid attributes are: default: specifies the dithering algorithm. Valid
+                values are: AUTO (equals CLUSTERED), CLUSTERED, DISPERSED, FLOYDSTEINBERG, STUCKI,
+                JARVISJUDICENINKE, THRESHOLD. Parameter: controls the algorithm. Valid value ranges
+                for different dithering methods are e.g. "AUTO" (or "CLUSTERED"): values 2-8;
+                "DISPERSED": values values 2-8; "THRESHOLD": values 1-100-->
+
+      <dithermethod default="auto" parameter="4"/>
+
+      <!-- Printer resolution in DPI. This value depends on the printhead of the printer.
+        Permitted values: 152 dpi for 6 dots/mm printhead, 203 dpi for 8 dots/mm printhead 304 dpi
+        for 12 dots/mm printhead, 609 dpi for 24 dots/mm printhead. If no value is defined, 203 dpi
+        is used as default. -->
+
+      <resolution rx="203" ry="203"/>
+
+      <!--The element "pagedefinition" determines the correct positioning of text and
+        images on the page. The attribute "name" specifies the name of the page
+        definition.-->
+
+      <pagedefinitionlist>
+         <!--Only one pagedefinition is allowed!-->
+
+         <pagedefinition name="label">
+            <!-- Paper size can be specified by "height" and "width".
+      -->
+            <!--Attribute: width @comment: 
+        The width of the paper sheet. Valid length units are "tcm", "mm",
+        "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch", and
+        "ln". The value can also be "asInput". In this case the input page width will be used.
+      -->
+            <!--Attribute: height @comment: The height of the paper sheet. Valid length units are "tcm", "mm",
+        "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch", and
+        "ln". The value can also be "asInput". In this case the input page height will be used.-->
+
+            <papersize width="4 in" height="6 in"/>
+         </pagedefinition>
+      </pagedefinitionlist>
+
+      <!--Specifies the available barcode types of the printer-->
+
+      <barcodelist>
+         <barcode name="Aztec" type="AZTEC"/>
+         <barcode name="Code 11" type="CODE11"/>
+         <barcode name="Code 128" type="CODE128"/>
+         <barcode name="Code 128A" type="CODE128A"/>
+         <barcode name="Code 128B" type="CODE128B"/>
+         <barcode name="Code 128C" type="CODE128C"/>
+         <barcode name="EAN 128" type="EAN128"/>
+         <barcode name="Data Matrix" type="DATAMATRIX"/>
+         <barcode name="PDF 417" type="PDF417"/>
+         <barcode name="Postnet" type="POSTNET"/>
+         <barcode name="Postnet5 (ZIP)" type="POSTNET5"/>
+         <barcode name="Postnet9 (ZIP+4)" type="POSTNET9"/>
+         <barcode name="Postnet11 (ZIP+4+2)" type="POSTNET11"/>
+         <barcode name="Planet" type="PLANET"/>
+         <barcode name="QR Code" type="QRCODE"/>
+         <barcode name="MaxiCode" type="MAXICODE"/>
+         <barcode name="Codabar" type="CODABAR"/>
+         <barcode name="Code 39" type="CODE39"/>
+         <barcode name="Code 93" type="CODE93"/>
+         <barcode name="Code 2-of-5 Industrial" type="CODE25INDUSTRIAL"/>
+         <barcode name="Code 2-of-5 Interleaved" type="CODE25INTERLEAVED"/>
+         <barcode name="EAN-8" type="EAN8"/>
+         <barcode name="EAN-13" type="EAN13"/>
+         <barcode name="UPC Version A" type="UPCA"/>
+         <barcode name="UPC Version E" type="UPCE"/>
+         <barcode name="UPC Two-Digit Supplemental" type="UPC2SUPP"/>
+         <barcode name="UPC Five-Digit Supplemental" type="UPC5SUPP"/>
+         <barcode name="EAN Two-Digit Supplemental" type="EAN2SUPP"/>
+         <barcode name="EAN Five-Digit Supplemental" type="EAN5SUPP"/>
+         <barcode name="MSI" type="MSI"/>
+         <barcode name="MSI10" type="MSI10"/>
+         <barcode name="MSI11" type="MSI11"/>
+      </barcodelist>
+
+      <!--The size of a barcode depends of the used module width. Due to the small
+        resolution and using integer values to describe the module width, the size of the barcode
+        can differ from the desired value, defined by the item size. maxSize and minSize can be used
+        to define the derivation of the defined bounding rectangle of the barcode. These values are
+        in percent. The default setting is 90% for the minSize and 100% for maxSize except 50% - 150% for EscP filter. 
+        If the barcode size is outside this range, the barcode will be added as image.-->
+
+      <adjustbarcodesize value="false" minSize="90%" maxSize="100%" align="left"/>
+
+      <!--Determines the printing method used. options: direct - Direct thermal printing
+        uses a heat sensitive label to create an image transfer - Thermal transfer printing uses a
+        thermal ribbon to create an image default - Printer default (no print method selection
+        command will be used) -->
+
+      <PrintMethod value="default"/>
+
+      <!--Definition of supported code pages of the print and the required setting to use
+        them.-->
+
+      <codepagelist>
+         <codepage name="IBM 850" iana="IBM850"/>
+      </codepagelist>
+
+      <!--max difference in points between source and target character positions, 0 - take
+        driver default, usually 0.5pt-->
+
+      <characteraccuracy value="0.0"/>
+
+      <!--List to control printer settings written on the first label: name : defines the
+        ZPL command to be written writeCommand: controls if the command is written value : containes
+        the command parameter values Some values depend on the printer resolution.-->
+
+      <PrinterSettingList>
+         <PrinterSetting name="^LT" writeCommand="true" value="0"/>
+      </PrinterSettingList>
+   </output>
+</mffzpl>

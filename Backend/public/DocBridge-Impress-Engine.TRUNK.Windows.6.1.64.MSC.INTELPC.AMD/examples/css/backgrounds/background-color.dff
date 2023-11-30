@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Background Colors</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");
+        div.colorName {
+        background-color: blue;
+        }
+        p.colorName {
+        background-color: yellow;
+        }
+        p.hexValue {
+        background-color: #FFFF00;
+        }
+        div.hexValue {
+        background-color: #0000ff;
+        }
+        p.rgbValue {
+        background-color: rgb(255, 255, 0);
+        }
+        div.rgbValue {
+        background-color: rgb(0, 0, 255);
+        }
+        .opacity02{
+        background-color: red;
+        opacity: 0.2;
+        }
+        .opacity1{
+        background-color: red;
+        opacity: 1;
+        }
+        </style>
+
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <h1>Background Colors</h1>
+        <p>The <code>background-color</code> property specifies the background color of an
+            element.</p>
+        <p>Like Colors, you can specify background colors in DocBridge Impress in different
+            ways:</p>
+        <ul>
+            <li>by color name, for a list of supported colors, see the Colors example</li>
+            <li>by HEX value</li>
+            <li>by RGB value</li>
+        </ul>
+        <h2>Setting Background Colors by Name</h2>
+        <div class="colorName"> This is a text inside a div element. <p class="colorName">This
+                paragraph has its own background color.</p> This is the div element, but no longer
+            the paragraph. </div>
+        <h2>Setting Background Colors by HEX Value</h2>
+        <div class="hexValue"> This is a text inside a div element. <p class="hexValue">This
+                paragraph has its own background color.</p> This is the div element, but no longer
+            the paragraph. </div>
+        <h2>Setting Background Colors by RGB Value</h2>
+        <div class="rgbValue"> This is a text inside a div element. <p class="rgbValue">This
+                paragraph has its own background color.</p> This is the div element, but no longer
+            the paragraph. </div>
+    </body>
+</html>

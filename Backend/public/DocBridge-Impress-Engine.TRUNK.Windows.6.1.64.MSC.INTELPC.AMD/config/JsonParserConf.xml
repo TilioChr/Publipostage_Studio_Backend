@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+        Configuration file for JSON parser.
+        * allowComments:
+        - true : comments will be ignored (allow JavaScript comments)
+        - false : (default) error on comments (comments not supported)
+
+        * allowCommaAfterLastMember:
+        - true : comma is ignored if present after last member of an object or after last element of an array
+        - false : Invaild token error if comma is present after last element/member (default)
+
+        * allowDuplicateKeys:
+        - false : error on duplicate key (default)
+        - true : use last occurrence of duplicate key (info message)
+
+        * encoding
+        The attribute 'encoding' specifies the encoding of the JSON file, default is 'auto'
+			
+      -->
+
+<JsonParser xmlns="http://www.compart.com/ns/jsonparser" onComments="fatal" onCommaAfterLastMember="fatal" onDuplicateKeys="fatal" encoding="auto">
+   <!--
+		JsonToXml part of JsonParser configuration is used for json to xml conversion.
+
+		* method
+		This attribute is used during json to xml conversion. It specifies whether to generate xml as 'xslt' 
+		specification (which is default) or using 'simple' method (which is similar to oxygen converter)
+		
+		* rootName
+		This attribute is used with method='simple'. It specifies the name to be used for root Xml element. 
+		Default name used it 'root'			
+    
+		* attributePrefix
+		This attribute is used with method='simple'. It specifies the prefix given with json key to be use  
+    it as attribute of its parent object.
+        -->
+
+   <JsonToXml method="xslt" rootName="root" attributePrefix="@"/>
+</JsonParser>

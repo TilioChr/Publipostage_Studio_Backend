@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffdpl xmlns="http://www.compart.com/ns/mff/dpl" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Font definitions. This enables the font mapping to the internal font name
+                or external font file as given by the documentation. The devname represents the id
+                of the internal font. Example: <fontlist overrideembeddedfont="False">
+                <font family="Helvetica" serifstyle="SansSerif" spacing="Proportional">
+                <face style="Upright" weight="Medium" width="Normal" devname="CG Triumvirate"
+                /> <face style="Upright" weight="Bold" width="Normal" fontfile="arialbd.ttf"
+                fontfiletype="TrueType"/> </font> </fontlist> -->
+
+   <fontlist/>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--Printer resolution in DPI. Permitted values are 203 and 300. -->
+
+      <resolution rx="203" ry="203"/>
+
+      <pagedefinitionlist>
+         <!--Only one pagedefinition is allowed!-->
+
+         <pagedefinition name="label">
+            <!--Paper size can be specified by "height" and "width". "height" is mandatory.
+            -->
+
+            <papersize width="4 in" height="6 in"/>
+         </pagedefinition>
+      </pagedefinitionlist>
+
+      <!--Printer available memory in bytes. -->
+
+      <memorysize value="1024"/>
+
+      <!--Specifies the available barcode types of the printer-->
+
+      <barcodelist>
+         <barcode name="Aztec" type="AZTEC"/>
+         <barcode name="Codabar" type="CODABAR"/>
+         <barcode name="Code 128" type="CODE128"/>
+         <barcode name="Code 128A" type="CODE128A"/>
+         <barcode name="Code 128B" type="CODE128B"/>
+         <barcode name="Code 128C" type="CODE128C"/>
+         <barcode name="Code 39" type="CODE39"/>
+         <barcode name="Code 93" type="CODE93"/>
+         <barcode name="Data Matrix" type="DATAMATRIX"/>
+         <barcode name="EAN-8" type="EAN8"/>
+         <barcode name="EAN-13" type="EAN13"/>
+         <barcode name="EAN Two-Digit Supplement" type="EAN2SUPP"/>
+         <barcode name="EAN Five-Digit Supplement" type="EAN5SUPP"/>
+         <barcode name="Interleaved 2-of-5" type="CODE25INTERLEAVED"/>
+         <barcode name="MaxiCode" type="MAXICODE"/>
+         <barcode name="MSI" type="MSI"/>
+         <barcode name="MSI10" type="MSI10"/>
+         <barcode name="MSI11" type="MSI11"/>
+         <barcode name="PDF 417" type="PDF417"/>
+         <barcode name="Postnet5 (ZIP)" type="POSTNET5"/>
+         <barcode name="Postnet9 (ZIP+4)" type="POSTNET9"/>
+         <barcode name="Postnet11 (ZIP+4+2)" type="POSTNET11"/>
+         <barcode name="QR Code" type="QRCODE"/>
+         <barcode name="UPC Version A" type="UPCA"/>
+         <barcode name="UPC Version E" type="UPCE"/>
+         <barcode name="UPC Two-Digit Supplemental" type="UPC2SUPP"/>
+         <barcode name="UPC Five-Digit Supplemental" type="UPC5SUPP"/>
+         <barcode name="EAN 128" type="EAN128"/>
+         <barcode name="Code 2-of-5 Industrial" type="CODE25INDUSTRIAL"/>
+         <barcode name="Code 11" type="CODE11"/>
+         <barcode name="Planet" type="PLANET"/>
+         <barcode name="Australia Post 4-state Barcode" type="AUSTRALIAPOST"/>
+         <barcode name="United States Postal Service 4 State Barcode" type="INTELLIGENTMAIL"/>
+         <barcode name="DataBar Stacked" type="DATABARSTACKED"/>
+         <barcode name="DataBar Expanded" type="DATABAREXPAND"/>
+         <barcode name="DataBar Omnidirect" type="DATABAROMNIDIRECT"/>
+         <barcode name="DataBar Truncated" type="DATABARTRUNCATED"/>
+         <barcode name="DataBar Omnidirect Stacked" type="DATABAROMNIDIRECTSTACKED"/>
+         <barcode name="DataBar Limited" type="DATABARLIMITED"/>
+      </barcodelist>
+
+      <!--The size of a barcode depends of the used module width. Due to the small
+        resolution and using integer values to describe the module width, the size of the barcode
+        can differ from the desired value, defined by the item size. maxSize and minSize can be used
+        to define the derivation of the defined bounding rectangle of the barcode. These values are
+        in percent. The default setting is 90% for the minSize and 100% for maxSize except 50% - 150% for EscP filter. 
+        If the barcode size is outside this range, the barcode will be added as image.-->
+
+      <adjustbarcodesize value="false" minSize="90%" maxSize="100%" align="left"/>
+
+      <!--Determines the printing method used. options: direct - Direct thermal
+                printing uses a heat sensitive label to create an image transfer - Thermal transfer
+                printing uses a thermal ribbon to create an image default - Printer default (no
+                print method selection command will be used) -->
+
+      <PrintMethod value="default"/>
+   </output>
+
+   <resourcelist>
+      <fileslist>
+         <files path="." type="TrueType" extension="ttf"/>
+      </fileslist>
+   </resourcelist>
+</mffdpl>

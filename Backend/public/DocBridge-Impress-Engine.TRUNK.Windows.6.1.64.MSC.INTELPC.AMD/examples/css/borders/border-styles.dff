@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Border Styles</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");
+            p.dotted {
+                border-style: dotted;
+            }
+            p.dashed {
+                border-style: dashed;
+            }
+            p.solid {
+                border-style: solid;
+            }
+            p.none {
+                border-style: none;
+            }
+            p.hidden {
+                border-style: hidden;
+            }
+            p.mix {
+                border-style: dotted dashed solid none;
+            }
+            p.green {
+                border-color: green;
+            }
+            p.red {
+                border-color: red;
+            }
+            p.blue {
+                border-color: blue;
+            }</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <h1>Border Styles</h1>
+        <p>The border-style property specifies the type of border display.</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td>dotted</td>
+                    <td><p class="dotted">A dotted border.</p></td>
+                </tr>
+                <tr>
+                    <td>dashed</td>
+                    <td><p class="dashed">A dashed border.</p></td>
+                </tr>
+                <tr>
+                    <td>solid</td>
+                    <td><p class="solid">A solid border.</p></td>
+                </tr>
+                <tr>
+                    <td>none</td>
+                    <td><p class="none">No border.</p></td>
+                </tr>
+                <tr>
+                    <td>hidden</td>
+                    <td><p class="hidden">A hidden border.</p></td>
+                </tr>
+                <tr>
+                    <td>mix</td>
+                    <td><p class="mix">A mixed border.</p></td>
+                </tr>
+                <tr>
+                    <td>dotted red </td>
+                    <td><p class="dotted red">A dotted border.</p></td>
+                </tr>
+                <tr>
+                    <td>dashed green </td>
+                    <td><p class="dashed green">A dashed border.</p></td>
+                </tr>
+                <tr>
+                    <td>solid blue</td>
+                    <td><p class="solid blue">A solid border.</p></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

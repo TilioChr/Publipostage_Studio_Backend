@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Hyperlinks</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <h1>Hyperlinks</h1>
+        <p>This example shows how hyperlinks are rendered without any additional styling, with the
+            default settings.</p>
+        <h2>Simple Hyperlink</h2>
+        <a href="http://www.compart.com">Compart Website</a>
+        <br />
+        <a href="http://www.compart.com" title="Go to Compart Website">Compart Website</a> 
+        <h2>Link to an Email Address</h2>
+        <a href="mailto:info@compart.com">Send an email to Compart</a> 
+    </body>
+</html>

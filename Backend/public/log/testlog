@@ -1,0 +1,48 @@
+﻿APP1000I Compart DocBridge Impress Engine/cpdff - Document file format tool
+APP1001I Release:       202104-CURRENT
+APP1002I App Version:   1.0.[PROD]
+APP1009I Cplib Version: 607aa987c086
+APP1003I Built:         2021-02-25 19:33:48
+APP1004I Platform:      WIN64 [64]
+APP1011I Host Name:     CPFR2325
+APP1007I Architecture:  X86
+APP1008I Processors:    8
+APP1005I OS:            Windows 10 (10.0)
+APP1013I Encoding:      windows-1252
+APP1014I Time Zone:     UTC+01:00
+APP1006I Copyright (C) Compart AG 2016-2021
+LIC4209I License file 'D:\Compart\Licenses\cpdff.lic' being used
+LIC4213I License serial number is '110003018'
+LIC4210I License is not bound to a specific host name
+LIC4212I License characteristics for this computer are type 'partner', role 'server'
+LIC4204I License valid through '2024-02-29'
+LIC4216I License issue date is '2023-01-24'
+LIC4218I License last modified date is '2023-01-24'
+MFF4005I This software uses libraries from the FFmpeg project under the LGPLv2.1
+MPR1022W Resource path 'resource/font' doesn't exist
+DFF4007I Locale file 'C:\Users\tcr\Documents\GitHub\Backend\public\DocBridge-Impress-Engine.TRUNK.Windows.6.1.64.MSC.INTELPC.AMD\bin\locale.xml' is used
+XPL3001W COURRIERSIMPLEBIS.dff(5:25): Attribute 'mode' in element 'dff:data' is not used
+XPL3001W COURRIERSIMPLEBIS.dff(5:83): Attribute 'type' in element 'dff:data' is not used
+DFF4006I Disabling two pass
+MPR1022W Resource path 'resource/rgb' doesn't exist
+MPR1022W Resource path 'resource/cmyk' doesn't exist
+MPR1022W Resource path 'C:/Users/maxle/tomcat/apache-tomcat-8.5.37/webapps/Impress/Documents/resources/images' doesn't exist
+MPR1022W Resource path 'C:/Users/maxle/tomcat/apache-tomcat-8.5.37/webapps/Impress/Documents/resources' doesn't exist
+MPR1022W Resource path 'C:/Users/maxle/tomcat/apache-tomcat-8.5.37/webapps/Impress/Documents/CFI_TECH' doesn't exist
+MPR1022W Resource path 'C:/Users/maxle/tomcat/apache-tomcat-8.5.37/webapps/Impress/Documents/Projects/VIESGOFACLAST/Colectiva' doesn't exist
+MPR1022W Resource path 'C:/Users/maxle/imprdocker/ImpressDocuments/resources/images' doesn't exist
+MPR1022W Resource path 'C:/Users/maxle/tomcat/apache-tomcat-8.5.37/webapps/Impress/cgi/resource/Font' doesn't exist
+MPR1022W Resource path 'C:\xampp\htdocs\DREAMPRESS\DocBridge-Impress-Engine.TRUNK.Windows.6.1.64.MSC.INTELPC.AMD\pfb' doesn't exist
+MPR1022W Resource path '.\Adobe ICC Profiles\RGB Profiles' doesn't exist
+XHM4004I Using parsing mode 'dom'
+XHM4001I Using default style sheet for 'HTML 4.0'
+XHM4005I Font file 'c:\WINDOWS\Fonts\arial.ttf' was loaded for family name 'arial'
+MFF3001W Profile for type 'TXT' not found in directory 'C:\Users\tcr\Documents\GitHub\Backend\public\profiles'
+TXT3011W Font not defined - fallback to default
+MGR4001I Font file 'c:\windows\fonts\cour.ttf' is found by using family name 'Courier New' in Font Manager database
+TXT4002I Will use page definition 'Default'
+MPR1022W Resource path 'resource/font' doesn't exist
+XHM4005I Font file 'c:\WINDOWS\Fonts\arial.ttf' was loaded for family name 'Arial'
+DFF4002I 49999 record(s) produced
+DFF4004I Time needed: 83.651 s; 49999 pages (597.710 pages/s based on 'cpu' time)
+DFF4001I Dff stopped (Rc='0')

@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/djd">
+   <xs:element name="mffdjd">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen sowohl für die Eingabe als auch für die
+                Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">Settings for both input and output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="optimizepa" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Enables or disables optimization in PA</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Aktiviert oder deaktiviert die Optimierung in der
+                PA</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="IfDifferentTypes">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="IfDifferentTypes"/>
+                                    <xs:enumeration value="Always"/>
+                                    <xs:enumeration value="Never"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="optimizepaoptions" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="ignoreitems" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="TEXT,IMAGE" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultchar" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Character to be used if the requested character is not
+                included in the font </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Zeichen, das verwendet werden soll, wenn das angeforderte
+                Zeichen nicht in der Schriftart enthalten ist</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="char" default="0020" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="round" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">round rules for ptround</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="rule" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" default="EVENPT" type="xs:string"/>
+                                    <xs:attribute name="method" default="Math">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Math"/>
+                                             <xs:enumeration value="Ceil"/>
+                                             <xs:enumeration value="Floor"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="digit" default="0" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Defines a font list containing all the font related profile
+                settings.</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Definiert eine Fontliste, die alle fontbezogenen
+                Profileinstellungen enthält.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="L0112B" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="XeroxStandard" type="xs:string"/>
+                           <xs:attribute name="encoding" default="XRX_DEFAULT" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Technical settings of the input file structure.</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Technische Einstellungen der
+                Eingabedatei-Struktur</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileformat" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Einstellungen bezüglich des erwarteten
+                Dateiformats</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Settings regarding the expected file format</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="type" default="Default">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="DEFAULT"/>
+                                    <xs:enumeration value="STREAM"/>
+                                    <xs:enumeration value="RECORD"/>
+                                    <xs:enumeration value="RECORD_VBM"/>
+                                    <xs:enumeration value="RECORD_V2"/>
+                                    <xs:enumeration value="BLOCKED"/>
+                                    <xs:enumeration value="BARRNJE"/>
+                                    <xs:enumeration value="BARRS370"/>
+                                    <xs:enumeration value="BARRS370B"/>
+                                    <xs:enumeration value="PCFILE"/>
+                                    <xs:enumeration value="Default"/>
+                                    <xs:enumeration value="Stream"/>
+                                    <xs:enumeration value="Record"/>
+                                    <xs:enumeration value="Record_vbm"/>
+                                    <xs:enumeration value="Record_v2"/>
+                                    <xs:enumeration value="Blocked"/>
+                                    <xs:enumeration value="BarrNje"/>
+                                    <xs:enumeration value="BarrS370"/>
+                                    <xs:enumeration value="BarrS370B"/>
+                                    <xs:enumeration value="PcFile"/>
+                                    <xs:enumeration value="default"/>
+                                    <xs:enumeration value="stream"/>
+                                    <xs:enumeration value="record"/>
+                                    <xs:enumeration value="record_vbm"/>
+                                    <xs:enumeration value="record_v2"/>
+                                    <xs:enumeration value="blocked"/>
+                                    <xs:enumeration value="barrnje"/>
+                                    <xs:enumeration value="barrs370"/>
+                                    <xs:enumeration value="barrs370B"/>
+                                    <xs:enumeration value="pcfile"/>
+                                    <xs:enumeration value="X1F63"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="allowspacedelimiter" default="false" type="xs:boolean"/>
+                           <xs:attribute name="value" default="0x0D0A" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ConvertEncoding" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Information to convert input data</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Angaben zur Konvertierung der Eingabedatei</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="ianaFrom" default="" type="xs:string"/>
+                           <xs:attribute name="ianaTo" default="" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="jsl" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">JSL parameters</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">JSL Parameter</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="additional" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Element for PDL definitions (like PDE, CME or STK) to be used
+                in addition to the initial JSL.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Element für PDL Definitionen (z.B. PDE, CME oder STK), die
+                zusätzlich zur vorhandenen JSL verwendet werden sollen.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="filename" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="filename" default="" type="xs:string"/>
+                           <xs:attribute name="overwrite" default="" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="job" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Name of job to use (required)</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bezeichnung des zu verwendenden Jobs
+                (Pflichtangabe)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="DFLT" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="djde" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">The "djde" element describes the behaviour for DJDE blocks and
+                commands.</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Das "djde" Element beschreibt das Verhalten für DJDE Blöcke
+                und Befehle.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="pagechange" default="true" type="xs:boolean"/>
+                           <xs:attribute name="imagecoordinates" default="Standard">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Standard"/>
+                                    <xs:enumeration value="Rotated"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="overprint" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Controls the behaviour of overprinted lines and the position
+                of the line(s). </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Steuert das Verhalten überdruckter Zeilen sowie die Position
+                der jeweiligen Zeile(n).</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="Jsl">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Jsl"/>
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="JslCurrentFont"/>
+                                    <xs:enumeration value="Align"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="channels" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> The parameter
+                     specifies, if empty
+                lines count for skip. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Der Parameter
+                     legt fest, ob leere
+                Zeilen ein Skip veranlassen können. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="respectEmptyLinesForSkip" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinitionlist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">The element "pagedefinition" determines the correct
+                positioning of text and images on the page.</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Das Element "pagedefinition" bestimmt die korrekte
+                Positionierung von Text und Bildern auf der Seite.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pagedefinition" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">The element "pagedefinition" determines the correct
+                positioning of text and images on the page.</xs:documentation>
+                                    <xs:documentation xml:lang="en-US">Das Element "pagedefinition" bestimmt die korrekte
+                Positionierung von Text und Bildern auf der Seite.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Deklaration einer Papiergröße</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Declaration of a paper size</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="format" default="A4" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Name einer Standardpapiergröße</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">name of a standard paper size</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="orientation" default="Portrait">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Seitenorientierung einer Standardpapiergröße</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Page orientation of a standard paper size</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="Portrait"/>
+                                                      <xs:enumeration value="Landscape"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="margins" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Deklaration von Bogenrändern</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Declaration of sheet margins</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="left" default="0 tw" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des linken Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Width of left sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="bottom" default="0 tw" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des unteren Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Height of bottom sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="default" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="commentprocessing" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Controls how the DJDE comments ("C") are parsed. Since in some
+                cases the comments do not satisfy the specification, a method to fix the parsing is
+                required.</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Bestimmt, wie DJDE Kommentare ("C") gelesen werden. Da in
+                einigen Fällen die Kommentare nicht der Spezifikation entsprechen, ist eine
+                Möglichkeit notwendig, die Interpretation der Kommentare anzupassen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="type" default="Default">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Default"/>
+                                    <xs:enumeration value="EndOfLine"/>
+                                    <xs:enumeration value="EndOfLineRemoveTrailer"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how overlays are processed</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert wie Overlays verarbeitet werden</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="commentsdefaultcodepage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> Specifies the codepage of the comment in the input LCDS file.
+                Only ASCII DJDE commands are supported. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Definiert die codepage der Kommentare in der LCDS
+                Eingabedatei. Nur ASCII DJDE-Befehle werden unterstützt. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="iana" default="ISO-8859-1" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fonthandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies when and how text items and fonts are replaced by
+                other elements.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wann und wie Textelemente und Fonts durch andere
+                Elemente ersetzt werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="useformsxaslines" default="false" type="xs:boolean"/>
+                           <xs:attribute name="useformsxaspattern" default="false" type="xs:boolean"/>
+                           <xs:attribute name="addformfonts" default="true" type="xs:boolean"/>
+                           <xs:attribute name="illegalfontindex" default="Auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="UseFirst"/>
+                                    <xs:enumeration value="UseCurrent"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="metacode" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Used to reset the line data offset to the page origin using
+                metacode.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Wird verwendet, um den Zeilendaten-Versatz mit Metacode auf
+                den Seitenursprung zurückzusetzen. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="linedataoffsettype" default="Default">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Default"/>
+                                    <xs:enumeration value="Us"/>
+                                    <xs:enumeration value="Eu"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="suppressemptyfirstpage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether the empty first page is
+                suppressed.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob eine leere erste Seite unterdrückt
+                wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="suppressemptypages" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether all (completely!) empty pages are
+                suppressed.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob alle (vollständig!) leeren Seiten
+                zurückbehalten werden. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">technical settings of the output file structure</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileformat" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Einstellungen bezüglich des erwarteten
+                Dateiformats</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Settings regarding the expected file format</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="type" default="Stream">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="STREAM"/>
+                                    <xs:enumeration value="RECORD"/>
+                                    <xs:enumeration value="RECORD_VBM"/>
+                                    <xs:enumeration value="RECORD_V2"/>
+                                    <xs:enumeration value="BLOCKED"/>
+                                    <xs:enumeration value="BARRNJE"/>
+                                    <xs:enumeration value="BARRS370"/>
+                                    <xs:enumeration value="BARRS370B"/>
+                                    <xs:enumeration value="Stream"/>
+                                    <xs:enumeration value="Record"/>
+                                    <xs:enumeration value="Record_vbm"/>
+                                    <xs:enumeration value="Record_v2"/>
+                                    <xs:enumeration value="Blocked"/>
+                                    <xs:enumeration value="BarrNje"/>
+                                    <xs:enumeration value="BarrS370"/>
+                                    <xs:enumeration value="BarrS370B"/>
+                                    <xs:enumeration value="stream"/>
+                                    <xs:enumeration value="record"/>
+                                    <xs:enumeration value="record_vbm"/>
+                                    <xs:enumeration value="record_v2"/>
+                                    <xs:enumeration value="blocked"/>
+                                    <xs:enumeration value="barrnje"/>
+                                    <xs:enumeration value="barrs370"/>
+                                    <xs:enumeration value="barrs370B"/>
+                                    <xs:enumeration value="X1F63"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="allowspacedelimiter" default="false" type="xs:boolean"/>
+                           <xs:attribute name="value" default="0x0D0A" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="jsl" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">JSL parameters</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">JSL Parameter</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="filename" default="default" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="job" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Name of job to use (required)</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bezeichnung des zu verwendenden Jobs
+                (Pflichtangabe)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="DFLT" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writearchivefields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Controls handling of archive fields</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Steuert die Verarbeitung der Archivfelder</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="Not">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Not"/>
+                                    <xs:enumeration value="NoPrint"/>
+                                    <xs:enumeration value="Comment"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinitionlist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">The element "pagedefinition" determines the correct
+                positioning of text and images on the page.</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Das Element "pagedefinition" bestimmt die korrekte
+                Positionierung von Text und Bildern auf der Seite.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pagedefinition" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">The element "pagedefinition" determines the correct
+                positioning of text and images on the page.</xs:documentation>
+                                    <xs:documentation xml:lang="en-US">Das Element "pagedefinition" bestimmt die korrekte
+                Positionierung von Text und Bildern auf der Seite.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Deklaration einer Papiergröße</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Declaration of a paper size</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="format" default="A4" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Name einer Standardpapiergröße</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">name of a standard paper size</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="orientation" default="Portrait">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Seitenorientierung einer Standardpapiergröße</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Page orientation of a standard paper size</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="Portrait"/>
+                                                      <xs:enumeration value="Landscape"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="margins" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Deklaration von Bogenrändern</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Declaration of sheet margins</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="left" default="0 mm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des linken Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Width of left sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="bottom" default="0 mm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des unteren Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Height of bottom sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="Default" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="characteraccuracy" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Maximal zulässige Positionierungsabweichung der Zeichen in
+                pt</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Maximum difference in pt between source and target character
+                positions</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0.0" type="xs:double"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="horizontalscaling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Representation of text objects</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Darstellung von Textobjekten</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="CharSpacing">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="CharSpacing"/>
+                                    <xs:enumeration value="Render"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fonthandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies when and how text elements and fonts are
+                handled</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Gibt an, wann und wie Textelemente und Fonts behandelt
+                werden</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="default" default="Auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="None"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="useformsxaslines" default="false" type="xs:boolean"/>
+                           <xs:attribute name="useformsxaspattern" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="usegraphics" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> For writing images in metacode you can decide to write images
+                or inline graphics on the page. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Um Bilder in Metacode zu schreiben, kann man auswählen ob
+                Image-Dateien geschrieben werden sollen oder Inline Graphics auf der Seite
+                eingebettet werden sollen. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="dithermethod" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Legt die Standard-Dithering-Methode fest</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Defines the default dithering method</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="default" default="Clustered">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Clustered"/>
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="Dispersed"/>
+                                    <xs:enumeration value="FloydSteinberg"/>
+                                    <xs:enumeration value="Stucki"/>
+                                    <xs:enumeration value="JarvisJudiceninke"/>
+                                    <xs:enumeration value="Threshold"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="parameter" default="4" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="gammalist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Gammakorrektur für Graustufen</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Gamma correction for gray patterns</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="gammavalue" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="from" default="0" type="xs:integer"/>
+                                    <xs:attribute name="to" default="0" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="format" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="codepage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the codepage of the input LCDS file (if
+                required).</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert die codepage der LCDS Eingabedatei (falls
+                erforderlich).</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="iana" default="ISO-8859-1" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Definiert die Liste der Pfadeangaben zu den
+                Ressourcen</xs:documentation>
+                  <xs:documentation xml:lang="en-US">Defines the list of paths to the resources</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Defininiert die Liste der Dateidefinitionen</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Defines the list of file definitions</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Sets the resource path (location for FNT, FRM, JSL, LGO and
+                IMG files)</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Definiert den Ressourcen-Pfad (Verzeichnis für FNT, FRM, JSL,
+                LGO und IMG Dateien)</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="XeroxFont">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="XeroxFont"/>
+                                             <xs:enumeration value="XeroxLogo"/>
+                                             <xs:enumeration value="XeroxForm"/>
+                                             <xs:enumeration value="XeroxImage"/>
+                                             <xs:enumeration value="Jsl"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" default="FNT">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="FNT"/>
+                                             <xs:enumeration value="FN6"/>
+                                             <xs:enumeration value="LGO"/>
+                                             <xs:enumeration value="FRM"/>
+                                             <xs:enumeration value="JSL"/>
+                                             <xs:enumeration value="IMG"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="casecontrol" default="Ignore">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Asis"/>
+                                             <xs:enumeration value="Upper"/>
+                                             <xs:enumeration value="Lower"/>
+                                             <xs:enumeration value="Ignore"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="resolution" default="300" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Mapping of paper source trays</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Zuordnung der Papierzufuhrfächer</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Mapping of tray ID and JSL or DJD commands to Compart
+                names</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Zuordnungen von Schachtnummern und JSL- oder DJDE-Befehlen auf
+                Compart Namen</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="deviceid" default="0" type="xs:string"/>
+                                    <xs:attribute name="name" default="MAIN" type="xs:string"/>
+                                    <xs:attribute name="devicename" default="WEISS" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="outputtrays" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="outputtray" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US"> possible values for the attribute name are 'BIN', 'TRAY' and
+                'EXPORT' and define a mapping to the output tray device name </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="deviceid" default="0" type="xs:string"/>
+                                    <xs:attribute name="name" default="TRAY" type="xs:string"/>
+                                    <xs:attribute name="devicename" default="SAMPLE" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="encodinglist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Sets the font code page definition for setting unicode text by
+                encoding</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Bestimmt die Codepage-Definition der Schriftart für die
+                Kodierung von Unicode-Text.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="encoding" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies settings for setting unicode text by
+                encoding</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Einstellungen für die Kodierung von
+                Unicode-Text.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="code" default="0x30" type="xs:string"/>
+                                    <xs:attribute name="unc" default="30" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="name" default="XRX_DEFAULT" type="xs:string"/>
+                           <xs:attribute name="iana" default="ISO-8859-1" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="highlightcolorlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Mapping list for highlight color name to RGB value</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="highlightcolor" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies a named highlight color.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert eine benannte Highlight-Farbe.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="default" type="xs:string"/>
+                           <xs:attribute name="rgb" default="#00000000" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

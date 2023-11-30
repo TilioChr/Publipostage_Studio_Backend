@@ -1,0 +1,254 @@
+@media print {
+    *,p {
+        
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Sans Pro Light';
+    }
+    .two-col {
+        table-layout: fixed;
+    }
+    /* ---------- Blue Box ----------*/
+    .redbox {
+        background-color: #df000f;
+        color: white;
+        padding: .1cm 1cm .5cm .5cm;
+        font-size: 15pt;
+        font-family: 'Source Sans Pro';
+    }
+    .redbox p:first-child {
+        font-size: 0.4em;
+        padding-top: .5cm;
+    }
+    .redbox p:nth-child(2) {
+        font-size: 1.5em;
+        margin-top: .75cm;
+        margin-bottom: .25cm;
+    }
+    .redbox p:nth-child(3) {
+        font-size: 1em;
+        font-family: 'Source Sans Pro Light';
+    }
+    .redbox a {
+        color: white;
+        text-decoration-line: none;
+    }
+    .title {
+        font-size: 15pt;
+        margin: .25cm 0;
+        font-family: 'Source Sans Pro';
+    }
+    .tbl-wrapper {
+        table-layout: fixed;
+        margin-bottom: .5cm;
+    }
+    .left-half {
+        width: 9cm;
+    }
+    .left-half p {
+        margin: 0;
+        padding: 0;
+        padding-right: .5cm;
+        margin-bottom: .25cm;
+        font-family: 'Source Sans Pro Light';
+        font-size: 10pt;
+    }
+    .right-half {
+        vertical-align: top;
+        width: 6cm;
+        font-size: 10pt;
+    }
+    /*----------- Rendite-Tabelle -----------*/
+    .rendite-tbl td {
+        padding: 0 0.25cm;
+    }
+    .rendite-tbl .tbody td {
+        padding: 0.1cm 0.25cm;
+    }
+    .rendite-tbl .tbody tr:nth-child(2),
+    .rendite-tbl .tbody tr:nth-child(4) {
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+    }
+    .rendite-tbl .tbody td {
+        background-color: #e4e4e4;
+        color: #424242;
+        font-family: 'Source Sans Pro Light';
+        font-size: 9pt;
+    }
+    .rendite-tbl .tbody td:nth-child(2),
+    .rendite-tbl .tbody td:nth-child(4) {
+        font-family: 'Source Sans Pro Bold';
+        /* font-weight: bold; */
+        text-align: right;
+    }
+    .rendite-tbl .tbody td:nth-child(2) {
+        border-right: 1px solid white;
+    }
+    /*---------- Large Table ----------*/
+    .large-table {
+        font-size: 9pt;
+    }
+    .head td,
+    .sub-head td,
+    .foot td {
+        text-align: center;
+    }
+    .head td {
+        padding: 0.25cm 0.15cm;
+        background-color: #a40000;
+        color: white;
+    }
+    .sub-head td {
+        padding: 0.5cm 0.15cm;
+        background-color: #df000f;
+        color: white
+    }
+    .foot td {
+        padding: 0.3cm 0.15cm;
+        color: white;
+        font-family: 'Source Sans Pro Bold';
+        vertical-align: top;
+        background-color: #df000f;
+    }
+    .sub-head td:nth-child(2n-1) {
+        padding: 0.5cm 0.5cm;
+    }
+    .head td:nth-child(1),
+    .sub-head td:nth-child(1) {
+        background-color: white;
+    }
+
+    .months-data td {
+        background-color: #e4e4e4;
+        color: #424242;
+        text-align: center;
+        padding-top: 2.5px;
+    }
+
+
+    .head td:nth-child(1n+1),
+    .sub-head td:nth-child(2n-1),
+    .foot td:nth-child(2n-1),
+    .months-data td:nth-child(2n-1) {
+        border-right: 2.5px solid white;
+    }
+    .sub-head td:nth-child(2n),
+    .foot td:nth-child(2n),
+    .months-data td:nth-child(2n) {
+        border-right: 1px solid white;
+    }
+    .months-data tr:nth-child(12),
+    .sub-head tr,
+    .head tr {
+        border-bottom: 2.5px solid white;
+    }
+
+    .months-data tr {
+        border-bottom: 1px solid white;
+    }
+
+    .foot td:nth-child(7) {
+        background-color: #a40000;
+    }
+    .months-data td:nth-child(1),
+    .foot td:nth-child(1) {
+        font-family: 'Source Sans Pro';
+        text-align: left;
+        padding-left: 2.5px;
+    }
+    .desc {
+        font-family: 'Source Sans Pro Light';
+    }
+
+
+
+
+    #special-p {
+        margin-top: 2cm;
+        font-size: 10pt;
+    }
+    #special-p+p {
+        font-size: 8pt;
+    }
+    #chart-img {
+        width: 15cm;
+        height: 6.7cm;
+    }
+    .offer {
+        text-align: right;
+        margin-top: -1cm;
+        margin-right: -.5cm;
+    }
+    #red-box {
+        width: 4.1cm;
+        height: 1.5cm;
+    }
+    .paragraph {
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Sans Pro Light';
+        font-size: 10pt;
+        margin-top: .5cm;
+    }
+    .paragraph p {
+        margin: 0;
+        margin-bottom: .25cm;
+        padding: 0;
+    }
+    .side-note,
+    .legend {
+        color: gray;
+        font-size: 7pt;
+    }
+    .side-note {
+        margin-bottom: .25cm;
+    }
+    .side-notes-cell,
+    .side-notes-cell-2 {
+        padding: .75cm;
+    }
+    .side-notes-cell {
+        padding-top: 12cm;
+    }
+    .side-notes-cell-2 {
+        padding-top: 4cm;
+    }
+    /*----------- Other styles -----------*/
+    .hlight {
+        color: #df000f;
+    }
+    .hlight-bg-light {
+        background-color: #e4e4e4;
+    }
+    .hlight-bg-medium {
+        background-color: #df000f;
+    }
+    .hlight-bg-dark {
+        background-color: #a40000;
+    }
+    .bd {
+        font-family: 'Source Sans Pro Bold';
+        /* font-weight: bold; */
+    }
+    .break {
+        page-break-after: always;
+    }
+    .lg {
+        font-size: 8pt;
+    }
+    #first-chart-note {
+        margin-top: 3cm;
+    }
+    .chart::before {
+        font-family: 'Arial';
+        content: '●';
+        font-size: 16pt;
+    }
+    .yllw::before {
+        color: #DF000F;
+    }
+    .bl::before {
+        color: #0399F7;
+    }
+}

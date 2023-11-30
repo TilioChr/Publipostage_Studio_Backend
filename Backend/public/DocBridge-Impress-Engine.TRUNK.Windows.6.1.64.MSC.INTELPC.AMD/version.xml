@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Product xmlns="http://www.compart.com/ns/cpmill/product"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.compart.com/ns/cpmill/product"
+    operatingSystem="Windows" operatingSystemVersion="6.1"
+    architecture="INTELPC" architectureBit="64">
+    <Name>DocBridge Impress Engine</Name>
+    <ReleaseVersion>TRUNK</ReleaseVersion>
+    <BuildDate>2021-02-25</BuildDate>
+    <Compiler>MSC</Compiler>
+    <Components>
+        <Component name="cplib" lastChangeRevision="607aa987c0867356a180db2bd66053710ea61df4"/>
+        <Component name="cpmffmeta" lastChangeRevision="282c4a955cbfa185bbbe045aa46fa8a9b320bd48"/>
+    </Components>
+</Product>

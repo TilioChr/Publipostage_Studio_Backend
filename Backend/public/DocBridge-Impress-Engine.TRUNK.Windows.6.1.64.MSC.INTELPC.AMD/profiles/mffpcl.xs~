@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/pcl">
+   <xs:element name="mffpcl">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen sowohl für die Eingabe als auch für
+                die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for both input and output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="optimizepa" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether the PA is to be optimized.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert ob die PA optimiert werden soll.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="auto"/>
+                                    <xs:enumeration value="never"/>
+                                    <xs:enumeration value="always"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="colorindexlist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="colorindex" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="index" default="0" type="xs:string"/>
+                                    <xs:attribute name="color" default="#00FFFFFF" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="codepagelist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US"> Specifies codepages to replace PCL symbol sets contained in
+                soft fonts, i.e. in fonts that are not installed on the printer, but only
+                transferred to the printer.</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Bestimmt Codepages, um PCL-Symbol-Sets zu ersetzen, die in
+                Softfonts enthalten sind, d.h. in Schriften, die nicht auf dem Drucker installiert
+                sind, sondern an den Drucker übertragen werden.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="codepage" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="name" default="12U" type="xs:string"/>
+                           <xs:attribute name="iana" default="IBM850" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Contains subelements with the definitions of all the fonts
+                used during the generation of PDF output files. </xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Das Element fontlist enthält als Unterelemente Definitionen
+                aller Fonts, die bei der Erstellung der PCL-Ausgabedateien verwendet werden
+                sollen.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines for each font in the processed input and output
+                files how it should be treated. </xs:documentation>
+                           <xs:documentation xml:lang="en-US">Bestimmt für jeden Font in den verarbeiteten Eingangs- und
+                Ausgangsdateien, wie er behandelt werden soll. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="raster" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="fontfile" default="DATAM4" type="xs:string"/>
+                                             <xs:attribute name="fontfiletype" default="Pcl" type="xs:string"/>
+                                             <xs:attribute name="size" default="1.599999" type="xs:string"/>
+                                             <xs:attribute name="fixedsymbolset" default="true" type="xs:boolean"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="fontresourcelist" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="fontresource" minOccurs="0" maxOccurs="1">
+                                                   <xs:complexType>
+                                                      <xs:attribute name="fontfile" default="AMWT_F1_CJK" type="xs:string"/>
+                                                      <xs:attribute name="fontfiletype" default="TrueType">
+                                                         <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                               <xs:enumeration value="TrueType"/>
+                                                               <xs:enumeration value="Type1"/>
+                                                               <xs:enumeration value="Pcl"/>
+                                                            </xs:restriction>
+                                                         </xs:simpleType>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontselector" default="0p0s3b4102T" type="xs:string"/>
+                                    <xs:attribute name="fontfile" default="Courier" type="xs:string"/>
+                                    <xs:attribute name="embed" default="Never">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Never"/>
+                                             <xs:enumeration value="Always"/>
+                                             <xs:enumeration value="Program"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fallback" default="false" type="xs:boolean"/>
+                                    <xs:attribute name="fontfiletype" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="TrueType"/>
+                                             <xs:enumeration value="Type1"/>
+                                             <xs:enumeration value="Pcl"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="monospaced" default="hmi">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="hmi"/>
+                                             <xs:enumeration value="hmiMultiple"/>
+                                             <xs:enumeration value="auto"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="Courier" type="xs:string"/>
+                           <xs:attribute name="spacing" default="Monospaced">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Proportional"/>
+                                    <xs:enumeration value="Monospaced"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="typeface" default="4099" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="overrideembeddedfont" default="false" type="xs:boolean"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="colorprofilelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="colorprofile" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:attribute name="name" default="GenericRGB" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how macros are processed. "true": the macro is
+                processed as overlay ; "false": macros are resolved inline (default setting) </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie Overlays in der Eingabe verarbeitet werden.
+                "true": Macros werden als Overlay erzeugt; "false": Macro werden aufgelöst und dem
+                Seiteninhalt hinzugefügt. (Defaultwert) </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">For each tray ID of the input file, you specify the unique
+                tray name with the element "inputtray". Additionally you may specify the paper
+                size.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Für jede Tray-ID der Eingangsdatei geben Sie mit Hilfe eines
+                Elements inputtray einen eindeutigen Schachtnamen an. Zusätzlich ist es möglich,
+                die Papiergröße anzugeben.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="deviceid" default="1" type="xs:string"/>
+                                             <xs:attribute name="name" default="UpperTray" type="xs:string"/>
+                                             <xs:attribute name="mediatypeid" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="outputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="outputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="en-US">Specifies settings for the output tray. The tray name may also
+                identify a tray from the input file.</xs:documentation>
+                                             <xs:documentation xml:lang="de-DE">Bestimmt Einstellungen für Ausgabeschächte. Über den
+                Schachtnamen wird gegebenenfalls ein Schacht aus der Eingangsdatei
+                identifiziert.</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="deviceid" default="1" type="xs:string"/>
+                                             <xs:attribute name="name" default="UpperTray" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultsetting" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies default values for the processing of PCL input
+                files.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt Standardwerte für die Verarbeitung von
+                PCL-Eingangsdateien.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pagesize" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Specifies the default paper size. The default paper size is
+                A4. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Definiert die Standard-Papiergröße (per Default A4).
+            </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="26" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="pagelength" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="68" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="orientation" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="portrait" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="symbolset" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="341" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="pointsize" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="12" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="linetermination" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="0" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="dotsize" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="1200" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="duplexcontrol" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="simplex" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="linesperinch" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="6" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fullprintablearea" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">With the element "fullprintablearea", you can specify whether
+                marginless printing is supported by the printer. Usually, PCL printers do not
+                support marginless printing. Hence, the default setting is FALSE if not specified
+                otherwise.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Über das Element "fullprintablearea" können Sie festlegen,
+                dass randlos gedruckt werden soll, wenn der Drucker dies unterstützt. PCL-Drucker
+                unterstützen randlosen Druck in der Regel nicht. Deshalb ist die
+                Standardeinstellung FALSE, wenn Sie nichts anderes festlegen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="ignoreOffsetMargin" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="outsidepagehandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> strategy for processing text items placed outside page clip : (default)
+                Text items will be cropped base on paper size. keep : original item will be written
+                out </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="clip">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="clip"/>
+                                    <xs:enumeration value="keep"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="keephpglenvonduplex" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether the HP-GL/2 settings are retained and
+                considered for duplex printing. The availability of this feature is printer
+                dependent.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob die HP-GL/2-Einstellungen beim Duplex-Druck
+                erhalten bleiben und berücksichtigt werden sollen. Die Verfügbarkeit dieser
+                Funktionalität ist druckerabhängig.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="supportcolorimetricrgb" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether the printer is able to render color metric
+                RGB values. If not, the specifications are interpreted as device dependent
+                RGB.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Mit dem Element supportcolorimetricrgb legen Sie fest, ob der
+                Drucker farbmetrische RGB-Werte abbilden kann. Ist das nicht der Fall, werden die
+                Angaben als geräteabhängiges RGB interpretiert.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ignorecolor" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether colored PCL print output is to be emulated
+                for black-and-white printers. Supported for text and vector graphic items. Not
+                supported for image items.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Mit Hilfe des Elements ignorecolor können Sie angeben, ob
+                farbige PCL-Druckausgabe für Schwarz-Weiß-Drucker emuliert werden soll.
+                Unterstüzt für Text- und Vektorgrafik-Elemente. Nicht unterstützt für
+                Image-Elemente.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="usesymbolset" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies, whether the symbol character set specification is
+                used for Unicode identification (TRUE) or not (FALSE). In the latter case, character
+                codes will be used. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Angabe, ob die Symbol-Zeichensatz-Angabe zur
+                Unicode-Identifizierung verwendet werden soll (TRUE) oder nicht (FALSE). Im letzten
+                Fall werden die Zeichen-Codes verwendet.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="macrolist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">With the "macrolist" you can specify the PCL files that load
+                external macros. The element "file" specifies the name of the PCL file for which the
+                given macro is to be loaded. The macro name equals the macro file name. The path to
+                the macro file can be specified in the element "resourcelist". The file name
+                specifies for which file the external macro file is to be loaded. If the file name
+                is indicated as '*', the macro will be loaded for every file. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Mit Hilfe der macrolist können Sie festlegen, für welche
+                PCL-Dateien externe Macros geladen werden sollen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="file" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="macro" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="name" default="macrofilename" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="input.pcl" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="barcodelist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">map typeface id to barcode</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="barcode" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" default="EAN 8" type="xs:string"/>
+                                    <xs:attribute name="type" default="EAN 8" type="xs:string"/>
+                                    <xs:attribute name="typeface" default="24620" type="xs:string"/>
+                                    <xs:attribute name="checkdigits" default="0" type="xs:integer"/>
+                                    <xs:attribute name="modulewidth" default="15 tw" type="xs:string"/>
+                                    <xs:attribute name="moduleshortheight" default="1.5 cm" type="xs:string"/>
+                                    <xs:attribute name="modulelongheight" default="0.126 inch" type="xs:string"/>
+                                    <xs:attribute name="displayhri" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="producer" default="ELP" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="language" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">default input pcl file is PCL3 or PCL5 default value ist PCL5</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="PCL5" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readcomments" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">read comments in PJL. default value is TRUE</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readhpglcomments" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">read hpgl comments. default value is FALSE</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readocecomments" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">read oce comments e.g. Esc&amp;p&lt;key=value&gt; as binary comment item
+                including escape sequence. PCL output can copy it binary. A default value is
+                FALSE</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readocehighlightcolor" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">read oce highlight color e.g. Esc*v#s, # = 2 Highlight Color ON 1 Highlight
+                Color OFF default value is FALSE</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="rgb" default="#00000000" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readprescribe" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">read prescribe command in pcl. default value is FALSE</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="AddPjlCommandAsComment" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">add PJL command as PJL comment. default value is 'none' more
+                option: unsupported - add unsupported PJL command as PJL comment </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="none" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fontnamehandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">PCL soft font name handling. default value is 'none' more option: trim -
+                trim the leading and trailing space </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="none" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="encodinglist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="encoding" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Defines or starts a new encoding list</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Definiert bzw. startet eine neue Codierungsliste
+            </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="en-US">Defines or starts a new encoding</xs:documentation>
+                                             <xs:documentation xml:lang="de-DE"> Definiert bzw. startet einen neuen
+                Codierungseintrag</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="code" default="0x40" type="xs:string"/>
+                                             <xs:attribute name="char" default="0020" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="12U" type="xs:string"/>
+                                    <xs:attribute name="iana" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="trimextrarasterbytes" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> trim the extra byte in pcl raster image. Some bad PCL Driver or
+                application write raster data with more than needed, the extra byte should be
+                treated as text according to PCL Standard. But some printers just ignore it.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="removetrailingblanks" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> remove the trailing blanks (space, tab, backspace) of text. default value
+                is 'true' </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="keepsoftfontid" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> only used in converting pcl to pcl with nobinarycopy. If the printer have
+                installed font card with some pcl font with ID, the pcl file use the font id in the
+                card directly (the font definition is not in the pcl file). You want to convert the
+                pcl file to pcl with nobinarycopy and keep the font id unchanged in the output pcl,
+                please set the value to true. default is false.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="memorysize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> specify avaiable memory size in MegaByte for the application. The value
+                will be used to generate page label without out of memory. Default value is 256 MB
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="256" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultlinewidth" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">set default linewidth</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="35 mm" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="measurementunits" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the device dependent resolution of a page, i.e. the
+                raster to place objects on the page.
+            </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die geräteabhängige Auflösung für eine Seite,
+                also das Raster, in dem Objekte auf der Seite platziert werden.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">For each tray ID of the input file, you specify the unique
+                tray name with the element "inputtray". Additionally you may specify the paper
+                size.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Für jede Tray-ID der Eingangsdatei geben Sie mit Hilfe eines
+                Elements inputtray einen eindeutigen Schachtnamen an. Zusätzlich ist es möglich,
+                die Papiergröße anzugeben.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="deviceid" default="1" type="xs:string"/>
+                                             <xs:attribute name="name" default="UpperTray" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="outputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="outputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="en-US">Specifies settings for the output tray. The tray name may also
+                identify a tray from the input file.</xs:documentation>
+                                             <xs:documentation xml:lang="de-DE">Bestimmt Einstellungen für Ausgabeschächte. Über den
+                Schachtnamen wird gegebenenfalls ein Schacht aus der Eingangsdatei
+                identifiziert.</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="deviceid" default="1" type="xs:string"/>
+                                             <xs:attribute name="name" default="UpperTray" type="xs:string"/>
+                                             <xs:attribute name="pjlcmd" default="@PJL COMMENT TEST1  @PJL COMMENT TEST2" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pclfontlist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> only used in combination with keepsoftfontid. specify which font with id
+                is already in the font card. the output pcl use such font directly without embedding
+                it </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pclfont" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="id" default="123" type="xs:integer"/>
+                                    <xs:attribute name="embed" default="Never">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Never"/>
+                                             <xs:enumeration value="Always"/>
+                                             <xs:enumeration value="Program"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writefontonce" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> try to identify the font and avoid duplicated font output. Default value
+                is true </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fontresolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> resolution to use for generated raster fonts. The min and max pair specify
+                the allowd range for font resolutin. The preferred specify the resolution used if
+                the input font have already resolution and output filter can support it. Of course
+                the preferred must be in the range {min, max} Default 0: let the application make
+                decision. For PCL Font: only 300 and 600 dpi is allowed. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="min" default="0" type="xs:integer"/>
+                           <xs:attribute name="max" default="0" type="xs:integer"/>
+                           <xs:attribute name="preferred" default="0" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="rasterresolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> resolution to use for generated raster image. The min and max pair
+                specifies the allowed range for raster resolution. The preferred attribute specifies
+                the resolution used if the input image has already resolution and output filter can
+                support it. Of course the preferred must be in the range {min, max} default 0: let
+                the application decide. For PCL Image: 600, 300, 200, 150, 100, 75 dpi is allowed in
+                PCL standard. Some printers can also support other dpi e.g. 640, 275 and 240.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="min" default="0" type="xs:integer"/>
+                           <xs:attribute name="max" default="0" type="xs:integer"/>
+                           <xs:attribute name="preferred" default="0" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="adjustbarcodesize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how the barcode size is adjusted.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie die Größe von Barcodes angepasst
+                wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="resolution" default="0" type="xs:int"/>
+                           <xs:attribute name="minsize" default="90%" type="xs:string"/>
+                           <xs:attribute name="maxsize" default="100%" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="symbolsetlist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> specify the supported codepage of the printer. You can get it from printer
+                menu or document. See the codepage value from the table in section 'defaultsetting'.
+                Roman8, PC-8, Windows Latin1, PC-850, Desktop, Wingdings and Symbol will be enabled
+                by default. You do not need specify them. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="symbolset" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="277" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="language" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> output format is PCL3 or PCL5 default value ist PCL5 </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="PCL5" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinitionlist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> only used in pcl3 output. The default value for margin is 0 </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pagedefinition" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="format" default="A4" type="xs:string"/>
+                                             <xs:attribute name="orientation" default="Portrait">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="Portrait"/>
+                                                      <xs:enumeration value="Landscape"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="margins" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Deklaration von Bogenrändern</xs:documentation>
+                                             <xs:documentation xml:lang="en-US">Declaration of sheet margins</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="left" default="0 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des linken Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-US">width of left sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="top" default="0 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des oberen Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-US">Height of top sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="portrait" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="nohpgl" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> Disable HPGL generation, if the PCL printer does not support HPGL Default
+                value ist "FALSE" </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="nopjl" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> Disable PJL generation, if the PCL printer does not support PJL Default
+                value is "FALSE" defaultpjl: if "TRUE" then write default PJL commands "@PJL JOB"
+                and "@PJL EOJ" if "FALSE" then don't write default PJL commands "@PJL JOB" and "@PJL
+                EOJ" default value is "TRUE". Note: This attribute will only work if nopjl value =
+                "FALSE" </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="defaultpjl" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="WriteComment" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> write comment: the values can be 'asInput' and 'HPGL'. The value 'asInput'
+                means if the input page has PJL comment, it will be written as PJL comment. All
+                other comment types excecpt binary comment will be written as HPGL comment(default
+                HPGL). Binary comment will be checked for oce comment escape sequence, if yes,
+                binary copy, if no, ignored</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="HPGL">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="HPGL"/>
+                                    <xs:enumeration value="asinput"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writeprinterreset" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> The profile element &amp;apos;writeprinterreset&amp;apos; may only be set
+                to false, if user does not want to write printer reset command. Default value is
+                true. If the value is false, the pjl can not be written in pcl output.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writesimplexduplex" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> write simplex duplex: the values can be 'always', 'never' and 'asinput'.
+                The value 'asinput' means if the input page simplex duplex is explict set, it will
+                be written. If it is per default, it will not be written. (default always)
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="always">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="always"/>
+                                    <xs:enumeration value="never"/>
+                                    <xs:enumeration value="asinput"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writepagesize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">write pagesize: the values can be 'always', 'never' and 'asinput'. The
+                value 'asinput' means if the input page size is explictly set, it will be written.
+                If it is per default, it will not be written. (default value: always) The attribute
+                'method' specifies the command syntax for paper size. The method 'standard' use PCL
+                standard command Esc&amp;l#A to write paper size. The method 'xerox4112' use Xerox
+                printer specific command. Some xerox printers e.g. 4112 use two commands to write
+                paper size &lt;ESC&gt;&amp;f#I says the paper width in current orientation
+                &lt;ESC&gt;&amp;f#J says the paper length in current orientation please use value
+                'xerox4112' to generate output pcl for such printers. The method 'prescribe' use
+                prescribe command SPSZ and/or SCSZ for paper size for Kyocera printers which can
+                both pcl and prescirbe formats. The method 'custom' use paper size ID '101' for
+                non-standard paper size. Please note if the paper size is PCL standard, it will
+                always output by PCL standard command Esc&amp;l#A. Only for non-standard paper size,
+                the specified method is used to generate printer specific paper size.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="always">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="always"/>
+                                    <xs:enumeration value="never"/>
+                                    <xs:enumeration value="asinput"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="method" default="standard" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="color" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> TRUE, if your printer is color printer or you want a color output file.
+                Default value ist "FALSE" </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ignorecopies" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> ignorecopies: The values can be 'FALSE', 'TRUE' and 'ASINPUT'. Default
+                value is "FALSE" "FALSE": if you dont want to ignore copy command. "TRUE" : if you
+                want to use the copy count configuration of the printer menu. ASINPUT: if you want
+                to write the values coming from input. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fullprintablearea" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> If there is no unprintable area on the physical page, the page does not
+                need be moved to the desired position using the offset registration commands.
+                Example: OCE SRA printer (Pagestream 200 DSC .....) Such printer can position at the
+                whole physical page. The position {0, 0} is at left top corner of physical page. In
+                the PCL standard printer the position {0, 0} is the left top corner of the logical
+                page. The logical page can be shifted in physical page using offset registration
+                commands. Some printers can both, if the edge to edge printing is enabled, it act as
+                full printable area printer, otherwise as standard pcl printer. The edge to edge
+                printing may be one of the following pjl command: 1. @PJL SET EDGETOEDGE=ON 2. @PJL
+                SET XEDGETOEDGE=ON 3. @PJL SET CLIP=OFF The value for edge to edge may be 'ON',
+                'OFF', 'YES' and 'NO' Please edit it carefully. If you specify the value "true", you
+                cannot get the correct print result from the PCL-Standard printer. Default value ist
+                "FALSE" </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="pjlcmd" default="@PJL SET EDGETOEDGE=YES" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="outsidepagehandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> strategy for processing items placed outside page clip : (default) image
+                and rect will be cropped base on paper size. Not for text. keep : original item will
+                be written out movetopage: partially implemented to move image objects into
+                printable area </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="clip">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="clip"/>
+                                    <xs:enumeration value="keep"/>
+                                    <xs:enumeration value="movetopage"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="memorysize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> specify avaiable memory size in MegaByte for the application. The value
+                will be used to generate page label without out of memory. Default value is 256 MB
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="8" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="macrohandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> specify permitted min and max values for macro ID range in output and
+                indicate whether or not HPGL commands can be enabled in macro</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="min" default="0" type="xs:integer"/>
+                           <xs:attribute name="max" default="32767" type="xs:integer"/>
+                           <xs:attribute name="enableHPGL" default="false" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fonthandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> specify max. allowed softfont count in output. The maxium number is
+                3000</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="max" default="3000" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="characteraccuracy" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Sets the maximum permitted position deviation of the character
+                (positioning tolerance). Text item is divided into several items in order to meet
+                the permitted tolerance.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die maximal erlaubte Positionierungsabweichung der
+                Zeichen(Positionierungstoleranz). Textfelder wird in mehrere Felder aufgeteilt, um
+                die erlaubte Toleranz einzuhalten.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="1" type="xs:double"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="compressmode" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> FALSE, if your printer does not support this raster compress mode Default
+                value is "TRUE" Only for runlength default value is FALSE </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="deltarow" type="xs:string"/>
+                           <xs:attribute name="enable" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="imageonly" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">The profile elememt &amp;apos;imageonly&amp;apos; may only be set to TRUE,
+                if the input has only one image. So only one image will be written in pcl output
+                without any extra pcl command for position, environment and so on. Default value is
+                false</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="gammalist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> gamma correction for gray patterns; intermediate values are interpolated
+                if no value is specified, no correction will be done Default: &lt;gammalist&gt;
+                &lt;gammavalue from= '0' to= '0'/&gt; &lt; gammavalue from= '255' to= '255'/&gt;
+                &lt;/gammalist&gt; </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="gammavalue" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="from" default="0" type="xs:integer"/>
+                                    <xs:attribute name="to" default="0" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN"> type can be "TrueType", "Type1Font", "Type1Metrics", "PCL" if it is not
+                defined, the path will be used for all types Extension can be emtpy,
+                &lt;extension&gt; or wildcard </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="TrueType" type="xs:string"/>
+                                    <xs:attribute name="extension" default="ttf" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

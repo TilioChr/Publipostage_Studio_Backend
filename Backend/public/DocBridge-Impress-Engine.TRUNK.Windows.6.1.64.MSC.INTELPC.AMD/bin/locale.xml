@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- User Preferences can overwrite locale -->
+<Locale xmlns="http://www.compart.com/ns/locale" xmlns:xi="http://www.w3.org/2001/XInclude">
+     <Areas key="geodata">
+        <Area key="AF">
+            <Members>
+                <Member keyref="AO"/>
+                <Member keyref="BF"/>
+                <Member keyref="BI"/>
+                <Member keyref="BJ"/>
+                <Member keyref="BW"/>
+                <Member keyref="CD"/>
+                <Member keyref="CF"/>
+                <Member keyref="CG"/>
+                <Member keyref="CI"/>
+                <Member keyref="CM"/>
+                <Member keyref="CV"/>
+                <Member keyref="DJ"/>
+                <Member keyref="DZ"/>
+                <Member keyref="EG"/>
+                <Member keyref="EH"/>
+                <Member keyref="ER"/>
+                <Member keyref="ET"/>
+                <Member keyref="GA"/>
+                <Member keyref="GH"/>
+                <Member keyref="GM"/>
+                <Member keyref="GN"/>
+                <Member keyref="GQ"/>
+                <Member keyref="GW"/>
+                <Member keyref="KE"/>
+                <Member keyref="KM"/>
+                <Member keyref="LR"/>
+                <Member keyref="LS"/>
+                <Member keyref="LY"/>
+                <Member keyref="MA"/>
+                <Member keyref="MG"/>
+                <Member keyref="ML"/>
+                <Member keyref="MR"/>
+                <Member keyref="MU"/>
+                <Member keyref="MW"/>
+                <Member keyref="MZ"/>
+                <Member keyref="NA"/>
+                <Member keyref="NE"/>
+                <Member keyref="NG"/>
+                <Member keyref="RE"/>
+                <Member keyref="RW"/>
+                <Member keyref="SC"/>
+                <Member keyref="SD"/>
+                <Member keyref="SH"/>
+                <Member keyref="SL"/>
+                <Member keyref="SN"/>
+                <Member keyref="SO"/>
+                <Member keyref="SS"/>
+                <Member keyref="ST"/>
+                <Member keyref="SZ"/>
+                <Member keyref="TD"/>
+                <Member keyref="TG"/>
+                <Member keyref="TN"/>
+                <Member keyref="TZ"/>
+                <Member keyref="UG"/>
+                <Member keyref="YT"/>
+                <Member keyref="ZM"/>
+                <Member keyref="ZW"/>
+            </Members>
+        </Area>
+        <Area key="AN">
+            <Members>
+                <Member keyref="AQ"/>
+                <Member keyref="GS"/>
+                <Member keyref="TF"/>
+            </Members>
+        </Area>
+        <Area key="AS">
+            <Members>
+                <Member keyref="AF"/>
+                <Member keyref="AM"/>
+                <Member keyref="AZ"/>
+                <Member keyref="BD"/>
+                <Member keyref="BH"/>
+                <Member keyref="BN"/>
+                <Member keyref="BN"/>
+                <Member keyref="BT"/>
+                <Member keyref="CC"/>
+                <Member keyref="CX"/>
+                <Member keyref="GE"/>
+                <Member keyref="HK"/>
+                <Member keyref="ID"/>
+                <Member keyref="IL"/>
+                <Member keyref="IN"/>
+                <Member keyref="IO"/>
+                <Member keyref="IQ"/>
+                <Member keyref="IR"/>
+                <Member keyref="JO"/>
+                <Member keyref="JP"/>
+                <Member keyref="KG"/>
+                <Member keyref="KH"/>
+                <Member keyref="KP"/>
+                <Member keyref="KR"/>
+                <Member keyref="KW"/>
+                <Member keyref="KZ"/>
+                <Member keyref="LA"/>
+                <Member keyref="LB"/>
+                <Member keyref="LK"/>
+                <Member keyref="MM"/>
+                <Member keyref="MN"/>
+                <Member keyref="MO"/>
+                <Member keyref="MV"/>
+                <Member keyref="NP"/>
+                <Member keyref="OM"/>
+                <Member keyref="PH"/>
+                <Member keyref="PK"/>
+                <Member keyref="PS"/>
+                <Member keyref="QA"/>
+                <Member keyref="SA"/>
+                <Member keyref="SG"/>
+                <Member keyref="SY"/>
+                <Member keyref="TH"/>
+                <Member keyref="TJ"/>
+                <Member keyref="TM"/>
+                <Member keyref="TR"/>
+                <Member keyref="TW"/>
+                <Member keyref="UZ"/>
+                <Member keyref="VN"/>
+                <Member keyref="YE"/>
+            </Members>
+        </Area>
+        <Area key="EU">
+            <Members>
+                <Member keyref="AD"></Member>
+                <Member keyref="AL"></Member>
+                <Member keyref="AT"></Member>
+                <Member keyref="AX"></Member>
+                <Member keyref="BA"></Member>
+                <Member keyref="BE"></Member>
+                <Member keyref="BG"></Member>
+                <Member keyref="BY"></Member>
+                <Member keyref="CH"></Member>
+                <Member keyref="CY"></Member>
+                <Member keyref="CZ"></Member>
+                <Member keyref="DE"></Member>
+                <Member keyref="DK"></Member>
+                <Member keyref="EE"></Member>
+                <Member keyref="ES"></Member>
+                <Member keyref="FI"></Member>
+                <Member keyref="FO"></Member>
+                <Member keyref="FR"></Member>
+                <Member keyref="GB"></Member>
+                <Member keyref="GG"></Member>
+                <Member keyref="GI"/>
+                <Member keyref="GR"></Member>
+                <Member keyref="HR"></Member>
+                <Member keyref="HU"></Member>
+                <Member keyref="IE"></Member>
+                <Member keyref="IM"></Member>
+                <Member keyref="IS"></Member>
+                <Member keyref="IT"></Member>
+                <Member keyref="JE"></Member>
+                <Member keyref="LI"></Member>
+                <Member keyref="LT"></Member>
+                <Member keyref="LU"></Member>
+                <Member keyref="LV"></Member>
+                <Member keyref="MC"></Member>
+                <Member keyref="MD"></Member>
+                <Member keyref="ME"></Member>
+                <Member keyref="MK"></Member>
+                <Member keyref="MT"></Member>
+                <Member keyref="NL"></Member>
+                <Member keyref="NO"></Member>
+                <Member keyref="PL"></Member>
+                <Member keyref="PT"></Member>
+                <Member keyref="RO"></Member>
+                <Member keyref="RS"></Member>
+                <Member keyref="RU"></Member>
+                <Member keyref="SE"></Member>
+                <Member keyref="SI"></Member>
+                <Member keyref="SJ"></Member>
+                <Member keyref="SK"></Member>
+                <Member keyref="SM"></Member>
+                <Member keyref="UA"></Member>
+                <Member keyref="VA"></Member>
+            </Members>
+        </Area>
+        <Area key="NA">
+            <Members>
+                <Member keyref="AG"></Member>
+                <Member keyref="AI"></Member>
+                <Member keyref="AW"></Member>
+                <Member keyref="BB"></Member>
+                <Member keyref="BL"></Member>
+                <Member keyref="BM"></Member>
+                <Member keyref="BQ"></Member>
+                <Member keyref="BS"></Member>
+                <Member keyref="BZ"></Member>
+                <Member keyref="CA"></Member>
+                <Member keyref="CR"></Member>
+                <Member keyref="CU"></Member>
+                <Member keyref="CW"></Member>
+                <Member keyref="DM"></Member>
+                <Member keyref="DO"></Member>
+                <Member keyref="GD"></Member>
+                <Member keyref="GL"></Member>
+                <Member keyref="GP"></Member>
+                <Member keyref="GT"></Member>
+                <Member keyref="HN"></Member>
+                <Member keyref="HT"></Member>
+                <Member keyref="JM"></Member>
+                <Member keyref="KN"></Member>
+                <Member keyref="KY"></Member>
+                <Member keyref="LC"></Member>
+                <Member keyref="MF"></Member>
+                <Member keyref="MQ"></Member>
+                <Member keyref="MS"></Member>
+                <Member keyref="MX"></Member>
+                <Member keyref="NI"></Member>
+                <Member keyref="PA"></Member>
+                <Member keyref="PM"></Member>
+                <Member keyref="PR"></Member>
+                <Member keyref="SV"></Member>
+                <Member keyref="SX"></Member>
+                <Member keyref="TC"></Member>
+                <Member keyref="TT"></Member>
+                <Member keyref="US"></Member>
+                <Member keyref="VC"></Member>
+                <Member keyref="VG"></Member>
+                <Member keyref="VI"></Member>
+            </Members>
+        </Area>
+        <Area key="OC">
+            <Members>
+                <Member keyref="AS"></Member>
+                <Member keyref="AU"></Member>
+                <Member keyref="CK"></Member>
+                <Member keyref="FJ"></Member>
+                <Member keyref="FM"></Member>
+                <Member keyref="GU"></Member>
+                <Member keyref="KI"></Member>
+                <Member keyref="MH"></Member>
+                <Member keyref="MP"></Member>
+                <Member keyref="NC"></Member>
+                <Member keyref="NF"></Member>
+                <Member keyref="NR"></Member>
+                <Member keyref="NU"></Member>
+                <Member keyref="NZ"></Member>
+                <Member keyref="PF"></Member>
+                <Member keyref="PG"></Member>
+                <Member keyref="PN"></Member>
+                <Member keyref="SB"></Member>
+                <Member keyref="TK"></Member>
+                <Member keyref="TL"></Member>
+                <Member keyref="TO"></Member>
+                <Member keyref="TV"></Member>
+                <Member keyref="UM"></Member>
+                <Member keyref="VU"></Member>
+                <Member keyref="WF"></Member>
+                <Member keyref="WS"></Member>
+            </Members>
+        </Area>
+        <Area key="SA">
+            <Members>
+                <Member keyref="AR"></Member>
+                <Member keyref="BO"></Member>
+                <Member keyref="BR"></Member>
+                <Member keyref="CL"></Member>
+                <Member keyref="CO"></Member>
+                <Member keyref="EC"></Member>
+                <Member keyref="FK"></Member>
+                <Member keyref="GF"></Member>
+                <Member keyref="GY"></Member>
+                <Member keyref="PE"></Member>
+                <Member keyref="PY"></Member>
+                <Member keyref="SR"></Member>
+                <Member keyref="UY"></Member>
+                <Member keyref="VE"></Member>
+            </Members>
+        </Area>
+    </Areas>
+	<!-- all calendar/holiday related settings are based on the Gregorian calendar -->
+    <Holidays id="all">
+        <Holiday key="intlWomensDay" type="O" format="absolute" day="8" month="3" since="1977"
+            until="indefinitely" every="1"/>
+        <Holiday key="universalChildrensDay" type="O" format="absolute" day="20" month="11"
+            since="1954" until="indefinitely" every="1"/>
+    </Holidays>
+    <Holidays id="christian" inheritsFrom="all">
+        <Holiday key="epiphany" type="C" format="absolute" day="6" month="1" since="500"
+            until="indefinitely" every="1"/>
+        <Holiday key="palmSunday" type="C" format="eastern" day="-7" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="goodFriday" type="C" format="eastern" day="-2" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="easterSunday" type="C" format="eastern" day="0" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="easterMonday" type="C" format="eastern" day="1" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="ascensionOfJesus" type="C" format="eastern" day="39" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="whitSunday" type="C" format="eastern" day="49" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="whitMonday" type="C" format="eastern" day="50" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="corpusChristi" type="C" format="eastern" day="60" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="ashWesdnesday" type="C" format="eastern" day="-46" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="maundyThursday" type="C" format="eastern" day="-3" since="325"
+            until="indefinitely" every="1"/>
+        <Holiday key="stValentinesDay" type="C" format="absolute" day="14" month="2" since="1950"
+            until="indefinitely" every="1"/>
+        <Holiday key="walpurgisNight" type="C" format="absolute" day="30" month="4" since="1700"
+            until="indefinitely" every="1"/>
+        <Holiday key="assumptionOfMary" type="C" format="absolute" day="15" month="8" since="1300"
+            until="indefinitely" every="1"/>
+        <Holiday key="reformationDay" type="C" format="absolute" day="31" month="10" since="1617"
+            until="indefinitely" every="1"/>
+        <Holiday key="allSaintsDay" type="C" format="absolute" day="1" month="11" since="610"
+            until="indefinitely" every="1"/>
+        <Holiday key="allSoulsDay" type="C" format="absolute" day="2" month="11" since="610"
+            until="indefinitely" every="1"/>
+        <Holiday key="advent1" type="C" format="relative" day="27" month="11" dayOW="sun"
+            since="600" until="indefinitely" every="1"/>
+        <Holiday key="stMartinsDay" type="C" format="absolute" day="11" month="11" since="397"
+            until="indefinitely" every="1"/>
+        <Holiday key="advent2" type="C" format="relative" day="4" month="12" dayOW="sun" since="600"
+            until="indefinitely" every="1"/>
+        <Holiday key="stNicholasDay" type="C" format="absolute" day="6" month="12" since="365"
+            until="indefinitely" every="1"/>
+        <Holiday key="advent3" type="C" format="relative" day="11" month="12" dayOW="sun"
+            since="600" until="indefinitely" every="1"/>
+        <Holiday key="advent4" type="C" format="relative" day="18" month="12" dayOW="sun"
+            since="600" until="indefinitely" every="1"/>
+        <Holiday key="christmasEve" type="C" format="absolute" day="24" month="12" since="354"
+            until="indefinitely" every="1"/>
+        <Holiday key="christmasDay" type="C" format="absolute" day="25" month="12" since="354"
+            until="indefinitely" every="1"/>
+        <Holiday key="boxingDay" type="C" format="absolute" day="26" month="12" since="354"
+            until="indefinitely" every="1"/>
+    </Holidays>
+
+    <Country id="AT" defLang="de" currency="EUR" metrics="metric">
+        <Regions>
+            <Region id="AT-B"/>
+            <Region id="AT-K"/>
+            <Region id="AT-N"/>
+            <Region id="AT-O"/>
+            <Region id="AT-S"/>
+            <Region id="AT-St"/>
+            <Region id="AT-T"/>
+            <Region id="AT-V"/>
+            <Region id="AT-W"/>
+        </Regions>
+        <Holidays id="holidaysAT" inheritsFrom="christian"/>
+    </Country>
+    <Country id="CH" currency="CHF" metrics="metric">
+        <Regions>
+            <Region id="CH-ZH"/>
+            <Region id="CH-BE"/>
+            <Region id="CH-LU"/>
+            <Region id="CH-UR"/>
+            <Region id="CH-SZ"/>
+            <Region id="CH-OW"/>
+            <Region id="CH-NW"/>
+            <Region id="CH-GL"/>
+            <Region id="CH-ZG"/>
+            <Region id="CH-FR"/>
+            <Region id="CH-SO"/>
+            <Region id="CH-BS"/>
+            <Region id="CH-BL"/>
+            <Region id="CH-SH"/>
+            <Region id="CH-AR"/>
+            <Region id="CH-AI"/>
+            <Region id="CH-SG"/>
+            <Region id="CH-GR"/>
+            <Region id="CH-AG"/>
+            <Region id="CH-TG"/>
+            <Region id="CH-TI"/>
+            <Region id="CH-VD"/>
+            <Region id="CH-VS"/>
+            <Region id="CH-NE"/>
+            <Region id="CH-GE"/>
+            <Region id="CH-JU"/>
+        </Regions>
+        <Holidays id="holidaysCH" inheritsFrom="christian"/>
+    </Country>
+    <Country id="DE" defLang="de" currency="EUR" metrics="metric">
+        <Regions>
+            <Region id="DE-BW">
+                <Holidays id="holidaysDE-BW" inheritsFrom="holidaysDE"/>
+            </Region>
+            <Region id="DE-BY"/>
+            <Region id="DE-BE"/>
+            <Region id="DE-BB"/>
+            <Region id="DE-HB"/>
+            <Region id="DE-HH"/>
+            <Region id="DE-HE"/>
+            <Region id="DE-MV"/>
+            <Region id="DE-NI"/>
+            <Region id="DE-NW"/>
+            <Region id="DE-RP"/>
+            <Region id="DE-SL"/>
+            <Region id="DE-SN"/>
+            <Region id="DE-ST"/>
+            <Region id="DE-SH"/>
+            <Region id="DE-TH"/>
+        </Regions>
+        <Holidays id="holidaysDE" inheritsFrom="christian">
+            <Holiday key="newYear" type="H" format="absolute" month="1" day="1" every="1"
+                until="indefinitely"/>
+            <Holiday key="epiphany" type="Hp">
+                <!-- type Hp: partially observered -->
+                <!-- Comment out for the moment, structural problems <Regions> -->
+                <!-- <Region ids="DE-BW DE-BY DE-ST" type="H"/>-->
+                <!-- type H: bank holiday -->
+                <!--    <Others type="C"/>-->
+                <!-- type C: Christian, but not observed -->
+                <!--   </Regions>-->
+            </Holiday>
+            <Holiday key="goodFriday" type="H"/>
+            <Holiday key="easterMonday" type="H"/>
+            <Holiday key="laborDay" type="H" format="absolute" month="5" day="1" every="1"
+                until="indefinitely"/>
+            <Holiday key="ascensionOfJesus" type="H"/>
+            <Holiday key="whitMonday" type="H"/>
+            <Holiday key="corpusChristi" type="Hp">
+                <!--<Regions>
+                    <Region ids="DE-BW DE-BY DE-HE DE-NW DE-RP DE-SL" type="H"/>
+                    <Region ids="DE-SN DE-TH" type="Hp"/>
+                    <Others type="C"/>
+                </Regions>-->
+            </Holiday>
+            <Holiday key="assumptionOfMary" type="Hp">
+                <!--<Regions>
+                    <Region ids="DE-SL" type="H"/>
+                    <Region ids="DE-BY" type="Hp"/>
+                    <Others type="C"/>
+                </Regions>-->
+            </Holiday>
+            <Holiday key="germanUnityDay" type="H" format="absolute" month="10" day="3" every="1"
+                since="1990" until="indefinitely"/>
+            <Holiday key="reformationDay" type="Hp">
+                <!--<Regions>
+                    <Region ids="DE-BB DE-MV DE-SN DE-ST DE-TH" type="H"/>
+                    <Others type="C"/>
+                </Regions>-->
+            </Holiday>
+            <Holiday key="allSaintsDay" type="Hp">
+                <!--<Regions>
+                    <Region ids="DE-BW DE-BY DE-NW DE-RP DE-SL" type="H"/>
+                    <Others type="C"/>
+                </Regions>-->
+            </Holiday>
+            <Holiday key="christmasDay" type="H"/>
+            <Holiday key="boxingDay" type="H"/>
+        </Holidays>
+    </Country>
+    <Country id="ES" defLang="es" currency="EUR" metrics="metric">
+        <Holidays id="holidaysES" inheritsFrom="christian"/>
+    </Country>
+    <Country id="FR" defLang="fr" currency="EUR" metrics="metric">
+        <Holidays id="holidaysFR" inheritsFrom="christian"/>
+    </Country>
+    <Country id="IT" defLang="it" currency="EUR" metrics="metric">
+        <Holidays id="holidaysIT" inheritsFrom="christian"/>
+    </Country>
+    <Country id="US" defLang="en" currency="USD" metrics="imperial">
+        <Regions>
+            <Region id="US-AL"/>
+            <Region id="US-AK"/>
+            <Region id="US-AZ"/>
+            <Region id="US-AR"/>
+            <Region id="US-CA"/>
+            <Region id="US-CO"/>
+            <Region id="US-CT"/>
+            <Region id="US-DE"/>
+            <Region id="US-FL"/>
+            <Region id="US-GA"/>
+            <Region id="US-HI"/>
+            <Region id="US-ID"/>
+            <Region id="US-IL"/>
+            <Region id="US-IN"/>
+            <Region id="US-IA"/>
+            <Region id="US-KS"/>
+            <Region id="US-KY"/>
+            <Region id="US-LA"/>
+            <Region id="US-ME"/>
+            <Region id="US-MD"/>
+            <Region id="US-MA"/>
+            <Region id="US-MI"/>
+            <Region id="US-MN"/>
+            <Region id="US-MS"/>
+            <Region id="US-MO"/>
+            <Region id="US-MT"/>
+            <Region id="US-NE"/>
+            <Region id="US-NV"/>
+            <Region id="US-NH"/>
+            <Region id="US-NJ"/>
+            <Region id="US-NM"/>
+            <Region id="US-NY"/>
+            <Region id="US-NC"/>
+            <Region id="US-ND"/>
+            <Region id="US-OH"/>
+            <Region id="US-OK"/>
+            <Region id="US-OR"/>
+            <Region id="US-PA"/>
+            <Region id="US-RI"/>
+            <Region id="US-SC"/>
+            <Region id="US-SD"/>
+            <Region id="US-TN"/>
+            <Region id="US-TX"/>
+            <Region id="US-UT"/>
+            <Region id="US-VT"/>
+            <Region id="US-VA"/>
+            <Region id="US-WA"/>
+            <Region id="US-WV"/>
+            <Region id="US-WI"/>
+            <Region id="US-WY"/>
+        </Regions>
+        <Holidays id="holidaysUS" inheritsFrom="christian"/>
+    </Country>
+
+    <Country id="AC"/>
+    <Country id="AD"/>
+    <Country id="AE"/>
+    <Country id="AF"/>
+    <Country id="AG"/>
+    <Country id="AI"/>
+    <Country id="AL"/>
+    <Country id="AM"/>
+    <Country id="AO"/>
+    <Country id="AQ"/>
+    <Country id="AR"/>
+    <Country id="AS"/>
+    <Country id="AU"/>
+    <Country id="AW"/>
+    <Country id="AX"/>
+    <Country id="AZ"/>
+    <Country id="BA"/>
+    <Country id="BB"/>
+    <Country id="BD"/>
+    <Country id="BE"/>
+    <Country id="BF"/>
+    <Country id="BG"/>
+    <Country id="BH"/>
+    <Country id="BI"/>
+    <Country id="BJ"/>
+    <Country id="BL"/>
+    <Country id="BM"/>
+    <Country id="BN"/>
+    <Country id="BO"/>
+    <Country id="BQ"/>
+    <Country id="BR"/>
+    <Country id="BS"/>
+    <Country id="BT"/>
+    <Country id="BW"/>
+    <Country id="BY"/>
+    <Country id="BZ"/>
+    <Country id="CA"/>
+    <Country id="CC"/>
+    <Country id="CD"/>
+    <Country id="CF"/>
+    <Country id="CG"/>
+    <Country id="CI"/>
+    <Country id="CK"/>
+    <Country id="CL"/>
+    <Country id="CM"/>
+    <Country id="CN"/>
+    <Country id="CO"/>
+    <Country id="CR"/>
+    <Country id="CU"/>
+    <Country id="CV"/>
+    <Country id="CW"/>
+    <Country id="CX"/>
+    <Country id="CY"/>
+    <Country id="CZ"/>
+    <Country id="DG"/>
+    <Country id="DJ"/>
+    <Country id="DK"/>
+    <Country id="DM"/>
+    <Country id="DO"/>
+    <Country id="DZ"/>
+    <Country id="EA"/>
+    <Country id="EC"/>
+    <Country id="EE"/>
+    <Country id="EG"/>
+    <Country id="EH"/>
+    <Country id="ER"/>
+    <Country id="ET"/>
+    <Country id="FI"/>
+    <Country id="FJ"/>
+    <Country id="FK"/>
+    <Country id="FM"/>
+    <Country id="FO"/>
+    <Country id="GA"/>
+    <Country id="GB"/>
+    <Country id="GD"/>
+    <Country id="GE"/>
+    <Country id="GF"/>
+    <Country id="GG"/>
+    <Country id="GH"/>
+    <Country id="GI"/>
+    <Country id="GL"/>
+    <Country id="GM"/>
+    <Country id="GN"/>
+    <Country id="GP"/>
+    <Country id="GQ"/>
+    <Country id="GR"/>
+    <Country id="GS"/>
+    <Country id="GT"/>
+    <Country id="GU"/>
+    <Country id="GW"/>
+    <Country id="GY"/>
+    <Country id="HK"/>
+    <Country id="HN"/>
+    <Country id="HR"/>
+    <Country id="HT"/>
+    <Country id="HU"/>
+    <Country id="IC"/>
+    <Country id="ID"/>
+    <Country id="IE"/>
+    <Country id="IL"/>
+    <Country id="IM"/>
+    <Country id="IN"/>
+    <Country id="IO"/>
+    <Country id="IQ"/>
+    <Country id="IR"/>
+    <Country id="IS"/>
+    <Country id="JE"/>
+    <Country id="JM"/>
+    <Country id="JO"/>
+    <Country id="JP"/>
+    <Country id="KE"/>
+    <Country id="KG"/>
+    <Country id="KH"/>
+    <Country id="KI"/>
+    <Country id="KM"/>
+    <Country id="KN"/>
+    <Country id="KP"/>
+    <Country id="KR"/>
+    <Country id="KW"/>
+    <Country id="KY"/>
+    <Country id="KZ"/>
+    <Country id="LA"/>
+    <Country id="LB"/>
+    <Country id="LC"/>
+    <Country id="LI"/>
+    <Country id="LK"/>
+    <Country id="LR"/>
+    <Country id="LS"/>
+    <Country id="LT"/>
+    <Country id="LU"/>
+    <Country id="LV"/>
+    <Country id="LY"/>
+    <Country id="MA"/>
+    <Country id="MC"/>
+    <Country id="MD"/>
+    <Country id="ME"/>
+    <Country id="MF"/>
+    <Country id="MG"/>
+    <Country id="MH"/>
+    <Country id="MK"/>
+    <Country id="ML"/>
+    <Country id="MM"/>
+    <Country id="MN"/>
+    <Country id="MO"/>
+    <Country id="MP"/>
+    <Country id="MQ"/>
+    <Country id="MR"/>
+    <Country id="MS"/>
+    <Country id="MT"/>
+    <Country id="MU"/>
+    <Country id="MV"/>
+    <Country id="MW"/>
+    <Country id="MX"/>
+    <Country id="MY"/>
+    <Country id="MZ"/>
+    <Country id="NA"/>
+    <Country id="NC"/>
+    <Country id="NE"/>
+    <Country id="NF"/>
+    <Country id="NG"/>
+    <Country id="NI"/>
+    <Country id="NL"/>
+    <Country id="NO"/>
+    <Country id="NP"/>
+    <Country id="NR"/>
+    <Country id="NU"/>
+    <Country id="NZ"/>
+    <Country id="OM"/>
+    <Country id="PA"/>
+    <Country id="PE"/>
+    <Country id="PF"/>
+    <Country id="PG"/>
+    <Country id="PH"/>
+    <Country id="PK"/>
+    <Country id="PL"/>
+    <Country id="PM"/>
+    <Country id="PN"/>
+    <Country id="PR"/>
+    <Country id="PS"/>
+    <Country id="PT"/>
+    <Country id="PW"/>
+    <Country id="PY"/>
+    <Country id="QA"/>
+    <Country id="RE"/>
+    <Country id="RO"/>
+    <Country id="RS"/>
+    <Country id="RU"/>
+    <Country id="RW"/>
+    <Country id="SA"/>
+    <Country id="SB"/>
+    <Country id="SC"/>
+    <Country id="SD"/>
+    <Country id="SE"/>
+    <Country id="SG"/>
+    <Country id="SH"/>
+    <Country id="SI"/>
+    <Country id="SJ"/>
+    <Country id="SK"/>
+    <Country id="SL"/>
+    <Country id="SM"/>
+    <Country id="SN"/>
+    <Country id="SO"/>
+    <Country id="SR"/>
+    <Country id="SS"/>
+    <Country id="ST"/>
+    <Country id="SV"/>
+    <Country id="SX"/>
+    <Country id="SY"/>
+    <Country id="SZ"/>
+    <Country id="TA"/>
+    <Country id="TC"/>
+    <Country id="TD"/>
+    <Country id="TF"/>
+    <Country id="TG"/>
+    <Country id="TH"/>
+    <Country id="TJ"/>
+    <Country id="TK"/>
+    <Country id="TL"/>
+    <Country id="TM"/>
+    <Country id="TN"/>
+    <Country id="TO"/>
+    <Country id="TR"/>
+    <Country id="TT"/>
+    <Country id="TV"/>
+    <Country id="TW"/>
+    <Country id="TZ"/>
+    <Country id="UA"/>
+    <Country id="UG"/>
+    <Country id="UM"/>
+    <Country id="UY"/>
+    <Country id="UZ"/>
+    <Country id="VA"/>
+    <Country id="VC"/>
+    <Country id="VE"/>
+    <Country id="VG"/>
+    <Country id="VI"/>
+    <Country id="VN"/>
+    <Country id="VU"/>
+    <Country id="WF"/>
+    <Country id="WS"/>
+    <Country id="XK"/>
+    <Country id="YE"/>
+    <Country id="YT"/>
+    <Country id="ZA"/>
+    <Country id="ZM"/>
+    <Country id="ZW"/>
+
+    <!-- Language-specific locale definitions are typically maintained in separate locale files -->
+    <xi:include href="locale-de.xml"/>
+
+    <Language id="de-DE" defCountry="DE" inheritsFrom="de"/>
+    <Language id="de-AT" defCountry="AT" inheritsFrom="de">
+        <MonthsInYear>
+            <MonthInYear index="1">
+                <Entry>Jänner</Entry>
+                <Entry>Jän.</Entry>
+            </MonthInYear>
+        </MonthsInYear>
+    </Language>
+    <Language id="de-CH" defCountry="CH" inheritsFrom="de">
+        <Numerals>
+            <Specials>
+                <Numbers>
+                    <Number value="30" cardinal="dreissig" ordinal="dreissigste"/>
+                </Numbers>
+            </Specials>
+        </Numerals>
+        <Hyphenations>
+            <Patterns src="hyph-de-ch-1901.tex"/>
+        </Hyphenations>
+    </Language>
+    <Language id="de-LI" defCountry="LI" inheritsFrom="de-CH"/>
+
+    <xi:include href="locale-en.xml"/>
+
+    <Language id="en-US" defCountry="US" inheritsFrom="en"/>
+    <Language id="en-GB" defCountry="GB" inheritsFrom="en">
+        <Quotes>
+            <Quote type="opening" use="standard" scope="primary">‘</Quote>
+            <Quote type="closing" use="standard" scope="primary">’</Quote>
+            <Quote type="opening" use="standard" scope="secondary">“</Quote>
+            <Quote type="closing" use="standard" scope="secondary">”</Quote>
+            <Quote type="alternate" use="standard" scope="primary">“</Quote>
+            <Quote type="alternate" use="standard" scope="primary">”</Quote>
+            <Quote type="alternate" use="standard" scope="secondary">‘</Quote>
+            <Quote type="alternate" use="standard" scope="secondary">’</Quote>
+        </Quotes>
+        <Numerals hundredsSeparator=" and "/>
+        <Hyphenations>
+            <Patterns src="hyph-en-gb.tex"/>
+        </Hyphenations>
+    </Language>
+    <Language id="en-CA" defCountry="CA" inheritsFrom="en"/>
+    <Language id="en-IR" defCountry="IR" inheritsFrom="en-GB"/>
+    <Language id="en-AU" defCountry="AU" inheritsFrom="en-GB"/>
+
+    <xi:include href="locale-fr.xml"/>
+
+    <Language id="fr-FR" defCountry="FR" inheritsFrom="fr"/>
+    <Language id="fr-BE" defCountry="BE" inheritsFrom="fr">
+        <Numerals>
+            <Specials>
+                <Numbers>
+                    <Number value="70" cardinal="septante"/>
+                    <Number value="71" cardinal="septante-et-un"/>
+                    <Number value="90" cardinal="nonante"/>
+                    <Number value="91" cardinal="nonante-et-un"/>
+                </Numbers>
+            </Specials>
+        </Numerals>
+    </Language>
+    <Language id="fr-CD" defCountry="CD" inheritsFrom="fr-BE"/>
+    <Language id="fr-CH" defCountry="CH" inheritsFrom="fr-BE">
+        <Numerals>
+            <Specials>
+                <Numbers>
+                    <Number value="80" cardinal="huitante"/>
+                    <Number value="81" cardinal="huitante-et-un"/>
+                </Numbers>
+            </Specials>
+        </Numerals>
+    </Language>
+    <Language id="fr-CH-FR" defCountry="CH-FR" inheritsFrom="fr-CH">
+        <Numerals>
+            <Specials>
+                <Numbers>
+                    <Number value="80" cardinal="octante"/>
+                    <Number value="81" cardinal="octante-et-un"/>
+                </Numbers>
+            </Specials>
+        </Numerals>
+    </Language>
+    <Language id="fr-CH-GE" defCountry="CH-GE" inheritsFrom="fr-BE"/>
+    <Language id="fr-CH-JU" defCountry="CH-JU" inheritsFrom="fr-BE"/>
+    <Language id="fr-CH-NE" defCountry="CH-NE" inheritsFrom="fr-BE"/>
+    <Language id="fr-IT" defCountry="IT" inheritsFrom="fr-CH"/>
+
+    <xi:include href="locale-es.xml"/>
+    <Language id="es-ES" defCountry="ES" inheritsFrom="es"/>
+
+    <xi:include href="locale-it.xml"/>
+    <Language id="it-IT" defCountry="IT" inheritsFrom="it"/>
+    <Language id="it-CH" defCountry="CH" inheritsFrom="it"/>
+</Locale>

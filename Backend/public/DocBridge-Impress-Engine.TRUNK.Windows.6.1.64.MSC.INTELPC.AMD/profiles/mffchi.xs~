@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/chi">
+   <xs:element name="mffchi">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how overlays are processed</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert wie Overlays verarbeitet werden</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readarchivefields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether index values are read and where they are
+        placed.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Index-Werte ausgelesen werden sollen und wo sie
+        bereitgestellt werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">Specifies whether index values are read. "true": Index values are
+        read (default); "false": Index values are ignored.</xs:documentation>
+                                 <xs:documentation xml:lang="de-DE">Bestimmt, ob Index-Werte ausgelesen werden. "true": Index-Werte
+        werden ausgelesen (Standardwert); "false": Index-Werte werden ignoriert.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="renderoverlays" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether overlays are rendered. "true": overlays are
+        rendered to bitmap (default); "false": overlays are not rendered</xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Bestimmt, ob Overlays in ein Bild umgewandelt werden. "true":
+        Overlays werden in Bilder umgewandelt (Standardwert); "false": Overlays werden nicht
+        umgewandelt.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="usespoolindex" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether the spool index TLEs are used. "true": Spool index
+        (TLE) is used; "false": Spool index (TLE) is not used (default)</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob die Spool-Index TLEs verwendet werden. "true":
+        Spool-Index (TLE) wird verwendet; "false": Spool-Index (TLE) wird nicht verwendet
+        (Standardwert)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="encodinglist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="encoding" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="en-US">Please edit carefully! Encoding entry consisting of character name
+        and unicode character</xs:documentation>
+                                             <xs:documentation xml:lang="de-DE">Bitte vorsichtig bearbeiten! Eintrag (in der Encoding-Liste)
+        bestehend aus Zeichennamen und Unicode-Zeichen</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="devname" default="euro" type="xs:string"/>
+                                             <xs:attribute name="char" default="20AC" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="Postel" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="ADG8" type="xs:string"/>
+                                    <xs:attribute name="id" default="1" type="xs:integer"/>
+                                    <xs:attribute name="size" default="7.5" type="xs:double"/>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="COURI" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="TrueType"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="embed" default="Always">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Always"/>
+                                             <xs:enumeration value="Never"/>
+                                             <xs:enumeration value="Program"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="hscaling" default="1000" type="xs:double"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="ADG" type="xs:string"/>
+                           <xs:attribute name="size" default="10.0" type="xs:double"/>
+                           <xs:attribute name="pitch" default="1500" type="xs:integer"/>
+                           <xs:attribute name="reftype" default="TrueType">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="TrueType"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="serifstyle" default="Serif">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Serif"/>
+                                    <xs:enumeration value="SansSerif"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="spacing" default="Proportional">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Proportional"/>
+                                    <xs:enumeration value="Monospaced"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="usedefaultcharincrement" default="yes" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="barcodelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="barcode" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:attribute name="name" default="BAR39" type="xs:string"/>
+                           <xs:attribute name="type" default="Code 39" type="xs:string"/>
+                           <xs:attribute name="modulewidth" default="15 tw" type="xs:string"/>
+                           <xs:attribute name="width" default="0" type="xs:string"/>
+                           <xs:attribute name="height" default="0" type="xs:string"/>
+                           <xs:attribute name="checkdigits" default="0" type="xs:integer"/>
+                           <xs:attribute name="displayhri" default="false" type="xs:boolean"/>
+                           <xs:attribute name="fontid" default="0" type="xs:integer"/>
+                           <xs:attribute name="column" default="0" type="xs:integer"/>
+                           <xs:attribute name="row" default="0" type="xs:integer"/>
+                           <xs:attribute name="encoding" default="mix">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="ascii"/>
+                                    <xs:enumeration value="base256"/>
+                                    <xs:enumeration value="c40"/>
+                                    <xs:enumeration value="x12"/>
+                                    <xs:enumeration value="edifact"/>
+                                    <xs:enumeration value="mix"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="errorcorrectionlevel" default="0" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="addressformats" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Specifies the address format</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Gibt das Adressformat an</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="addressformat" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:attribute name="name" default="ADDFMT2" type="xs:string"/>
+                           <xs:attribute name="fontid" default="2" type="xs:integer"/>
+                           <xs:attribute name="maxlinelength" default="96 mm" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="valign" default="top" type="xs:string"/>
+                  <xs:attribute name="lpi" default="11" type="xs:string"/>
+                  <xs:attribute name="default" default="ADDFMT1" type="xs:string"/>
+                  <xs:attribute name="maxlinelength" default="94 mm" type="xs:string"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="highlightcolorlist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="highlightcolor" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:attribute name="name" default="Black" type="xs:string"/>
+                           <xs:attribute name="rgb" default="#00000000" type="xs:string"/>
+                           <xs:attribute name="cmyk" default="#00FFFFFF" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="netconnection" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Specifies the net connection type. Valid values are "direct" and
+        "manual"</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Gibt die Art der Netzwerkverbindung an. Gültige Werte sind "direct"
+        und "manuell"</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="proxylist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies proxy settings for different protocols. Use one proxy
+        setting for all protocols or list different settings for different protocols</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Legt Proxy-Einstellungen für unterschiedliche Protokolle fest.
+        Verwenden Sie eine Proxy-Einstellung für alle Protokolle oder definieren Sie
+        unterschiedliche Einstellungen für verschiedene Protokolle</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="proxy" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="protocol" default="http">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="http"/>
+                                             <xs:enumeration value="ftp"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="server" default="localhost" type="xs:string"/>
+                                    <xs:attribute name="port" default="8080" type="xs:integer"/>
+                                    <xs:attribute name="username" default="" type="xs:string"/>
+                                    <xs:attribute name="password" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="usesameproxy" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="type" default="Direct">
+                     <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                           <xs:enumeration value="Direct"/>
+                           <xs:enumeration value="System"/>
+                           <xs:enumeration value="Manual"/>
+                        </xs:restriction>
+                     </xs:simpleType>
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="type" default="Overlay">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Overlay"/>
+                                             <xs:enumeration value="ResourceList"/>
+                                             <xs:enumeration value="TrueType"/>
+                                             <xs:enumeration value="EnvironmentLib"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" default="pcl">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="pcl"/>
+                                             <xs:enumeration value="xml"/>
+                                             <xs:enumeration value="ttf"/>
+                                             <xs:enumeration value="csv"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffpsb xmlns="http://www.compart.com/ns/mff/psb" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!-- Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct oder dummy devicenames must be specified Font definitions. If no font
+                selection by channel is done, then font "Courier" will be used for whole input
+                document. Commonly Used Pitch-Point Relationship Pitch Size 6 pitch 20 points 8.5
+                pitch 14 points 10 pitch 12 points 12 pitch 10 points 13.3 pitch 9 points 15 pitch 8
+                points 17.1 pitch 7 points 20 pitch 6 points 24 pitch 5 points Default Resident
+                Bitmap font famalies are mapped with truetype fonts -->
+
+   <fontlist>
+      <font family="CourierBM" typeface="3">
+         <face deviceid="1" weight="Medium" width="Normal" style="Upright" fontfile="cour" size="12" fontfiletype="TrueType"/>
+         <face deviceid="37" weight="Medium" style="Italic" fontfile="couri" size="12" fontfiletype="TrueType"/>
+         <face deviceid="38" weight="Bold" style="Upright" fontfile="courbd" size="12" fontfiletype="TrueType"/>
+         <face deviceid="39" weight="Bold" style="Italic" fontfile="courbi" size="12" fontfiletype="TrueType"/>
+         <face deviceid="17" weight="Medium" style="Upright" fontfile="cour" size="12" fontfiletype="TrueType"/>
+         <face deviceid="18" weight="Medium" style="Italic" fontfile="couri" size="12" fontfiletype="TrueType"/>
+         <face deviceid="67" weight="Bold" style="Upright" fontfile="courbd" size="12" fontfiletype="TrueType"/>
+         <face deviceid="68" weight="Bold" style="Italic" fontfile="courbi" size="12" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Dutch801BM" typeface="5">
+         <face deviceid="2" weight="Medium" style="Upright" fontfile="timr45w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="3" weight="Medium" style="Italic" fontfile="timr46w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="4" weight="Bold" style="Upright" fontfile="timr65w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="40" weight="Bold" style="Italic" fontfile="timr66w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="5" weight="Medium" style="Upright" fontfile="timr45w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="41" weight="Medium" style="Italic" fontfile="timr46w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="42" weight="Bold" style="Upright" fontfile="timr65w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="43" weight="Bold" style="Italic" fontfile="timr66w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="19" weight="Medium" style="Upright" fontfile="timr45w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="20" weight="Medium" style="Italic" fontfile="timr46w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="21" weight="Bold" style="Upright" fontfile="timr65w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="22" weight="Medium" style="Upright" fontfile="timr45w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="69" weight="Bold" style="Italic" fontfile="timr66w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="70" weight="Bold" style="Upright" fontfile="timr65w" size="8" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="PrestigeEliteBM" typeface="8">
+         <face deviceid="6" weight="Medium" style="Upright" fontfile="cour" size="10" fontfiletype="TrueType"/>
+         <face deviceid="44" weight="Medium" style="Italic" fontfile="couri" size="10" fontfiletype="TrueType"/>
+         <face deviceid="45" weight="Bold" style="Upright" fontfile="courbd" size="10" fontfiletype="TrueType"/>
+         <face deviceid="46" weight="Bold" style="Italic" fontfile="courbi" size="10" fontfiletype="TrueType"/>
+         <face deviceid="7" weight="Medium" style="Upright" fontfile="cour" size="7.2" fontfiletype="TrueType"/>
+         <face deviceid="47" weight="Medium" style="Italic" fontfile="couri" size="7.2" fontfiletype="TrueType"/>
+         <face deviceid="48" weight="Bold" style="Upright" fontfile="courbd" size="7.2" fontfiletype="TrueType"/>
+         <face deviceid="49" weight="Bold" style="Italic" fontfile="courbi" size="7.2" fontfiletype="TrueType"/>
+         <face deviceid="23" weight="Medium" style="Upright" fontfile="cour" size="10" fontfiletype="TrueType"/>
+         <face deviceid="24" weight="Medium" style="Italic" fontfile="couri" size="10" fontfiletype="TrueType"/>
+         <face deviceid="25" weight="Medium" style="Upright" fontfile="cour" size="7.2" fontfiletype="TrueType"/>
+         <face deviceid="71" weight="Bold" style="Upright" fontfile="courbd" size="10" fontfiletype="TrueType"/>
+         <face deviceid="72" weight="Bold" style="Italic" fontfile="courbi" size="10" fontfiletype="TrueType"/>
+         <face deviceid="73" weight="Bold" style="Upright" fontfile="courbd" size="7.2" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="LetterGothicBM" typeface="6">
+         <face deviceid="8" weight="Medium" style="Upright" fontfile="letr45w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="50" weight="Medium" style="Italic" fontfile="letr46w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="9" weight="Bold" style="Upright" fontfile="letr65w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="51" weight="Bold" style="Italic" fontfile="letr66w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="26" weight="Medium" style="Upright" fontfile="letr45w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="27" weight="Medium" style="Italic" fontfile="letr46w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="28" weight="Bold" style="Upright" fontfile="letr65w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="79" weight="Bold" style="Italic" fontfile="letr66w" size="12" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Swiss721BM" typeface="4">
+         <face deviceid="10" weight="Bold" style="Upright" fontfile="helr65w" size="14.4" fontfiletype="TrueType"/>
+         <face deviceid="52" weight="Bold" style="Italic" fontfile="helr66w" size="14.4" fontfiletype="TrueType"/>
+         <face deviceid="11" weight="Bold" style="Upright" fontfile="helr65w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="53" weight="Bold" style="Italic" fontfile="helr66w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="12" weight="Bold" style="Upright" fontfile="helr65w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="54" weight="Bold" style="Italic" fontfile="helr66w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="13" weight="Medium" style="Upright" fontfile="helr45w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="55" weight="Medium" style="Italic" fontfile="helr46w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="56" weight="Bold" style="Upright" fontfile="helr65w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="57" weight="Bold" style="Italic" fontfile="helr66w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="14" weight="Medium" style="Upright" fontfile="helr45w" size="6" fontfiletype="TrueType"/>
+         <face deviceid="58" weight="Medium" style="Italic" fontfile="helr46w" size="6" fontfiletype="TrueType"/>
+         <face deviceid="59" weight="Bold" style="Upright" fontfile="helr65w" size="6" fontfiletype="TrueType"/>
+         <face deviceid="60" weight="Bold" style="Italic" fontfile="helr66w" size="6" fontfiletype="TrueType"/>
+         <face deviceid="29" weight="Bold" style="Upright" fontfile="helr65w" size="14.4" fontfiletype="TrueType"/>
+         <face deviceid="30" weight="Bold" style="Upright" fontfile="helr65w" size="12" fontfiletype="TrueType"/>
+         <face deviceid="31" weight="Bold" style="Upright" fontfile="helr65w" size="10" fontfiletype="TrueType"/>
+         <face deviceid="32" weight="Bold" style="Upright" fontfile="helr65w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="33" weight="Bold" style="Upright" fontfile="helr65w" size="6" fontfiletype="TrueType"/>
+         <face deviceid="74" weight="Bold" style="Upright" fontfile="helr65w" size="8" fontfiletype="TrueType"/>
+         <face deviceid="75" weight="Bold" style="Upright" fontfile="helr65w" size="6" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="LinePrinterBM" typeface="0">
+         <face deviceid="15" weight="Medium" style="Upright" fontfile="cour" size="9" fontfiletype="TrueType"/>
+         <face deviceid="61" weight="Medium" style="Italic" fontfile="couri" size="9" fontfiletype="TrueType"/>
+         <face deviceid="62" weight="Bold" style="Upright" fontfile="courbd" size="9" fontfiletype="TrueType"/>
+         <face deviceid="63" weight="Bold" style="Italic" fontfile="courbi" size="9" fontfiletype="TrueType"/>
+         <face deviceid="34" weight="Medium" style="Upright" fontfile="cour" size="9" fontfiletype="TrueType"/>
+         <face deviceid="35" weight="Medium" style="Italic" fontfile="couri" size="9" fontfiletype="TrueType"/>
+         <face deviceid="16" weight="Medium" style="Upright" fontfile="cour" size="6" fontfiletype="TrueType"/>
+         <face deviceid="64" weight="Medium" style="Italic" fontfile="couri" size="6" fontfiletype="TrueType"/>
+         <face deviceid="65" weight="Bold" style="Upright" fontfile="courbd" size="6" fontfiletype="TrueType"/>
+         <face deviceid="66" weight="Bold" style="Italic" fontfile="courbi" size="6" fontfiletype="TrueType"/>
+         <face deviceid="36" weight="Medium" style="Upright" fontfile="cour" size="6" fontfiletype="TrueType"/>
+         <face deviceid="88" weight="Medium" style="Upright" fontfile="cour" size="8.5" fontfiletype="TrueType"/>
+         <face deviceid="76" weight="Bold" style="Upright" fontfile="courbd" size="9" fontfiletype="TrueType"/>
+         <face deviceid="77" weight="Bold" style="Italic" fontfile="courbi" size="9" fontfiletype="TrueType"/>
+         <face deviceid="78" weight="Bold" style="Upright" fontfile="courbd" size="6" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Antique Olive" typeface="4168">
+         <face weight="Medium" style="Upright" fontfile="olvr55w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="olvr56w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="olvr75w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Albertus" typeface="4362">
+         <face weight="SemiBold" style="Upright" fontfile="albr55w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="albr85w" fontfiletype="TrueType"/>
+         <face weight="ExtraBold" style="Upright" fontfile="albr85w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Arial" typeface="16602">
+         <face weight="Medium" style="Upright" fontfile="ARIAL" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="ARIALI" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="ARIALBD" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="ARIALBI" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="CG Omega" typeface="4113">
+         <face weight="Medium" style="Upright" fontfile="cgor45w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="cgor46w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="cgor65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="cgor66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Coronet" typeface="4116">
+         <face weight="Medium" style="Upright" fontfile="coronet" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="CG Times" typeface="4101">
+         <face weight="Medium" style="Upright" fontfile="cgtr45w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="cgtr46w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="cgtr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="cgtr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Clarendon Condensed" typeface="4140">
+         <face weight="Medium" width="Condensed" style="Upright" fontfile="clar67w" fontfiletype="TrueType"/>
+         <face weight="Medium" width="Condensed" style="Italic" fontfile="clar67w" fontfiletype="TrueType"/>
+         <face weight="Bold" width="Condensed" style="Upright" fontfile="clar67w" fontfiletype="TrueType"/>
+         <face weight="Bold" width="Condensed" style="Italic" fontfile="clar67w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Courier" typeface="4099">
+         <face weight="Medium" style="Upright" fontfile="cour" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="couri" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="courbd" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="courbi" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="CourierPS" typeface="24579">
+         <face weight="Medium" style="Upright" fontfile="cour" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="couri" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="courbd" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="courbi" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Garamond" typeface="4197">
+         <face weight="Medium" style="Upright" fontfile="garr45w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="garr46w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="garr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="garr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Helvetica" typeface="24580">
+         <face weight="Medium" style="Upright" fontfile="helr45w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="helr46w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="helr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="helr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Helvetica Narrow" typeface="24580">
+         <face weight="Medium" style="Upright" fontfile="helr47w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="helr48w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="helr67w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="helr68w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="ITC Avant Garde Gothic" typeface="24607">
+         <face weight="Medium" style="Upright" fontfile="avgr45w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="avgr46w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="avgr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="avgr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="ITC Bookman" typeface="24623">
+         <face weight="Light" style="Upright" fontfile="bokr35w" fontfiletype="TrueType"/>
+         <face weight="Light" style="Italic" fontfile="bokr36w" fontfiletype="TrueType"/>
+         <face weight="SemiBold" style="Upright" fontfile="bokr75w" fontfiletype="TrueType"/>
+         <face weight="SemiBold" style="Italic" fontfile="bokr76w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="ITC Zapf Chancery" typeface="45099">
+         <face weight="Medium" style="Italic" fontfile="chanc___" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="ITC Zapf Dingbats" typeface="45101">
+         <face weight="Medium" style="Upright" fontfile="arial" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Letter Gothic" typeface="4102">
+         <face weight="Medium" style="Upright" fontfile="letr45w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="letr46w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="letr65w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Marigold" typeface="4297">
+         <face weight="Medium" style="Upright" fontfile="marigold" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="New Century Schoolbook" typeface="24703">
+         <face weight="Medium" style="Upright" fontfile="ncsr55w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="ncsr56w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="ncsr75w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="ncsr76w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Palatino" typeface="24591">
+         <face weight="Medium" style="Upright" fontfile="palr45w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="palr46w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="palr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="palr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Symbol" typeface="16686">
+         <face weight="Medium" style="Upright" fontfile="symbol" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="SymbolPS" typeface="45358">
+         <face weight="Medium" style="Upright" fontfile="symbol" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Times Roman" typeface="25093">
+         <face weight="Medium" style="Upright" fontfile="timr45w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="timr46w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="timr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="timr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Times New Roman" typeface="16901">
+         <face weight="Medium" style="Upright" fontfile="times" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="timesi" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="timesbd" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="timesbi" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Univers" typeface="4148">
+         <face weight="Medium" style="Upright" fontfile="unvr55w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="unvr56w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="unvr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="unvr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Univers Condensed" typeface="4148">
+         <face weight="Medium" width="Condensed" style="Upright" fontfile="unvr57w" fontfiletype="TrueType"/>
+         <face weight="Medium" width="Condensed" style="Italic" fontfile="unvr58w" fontfiletype="TrueType"/>
+         <face weight="Bold" width="Condensed" style="Upright" fontfile="unvr67w" fontfiletype="TrueType"/>
+         <face weight="Bold" width="Condensed" style="Italic" fontfile="unvr68w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Wingdings" typeface="31402">
+         <face weight="Medium" style="Upright" fontfile="wingding" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Swiss742SWC">
+         <face weight="Medium" style="Upright" fontfile="unvr55w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="unvr56w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="unvr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="unvr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Swiss742SWC Condensed">
+         <face weight="Medium" width="Condensed" style="Upright" fontfile="unvr57w" fontfiletype="TrueType"/>
+         <face weight="Medium" width="Condensed" style="Italic" fontfile="unvr58w" fontfiletype="TrueType"/>
+         <face weight="Bold" width="Condensed" style="Upright" fontfile="unvr67w" fontfiletype="TrueType"/>
+         <face weight="Bold" width="Condensed" style="Italic" fontfile="unvr68w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Dutch801SWC">
+         <face weight="Medium" style="Upright" fontfile="cgtr45w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="cgtr46w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="cgtr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="cgtr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Swiss721SWM">
+         <face weight="Medium" style="Upright" fontfile="unvr55w" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="unvr56w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="unvr65w" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="unvr66w" fontfiletype="TrueType"/>
+      </font>
+   </fontlist>
+
+   <!--Settings for both input and output.-->
+
+   <globals>
+      <!--Character to be used when the requested character is not in the font
+            -->
+
+      <defaultchar char="003F"/>
+      <codepagelist>
+         <!--<codepage name="12U" iana="IBM850"/>-->
+      </codepagelist>
+   </globals>
+
+   <!--Settings for input.-->
+
+   <input>
+      <readcomments value="true"/>
+
+      <format>
+         <codepage iana="ISO-8859-1"/>
+      </format>
+
+      <!-- include a macro file which will be used in the start of conversion or just
+                define the path in "resourcelist" and filter will search the required macro file
+                from the specified paths -->
+
+      <macrolist>
+         <!--<file name="prescribe.mcro"/>-->
+      </macrolist>
+
+      <!-- sheetmargins are used to set the default start offset of physical
+                sheet.-->
+      <!--Attribute: left @comment: The width of the left sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+      <!--Attribute: right @comment: The width of the right sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+      <!--Attribute: top @comment: The height of the top sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+      <!--Attribute: bottom @comment: The height of the bottom sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+
+      <sheetmargins left="5 mm" right="0 mm" top="5 mm" bottom="0 mm"/>
+
+      <!--Set the default paper size. Letter for US and A4 for EU. It is recommended to
+                always use this setting. If <inputtray> is also specified in the profile, the
+                papersize will be overwritten by the value used in <inputtray>-->
+
+      <pagedefinition name="a4_1">
+         <!--The declaration of a paper size. The paper size can be
+                specified by the name of a standard paper size with orientation or by numeric
+                specification of width and length.-->
+         <!--Attribute: format @comment: The name of a standard paper size. Examples for possible
+                values are "A4" and "LETTER". A complete list of the possible values is included in
+                the DocBridge Mill Manual. This attribute does not have a default
+                value.-->
+         <!--Attribute: orientation @comment: The orientation of a standard paper size. Possible values of
+                this attribute are "Portrait", "Landscape", "RevPortrait", and "RevLandscape". The
+                default value of this attribute is "Portrait".-->
+
+         <papersize format="A4" orientation="portrait"/>
+
+         <!--Attribute: left @comment: The width of the left sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+         <!--Attribute: right @comment: The width of the right sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+         <!--Attribute: top @comment: The height of the top sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+         <!--Attribute: bottom @comment: The height of the bottom sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+
+         <margins left="1 mm" right="1 mm" top="1 mm" bottom="1 mm"/>
+         <linesperinch value="6"/>
+      </pagedefinition>
+
+      <controlchars>
+         <!-- Three control characters bytes are defined in the profile 0x0D - Carriage
+                Return 0x0A - Line Feed 0x0C - Form Feed And maximum three actions can be defined
+                with each Control character e.g. action1="printline" action2="linefeed"
+                action3="formfeed" Following actions can be used with each Control Char byte in any
+                combination printline, linefeed, formfeed -->
+
+         <controlchar byte="\x0C" action1="formfeed"/>
+         <controlchar byte="\x0D" action1="printline"/>
+         <controlchar byte="\x0A" action1="linefeed"/>
+      </controlchars>
+
+      <barcodelist>
+         <barcode name="0" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="1" type="UPCA" checkdigits="2" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="2" type="UPCA" checkdigits="5" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="3" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="4" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="5" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="6" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="7" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="8" type="UPCE" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="9" type="UPCE" checkdigits="2" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="10" type="UPCE" checkdigits="5" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="11" type="EAN 8" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="12" type="EAN 13" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="13" type="EAN 8" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="14" type="EAN 8" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="15" type="MSI" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="16" type="MSI 10" checkdigits="1" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="17" type="MSI 10" checkdigits="2" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="18" type="MSI 11" checkdigits="2" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="19" type="Code 39" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="20" type="Code 39Ext" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="21" type="Code 2/5 Int" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="22" type="Code 2/5 Int" checkdigits="1" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="23" type="Code 128B" checkdigits="1" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="24" type="Code 128" checkdigits="1" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="25" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="26" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="27" type="Code 93" checkdigits="2" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="28" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="29" type="Datamatrix 200" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="30" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="31" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="32" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="33" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="34" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="35" type="EAN 8" checkdigits="2" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="36" type="EAN 8" checkdigits="5" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="37" type="EAN 13" checkdigits="2" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="38" type="EAN 13" checkdigits="5" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="39" type="POSTNET" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="40" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="41" type="Code 2/5 Int" checkdigits="1" modulewidth="20 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="42" type="EAN 128" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="43" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+         <barcode name="44" type="UPCA" checkdigits="0" modulewidth="15 tw" moduleshortheight="1.5 cm" modulelongheight="1.5 cm"/>
+      </barcodelist>
+
+      <!--Assign tray ID-->
+
+      <traylist>
+         <inputtrays>
+            <inputtray deviceid="0" name="Multi purpose tray" mediatypeid="1"/>
+            <inputtray deviceid="1" name="Cassette 1"/>
+            <inputtray deviceid="2" name="Cassette 2"/>
+            <inputtray deviceid="3" name="Cassette 3"/>
+            <inputtray deviceid="4" name="Cassette 4"/>
+            <inputtray deviceid="5" name="Cassette 5"/>
+            <inputtray deviceid="6" name="Cassette 6"/>
+            <inputtray deviceid="99" name="Envelope feeder"/>
+            <inputtray deviceid="100" name="Automatic"/>
+
+            <!--<inputtray deviceid="0" name="Multi purpose tray" mediatypeid="1"/>-->
+            <!--<inputtray deviceid="1" name="Cassette 1" mediatypeid="2"/>-->
+            <!--<inputtray deviceid="2" name="Cassette 2" mediatypeid="3"/>-->
+         </inputtrays>
+      </traylist>
+   </input>
+
+   <resourcelist>
+      <fileslist>
+         <files path="." type="TrueType" extension=""/>
+
+         <!--<files path="c:\fonts" type="TrueType" extension="ttf"/>-->
+         <!--<files path="c:\WINDOWS\Fonts" type="TrueType" extension="ttf"/>-->
+         <!--<files path="c:\WINNT\Fonts" type="TrueType" extension="ttf"/>-->
+      </fileslist>
+   </resourcelist>
+</mffpsb>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/xps">
+   <xs:element name="mffxps">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct or dummy device names must be specified </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="arial" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="TrueType"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="overrideembeddedfont" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="Arial" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"), Dateiendung
+                ("extension") und Auflösung ("resolution") sind optional. Je mehr Angaben gemacht
+                werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="TrueType" type="xs:string"/>
+                                    <xs:attribute name="extension" default="ttf" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

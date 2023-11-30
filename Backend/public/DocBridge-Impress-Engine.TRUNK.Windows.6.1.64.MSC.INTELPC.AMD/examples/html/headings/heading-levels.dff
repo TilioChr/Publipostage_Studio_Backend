@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Heading Levels</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+	    <xi:include href="../../common/standardheader.dfb"/>
+        <h1>Heading 1</h1>
+        <p>This example shows how the HTML heading levels are rendered without any additional
+            styling, with the default settings.</p>
+        <p>For print output, h1 is moved to a new page by default, inserting a page break before the
+            element. This is the behavior defined in the HTML 4 default stylesheet.</p>
+        <p>For more information about the default styles see the HTML 4 default stylesheet in
+            css\html4-default-stylesheet.</p>
+        <br />
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+    </body>
+</html>

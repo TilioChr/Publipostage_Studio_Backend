@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffobj xmlns="http://www.compart.com/ns/mff/obj" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for input.-->
+
+   <input>
+      <!--The maxPages attribute specifies how many pages should be contained in one
+                object container (default: 0 - All input pages in one object container for target
+                'resourceGroup' and only one page in one object container for target 'inPage'). If
+                the maxpages value is bigger than zero (assume n), the input will be split to many
+                object containers and each object container will have n pages. The target attribute
+                specifies the target of where the object container will be written to. The possible
+                values of this attribute are 'resourceGroup' and 'inPage'. The default value of this
+                attribute is 'resourceGroup' which means that the object container will be written
+                into the resource group. The value 'inPage' means that the object container will be
+                written into the page. The splitWithBinaryCopy attribute when set to true, will tell
+                the OBJ filter to use binary copy when splitting the input document to many object
+                containers (default: true). This attribute will be ignored when all input pages go
+                in one object container.-->
+
+      <ObjectContainer maxPages="0" target="resourceGroup" splitWithBinaryCopy="true"/>
+   </input>
+</mffobj>

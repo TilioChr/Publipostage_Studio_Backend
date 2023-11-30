@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Table with row and column spans</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+	    <xi:include href="../../common/standardheader.dfb"/>
+        <p>This example shows how a table with a header row and row and column spans is rendered
+            without any additional styling, with the default settings.</p>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Ice Cream Flavor</th>
+                    <th>Availability</th>
+                    <th>Customer Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Blueberry</td>
+                    <td>Seasonal</td>
+                    <td rowspan="2">**</td>
+                </tr>
+                <tr>
+                    <td>Grape</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Buttermilk</td>
+                    <td>Seasonal</td>
+                    <td rowspan="2">***</td>
+                </tr>
+                <tr>
+                    <td>Passion fruit</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Banana</td>
+                    <td>Seasonal</td>
+                    <td rowspan="14">****</td>
+                </tr>
+                <tr>
+                    <td>Cherry</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Chocolate</td>
+                    <td>Standard</td>
+                </tr>
+                <tr>
+                    <td>Coconut</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Hazelnut</td>
+                    <td>Standard</td>
+                </tr>
+                <tr>
+                    <td>Honey</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Lemon</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Raspberry</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Salt caramel</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Stracciatella</td>
+                    <td>Standard</td>
+                </tr>
+                <tr>
+                    <td>Strawberry</td>
+                    <td>Standard</td>
+                </tr>
+                <tr>
+                    <td>Tutti frutti</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Vanilla</td>
+                    <td>Standard</td>
+                </tr>
+                <tr>
+                    <td>Walnut</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Almond</td>
+                    <td>Seasonal</td>
+                    <td rowspan="3">*****</td>
+                </tr>
+                <tr>
+                    <td>Mango</td>
+                    <td>Seasonal</td>
+                </tr>
+                <tr>
+                    <td>Pistachio</td>
+                    <td>Seasonal</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2">Description</th>
+                    <th>Rating</th>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>

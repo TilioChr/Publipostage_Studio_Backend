@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cp="http://www.compart.com/ns/my"
+  xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xi="http://www.w3.org/2001/XInclude" 
+  xsl:version="3.0">
+  <head>
+    <title>Channel Test</title>
+    <style>
+      @import url("../../common/cp-sample-style.css");
+            @page myName1 {  -cp-duplex-printing: front;
+                           @top-right { content: "myName1"; } }
+
+            @page myName2 { -cp-duplex-printing: back;
+                           @top-right { content: "myName2"; } }
+
+            @page myName3 { @top-right { content: "myName3"; } }
+
+             .myName1 {page: myName1}
+             .myName2 {page: myName2}
+             .myName3 {page: myName3}
+             </style>
+  </head>
+  <dff:dffhead>
+    <xsl:param name="mypath1"/>
+    <xsl:result-document href="{$mypath1}" method="text" dff:record-loop-channel-ref="MYDOC1">
+      Record <xsl:value-of select="position()"/>: Pages from <xsl:value-of select="$MYDOC1.RECORD_PAGE_FROM"/> to <xsl:value-of select="$MYDOC1.RECORD_PAGE_TO"/>
+      myName1: '<xsl:value-of select="$MYDOC1.myName1.PAGE_FROM"/>', myName2: '<xsl:value-of select="$MYDOC1.myName2.PAGE_FROM"/>', myName3: '<xsl:value-of select="$MYDOC1.myName3.PAGE_FROM"/>'
+    </xsl:result-document>
+  </dff:dffhead>
+  <body>
+    <xi:include href="../../common/standardheader.dfb"/>
+    <div class="myName1"><h1>1</h1><p>This example demonstrates how an additional file with meta information about the 
+    print output document can be written in addition to the print output document.</p>
+      <p>In this case, a PDF output document is generated, and additionally a text document with information about 
+      the PDF content. The text file contains information about the records (in this case pages from and to per address 
+      from the data file and information about the start page of each named page usage per record.)</p>
+      <h1>2</h1><h1>3</h1></div>
+    <div class="myName2"><h1>1</h1><h1>2</h1><h1>3</h1></div>
+    <div class="myName3"><h1>1</h1><h1>2</h1><h1>3</h1></div>
+  </body>
+</html>

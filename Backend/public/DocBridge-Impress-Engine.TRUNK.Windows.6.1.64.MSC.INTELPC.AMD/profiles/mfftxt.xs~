@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/txt">
+   <xs:element name="mfftxt">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="defaultchar" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">character to be used when the requested character is not in the
+                font</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="char" default="0020" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Font specified by "family", "weight", "width" and "style" can be rasterised
+                To rasterize the text, rasterize="always" has to be specified. Important: for all
+                point sizes correct or dummy device names must be specified </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Font definitions. If no font selection by channel is done, the font with ID
+                '1' will be used for the entire input. If no font with ID '1' is defined, the first
+                font in the font list will be used. If the font list does not contain any fonts, a
+                default font with the properties 'Courier New', '15' pitch, '10' points, 'medium',
+                'upright', 'serif', 'monospaced' will be created. Commonly used Pitch-Point
+                Relationships: Pitch Size 6 pitch 20 points 8.5 pitch 14 points 10 pitch 12 points
+                12 pitch 10 points 13.3 pitch 9 points 15 pitch 8 points 17.1 pitch 7 points 20
+                pitch 6 points 24 pitch 5 points</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="devname" default="Courier" type="xs:string"/>
+                                    <xs:attribute name="id" default="1" type="xs:integer"/>
+                                    <xs:attribute name="size" default="10" type="xs:double"/>
+                                    <xs:attribute name="pitch" default="15000" type="xs:integer"/>
+                                    <xs:attribute name="fontfile" default="cour" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="TrueType"/>
+                                             <xs:enumeration value="Type1"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="Courier New" type="xs:string"/>
+                           <xs:attribute name="serifstyle" default="Serif">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Serif"/>
+                                    <xs:enumeration value="SansSerif"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="spacing" default="Monospaced">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Monospaced"/>
+                                    <xs:enumeration value="Proportional"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="inputtestfile" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">dump input text file</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="filename" default="test.txt" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="SuppressEmptyFirstPage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">suppress only empty first page?</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="SuppressEmptyLastPage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">suppress only empty last page?</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="SuppressEmptyPages" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">suppress all empty pages?</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="format" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">format text position</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="codepage" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="iana" default="native" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="linelength" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">columns for line length (without control columns) may be number, "auto" or
+                "variable". Automatic line length detection is only available with control
+                columns</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="columns" default="variable" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="wraplines" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">wrap text not fitting in line?</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="true" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="controlchars" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN"> ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Definition
+                of control characters Only characters which are not standard have to be defined
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ standard control chars
+                for line oriented carriage control controlchars scheme="asa"
+                ******************************************************************* ** Printing with
+                ASA control characters under UNIX: ** ** "a.out | asa | lpr - Pzam13ad" **
+                ******************************************************************* ** standard
+                control chars for channel oriented carriage control ** controlchar char=" "
+                action1="linefeed" action2="printline" controlchar char="0" action1="doublelinefeed"
+                action2="printline" controlchar char="-" action1="triplelinefeed"
+                action2="printline" ** used for printing with different fonts in one line **
+                controlchar char="+" action1="printline" ** standard control chars for channel
+                oriented carriage control ** controlchar char="1" action1="skiptochannel1"
+                action2="printline" controlchar char="2" action1="skiptochannel2"
+                action2="printline" controlchar char="3" action1="skiptochannel3"
+                action2="printline" controlchar char="4" action1="skiptochannel4"
+                action2="printline" controlchar char="5" action1="skiptochannel5"
+                action2="printline" controlchar char="6" action1="skiptochannel6"
+                action2="printline" controlchar char="7" action1="skiptochannel7"
+                action2="printline" controlchar char="8" action1="skiptochannel8"
+                action2="printline" controlchar char="9" action1="skiptochannel9"
+                action2="printline" controlchar char="A" action1="skiptochannel10"
+                action2="printline" controlchar char="B" action1="skiptochannel11"
+                action2="printline" controlchar char="C" action1="skiptochannel12"
+                action2="printline" controlchars controlchars scheme="machinecode" controlchar
+                byte="\x01" action1="printline" controlchar byte="\x09" action1="printline"
+                action2="linefeed" controlchar byte="\x11" action1="printline"
+                action2="doublelinefeed" controlchar byte="\x19" action1="printline"
+                action2="triplelinefeed" controlchar byte="\x0B" action1="linefeed" controlchar
+                byte="\x13" action1="doublelinefeed" controlchar byte="\x1B"
+                action1="triplelinefeed" controlchar byte="\x03" controlchar byte="\x89"
+                action1="printline" action2="skiptochannel1" controlchar byte="\x91"
+                action1="printline" action2="skiptochannel2" controlchar byte="\x99"
+                action1="printline" action2="skiptochannel3" controlchar byte="\xA1"
+                action1="printline" action2="skiptochannel4" controlchar byte="\xA9"
+                action1="printline" action2="skiptochannel5" controlchar byte="\xB1"
+                action1="printline" action2="skiptochannel6" controlchar byte="\xB9"
+                action1="printline" action2="skiptochannel7" controlchar byte="\xC1"
+                action1="printline" action2="skiptochannel8" controlchar byte="\xC9"
+                action1="printline" action2="skiptochannel9" controlchar byte="\xD1"
+                action1="printline" action2="skiptochannel10" controlchar byte="\xD9"
+                action1="printline" action2="skiptochannel11" controlchar byte="\xE1"
+                action1="printline" action2="skiptochannel12" controlchar byte="\x8B"
+                action1="skiptochannel1" controlchar byte="\x93" action1="skiptochannel2"
+                controlchar byte="\x9B" action1="skiptochannel3" controlchar byte="\xA3"
+                action1="skiptochannel4" controlchar byte="\xAB" action1="skiptochannel5"
+                controlchar byte="\xB3" action1="skiptochannel6" controlchar byte="\xBB"
+                action1="skiptochannel7" controlchar byte="\xC3" action1="skiptochannel8"
+                controlchar byte="\xCB" action1="skiptochannel9" controlchar byte="\xD3"
+                action1="skiptochannel10" controlchar byte="\xDB" action1="skiptochannel11"
+                controlchar byte="\xE3" action1="skiptochannel12" controlchars ** control chars for
+                font selection ** controlchars scheme="fontselect" controlchar byte="\x00"
+                action1="switchtofont1" controlchar byte="\x01" action1="switchtofont2" controlchar
+                byte="\x02" action1="switchtofont3" **default** controlchar char="0"
+                action1="switchtofont0" controlchar char="1" action1="switchtofont1" controlchar
+                char="2" action1="switchtofont2" controlchar char="3" action1="switchtofont3"
+                controlchar char="4" action1="switchtofont4" controlchar char="5"
+                action1="switchtofont5" controlchar char="6" action1="switchtofont6" controlchar
+                char="7" action1="switchtofont7" controlchar char="8" action1="switchtofont8"
+                controlchar char="9" action1="switchtofont9" controlchars </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="controlchar" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="byte" default="" type="xs:string"/>
+                                             <xs:attribute name="char" default="" type="xs:string"/>
+                                             <xs:attribute name="action1" default="" type="xs:string"/>
+                                             <xs:attribute name="action2" default="" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="scheme" default="machinecode" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="controlcolumns" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">Columns with special meaning</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="controlcolumn" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="EN">control column type can be "carriagecontrol" or
+                "fontselection"</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="type" default="carriagecontrol" type="xs:string"/>
+                                             <xs:attribute name="column" default="1" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="count" default="0" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="channels" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">Channel definitions - lines to jump to</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="channeldefinition" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="EN">Channel lines can be seperated by space, comma and semicolon - line begins
+                with value 1</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="channel" default="1" type="xs:integer"/>
+                                             <xs:attribute name="lines" default="1" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="tabulatordefinition" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">count characters to next tabulator position alternate definition possible
+                by explict positions: &lt;tabulatordefinition position ='9, 17, 25, 33, 41, 49'
+                /&gt; - position of character behind tabulator depending on current position -
+                example for step 8</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="step" default="8" type="xs:integer"/>
+                                    <xs:attribute name="position" default="8" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="removeleadingblanks" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">Switch for removing leading blank when processing the input
+                file</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="true" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="removetrailingblanks" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">remove the trailing blanks (space, tab, backspace) of text. default value
+                is 'true' </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="true" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="indexlist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="index" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">for every index value it can be specified what to do if there is no data or
+                less data than expected. Possible values: nothing, skip, warn, warnandskip and stop
+                line and column begin with value 1 no default - only example here</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="name" default="kontonummer" type="xs:string"/>
+                                    <xs:attribute name="line" default="1" type="xs:integer"/>
+                                    <xs:attribute name="column" default="28" type="xs:integer"/>
+                                    <xs:attribute name="length" default="10" type="xs:integer"/>
+                                    <xs:attribute name="ifsmallerdo" default="Warn">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Warn"/>
+                                             <xs:enumeration value="Nothing"/>
+                                             <xs:enumeration value="Skip"/>
+                                             <xs:enumeration value="WarnAndSkip"/>
+                                             <xs:enumeration value="Stop"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="ifemptydo" default="Stop">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Warn"/>
+                                             <xs:enumeration value="Nothing"/>
+                                             <xs:enumeration value="Skip"/>
+                                             <xs:enumeration value="WarnAndSkip"/>
+                                             <xs:enumeration value="Stop"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinitionlist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pagedefinition" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">if there is more than one pagedefinition, the first in alphabetical order
+                is used!</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="format" default="A4" type="xs:string"/>
+                                             <xs:attribute name="orientation" default="Portrait">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="Portrait"/>
+                                                      <xs:enumeration value="Landscape"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="margins" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Deklaration von Bogenrändern</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">declaration of sheet margins</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="left" default="1 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des linken Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">width of left sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="right" default="0 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des rechten Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">width of right sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="top" default="1 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des oberen Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">height of top sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="bottom" default="0 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des unteren Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">height of bottom sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="linesperinch" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="7" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="linesperpage" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="0" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="a4_1" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="resolveoverlays" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Resolve references to other pages (overlays,
+                ...)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="PageProcessing" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines the Page Processing method used. options:
+                "capturing" "grid" (default) and "textAsLines"</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="Grid" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">In the "grid" method the text will be set into lines and
+                columns. To define the grid, the lines per inch(lpi) and the characters per
+                inch(cpi) must be defined.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="LinesPerInch" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="7" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="Pitch" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="12000" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Capturing" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Enables the capturing of text. The complete text of a page is
+                captured and stored.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="Threshold" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="0" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="PercentSpace" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="75" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="RemoveDuplicatedCharacters" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="true" type="xs:boolean"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="RemoveRotatedText" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="TextIndent" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="LinesPerInch" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="7" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="Pitch" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="12000" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="method" default="grid">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="capturing"/>
+                                    <xs:enumeration value="grid"/>
+                                    <xs:enumeration value="textAsLines"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="format" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="codepage" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="iana" default="native" type="xs:string"/>
+                                    <xs:attribute name="writebyteordermark" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="controlcolumns" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">Columns with special meaning</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="count" default="0" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="firstpage" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="string" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="newpage" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="string" default="\x0C" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="linebreak" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">&lt;linebreak string = "..." /&gt; system dependent entries for ASCII
+                codepage: windows: &lt;linebreak string = "\x0D\x0A" /&gt; unix/linux: &lt;linebreak
+                string = "\x0A" /&gt; for EBCDIC codepage: &lt;linebreak string =
+                "\x15"/&gt;</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="string" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="linesperpage" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">when the value of &lt;linesperpage&gt; is '0' then the output will write
+                the complete page on output.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="0" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="wraplines" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">when the value of &lt;wraplines&gt; is 'false' then the output will write
+                the line without wrap when the value of &lt;wraplines&gt; is 'true' then the output
+                will wrap the line when the number of characters are &gt;= columns specified in
+                &lt;linelength&gt; when specified 'auto' in columns, the columns will be calculated
+                based on the input page size and pitch specified in &lt;opage&gt;</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="linelength" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">columns for line length (without control columns) may be number, "auto" or
+                "variable". Automatic line length detection is only available with control
+                columns</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="columns" default="80" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">Files type can be "TrueType", "Type1Font", "Type1Metrics", "ICC" if it is
+                not defined, the path will be used for all types extension can be emtpy,
+                &lt;extension&gt; or wildcard values for casecontrol are "asis", "upper" and
+                "lower"</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="TrueType"/>
+                                             <xs:enumeration value="Type1Font"/>
+                                             <xs:enumeration value="Type1Metrics"/>
+                                             <xs:enumeration value="Icc"/>
+                                             <xs:enumeration value=""/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" default="ttf" type="xs:string"/>
+                                    <xs:attribute name="casecontrol" default="Ignore">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="EN"> </xs:documentation>
+                                       </xs:annotation>
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Asis"/>
+                                             <xs:enumeration value="Upper"/>
+                                             <xs:enumeration value="Lower"/>
+                                             <xs:enumeration value="Ignore"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

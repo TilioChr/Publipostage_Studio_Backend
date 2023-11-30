@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cpclm xmlns="http://www.compart.com/ns/mff/cpclm" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+
+   <ColorMappings>
+      <ColorMapping name="colormapping">
+         <MapColor fromRGB="0.0 0.0 0.0" toRGB="#000000"/>
+         <MapColor fromCMYK="#00000000" toCMYK="#00000000"/>
+         <MapColor fromRGB="#000000" toCMYK="#00000000"/>
+         <MapColor fromCMYK="#00000000" toRGB="#000000"/>
+      </ColorMapping>
+   </ColorMappings>
+</cpclm>

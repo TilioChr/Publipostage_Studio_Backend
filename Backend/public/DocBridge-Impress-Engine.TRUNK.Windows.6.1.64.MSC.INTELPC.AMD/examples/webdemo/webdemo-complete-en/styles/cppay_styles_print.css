@@ -1,0 +1,181 @@
+	@page {
+    size: A4;
+    margin-left: 1.6cm;
+    margin-right: 1cm;
+    margin-top: 1cm;
+    margin-bottom: 1cm;
+}
+
+@media print{
+
+    body{
+        color: #404040;
+        font-family: SourceSansProLight;
+        font-size: 9pt;
+        text-align: left;
+    }	
+
+    .noprint{
+        display: none;
+    }
+
+    label{
+        color: #404040;
+        font-family: ArialNarrow;
+        font-size: 7pt;
+    }
+
+    .title{
+        color: #e00000;
+        font-family: Arial;
+        font-size: 11pt;
+        font-weight: bold;
+    }
+
+    .salutation{
+        color: #373637;
+        font-family: SourceSansProLight;
+        font-size: 7pt;
+        margin-left: 0.6cm;
+    }
+
+    .employer{
+        color: #373637;
+        font-family: SourceSansProLight;
+        font-size: 7pt;
+        margin-left: -0.8cm;
+    }
+
+    .content,
+    .recipient{
+        color: #373637;
+        font-family: SourceSansProLight;
+        font-size: 9pt;
+    }
+
+    .recipient{
+        margin-top: 5.3px;
+        margin-left: 0.6cm;
+        min-height: 3cm;
+        max-height: 3.6cm;
+    }
+
+    .recordnumber{
+        color: #404040;
+        font-family: OrcA;
+        font-size: 10pt;
+    }
+
+    .notelabel{
+        color: #e00000;
+        font-family: ArialNarrow;
+        font-size: 7pt;
+        font-weight: bold;
+    }
+
+    .rightaligned{
+        text-align: right;
+    }
+
+    .tableTop{
+        page-break-before: always;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .tableMiddle{
+        margin-top: 1.5cm;
+        min-height: 4cm;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .tableBottom{
+        margin-top: 0cm;
+        font-family: ArialNarrow;
+        font-size: 6pt;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .webtable,
+    .webtable tbody,
+    .webtable tfoot,
+    .webtable thead,
+    .webtable tr,
+    .webtable th,
+    .webtable td,
+    .webtable label{
+        display: none;
+        height: 0cm;
+    }
+
+    .bottomaligned{
+        vertical-align: bottom;
+    }
+
+    .topaligned{
+        vertical-align: top;
+    }
+
+    td.tdminwidth60{
+        min-width: 6cm;
+    }
+
+    td.tdminwidth30{
+        min-width: 3cm;
+    }
+
+    td.tdminwidth12{
+        min-width: 1.2cm;
+    }
+
+    td.tdminwidth15{
+        min-width: 1.5cm;
+    }
+
+    td.tdminwidth05{
+        min-width: 0.5cm;
+    }
+
+    td.trheight{
+        height: 0.5cm;
+    }
+
+    td.height40{
+        height: 4.0cm;
+    }
+
+    .bordertopbold{
+        border-top: 0.5px solid black;
+    }
+
+    .bordertop{
+        border-top: 0.25px solid black;
+    }
+
+    .borderbottom{
+        border-bottom: 0.25px solid black;
+    }
+
+    .borderbottombold{
+        border-bottom: 0.5px solid black;
+    }
+
+    .borderright{
+        border-right: 0.25px solid black;
+    }
+
+    .borderrightbold{
+        border-right: 0.5px solid black;
+    }
+
+    .paddingright02{
+        padding-right: 0.2cm;
+    }
+
+    .noborder{
+        border: none;
+    }
+
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Radio buttons</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+	    <xi:include href="../../common/standardheader.dfb"/>
+        <p>This example shows how an address is rendered without any additional styling, with the default settings.</p>
+        <p>By default, Compart renders addresses in italics.</p>
+        <br />
+        <b>Address</b>
+        <p>Addresses can be written as follows:</p>
+        <address>Visit us at:<strong>Compart AG</strong><br/>Otto-Lilienthal-Str. 38<br/>71034 Böblingen<br/>Deutschland</address>
+    </body>
+</html>

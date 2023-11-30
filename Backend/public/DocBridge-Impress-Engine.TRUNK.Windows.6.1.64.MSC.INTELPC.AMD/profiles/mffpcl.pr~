@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffpcl xmlns="http://www.compart.com/ns/mff/pcl" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for both input and output.-->
+
+   <globals>
+      <!--Specifies whether the PA is to be optimized. Valid values are: ALWAYS:
+                Always optimize the PA. NEVER: Never optimize the PA. -->
+
+      <optimizepa value="auto"/>
+
+      <colorindexlist>
+         <colorindex index="0" color="#00FFFFFF"/>
+
+         <!--BLACK-->
+
+         <colorindex index="1" color="#00000000"/>
+
+         <!--RED-->
+
+         <colorindex index="2" color="#00FF0000"/>
+
+         <!--GREEN-->
+
+         <colorindex index="3" color="#0000FF00"/>
+
+         <!--YELLOW-->
+
+         <colorindex index="4" color="#00FFFF00"/>
+
+         <!--BLUE-->
+
+         <colorindex index="5" color="#00FF0000"/>
+
+         <!--MAGENTA-->
+
+         <colorindex index="6" color="#00FF00FF"/>
+
+         <!--CYAN-->
+
+         <colorindex index="7" color="#00FFFF00"/>
+      </colorindexlist>
+   </globals>
+
+   <!--Specifies codepages to replace PCL symbol sets contained in soft fonts,
+                i.e. in fonts that are not installed on the printer, but only transferred to the
+                printer. The element codepage provides the PCL code for unique identification of a
+                symbol set as well as the specification of the IANA code of the codepage by which
+                the character set is to be replaced. -->
+   <!--<codepagelist>        
+      <codepage name="12U" iana="IBM850"/>
+   </codepagelist>-->
+   <!--Contains subelements with the definitions of all the fonts used during the
+                generation of PCL output files. For the creation of PCL output, fonts residing on
+                the output device can be used or so-called soft fonts can be created and transferred
+                to the output device. If you want to avoid the creation of soft fonts, disable the
+                attribute "overrideembeddedfont". If this attribute is enabled, an embedded font is
+                replaced with an external font. By default this attribute is disabled. To add a new
+                font, it is sufficient to create a new element font with values for the attributes
+                "family", "weight", "style", and "typeface". If you have monospaced (fixed in pcl
+                terminology) font faces you can add the attribute to the "monospaced" to the face
+                tag. These mix fonts are either the result of a real font face containing glyphs
+                with different width or a font containg not all needed glyphs and these glyphs are
+                got from a fallback. The allowed values for "monospaced" are "hmi" (default, use hmi
+                value for all glyphs), "hmiMultiple" (round width of glyphs to multiple of the width
+                of hmi), and auto (use for characters equal to the width of a space the hmi and for
+                all other glyphs the width of the glyph).-->
+
+   <fontlist overrideembeddedfont="false">
+      <!--Determines for each font in the processed input and output files how it
+                should be treated. The fonts are identified by the "family", "width" and "style"
+                attributes. PCL raster fonts can either be specified by the attribute "fontselector"
+                of the element "face" or by the attribute "fontfile" of the element "raster". While
+                processing PCL input to PCL output, the specified input fonts are replaced according
+                to the settings and embedded in the PCL output file. Attributes: "name": Specifies
+                the name of the font in the input data. "typeface": PCL identifies fonts by several
+                criteria, amongst others, the "typeface". The typeface is a number that clearly
+                identifies the font family. The number is composed of several values specifying font
+                type and producer. "spacing": Another criterion used by PCL to define
+                fonts.-->
+      <!--<font family="Courier" spacing="Monospaced" typeface="4099">        
+         <face weight="Medium" width="Normal" style="Upright" fontselector="0p0s3b4102T"
+               fontfile="Courier"
+               embed="Never"
+               fallback="false"
+               fontfiletype="TrueType">        
+            <raster fontfile="DATAM4" fontfiletype="Pcl" size="1.599999" fixedsymbolset="true"/>        
+            <fontresourcelist>        
+               <fontresource fontfile="AMWT_F1_CJK" fontfiletype="TrueType"/>
+            </fontresourcelist>
+         </face>        
+         <face weight="Bold" style="Upright" fontselector="0p0s3b4102T" embed="Never"/>        
+         <face weight="Medium" style="Italic" fontfile="couri" fontfiletype="TrueType"
+               fallback="false"/>
+      </font>-->
+      <!--<font family="Andale" spacing="Proportional" typeface="17004">        
+         <face weight="SemiLight" style="Upright" fontfile="AMWT_F1_LATIN"
+               fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Upright" fontfile="AMWT_F1_LATIN"
+               fontfiletype="TrueType"
+               fallback="true">        
+            <fontresourcelist>        
+               <fontresource fontfile="AMWT_F1_CJK" fontfiletype="TrueType"/>
+            </fontresourcelist>
+         </face>        
+         <face weight="Medium" style="Italic" fontfile="AMWT_F1_LATIN" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="AMWT_F1_LATIN" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="AMWT_F1_LATIN" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Letter Gothic" typeface="4102">        
+         <face weight="Medium" style="Upright" fontfile="letr45w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="letr46w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="letr65w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="CG Omega" typeface="4113">        
+         <face weight="Medium" style="Upright" fontfile="cgor45w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="cgor46w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="cgor65w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="cgor66w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Coronet" typeface="4116">        
+         <face weight="Medium" style="Italic" fontfile="coronet" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Clarendon Condensed" typeface="4140">        
+         <face weight="Bold" style="Upright" width="Condensed" fontfile="clar67w"
+               fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Marigold" typeface="4297">        
+         <face weight="Medium" style="Upright" fontfile="marigold" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Garamond" typeface="4197">        
+         <face weight="Medium" style="Upright" fontfile="garr45w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="garr46w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="garr65w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="garr66w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Palatino" typeface="24591">        
+         <face weight="Medium" style="Upright" fontfile="palr45w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="palr46w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="palr65w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="palr66w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="ITC Avant Garde Gothic" typeface="24607">        
+         <face weight="Medium" style="Upright" fontfile="avgr45w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="avgr46w" fontfiletype="TrueType"/>        
+         <face weight="SemiBold" style="Upright" fontfile="avgr65w" fontfiletype="TrueType"/>        
+         <face weight="SemiBold" style="Italic" fontfile="avgr66w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="ITC Bookman" typeface="24623">        
+         <face weight="Light" style="Upright" fontfile="bokr35w" fontfiletype="TrueType"/>        
+         <face weight="Light" style="Italic" fontfile="bokr36w" fontfiletype="TrueType"/>        
+         <face weight="SemiBold" style="Upright" fontfile="bokr75w" fontfiletype="TrueType"/>        
+         <face weight="SemiBold" style="Italic" fontfile="bokr76w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="New Century Schoolbook" typeface="24703">        
+         <face weight="Medium" style="Upright" fontfile="ncsr55w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="ncsr56w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="ncsr75w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="ncsr76w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="ITC Zapf Chancery" typeface="45099">        
+         <face weight="Medium" style="Italic" fontfile="chanc___" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Univers" typeface="4148">        
+         <face weight="Medium" style="Upright" fontfile="unvr55w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="unvr56w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="unvr65w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="unvr66w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Univers Condensed" typeface="4148">        
+         <face weight="Medium" style="Upright" width="Condensed" fontfile="unvr57w"
+               fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" width="Condensed" fontfile="unvr58w"
+               fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" width="Condensed" fontfile="unvr67w"
+               fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" width="Condensed" fontfile="unvr68w"
+               fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Antique Olive" typeface="4168">        
+         <face weight="Medium" style="Upright" fontfile="olvr55w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="olvr56w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="olvr75w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Albertus" typeface="4362">        
+         <face weight="Medium" style="Upright" fontfile="albr55w" fontfiletype="TrueType"/>        
+         <face weight="ExtraBold" style="Upright" fontfile="albr85w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Arial" typeface="16602">        
+         <face weight="Medium" style="Upright" fontfile="arial" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="ariali" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="arialbd" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="arialbi" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Helvetica" typeface="24580">        
+         <face weight="Medium" style="Upright" fontfile="helr45w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="helr46w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="helr65w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="helr66w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Helvetica Narrow" typeface="24580">        
+         <face weight="Medium" style="Upright" width="Condensed" fontfile="helr47w"
+               fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" width="Condensed" fontfile="helr48w"
+               fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" width="Condensed" fontfile="helr67w"
+               fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" width="Condensed" fontfile="helr68w"
+               fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="CG Times" typeface="4101">        
+         <face weight="Medium" style="Upright" fontfile="cgtr45w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="cgtr46w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="cgtr65w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="cgtr66w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Times Roman" typeface="25093">        
+         <face weight="Medium" style="Upright" fontfile="timr45w" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="timr46w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="timr65w" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="timr66w" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Times New Roman" typeface="16901">        
+         <face weight="Medium" style="Upright" fontfile="times" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="timesi" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="timesbd" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="timesbi" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Courier" typeface="4099">        
+         <face weight="Medium" style="Upright" fontfile="cour" fontfiletype="TrueType"/>        
+         <face weight="Medium" style="Italic" fontfile="couri" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Upright" fontfile="courbd" fontfiletype="TrueType"/>        
+         <face weight="Bold" style="Italic" fontfile="courbi" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Wingdings" typeface="31402">        
+         <face weight="Medium" style="Upright" fontfile="wingding" fontfiletype="TrueType"/>
+      </font>-->
+      <!--<font family="Symbol" typeface="16686">        
+         <face weight="Medium" style="Upright" fontfile="symbol" fontfiletype="TrueType"/>
+      </font>-->
+      <!--Determines for each font in the processed input and output files how it
+                should be treated. The fonts are identified by the "family", "width" and "style"
+                attributes. PCL raster fonts can either be specified by the attribute "fontselector"
+                of the element "face" or by the attribute "fontfile" of the element "raster". While
+                processing PCL input to PCL output, the specified input fonts are replaced according
+                to the settings and embedded in the PCL output file. Attributes: "name": Specifies
+                the name of the font in the input data. "typeface": PCL identifies fonts by several
+                criteria, amongst others, the "typeface". The typeface is a number that clearly
+                identifies the font family. The number is composed of several values specifying font
+                type and producer. "spacing": Another criterion used by PCL to define
+                fonts.-->
+      <!--<font family="Line Printer" typeface="0">        
+         <face weight="Medium" style="Upright" fontfile="cour" fontfiletype="TrueType"/>
+      </font>-->
+   </fontlist>
+
+   <!--The colorprofilelist element contains one colorprofile element
+                per color space. An ICC profile is a standardized record that defines the color
+                space of a device. The ICC profiles can either have the file extension icc (Windows)
+                or icm (Mac). In addition to specifying the file name of the color profile, you can
+                use the resourcelist element to specify which directories are to be searched for the
+                specified color profiles. -->
+   <!--<colorprofilelist>        
+      <colorprofile name="GenericRGB"/>        
+      <colorprofile name="GenericCMYK"/>        
+      <colorprofile name="GenericGray"/>
+   </colorprofilelist>-->
+   <!--Settings for input.-->
+
+   <input>
+      <!--Specifies how macros are processed. "true": the macro is processed as a
+                overlay and referenced inside the document. "false" (default): the macro is split
+                into its components (texts, images, paths etc.) which are added to the page
+                content.-->
+
+      <overlayasreference value="false"/>
+
+      <traylist>
+         <!--For each tray ID of the input file, you specify the unique tray name with
+                the element "inputtray". Additionally you may specify the paper size. The device ID
+                value '0' means that the current page (paper source remains unchanged) is printed
+                with PCL standard settings. Using the combination of Device ID and media type, the
+                user can also specify the tray name. If a mediatype is specified in the PCL
+                document, the filter will search the device ID and mediatype mapped in the profile.
+                If it is found, the filter will use the device name defined in this element as tray
+                name. IF no device ID and/or mediatype is found, the application will igore the
+                media type and only interpret the device ID specified in the profile. Please note
+                that the mediatype is case sensitive. Use the notation specified in the PCL
+                document.-->
+
+         <inputtrays>
+            <inputtray deviceid="1" name="UpperTray"/>
+            <inputtray deviceid="2" name="ManualFeed"/>
+            <inputtray deviceid="3" name="ManualEnvelope"/>
+            <inputtray deviceid="4" name="LowerTray"/>
+            <inputtray deviceid="5" name="LargeCapacity"/>
+            <inputtray deviceid="6" name="Envelope"/>
+            <inputtray deviceid="7" name="Automatic"/>
+
+            <!--<inputtray deviceid="1" mediatype="preprinted" name="TrayX"/>-->
+         </inputtrays>
+
+         <outputtrays>
+            <!--Specifies settings for the output tray. The tray name may also identify a
+                tray from the input file. Attributes: "deviceid": Tray number (tray ID) that is to
+                be used as output tray in the target file. "name": Name by which a tray of the input
+                file can be identified. "pjlcmd": This attribute is only used for customizations.
+                You can specify a PJL command. Please note that @PJL must be written in capital
+                letters. After a line feed, @PJL must be entered before the next
+                command.-->
+
+            <outputtray deviceid="1" name="UpperTray"/>
+            <outputtray deviceid="2" name="LowerTray"/>
+         </outputtrays>
+      </traylist>
+
+      <!-- Specifies default values for the processing of PCL input files. These
+                default settings are used in case the PCL file does not contain corresponding
+                settings.-->
+
+      <defaultsetting>
+         <!--Specifies the default paper size. By default, the paper size is A4. If you
+                want to select another default paper size, you can either enter one of the
+                predefined paper sizes as value or enter value="101" and specify the custom paper
+                size in the element "papersize". The attribute "value" is used to define the size of
+                a page. Enter the PCLID, if you want to specify a different default size than A4
+                (26).-->
+
+         <pagesize value="26"/>
+
+         <!--<pagelength value="68"/>-->
+
+         <orientation value="portrait"/>
+         <symbolset value="341"/>
+         <pointsize value="12"/>
+         <linetermination value="0"/>
+         <dotsize value="1200"/>
+         <duplexcontrol value="simplex"/>
+         <linesperinch value="6"/>
+      </defaultsetting>
+
+      <!-- With the element "fullprintablearea", you can specify whether marginless
+                printing is supported by the printer. Usually, PCL printers do not support
+                marginless printing. Hence, the default setting is FALSE if not specified otherwise.
+                Normally the paper has an unprintable area of 1 / 6 inch around the four edges
+                because most printers just are not accurate enough to start printing exactly on the
+                edge of the paper. However, some printers like the Oce OCE SRA printer, always print
+                marginless. To generate correct PCL on such printers, the value of
+                "fullprintablearea" has to be set to TRUE. Some printers can switch between PCL
+                standard and marginless printing. They use an PJL command to affect the change. For
+                the PCL standard printer, the position {0, 0} is the left top corner of the logical
+                page. The logical page can be moved on the physical page using offset registration
+                commands. Attribute "ignoreOffsetMargin" is important for fullprintablearea only
+                when items are misplaced. Because in fullprintablearea the HMI is calculated based
+                on space increment. When "ignoreOffsetMargin" is set to TRUE, it is calculated based
+                on double rounding technique. -->
+
+      <fullprintablearea value="false" ignoreOffsetMargin="false"/>
+
+      <!-- strategy for processing text items placed outside page clip : (default)
+                Text items will be cropped base on paper size. keep : original item will be written
+                out -->
+
+      <outsidepagehandling value="clip"/>
+
+      <!--Specifies whether the HP-GL/2 settings are retained and considered for
+                duplex printing. The availability of this feature is printer dependent. PCL printers
+                usually reset the HP-GL/2 settings for duplex printing. Thus the default setting is
+                FALSE if not specified otherwise.-->
+
+      <keephpglenvonduplex value="false"/>
+
+      <!--Specifies whether the printer supports color metric RGB (TRUE) or not
+                (FALSE). If not, the specifications are interpreted as device dependent RGB.
+            -->
+
+      <supportcolorimetricrgb value="true"/>
+
+      <!--Specifies whether the PCL color command is ignored (TRUE) or not (FALSE).
+                The Ignore color command is supported for text and vector graphic items. The Ignore
+                color command is not supported for image items.-->
+
+      <ignorecolor value="false"/>
+
+      <!--Specifies, whether the symbol character set specification is used for
+                Unicode identification (TRUE) or not (FALSE). In the latter case, character codes
+                will be used. The PCL standard does not know Unicode. Thus, there are several
+                diverging approaches to render fonts correctly. This setting determines whether
+                symbol sets of soft fonts are used to render the font. Otherwise character codes are
+                used. If the element "codepagelist" contains other specifications, they will
+                overwrite these usage specifications. The default value is FALSE.-->
+
+      <usesymbolset value="false"/>
+
+      <!--If the PCL file associates with external resource e.g. font, macro
+                (overlay), it should be specified here. The macro name is macro file name. The path
+                of the macro file will be specified in 'resourcelist' The file name specify which
+                file should load the external macro file. If file name is '*', the macro will be
+                loaded for every file-->
+      <!--<macrolist>        
+         <file name="input.pcl">        
+            <macro name="macrofilename"/>
+         </file>
+      </macrolist>-->
+      <!--map typeface id to barcode-->
+      <!--<barcodelist producer="ELP">        
+         <barcode name="EAN 8" type="EAN 8" typeface="24620" checkdigits="0" modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="EAN 13" type="EAN 13" typeface="24630" checkdigits="0"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="UCC 128" type="EAN 128" typeface="24710" checkdigits="1"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="EAN 128" type="EAN 128" typeface="24720" checkdigits="1"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="Interleaved 2 of 5" type="Code 2/5 Int" typeface="24640" checkdigits="0"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="Interleaved 2 of 5" type="Code 2/5 Int" typeface="24641" checkdigits="1"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="Industrial 2 of 5" type="Code 2/5 Ind" typeface="24650" checkdigits="0"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="Industrial 2 of 5" type="Code 2/5 Ind" typeface="24651" checkdigits="1"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="Matrix 2 of 5" type="Code 2/5 Matrix" typeface="24660" checkdigits="0"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="Matrix 2 of 5" type="Code 2/5 Matrix" typeface="24661" checkdigits="1"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="Code 11" type="Code 11" typeface="24689" checkdigits="0"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="30 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 39 without space char" type="Code 39" typeface="24670"
+                  checkdigits="0"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="24 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 39 without space char" type="Code 39" typeface="24671"
+                  checkdigits="1"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="24 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 39 with space char" type="Code 39" typeface="24672" checkdigits="0"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="24 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 39 with space char" type="Code 39" typeface="24673" checkdigits="1"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="24 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 39 extended" type="Code 39 extended" typeface="24680"
+                  checkdigits="0"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="24 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 39 extended" type="Code 39 extended" typeface="24681"
+                  checkdigits="1"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="24 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 93" type="Code 93" typeface="24690" checkdigits="2"
+                  modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="Code 128 autoswitch" type="Code 128" typeface="24700" checkdigits="1"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="28 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 128A" type="Code 128A" typeface="24701" checkdigits="1"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="28 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 128B" type="Code 128B" typeface="24702" checkdigits="1"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="28 pt"
+                  displayhri="false"/>        
+         <barcode name="Code 128C" type="Code 128C" typeface="24704" checkdigits="1"
+                  modulewidth="72 cpbu"
+                  moduleshortheight="28 pt"
+                  displayhri="false"/>        
+         <barcode name="DataMatrix 200" type="DataMatrix 200" typeface="24820"
+                  modulewidth="120 cpbu"/>        
+         <barcode name="PDF417" type="PDF417" typeface="24850" modulewidth="12 cpbu"/>        
+         <barcode name="Maxicode" type="Maxicode" typeface="24800" modulewidth="12 cpbu"/>        
+         <barcode name="MSI Plessey" type="MSI" typeface="24760" checkdigits="0"
+                  modulewidth="19 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="MSI Plessey Mod10" type="MSI 10" typeface="24761" checkdigits="1"
+                  modulewidth="19 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="MSI Plessey Mod10 Mod10" type="MSI 10" typeface="24762" checkdigits="2"
+                  modulewidth="19 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="MSI Plessey Mod11 Mod10" type="MSI 11" typeface="24763" checkdigits="2"
+                  modulewidth="19 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="POSTNET 5" type="POSTNET 5" typeface="24770" checkdigits="1"
+                  modulewidth="0.0227 inch"
+                  moduleshortheight="0.042 inch"
+                  modulelongheight="0.126 inch"
+                  displayhri="false"/>        
+         <barcode name="POSTNET 9" type="POSTNET 9" typeface="24771" checkdigits="1"
+                  modulewidth="0.0227 inch"
+                  moduleshortheight="0.042 inch"
+                  modulelongheight="0.126 inch"
+                  displayhri="false"/>        
+         <barcode name="POSTNET 11" type="POSTNET 11" typeface="24772" checkdigits="1"
+                  modulewidth="0.0227 inch"
+                  moduleshortheight="0.042 inch"
+                  modulelongheight="0.126 inch"
+                  displayhri="false"/>        
+         <barcode name="UPCA" type="UPCA" typeface="24600" checkdigits="0" modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="UPCE" type="UPCE" typeface="24610" checkdigits="0" modulewidth="15 tw"
+                  moduleshortheight="1.5 cm"
+                  displayhri="false"/>        
+         <barcode name="Swiss QRCode" type="QRCode with Image" typeface="24862" checkdigits="0"
+                  modulewidth="15 tw"/>
+      </barcodelist>-->
+      <!--default input pcl file is PCL3 or PCL5 default value ist PCL5-->
+
+      <language value="PCL5"/>
+
+      <!--read comments in PJL. default value is TRUE-->
+
+      <readcomments value="true"/>
+
+      <!--read hpgl comments. default value is FALSE-->
+
+      <readhpglcomments value="false"/>
+
+      <!--read oce comments e.g. Esc&p<key=value> as binary comment item
+                including escape sequence. PCL output can copy it binary. A default value is
+                FALSE-->
+
+      <readocecomments value="false"/>
+
+      <!--read oce highlight color e.g. Esc*v#s, # = 2 Highlight Color ON 1 Highlight
+                Color OFF default value is FALSE-->
+
+      <readocehighlightcolor value="false" rgb="#00000000"/>
+
+      <!--read prescribe command in pcl. default value is FALSE-->
+
+      <readprescribe value="false"/>
+
+      <!--add PJL command as PJL comment. Default value is 'none' more option:
+                unsupported - add unsupported PJL command as PJL comment -->
+
+      <AddPjlCommandAsComment value="none"/>
+
+      <!-- pcl soft font name handling. default value is 'none' more option: trim -
+                trim the leading and trailing space -->
+
+      <fontnamehandling value="none"/>
+      <encodinglist>
+         <!--<encoding name="12U" iana="">        
+            <entry code="0x40" char="0020"/>
+         </encoding>-->
+      </encodinglist>
+
+      <!-- trim the extra byte in pcl raster image. Some bad PCL Driver or
+                application write raster data with more than needed, the extra byte should be
+                treated as text according to PCL Standard. But some printers just ignore it.
+            -->
+
+      <trimextrarasterbytes value="false"/>
+
+      <!-- remove the trailing blanks (space, tab, backspace) of text. default value
+                is 'true' -->
+
+      <removetrailingblanks value="true"/>
+
+      <!-- only used in converting pcl to pcl with nobinarycopy. If the printer have
+                installed font card with some pcl font with ID, the pcl file use the font id in the
+                card directly (the font definition is not in the pcl file). You want to convert the
+                pcl file to pcl with nobinarycopy and keep the font id unchanged in the output pcl,
+                please set the value to true. default is false. -->
+
+      <keepsoftfontid value="false"/>
+
+      <!-- specify avaiable memory size in MegaByte for the application. The value
+                will be used to generate page label without out of memory. Default value is 256 MB
+            -->
+
+      <memorysize value="256"/>
+
+      <!--set default linewidth-->
+
+      <defaultlinewidth value="35 mm"/>
+   </input>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--The 'value' specifies the available resolutions in dpi and
+                can contain a list of permissible values as a comma-separated list
+                ('value="600,1200"'). If a value list is specified, the specified resolution from
+                the list will be used. If the respective value is not available, then the highest
+                value will be used. If no values are specified, one of the internally defined
+                default values 1200dpi or 1440dpi will be used.
+            -->
+
+      <measurementunits value="0"/>
+
+      <traylist>
+         <!--For each tray ID of the input file, you specify the unique tray name with
+                the element "inputtray". Additionally you may specify the paper size. The device ID
+                value '0' means that the current page (paper source remains unchanged) is printed
+                with PCL standard settings. Using the combination of Device ID and media type, the
+                user can also specify the tray name. If a mediatype is specified in the PCL
+                document, the filter will search the device ID and mediatype mapped in the profile.
+                If it is found, the filter will use the device name defined in this element as tray
+                name. IF no device ID and/or mediatype is found, the application will igore the
+                media type and only interpret the device ID specified in the profile. Please note
+                that the mediatype is case sensitive. Use the notation specified in the PCL
+                document.-->
+
+         <inputtrays>
+            <inputtray deviceid="1" name="UpperTray"/>
+            <inputtray deviceid="2" name="ManualFeed"/>
+            <inputtray deviceid="3" name="ManualEnvelope"/>
+            <inputtray deviceid="4" name="LowerTray"/>
+            <inputtray deviceid="5" name="LargeCapacity"/>
+            <inputtray deviceid="6" name="Envelope"/>
+            <inputtray deviceid="7" name="Automatic"/>
+
+            <!--<inputtray name="TrayX" mediatype="preprinted"/>-->
+            <!--<inputtray deviceid="5" name="Tray3" mediatype="preprinted" mediatypeid="2">        
+               <papersize pclid="101" width="10 in" height="12 in"/>
+            </inputtray>-->
+         </inputtrays>
+
+         <outputtrays>
+            <!--Specifies settings for the output tray. The tray name may also identify a
+                tray from the input file. Attributes: "deviceid": Tray number (tray ID) that is to
+                be used as output tray in the target file. "name": Name by which a tray of the input
+                file can be identified. "pjlcmd": This attribute is only used for customizations.
+                You can specify a PJL command. Please note that @PJL must be written in capital
+                letters. After a line feed, @PJL must be entered before the next
+                command.-->
+
+            <outputtray deviceid="1" name="UpperTray" pjlcmd="@PJL COMMENT TEST1  @PJL COMMENT TEST2"/>
+            <outputtray deviceid="2" name="LowerTray"/>
+
+            <!-- pjlcmd is used to insert user defined PJL commands into output stream.
+                Injecting PJL commands is for advanced users only. You should know what you're
+                doing! You should use it only if the functionality is not currently supported by
+                Compart software. The use of PJL commands may interfere with the PJL and PCL
+                commands created by Compart's software and may change the output result. There is no
+                guarantee regarding where in the document stream these PJL commands will be
+                injected. They may appear before or after PJL commands created by Compart and this
+                position may change without notice. The inserted pjl command is binary copied into
+                output stream without any check. Please ensure the command syntax is correct. @PJL
+                must be uppercase. After the line feed must be @PJL for next command -->
+
+            <outputtray deviceid="3" name="Tray1" pjlcmd="@PJL COMMENT TEST1  @PJL COMMENT TEST2"/>
+         </outputtrays>
+      </traylist>
+
+      <!-- only used in combination with keepsoftfontid. specify which font with id
+                is already in the font card. the output pcl use such font directly without embedding
+                it -->
+      <!--<pclfontlist>        
+         <pclfont id="123" embed="Never"/>
+      </pclfontlist>-->
+      <!-- try to identify the font and avoid duplicated font output. Default value
+                is true -->
+
+      <writefontonce value="true"/>
+
+      <!-- resolution to use for generated raster fonts. The min and max pair specify
+                the allowd range for font resolutin. The preferred specify the resolution used if
+                the input font have already resolution and output filter can support it. Of course
+                the preferred must be in the range {min, max} Default 0: let the application make
+                decision. For PCL Font: only 300 and 600 dpi is allowed. -->
+
+      <fontresolution min="0" max="0" preferred="0"/>
+
+      <!-- resolution to use for generated raster image. The min and max pair
+                specifies the allowed range for raster resolution. The preferred attribute specifies
+                the resolution used if the input image has already resolution and output filter can
+                support it. Of course the preferred must be in the range {min, max} default 0: let
+                the application decide. For PCL Image: 600, 300, 200, 150, 100, 75 dpi is allowed in
+                PCL standard. Some printers can also support other dpi e.g. 640, 275 and 240.
+            -->
+
+      <rasterresolution min="0" max="0" preferred="0"/>
+
+      <!--Determines how the barcode size is adjusted. true: the barcode size depends
+                on the resolution. false (default): the barcode size depends on the module
+                width.-->
+
+      <adjustbarcodesize value="false" resolution="0" minsize="90%" maxsize="100%"/>
+
+      <!-- specify the supported codepage of the printer. You can get it from printer
+                menu or document. See the codepage value from the table in section 'defaultsetting'.
+                Roman8, PC-8, Windows Latin1, PC-850, Desktop, Wingdings and Symbol will be enabled
+                by default. You do not need specify them. -->
+
+      <symbolsetlist>
+         <!--<symbolset value="277"/>-->
+      </symbolsetlist>
+
+      <!-- output format is PCL3 or PCL5 default value ist PCL5 -->
+
+      <language value="PCL5"/>
+
+      <!-- only used in pcl3 output. The default value for margin is 0 -->
+
+      <pagedefinitionlist>
+         <!--<pagedefinition name="portrait">        
+            <papersize format="A4" orientation="Portrait"/>        
+            <margins left="0 cm" top="0 cm"/>
+         </pagedefinition>-->
+         <!--<pagedefinition name="landscape">        
+            <papersize format="A4" orientation="Landscape"/>        
+            <margins left="0 cm" top="0 cm"/>
+         </pagedefinition>-->
+      </pagedefinitionlist>
+
+      <!-- Disable HPGL generation, if the PCL printer does not support HPGL Default
+                value ist "FALSE" -->
+
+      <nohpgl value="false"/>
+
+      <!-- Disable PJL generation, if the PCL printer does not support PJL Default
+                value is "FALSE" defaultpjl: if "TRUE" then write default PJL commands "@PJL JOB"
+                and "@PJL EOJ" if "FALSE" then don't write default PJL commands "@PJL JOB" and "@PJL
+                EOJ" default value is "TRUE". Note: This attribute will only work if nopjl value =
+                "FALSE" -->
+
+      <nopjl value="false" defaultpjl="true"/>
+
+      <!-- write comment: the values can be 'asInput' and 'HPGL'. The value 'asInput'
+                means if the input page has PJL comment, it will be written as PJL comment. All
+                other comment types except binary comment will be written as HPGL comment(default
+                HPGL). Binary comment will be checked for oce comment escape sequence, if yes,
+                binary copy, if no, ignored-->
+
+      <WriteComment value="HPGL"/>
+
+      <!-- The profile element &apos;writeprinterreset&apos; may only be set
+                to false, if user does not want to write printer reset command. Default value is
+                true. If the value is false, the pjl can not be written in pcl output.
+            -->
+
+      <writeprinterreset value="true"/>
+
+      <!-- write simplex duplex: the values can be 'always', 'never' and 'asinput'.
+                The value 'asinput' means if the input page simplex duplex is explict set, it will
+                be written. If it is per default, it will not be written. (default always)
+            -->
+
+      <writesimplexduplex value="always"/>
+
+      <!--write pagesize: the values can be 'always', 'never' and 'asinput'. The
+                value 'asinput' means if the input page size is explictly set, it will be written.
+                If it is per default, it will not be written. (default value: always) The attribute
+                'method' specifies the command syntax for paper size. The method 'standard' use PCL
+                standard command Esc&l#A to write paper size. The method 'xerox4112' use Xerox
+                printer specific command. Some xerox printers e.g. 4112 use two commands to write
+                paper size <ESC>&f#I says the paper width in current orientation
+                <ESC>&f#J says the paper length in current orientation please use value
+                'xerox4112' to generate output pcl for such printers. The method 'prescribe' use
+                prescribe command SPSZ and/or SCSZ for paper size for Kyocera printers which can
+                both pcl and prescirbe formats. The method 'custom' use paper size ID '101' for
+                non-standard paper size. Please note if the paper size is PCL standard, it will
+                always output by PCL standard command Esc&l#A. Only for non-standard paper size,
+                the specified method is used to generate printer specific paper size.-->
+
+      <writepagesize value="always" method="standard"/>
+
+      <!-- TRUE, if your printer is color printer or you want a color output file.
+                Default value ist "FALSE" -->
+
+      <color value="false"/>
+
+      <!-- ignorecopies: The values can be 'FALSE', 'TRUE' and 'ASINPUT'. Default
+                value is "FALSE" "FALSE": if you dont want to ignore copy command. "TRUE" : if you
+                want to use the copy count configuration of the printer menu. ASINPUT: if you want
+                to write the values coming from input. -->
+
+      <ignorecopies value="false"/>
+
+      <!-- If there is no unprintable area on the physical page, the page does not
+                need be moved to the desired position using the offset registration commands.
+                Example: OCE SRA printer (Pagestream 200 DSC .....) Such printer can position at the
+                whole physical page. The position {0, 0} is at left top corner of physical page. In
+                the PCL standard printer the position {0, 0} is the left top corner of the logical
+                page. The logical page can be shifted in physical page using offset registration
+                commands. Some printers can both, if the edge to edge printing is enabled, it act as
+                full printable area printer, otherwise as standard pcl printer. The edge to edge
+                printing may be one of the following pjl command: 1. @PJL SET EDGETOEDGE=ON 2. @PJL
+                SET XEDGETOEDGE=ON 3. @PJL SET CLIP=OFF The value for edge to edge may be 'ON',
+                'OFF', 'YES' and 'NO' Please edit it carefully. If you specify the value "true", you
+                cannot get the correct print result from the PCL-Standard printer. Default value ist
+                "FALSE" -->
+
+      <fullprintablearea value="false" pjlcmd="@PJL SET EDGETOEDGE=YES"/>
+
+      <!-- strategy for processing items placed outside page clip : (default) image
+                and rect will be cropped base on paper size. Not for text. keep : original item will
+                be written out movetopage: partially implemented to move image objects into
+                printable area -->
+
+      <outsidepagehandling value="clip"/>
+
+      <!-- specify avaiable memory size in MegaByte for the application. The value
+                will be used to generate page label without out of memory. Default value is 256 MB
+            -->
+
+      <memorysize value="8"/>
+
+      <!--Specify the permitted min and max values for macro ID range in output.
+                Valid values range between 0 and 32767. Also indicate whether or not HPGL commands
+                can be enabled in macro. Please keep in mind that if HPGL is disabled with nohpgl
+                element in profile, then HPGL is also disabled in the macro.-->
+
+      <macrohandling min="0" max="32767" enableHPGL="false"/>
+
+      <!-- specify max. allowed softfont count in output. The maxium number is
+                3000-->
+
+      <fonthandling max="3000"/>
+
+      <!--Sets the maximum permitted position deviation of the character (positioning
+                tolerance). Text item is divided into several items in order to meet the permitted
+                tolerance. -->
+
+      <characteraccuracy value="1"/>
+
+      <!-- FALSE, if your printer does not support this raster compress mode Default
+                value is "TRUE" Only for runlength default value is FALSE -->
+      <!--<compressmode name="deltarow" enable="false"/>-->
+      <!--<compressmode name="runlength" enable="false"/>-->
+      <!--<compressmode name="tiffbyte" enable="false"/>-->
+      <!--<compressmode name="adaptive" enable="false"/>-->
+      <!--The profile elememt &apos;imageonly&apos; may only be set to TRUE,
+                if the input has only one image. So only one image will be written in pcl output
+                without any extra pcl command for position, environment and so on. Default value is
+                false-->
+
+      <imageonly value="false"/>
+
+      <!-- gamma correction for gray patterns; intermediate values are interpolated
+                if no value is specified, no correction will be done Default: <gammalist>
+                <gammavalue from= '0' to= '0'/> < gammavalue from= '255' to= '255'/>
+                </gammalist> -->
+
+      <gammalist>
+         <gammavalue from="0" to="0"/>
+         <gammavalue from="255" to="255"/>
+      </gammalist>
+   </output>
+
+   <resourcelist>
+      <fileslist>
+         <!-- type can be "TrueType", "Type1Font", "Type1Metrics", "PCL" if it is not
+                defined, the path will be used for all types Extension can be emtpy,
+                <extension> or wildcard -->
+         <!--<files path="." type="TrueType" extension="ttf"/>-->
+         <!--<files path="resource" type="PCL" extension="FLJ"/>-->
+         <!--<files path="resource" type="PCL" extension="ovl"/>-->
+         <!--<files path="\resource" type="ICC" extension="icc"/>-->
+         <!--<files path="\resource" type="ICC" extension="icm"/>-->
+      </fileslist>
+   </resourcelist>
+</mffpcl>

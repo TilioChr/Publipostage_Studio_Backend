@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/pdf">
+   <xs:element name="mffpdf">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="security" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">If enabled, security settings are applied to output
+                documents.</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Wenn aktiviert, werden Sicherheitseinstellungen auf
+                Ausgangsdokumente angewendet.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="enable" default="false" type="xs:boolean"/>
+                  <xs:attribute name="user-password" default="" type="xs:string"/>
+                  <xs:attribute name="owner-password" default="secret" type="xs:string"/>
+                  <xs:attribute name="keylength" default="40" type="xs:integer"/>
+                  <xs:attribute name="algorithm" default="rc4" type="xs:string"/>
+                  <xs:attribute name="print" default="true" type="xs:string"/>
+                  <xs:attribute name="change" default="true" type="xs:string"/>
+                  <xs:attribute name="extract" default="true" type="xs:string"/>
+                  <xs:attribute name="textnotes-change" default="true" type="xs:string"/>
+                  <xs:attribute name="fill-fields" default="true" type="xs:string"/>
+                  <xs:attribute name="accessibility-extraction" default="true" type="xs:string"/>
+                  <xs:attribute name="assemble" default="true" type="xs:string"/>
+                  <xs:attribute name="digital-copy" default="true" type="xs:string"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Font list attributes are applied to fonts that are not
+                explicitly included in the profile or do not specify a value for the respective
+                attribute. Otherwise, specific font attribute values take precedence over font list
+                attribute values.</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Font list Attribute werden auf Fonts angewendet, die im Profil
+                nicht enthalten sind oder keinen Wert für das jeweilige Attribut definiert haben.
+                Ansonsten haben die Attributwerte spezifischer Fonts Vorrang vor den in der Font
+                list angegebenen Werten.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Defines, how the fonts in the processed input and output files
+                should be handled.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert für jeden Font in den verarbeiteten Ein- und
+                Ausgabedateien, wie dieser behandelt werden soll.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="Courier" type="xs:string"/>
+                                    <xs:attribute name="weight" default="SemiLight">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="CORPR___" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Type1"/>
+                                             <xs:enumeration value="TrueType"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="embed" default="Always">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Always"/>
+                                             <xs:enumeration value="Never"/>
+                                             <xs:enumeration value="Program"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="overrideembeddedfont" default="false" type="xs:boolean"/>
+                                    <xs:attribute name="hinting" default="true" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="CORPORATE" type="xs:string"/>
+                           <xs:attribute name="Serifstyle" default="SansSerif">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Serif"/>
+                                    <xs:enumeration value="SansSerif"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="spacing" default="Proportional">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Monospaced"/>
+                                    <xs:enumeration value="Proportional"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="reftype" default="TrueType">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Type1"/>
+                                    <xs:enumeration value="TrueType"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="overrideembeddedfont" default="false" type="xs:boolean"/>
+                  <xs:attribute name="hinting" default="true" type="xs:boolean"/>
+                  <xs:attribute name="subsetting" default="true" type="xs:boolean"/>
+                  <xs:attribute name="glyphsuffixasunicode" default="false" type="xs:boolean"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Specifies whether PDF XForms will be read as
+                overlays.</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Bestimmt, ob Overlays werden erzeugt aus PDF
+                XForms.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="value" default="false" type="xs:boolean"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="iccprofiles" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Specification of whether or not ICC profiles should be read
+                and written.</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Angabe, ob eingebettete ICC-Profile gelesen werden
+                sollen.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="read" default="false" type="xs:boolean"/>
+                  <xs:attribute name="write" default="false" type="xs:boolean"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="text" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies, whether stroke commands are to be applied or not
+                during rendering.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Gibt an, ob bei der Verarbeitung Stroke-Anweisungen umgesetzt
+                werden sollen oder nicht.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="ignorestroke" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="annotations" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">The element "annotations" specifies if annotations are read
+                and whether they are to be stored as actual annotation items or replaced by the
+                objects they represent. It is used to assign objects (like comments) to a specific
+                position on the page. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Das Element"annotations" definiert, ob annotations
+                (Anmerkungen) gelesen werden und ob sie als eigentliche Annotation-Items beibehalten
+                oder durch die von den Annotations repräsentierten Objekte ersetzt werden sollen. Es
+                wird verwendet, um ein Objekt wie einen Kommentar einer bestimmten Position auf
+                einer Seite zuzuordnen. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="annotation" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Clarifies the general specifications for annotations for
+                certain types of annotations.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Konkretisiert die allgemeinen Einstellungen für alle
+                Anmerkungen für einige spezielle Arten von Anmerkungen.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="type" default="Text">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Text"/>
+                                             <xs:enumeration value="FreeText"/>
+                                             <xs:enumeration value="Stamp"/>
+                                             <xs:enumeration value="Line"/>
+                                             <xs:enumeration value="Square"/>
+                                             <xs:enumeration value="Circle"/>
+                                             <xs:enumeration value="StrikeOut"/>
+                                             <xs:enumeration value="HighLight"/>
+                                             <xs:enumeration value="UnderLine"/>
+                                             <xs:enumeration value="Ink"/>
+                                             <xs:enumeration value="Sound"/>
+                                             <xs:enumeration value="File"/>
+                                             <xs:enumeration value="Widget"/>
+                                             <xs:enumeration value="Polygon"/>
+                                             <xs:enumeration value="PolyLine"/>
+                                             <xs:enumeration value="Screen"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="read" default="true" type="xs:string"/>
+                                    <xs:attribute name="forceprinting" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="read" default="true" type="xs:boolean"/>
+                           <xs:attribute name="generate" default="false" type="xs:boolean"/>
+                           <xs:attribute name="generatepopups" default="false" type="xs:boolean"/>
+                           <xs:attribute name="generatefields" default="false" type="xs:boolean"/>
+                           <xs:attribute name="printall" default="false" type="xs:boolean"/>
+                           <xs:attribute name="generatearchivefields" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="render-page" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether pages of the input document are rendered
+                while being read.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert, ob die Seiten der Eingangsdokumente beim Lesen
+                gerendert werden sollen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="trigger-item" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Specifies certain page objects if the rendering is to be
+                carried out conditionally based on the object type.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Definiert Angaben zu unterschiedlichen Seitenobjekten, wenn
+                das Rendering konditional nach dem Objekttyp erfolgen soll.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="type" default="Path" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="conditional" default="true" type="xs:boolean"/>
+                           <xs:attribute name="imagetype" default="Rgb" type="xs:string"/>
+                           <xs:attribute name="resolution" default="300" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="textclipping" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how clipping information is handled. Depending on
+                the format, this can facilitate the conversion into the output format.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert, wie mit Clipping-Informationen umgegangen werden
+                soll. Je nach Format, kann dies die Konvertierung in das Ausgabeformat deutlich
+                erleichtern.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="Default">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Default"/>
+                                    <xs:enumeration value="ClipToPage"/>
+                                    <xs:enumeration value="Cut-Clipped-Text"/>
+                                    <xs:enumeration value="Clipping-Paths"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="version" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the PDF output format. The versions 1.3, 1.4, 1.5,
+                1.6, 1.7, PDF/A-1, PDF/A-2, PDF/A-3, PDF/UA or combination of them are supported.
+                Version PDF/A is identical to PDF/A-1 and kept for backward compatibility. During
+                input processing, lower versions are reset to 1.3, higher versions are reset to 1.7.
+                If version is set to PDF/A-1, PDF/A-2 or PDF/A-3 it will not be allowed to use PDF
+                less than 1.4. IF version is set to PDF/UA it will not be allowed to use PDF less
+                than 1.7. PDF/UA requires document structure to be generated by the input. Thus, it
+                will not be possible to create correct PDF/UA document if document structure is not
+                available. Please refer to the documentation to get more information about document
+                structure support.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert das gewünschte PDF-Ausgabeformat. Die Versionen 1.3,
+                1.4, 1.5, 1.6, 1.7, PDF/A-1, PDF/A-2, PDF/A-3 und PDF/UA werden unterstützt. Version
+                PDF/A ist identisch zu PDF/A-1 und ist aus Gründen der Rückwärtskompatibilität
+                zulässig. In der Eingangsverarbeitung werden alle niedrigeren Versionen auf 1.3 und
+                alle höheren Versionen auf 1.7 gesetzt.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="1.3">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="1.3"/>
+                                    <xs:enumeration value="1.4"/>
+                                    <xs:enumeration value="1.5"/>
+                                    <xs:enumeration value="1.6"/>
+                                    <xs:enumeration value="1.7"/>
+                                    <xs:enumeration value="pdf/a"/>
+                                    <xs:enumeration value="pdf/a-1"/>
+                                    <xs:enumeration value="pdf/a-2"/>
+                                    <xs:enumeration value="pdf/a-3"/>
+                                    <xs:enumeration value="pdf/ua"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="level" default="b">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="a"/>
+                                    <xs:enumeration value="b"/>
+                                    <xs:enumeration value="u"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="strict" default="false" type="xs:boolean"/>
+                           <xs:attribute name="ignore" default="" type="xs:string"/>
+                           <xs:attribute name="removealpha" default="Auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="Selective"/>
+                                    <xs:enumeration value="RenderPage"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="zipcompression" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the settings for the ZIP compression (compression
+                level).</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert die Einstellungen für die ZIP-Komprimierung
+                (Komprimierungsgrad).</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="level" default="default" type="xs:string"/>
+                           <xs:attribute name="purpose" default="Image">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Image"/>
+                                    <xs:enumeration value="Page"/>
+                                    <xs:enumeration value="Document"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="autotagging" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether a semantic structure is automatically
+                generated and written into the PDF (tagged PDF).</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Legt fest, ob bei der Erstellung der Ausgabedateien
+                automatisch eine semantische Struktur erzeugt und in das PDF geschrieben werden soll
+                (Tagged PDF).</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="language" default="de-DE" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="outputintent" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">With the element "outputintent", color properties of PDF
+                documents, starting with version 1.4, can be mapped to color reproduction properties
+                of specific output devices.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Mit Hilfe von Output-Intents können seit der PDF-Version 1.4
+                die Farbeigenschaften von PDF-Dateien auf Farbreproduktionseigenschaften von
+                bestimmten Ausgabegeräten abgebildet werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="Adobe RGB (1998)" type="xs:string"/>
+                           <xs:attribute name="filename" default="" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">Specifies the file name of a PDF/A valid ICC
+                profile</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="embed" default="Auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="Always"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="viewer" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how the resulting PDF document is displayed in a
+                reader (whether it is initially opened offering thumbnail navigation, bookmark
+                navigation or in full screen mode).</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Legt fest, wie das PDF-Dokument in einem Reader geöffnet
+                werden soll (ob das Dokument beim Öffnen mit Thumbnail-Navigation, mit
+                Bookmark-Navigation oder im Vollseitenmodus angezeigt werden soll).</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="pagemode" default="None">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="None"/>
+                                    <xs:enumeration value="Thumbs"/>
+                                    <xs:enumeration value="OutLines"/>
+                                    <xs:enumeration value="FullScreen"/>
+                                    <xs:enumeration value="Attachments"/>
+                                    <xs:enumeration value="Optional_Content"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="autoprint" default="false" type="xs:boolean"/>
+                           <xs:attribute name="hidetoolbar" default="false" type="xs:boolean"/>
+                           <xs:attribute name="hidemenubar" default="false" type="xs:boolean"/>
+                           <xs:attribute name="hidewindowui" default="false" type="xs:boolean"/>
+                           <xs:attribute name="fitwindow" default="false" type="xs:boolean"/>
+                           <xs:attribute name="centerwindow" default="false" type="xs:boolean"/>
+                           <xs:attribute name="displaydoctitle" default="false" type="xs:boolean"/>
+                           <xs:attribute name="printscaling" default="AppDefault">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="AppDefault"/>
+                                    <xs:enumeration value="None"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fontresolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specification of the Type3 font resolution</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Angabe der Auflösung für Type3-Fonts</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="replacepattern" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how rectangles with fill patterns are to be replaced
+                by the corresponding gray values.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Legt fest, ob Rechtecke mit Füllmustern (Pattern) durch einen
+                entsprechenden Grauwert ersetzt werden sollen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="movetobegin" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="formfields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether form fields are displayed.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Legt fest, ob Formularfelder angezeigt werden
+                sollen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="standard" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="noimagemasks" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether image masks are to be interpreted as normal
+                images (may be necessary for compatibility reasons with older printer
+                drivers).</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Legt fest, dass Image-Masken als normale Images interpretiert
+                werden sollen (kann aus Kompatibilitätsgründen mit älteren Druckertreibern notwendig
+                sein).</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="imagecompressions" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="imagecompression" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Sets the image compression. "imagecompression" can be
+                specified with valid combinations of bpp and color format. Invalid settings are
+                ignored.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Definiert die Einstellung(en) für die Image-Komprimierung.
+                "imagecompression" kann mit jeweils gültigen Kombinationen aus bpp und Farbformat
+                angegeben werden. Ungültige Angaben werden ignoriert.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="bitsperpixel" default="1">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:integer">
+                                             <xs:enumeration value="1"/>
+                                             <xs:enumeration value="2"/>
+                                             <xs:enumeration value="4"/>
+                                             <xs:enumeration value="8"/>
+                                             <xs:enumeration value="24"/>
+                                             <xs:enumeration value="32"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="colorformat" default="GrayScale">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="GrayScale"/>
+                                             <xs:enumeration value="Palette"/>
+                                             <xs:enumeration value="Rgb"/>
+                                             <xs:enumeration value="Cmyk"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="compression" default="Default">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Default"/>
+                                             <xs:enumeration value="FaxG4"/>
+                                             <xs:enumeration value="Jpeg"/>
+                                             <xs:enumeration value="Zip"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="binarycopy" default="false" type="xs:boolean"/>
+                                    <xs:attribute name="pattern-compression" default="Default">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Default"/>
+                                             <xs:enumeration value="FaxG4"/>
+                                             <xs:enumeration value="Jpeg"/>
+                                             <xs:enumeration value="Zip"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="jpegquality" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the quality of written JPEG images as
+                percentage.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Qualität von JPEG-Images in
+                Prozent.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="75">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:integer">
+                                    <xs:minInclusive value="0"/>
+                                    <xs:maxInclusive value="100"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fonthandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Controls the handling of fonts for output file creation.
+                Specifies how fonts that have not been defined in the element "font" are
+                handled.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Einstellungen zum Umgang mit Fonts bei der Erzeugung der
+                Ausgabedateien. Festlegung, wie Fonts behandelt werden, die nicht im Element "font"
+                definiert sind.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="default" default="Auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="Rasterize"/>
+                                    <xs:enumeration value="ConvertToType3"/>
+                                    <xs:enumeration value="UseStandardFonts"/>
+                                    <xs:enumeration value="UseBestMatchingFonts"/>
+                                    <xs:enumeration value="UseOriginalFonts"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="split-optimization" default="false" type="xs:boolean"/>
+                           <xs:attribute name="autotype3" default="false" type="xs:boolean"/>
+                           <xs:attribute name="intensify" default="false" type="xs:boolean"/>
+                           <xs:attribute name="mapBoundedFont" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">This attribute is used to map bounded font in
+                fontlist</xs:documentation>
+                                 <xs:documentation xml:lang="de-DE"/>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writearchivefields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether archive fields are written as
+                annotations.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Legt fest, ob Archivfelder als Anmerkungen (Notizen)
+                geschrieben werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="Not">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Not"/>
+                                    <xs:enumeration value="Annotations"/>
+                                    <xs:enumeration value="PieceInfo"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="invisible" default="false" type="xs:boolean"/>
+                           <xs:attribute name="application" default="Compart" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="stampaswatermark" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Stamp as watermark. Valid value: false, true is deprecated.
+                Please use the application to control this setting.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Stamp as watermark. Gültiger Wert: false, true ist veraltet.
+                Bitte nutzen Sie die Anwendung, um diese Einstellung zu kontrollieren.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writetimestamp" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether a time stamp is written into the output
+                (default: 'true').</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert, ob ein Zeitstempel in die Ausgabe geschrieben wird
+                (Standardwert ist "true").</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writesimplexduplexpdf" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">write simplex duplex in the pdf output: the values can be 'true' or 'false'
+                (default: 'true').</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Schreibt Duplexinformationen in die PDF-Ausgabe: mögliche Werte sind 'true' 
+            oder 'false' (Standardwert ist 'true')</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"), Dateiendung
+                ("extension") und Auflösung ("resolution") sind optional. Je mehr Angaben gemacht
+                werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="TrueType" type="xs:string"/>
+                                    <xs:attribute name="extension" default="ttf" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

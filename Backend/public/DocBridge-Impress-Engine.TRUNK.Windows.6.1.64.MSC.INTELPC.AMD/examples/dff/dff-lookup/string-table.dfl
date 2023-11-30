@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dff:lookup xmlns:dff="http://www.compart.com/ns/dff" xmlns="http://www.w3.org/1999/xhtml">
+    <dff:lookupentry id="Item">
+        <b>Item</b>
+    </dff:lookupentry>
+    <dff:lookupentry id="Description">
+        <b>Description</b>
+    </dff:lookupentry>
+    <dff:lookupentry id="Number">
+        <b>Number</b>
+    </dff:lookupentry>
+    <dff:lookupentry id="Amount">
+        <b>Amount</b>
+    </dff:lookupentry>
+    <dff:lookupentry id="Total">
+        <b>Total</b>
+    </dff:lookupentry>
+</dff:lookup>

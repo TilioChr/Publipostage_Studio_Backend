@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffvps xmlns="http://www.compart.com/ns/mff/vps" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+
+   <fontlist>
+      <font family="Helvetica">
+         <face devname="Helvetica" weight="Medium" width="Normal" style="Upright" fontfile="_a______" fontfiletype="Type1"/>
+         <face devname="Helvetica-Oblique" weight="Medium" width="Normal" style="Italic" fontfile="Helvetica-Oblique" fontfiletype="Type1"/>
+         <face devname="Helvetica-Bold" weight="Bold" width="Normal" style="Upright" fontfile="Helvetica-Bold" fontfiletype="Type1"/>
+         <face devname="Helvetica-BoldOblique" weight="Bold" width="Normal" style="Italic" fontfile="Helvetica-BoldOblique" fontfiletype="Type1"/>
+         <face devname="Helvetica-Light" weight="Light" width="Normal" style="Upright" fontfile="Helvetica-Light" fontfiletype="Type1"/>
+         <face devname="Helvetica-LightOblique" weight="Light" width="Normal" style="Italic" fontfile="Helvetica-LightOblique" fontfiletype="Type1"/>
+         <face devname="Helvetica-Black" weight="ExtraBold" width="Normal" style="Upright" fontfile="Helvetica-Black" fontfiletype="Type1"/>
+         <face devname="Helvetica-BlackOblique" weight="ExtraBold" width="Normal" style="Italic" fontfile="Helvetica-BlackOblique" fontfiletype="Type1"/>
+      </font>
+   </fontlist>
+
+   <output>
+      <traylist>
+         <inputtrays>
+            <inputtray name="Tray1" deviceid="0" command="%Default" insertsheet="false" leadingedge="1" manualfeed="true" mediaclass="Envelope" mediacolor="blue" mediaposition="2" mediatype="office" mediaweight="10" trayswitch="true" deferredmediaselection="true">
+               <papersize format="A4" orientation="Portrait"/>
+            </inputtray>
+
+            <!--<inputtray deviceid="2" name="Tray3" command="%Default"/>-->
+
+            <inputtray name="Tray2" deviceid="1" insertsheet="false" leadingedge="1" manualfeed="true" mediaclass="Envelope" mediacolor="blue" mediaposition="2" mediatype="office" mediaweight="10" trayswitch="true" deferredmediaselection="true"/>
+         </inputtrays>
+
+         <outputtrays>
+            <!--Page Delivery (see PostScript Reference Manual) * jog * 0 Do not jog pages
+                at all. 1 Jog at device deactivation. 2 Jog at the end of the job. Jogging between
+                jobs is controlled by the value of Jog for the page device that is current between
+                jobs. Thus, this feature can be turned on or off only by executing setpagedevice as
+                part of an unencapsulated job. 3 Jog after each page set (as defined by the Collate
+                parameter).-->
+
+            <outputtray name="FistOutputTray" collate="true" jog="2" numcopies="2" device="" faceup="true" type="" command="%Default"/>
+            <outputtray name="SecondOutputTray" command="%Default"/>
+         </outputtrays>
+      </traylist>
+   </output>
+
+   <input>
+      <overlayasreference value="false"/>
+
+      <!--TRUE : create overlays from the .eps on run opecd rator or from external
+                images (default) FALSE : doesn't create overlays-->
+
+      <createoverlay value="true"/>
+
+      <!--FALSE : % comments are ignored (default) TRUE : Comments are
+                read-->
+
+      <readcomments value="false" regexp="%Page" matchregexp="false"/>
+
+      <!--true : choose the page size by DSC comment PageBoundingBox-->
+
+      <autopagesize value="false"/>
+
+      <traylist>
+         <inputtrays>
+            <!--If there are not any inputtray, it enables the virtual tray mode which is
+                useful to read the number and the attributes of the trays that there are on the
+                file-->
+
+            <inputtray name="Tray1" deviceid="0" command="%Default" insertsheet="false" leadingedge="1" manualfeed="true" mediaclass="Envelope" mediacolor="blue" mediaposition="2" mediatype="office" mediaweight="10" trayswitch="true" deferredmediaselection="true">
+               <papersize format="A4" orientation="Portrait"/>
+            </inputtray>
+
+            <inputtray deviceid="2" name="Tray3" command="%Default"/>
+            <inputtray name="Tray2" deviceid="1" insertsheet="false" leadingedge="1" manualfeed="true" mediaclass="Envelope" mediacolor="blue" mediaposition="2" mediatype="office" mediaweight="10" trayswitch="true" deferredmediaselection="true"/>
+         </inputtrays>
+      </traylist>
+   </input>
+
+   <resourcelist>
+      <fileslist>
+         <files path="." type="Type1Font" extension="pfb"/>
+      </fileslist>
+   </resourcelist>
+</mffvps>

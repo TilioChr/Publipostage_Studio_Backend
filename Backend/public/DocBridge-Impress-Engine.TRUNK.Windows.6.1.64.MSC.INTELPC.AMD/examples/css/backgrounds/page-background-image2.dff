@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Background Colors</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");
+            @page {
+                margin: 0;
+                background-image: url('images/background.pdf');
+                -cp-background-image-page-number: 3;
+            }
+            body {
+                margin-left: 2cm;
+                margin-right: 2cm;
+                margin-top: 4.5cm;
+                margin-bottom: 2.5cm;
+            }</style>
+    </head>
+    <body>
+        <!--        <xi:include href="../../common/standardheader.dfb"/>-->
+        <h1>Page Background Images</h1>
+        <p>You can use the Compart proprietary <code>-cp-background-image-page-number</code>
+            property to specify the behavior for background images with multiple pages.</p>
+        <p>This document demonstrates how to use a specific page, page 3, from an underlay with
+            multiple pages.</p>
+    </body>
+</html>

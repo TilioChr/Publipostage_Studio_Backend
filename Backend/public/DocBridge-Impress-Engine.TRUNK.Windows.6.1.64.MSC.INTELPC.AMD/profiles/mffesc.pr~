@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffesc xmlns="http://www.compart.com/ns/mff/esc" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for both input and output.-->
+
+   <globals>
+      <!--Character to be used when the requested character is not in the
+                font-->
+
+      <defaultchar char="003F"/>
+
+      <!--The optimization of overlapping graphics
+                objects.-->
+      <!--Attribute: value @comment: The control of optimization of overlapping graphics objects.
+                Valid values are "Always", "Never", and "IfDifferentTypes". The default value is
+                "Always". The value "Always" enables the graphics object optimization within pages
+                and "Never" disables it. "IfDifferentTypes" enables graphics object optimization
+                exactly if the format type of input and output is different. Graphics object
+                optimization combines overlapping objects, adapts color to the capabilites of the
+                output device, often improves visual appearance of the result, but slows down
+                conversions substantially.-->
+
+      <optimizepa value="ifDifferentTypes"/>
+      <optimizepaoptions/>
+   </globals>
+
+   <!--Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct or dummy device names must be specified -->
+   <!--Font list controles the font handling in ESC/P filter espacially for using
+                printer font und using user defined characters. Example for using printer font by
+                mapping to font "Courier" by devname="Courier": <fontlist/> <font
+                family="CourierNew" serifstyle="SERIF" spacing="MONOSPACED"> <face
+                devname="Courier" /> </font> </fontlist/> Example for using user
+                defined characters (only for one font possible) controled by rasterize="output":
+                <fontlist/> <font family="CourierNewPSMT" serifstyle="SERIF"
+                spacing="MONOSPACED" /> <face size="10" rasterize="output" /> </font>
+                <fontlist/> -->
+
+   <fontlist/>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!-- Defines the printer dependent emulation switch command to be used.
+                Example: <EmulationSwitch command =
+                "&#x1B;&#x5B;&#x3B;&#x34;&#x20;&#x72;"/>
+            -->
+      <!--<EmulationSwitch command=""/>-->
+      <!-- Definition of the output stream command version. "ESC/P", "ESC/P2" and
+                "9-Pin ESC/P" are allowed values. -->
+
+      <version value="ESC/P2"/>
+
+      <!-- Definition of supported code pages of the print and the required setting
+                to use them. Example: <codepagelist> <codepage name="IBM 850" iana="IBM850"
+                d2="3" d3="0"/> </codepagelist> -->
+
+      <codepagelist/>
+
+      <!-- The element "pagedefinition" determines the correct positioning of text
+                and images on the page. The attribute "name" specifies the name of the page
+                definition. Example: <pagedefinitionlist> <pagedefinition name="paper">
+                Paper size can be specified by "format" and "orientation" or "width" and "height"
+                The value 0 for "linesperpage" means unspecified. Attribute: height @comment: The
+                height of the paper sheet. Valid length units are "tcm", "mm", "cm", "dm", "m",
+                "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch", and "ln". <papersize
+                height="12 in" width="21 cm"/> <margins left="2 cm" right="67 mm" top="1 cm"
+                bottom="95 mm"/> </pagedefinition> </pagedefinitionlist>
+            -->
+
+      <pagedefinitionlist/>
+
+      <!-- strategy for processing text items placed outside page clip : (default)
+                Text items will be cropped base on page size respecting the margins keep : original
+                item will be written out -->
+
+      <outsidepagehandling value="clip"/>
+
+      <!-- Determines how the ESC output filter handles fonts. If you specify
+                renderiffontnotmapped="false", text that cannot be mapped is not allowed to be
+                rendered and the program aborts in normal mode. -->
+
+      <fonthandling renderiffontnotmapped="true"/>
+
+      <!--Attribute: value @comment: Determines the printing method used. Options: "unidirectional",
+                "bidirectional" and "default" prints printer default (no print method selection
+                command will be used)-->
+
+      <PrintMethod value="default"/>
+
+      <!--qualitiy settings for print text items with printer font with allowed
+                values: "Draft", "Letter-Quality" and "Super-Draft" -->
+
+      <printquality name="Draft"/>
+
+      <!-- The list of input trays. This element can have a child
+                element list of type inputtrays. -->
+
+      <traylist>
+         <!--The list with input tray to define the paper height using the
+                page definition reference or the paper size element. Example 1: <inputtrays>
+                <inputtray name="Tray10" > <papersize height="12 in" width="21 cm"/>
+                </inputtray > </inputtrays> Example 2: <inputtrays> <inputtray
+                name="Tray10" pagedefinition="paper" /> </inputtrays> -->
+
+         <inputtrays/>
+      </traylist>
+
+      <!--Determines how the ESC output filter handles text items for printing
+                containing not supported characters.-->
+      <!--Attribute: value @comment: Values for controling the text rendering are: "none", "word", "line" and
+                "asIs" -->
+
+      <ControlTextRendering value="none"/>
+
+      <!--Determines the Dithering method for conversions of color images to black
+                and white. Valid attributes are: default: specifies the dithering algorithm. Valid
+                values are: AUTO (equals CLUSTERED), CLUSTERED, DISPERSED, FLOYDSTEINBERG, STUCKI,
+                JARVISJUDICENINKE, THRESHOLD. Parameter: controls the algorithm. Valid value ranges
+                for different dithering methods are e.g. "AUTO" (or "CLUSTERED"): values 2-8;
+                "DISPERSED": values values 2-8; "THRESHOLD": values 1-100-->
+
+      <dithermethod default="auto" parameter="4"/>
+
+      <!--Specifies the available barcode types of the printer-->
+
+      <barcodelist>
+         <barcode name="EAN-13" type="EAN 13"/>
+         <barcode name="EAN-8" type="EAN 8"/>
+         <barcode name="Code 2/5 Interleaved" type="Code 2/5 Int"/>
+         <barcode name="UPC-A" type="UPCA"/>
+         <barcode name="UPC-E" type="UPCE"/>
+         <barcode name="Code 39" type="Code 39"/>
+         <barcode name="Code 128" type="Code 128"/>
+         <barcode name="POSTNET" type="POSTNET"/>
+      </barcodelist>
+
+      <!--The size of a barcode depends of the used module width. Due to the small
+        resolution and using integer values to describe the module width, the size of the barcode
+        can differ from the desired value, defined by the item size. maxSize and minSize can be used
+        to define the derivation of the defined bounding rectangle of the barcode. These values are
+        in percent. The default setting is 90% for the minSize and 100% for maxSize except 50% - 150% for EscP filter. 
+        If the barcode size is outside this range, the barcode will be added as image.-->
+
+      <adjustbarcodesize value="true" minSize="50%" maxSize="150%" align="left"/>
+   </output>
+</mffesc>

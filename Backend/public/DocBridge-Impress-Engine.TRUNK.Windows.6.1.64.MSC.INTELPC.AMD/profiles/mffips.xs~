@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/ips">
+   <xs:element name="mffips">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="Input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Konfiguration des IPDS-Druckerverhaltens</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">Configuration of IPDS printer behaviour</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="IPDSPrinters" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Liste der IPDS-Druckeremulationen</xs:documentation>
+                           <xs:documentation xml:lang="en-EN">List of IPDS printer emulations</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="IPDSPrinter" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="de-DE">Definition einer IPDS-Druckeremulation</xs:documentation>
+                                    <xs:documentation xml:lang="en-EN">Definition of an IPDS printer emulation</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="Connection" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Name der TCP/IP Verbindung</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Name of the TCP/IP connection</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="name" use="required" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Name einer IPDS-Druckeremulation</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Name of an IPDS printer emulation</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="dataPacketSize" default="8">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Maximale Paketgrösse im IPDS-Trägerprotokoll
+                PPR/PPD</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Maximum packet size in IPDS carrier protocol
+                PPR/PPD</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:integer">
+                                                      <xs:minInclusive value="1"/>
+                                                      <xs:maxInclusive value="32"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="connectionTimeOut" default="300">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Verbindungstimeout in Sekunden</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Connection timeout in seconds</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="IPDSTrace" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Konfigurationseinstellungen zum Protokollieren der
+                IPDS-Kommunikation zwischen Host und IPDS Receiver (pprPpdTrace)</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Configuration settings for tracing IPDS communication between
+                host and IPDS Receiver (pprPpdTrace)</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="recordingDirectory" default="" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Pfadname des Aufzeichnungsverzeichnisses für
+                IPDS-Jobs</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Path name of the recording directory for IPDS
+                jobs</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="pprPpdTrace" default="false" type="xs:boolean">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Konfigurationseinstellungen zum Protokollieren der
+                IPDS-Kommunikation für IPDS-Jobs</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Configuration settings for tracing IPDS communication for IPDS
+                jobs</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="Job" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Konfigurationseinstellungen für IPDS-Jobs</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Configuration settings for IPDS jobs</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="CloseJob" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Trigger für IPDS-Jobs</xs:documentation>
+                                                      <xs:documentation xml:lang="en-EN">Triggers for IPDS jobs</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:attribute name="timeOut" default="0" type="xs:integer">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Zeitdauer die die IPDS-Druckeremulation auf Seiten
+                wartet</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Time in seconds the IPDS printer emulation waits for more
+                pages</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="pages" default="0" type="xs:integer">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Maximale Seitenanzahl pro Ausgabedatei</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Maximum number of pages per output file</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="stackReceivedPages" default="true" type="xs:boolean">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Job schließen, wenn Host stack received pages
+                sendet</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Close job when host sends stack received pages</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="hostEvent" default="true" type="xs:boolean">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Job öffnen und schließen wenn Host Host initiate bzw.
+                terminate sendet</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Open or close job when host sends initiate or
+                terminate</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="DocumentName" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Kontainerelement für Dokument-Namensfelder</xs:documentation>
+                                                      <xs:documentation xml:lang="en-EN">Container for document name fields</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:attribute name="fields" use="required" type="xs:string">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Dokument-Namensfelder</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Document name fields</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="fieldSeparator" use="required" type="xs:string">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Trennzeichen zwischen den Dokument-Namensfeldern</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Separator between document name fields</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="Emulation" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">IPDS-Druckertyp der emuliert werden soll</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">IPDS printer type to emulate</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="type" use="required">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">IPDS-Druckertyp der emuliert werden soll</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">IPDS printer type to emulate</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="GenericContinuous"/>
+                                                      <xs:enumeration value="GenericContinuousDuplex"/>
+                                                      <xs:enumeration value="GenericCutSheet"/>
+                                                      <xs:enumeration value="GenericCutSheetRRL4028"/>
+                                                      <xs:enumeration value="IBMLaserPrint4028"/>
+                                                      <xs:enumeration value="IBMLaserPrint4028Simplex"/>
+                                                      <xs:enumeration value="IBMMatrixPrint4224"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="CodePageList" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="CodePage" minOccurs="0" maxOccurs="1">
+                                                   <xs:complexType>
+                                                      <xs:attribute name="name" default="T1001148" type="xs:string"/>
+                                                      <xs:attribute name="iana" default="IBM01148" type="xs:string"/>
+                                                      <xs:attribute name="default" default="yes" type="xs:string"/>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="DefaultCharset" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="value" use="required" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="TrayList" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Liste der Eingabe- und Ausgabeschächte</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">List of input and output trays</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="InputTrays" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Liste der Eingabeschächte</xs:documentation>
+                                                      <xs:documentation xml:lang="en-EN">List of input trays</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:sequence>
+                                                         <xs:element name="InputTray" minOccurs="0" maxOccurs="unbounded">
+                                                            <xs:annotation>
+                                                               <xs:documentation xml:lang="de-DE">Deklaration eines Eingabeschachts</xs:documentation>
+                                                               <xs:documentation xml:lang="en-EN">Declaration of an input tray</xs:documentation>
+                                                            </xs:annotation>
+                                                            <xs:complexType>
+                                                               <xs:sequence>
+                                                                  <xs:element name="PaperSize" minOccurs="0" maxOccurs="1">
+                                                                     <xs:annotation>
+                                                                        <xs:documentation xml:lang="de-DE">Dem Eingabeschacht zugeordnetes Papierformat</xs:documentation>
+                                                                        <xs:documentation xml:lang="en-EN">Paper size associated with the input tray</xs:documentation>
+                                                                     </xs:annotation>
+                                                                     <xs:complexType>
+                                                                        <xs:attribute name="width" default="21.0cm" type="xs:string">
+                                                                           <xs:annotation>
+                                                                              <xs:documentation xml:lang="de-DE">Breite des Papiers</xs:documentation>
+                                                                              <xs:documentation xml:lang="en-EN">Width of the paper sheet</xs:documentation>
+                                                                           </xs:annotation>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="height" default="29.7cm" type="xs:string">
+                                                                           <xs:annotation>
+                                                                              <xs:documentation xml:lang="de-DE">Höhe des Papiers</xs:documentation>
+                                                                              <xs:documentation xml:lang="en-EN">Height of the paper sheet</xs:documentation>
+                                                                           </xs:annotation>
+                                                                        </xs:attribute>
+                                                                     </xs:complexType>
+                                                                  </xs:element>
+                                                                  <xs:element name="Margins" minOccurs="0" maxOccurs="1">
+                                                                     <xs:annotation>
+                                                                        <xs:documentation xml:lang="de-DE">Deklaration von Bogenrändern</xs:documentation>
+                                                                        <xs:documentation xml:lang="en-EN">Declaration of sheet margins</xs:documentation>
+                                                                     </xs:annotation>
+                                                                     <xs:complexType>
+                                                                        <xs:attribute name="left" default="0cm" type="xs:string">
+                                                                           <xs:annotation>
+                                                                              <xs:documentation xml:lang="de-DE">Deklaration des linken Seitenrands</xs:documentation>
+                                                                              <xs:documentation xml:lang="en-EN">Declaration of left margin</xs:documentation>
+                                                                           </xs:annotation>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="right" default="0cm" type="xs:string">
+                                                                           <xs:annotation>
+                                                                              <xs:documentation xml:lang="de-DE">Deklaration des rechten Seitenrands</xs:documentation>
+                                                                              <xs:documentation xml:lang="en-EN">Declaration of right margin</xs:documentation>
+                                                                           </xs:annotation>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="top" default="0cm" type="xs:string">
+                                                                           <xs:annotation>
+                                                                              <xs:documentation xml:lang="de-DE">Deklaration des oberen Seitenrands</xs:documentation>
+                                                                              <xs:documentation xml:lang="en-EN">Declaration of top margin</xs:documentation>
+                                                                           </xs:annotation>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="bottom" default="0cm" type="xs:string">
+                                                                           <xs:annotation>
+                                                                              <xs:documentation xml:lang="de-DE">Deklaration des unteren Seitenrands</xs:documentation>
+                                                                              <xs:documentation xml:lang="en-EN">Declaration of bottom margin</xs:documentation>
+                                                                           </xs:annotation>
+                                                                        </xs:attribute>
+                                                                     </xs:complexType>
+                                                                  </xs:element>
+                                                               </xs:sequence>
+                                                               <xs:attribute name="deviceID" use="required">
+                                                                  <xs:annotation>
+                                                                     <xs:documentation xml:lang="de-DE">Media Source ID des Eingabeschachts</xs:documentation>
+                                                                     <xs:documentation xml:lang="en-EN">Media source ID of the input tray</xs:documentation>
+                                                                  </xs:annotation>
+                                                                  <xs:simpleType>
+                                                                     <xs:restriction base="xs:integer">
+                                                                        <xs:minInclusive value="0"/>
+                                                                        <xs:maxInclusive value="255"/>
+                                                                     </xs:restriction>
+                                                                  </xs:simpleType>
+                                                               </xs:attribute>
+                                                               <xs:attribute name="name" use="required" type="xs:string">
+                                                                  <xs:annotation>
+                                                                     <xs:documentation xml:lang="de-DE">Name des Eingabeschachts</xs:documentation>
+                                                                     <xs:documentation xml:lang="en-EN">Name of the input tray</xs:documentation>
+                                                                  </xs:annotation>
+                                                               </xs:attribute>
+                                                               <xs:attribute name="default" default="yes" type="xs:string"/>
+                                                            </xs:complexType>
+                                                         </xs:element>
+                                                      </xs:sequence>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="OutputTrays" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Liste der Ausgabeschächte</xs:documentation>
+                                                      <xs:documentation xml:lang="en-EN">List of output trays</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:sequence>
+                                                         <xs:element name="OutputTray" minOccurs="0" maxOccurs="unbounded">
+                                                            <xs:annotation>
+                                                               <xs:documentation xml:lang="de-DE">Deklaration eines Ausgabeschachts</xs:documentation>
+                                                               <xs:documentation xml:lang="en-EN">Declaration of an output tray</xs:documentation>
+                                                            </xs:annotation>
+                                                            <xs:complexType>
+                                                               <xs:attribute name="deviceID" use="required">
+                                                                  <xs:annotation>
+                                                                     <xs:documentation xml:lang="de-DE">Gerätenummer des Ausgabeschachts</xs:documentation>
+                                                                     <xs:documentation xml:lang="en-EN">Device ID of the output tray</xs:documentation>
+                                                                  </xs:annotation>
+                                                                  <xs:simpleType>
+                                                                     <xs:restriction base="xs:integer">
+                                                                        <xs:minInclusive value="1"/>
+                                                                        <xs:maxInclusive value="255"/>
+                                                                     </xs:restriction>
+                                                                  </xs:simpleType>
+                                                               </xs:attribute>
+                                                               <xs:attribute name="name" use="required" type="xs:string">
+                                                                  <xs:annotation>
+                                                                     <xs:documentation xml:lang="de-DE">Name des Ausgabeschachts</xs:documentation>
+                                                                     <xs:documentation xml:lang="en-EN">Name of the output tray</xs:documentation>
+                                                                  </xs:annotation>
+                                                               </xs:attribute>
+                                                               <xs:attribute name="default" default="yes" type="xs:string"/>
+                                                            </xs:complexType>
+                                                         </xs:element>
+                                                      </xs:sequence>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" use="required" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Name einer IPDS-Druckeremulation</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">Name of an IPDS printer emulation</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="resourceMemory" default="0" type="xs:integer">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Speicherplatz für Ressourcen in Bytes</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">Resource memory in bytes</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="bufferPages" default="200">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Anzahl der gepufferten Seiten des
+                Eingabedokuments</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">Number of buffered pages of the input document</xs:documentation>
+                                       </xs:annotation>
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:integer">
+                                             <xs:minInclusive value="10"/>
+                                             <xs:maxInclusive value="4000"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="haidResourceDirectory" default="" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Unterverzeichnis für HAID-Ressourcen</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">Subdirectory for HAID resources</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="default" default="NAME_EXAMPLE_VALUE" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">Name der Standard-IPDS-Druckeremulation</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">Name of default IPDS printer emulation</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="ipdsprinters" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Liste der IPDS-Drucker</xs:documentation>
+                           <xs:documentation xml:lang="en-EN">List of IPDS printers</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="ipdsprinter" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="de-DE">Definition einer IPDS-Druckeremulation</xs:documentation>
+                                    <xs:documentation xml:lang="en-EN">Definition of an IPDS printer emulation</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="connection" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Name der Verbindung des IPDS-Druckers</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Name of connection of IPDS printer</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="name" use="required" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Name der Verbindung des IPDS-Druckers</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Name of connection of IPDS printer</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="datapacketsize" default="8">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Maximale Paketgrösse im IPDS-Trägerprotokoll
+                PPR/PPD</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Maximum packet size in IPDS carrier protocol
+                PPR/PPD</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:integer">
+                                                      <xs:minInclusive value="1"/>
+                                                      <xs:maxInclusive value="32"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="connectiontimeout" default="300">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Verbindungstimeout der TCP/IP-Verbindung</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Connection timeout of the TCP/IP connection</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="disconnectiondelay" default="10">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Verzögerung vor dem Beenden der
+                TCP/IP-Verbindung</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Delay before termination of TCP/IP connection</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="IPDSTrace" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Konfigurationseinstellungen zum Protokollieren der
+                IPDS-Kommunikation zwischen IPDS-Filter und Drucker (pprPpdTrace)</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Configuration settings for tracing IPDS communication between
+                IPDS filter and the printer (pprPpdTrace)</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="enablestmopc" default="false" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Steuert das Auslesen von Druckereigenschaften</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Controls reading of printer characteristics</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="stmfile" default="" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Pfadname der binären STM-Datei</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Path name of the binary STM file</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="opcfile" default="" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Pfadname der binären OPC-Datei</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Path name of the binary OPC file</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="recordingdir" default="" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Pfadname des Aufzeichnungsverzeichnisses für
+                IPDS-Jobs</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Path name of the recording directory for IPDS
+                jobs</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="pprppdtrace" default="false" type="xs:boolean">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Konfigurationseinstellungen zum Protokollieren der
+                IPDS-Kommunikation für IPDS-Jobs</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Configuration settings for tracing IPDS communication for IPDS
+                jobs</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="enableNetTrace" default="false" type="xs:boolean">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Erzeugung von Netzwerk-Trace-Dateien für
+                IPDS-Jobs</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Generation of network trace files for IPDS jobs</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="optimizepa" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Optimierung überlappender Grafikobjekte</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Optimization of overlapping graphics objects</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="Never">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Typ der Optimierung</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Optimization type</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="IfDifferentTypes"/>
+                                                      <xs:enumeration value="Always"/>
+                                                      <xs:enumeration value="Never"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="Job" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="Jog" minOccurs="0" maxOccurs="1">
+                                                   <xs:complexType>
+                                                      <xs:attribute name="enable" default="true" type="xs:boolean">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Jogging im Ablagesystem</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Jogging in stacker</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="jogmode" default="default">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Jogging-Betriebsart</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Jog mode</xs:documentation>
+                                                         </xs:annotation>
+                                                         <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                               <xs:enumeration value="default"/>
+                                                               <xs:enumeration value="jogperjob"/>
+                                                            </xs:restriction>
+                                                         </xs:simpleType>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="useCopyMarks" default="false" type="xs:boolean">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Verwenden von Randmarkierungen</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Usage of control edge marks</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="dataFidelity" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Konfigurationselement für Datenqualität in
+                IPDS-Jobs</xs:documentation>
+                                                      <xs:documentation xml:lang="en-EN">Configuration element for data fidelity in IPDS
+                jobs</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:attribute name="maxerrorpages" default="1" type="xs:integer">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Anzahl der Fehlerseiten, die zum Abbruch eines Druckjobs
+                führt</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Number of error pages that terminates a print
+                job</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="reportundefinedchars" default="never">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Drucker erzeugt Fehlermeldungen für fehlende Zeichen in
+                Fonts</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Printer generates error messages for missing characters in
+                fonts</xs:documentation>
+                                                         </xs:annotation>
+                                                         <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                               <xs:enumeration value="never"/>
+                                                               <xs:enumeration value="printer"/>
+                                                               <xs:enumeration value="filter"/>
+                                                            </xs:restriction>
+                                                         </xs:simpleType>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="reportprintoutsidepage" default="true" type="xs:boolean">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Drucker erzeugt Fehlermeldungen für Grafikobjekte ausserhalb
+                des druckbaren Bereichs</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Printer generates error messages for graphics objects outside
+                of the printable area</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="positioncheckhighlight" default="true" type="xs:boolean">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Drucker erzeugt Positionsfehler-Markierungen</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Printer generates position error markers</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="clipoutsidepage" default="false" type="xs:boolean">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Beschneiden der zu druckenden Seiten auf den druckbaren
+                Bereich</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Clipping of the pages to be printed to the printable
+                area</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="MarkForm" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Definiert, ob druckerdefinierte Markierungen auf die Ränder
+                des ersten und letzten Blattes eines Jobs gedruckt werden</xs:documentation>
+                                                      <xs:documentation xml:lang="en-EN">Specifies whether printer defined marks are printed on the
+                edges of the first and the last sheet of a job</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:attribute name="value" default="false" type="xs:boolean">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Definiert, ob der Drucker Markierungen ausgibt</xs:documentation>
+                                                            <xs:documentation xml:lang="en-EN">Specifies whether the printer will print marks</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="fonthandling" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Konfigurationselement für den Umgang mit Fonts</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Configuration element for font settings</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="enableType1Font" default="false" type="xs:boolean">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Verwendung von Typ 1-Fonts</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Usage of Type 1 fonts</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="enableTrueTypeFont" default="false" type="xs:boolean">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Verwendung von TrueType-Fonts</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Usage of TrueType fonts</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="fontresolution" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="en-US">Resolution to be used for auto-generated raster fonts to
+                output text.</xs:documentation>
+                                             <xs:documentation xml:lang="de-DE"/>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="0" type="xs:int"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="PageSegmentAsReference" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Verwendung von Page Segments</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Usage of page segments</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="true" type="xs:boolean">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Verwendung von Page Segments</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Usage of page segments</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="goca" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Steuert die GOCA-Ausgabe für IPDS</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Controls the GOCA output for IPDS</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="gocalinewidthbase" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Gerätespezifische normale Linienbreite von GOCA-Version
+                DR/2V0</xs:documentation>
+                                                      <xs:documentation xml:lang="en-US">Device specific normal line width of GOCA version
+                DR/2V0</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:attribute name="value" default="0.01in" type="xs:string"/>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="gocamaxlinewidthfactor" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Gerätespezifischer maximaler Faktor für Linienbreiten in
+                GOCA </xs:documentation>
+                                                      <xs:documentation xml:lang="en-EN">Device specific maximum factor for line widths in
+                GOCA</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:attribute name="value" default="10" type="xs:integer"/>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="GocaLineJoinStyle" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Form der Verbindungen in zusammengesetzten Linien von
+                GOCA-Version DR/2V0</xs:documentation>
+                                                      <xs:documentation xml:lang="en-US">Shape of joints in concatenated lines of GOCA version
+                DR/2V0</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:attribute name="value" default="round" type="xs:string"/>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="GocaLineCapStyle" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Form der Enden von Linien für GOCA-Ausgabe der GOCA-Version
+                DR/2V0</xs:documentation>
+                                                      <xs:documentation xml:lang="en-US">Shape of ends of lines for GOCA output of GOCA version
+                DR/2V0</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:attribute name="value" default="round" type="xs:string"/>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                             <xs:attribute name="value" default="false" type="xs:boolean">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Aktiviert oder Deaktiviert die GOCA-Ausgabe für
+                IPDS</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">Enables or Diasbles the GOCA output for IPDS</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Liste der Eingabe- und Ausgabeschächte</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">List of input and output trays</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Liste der Eingabeschächte</xs:documentation>
+                                                      <xs:documentation xml:lang="en-EN">List of input trays</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:sequence>
+                                                         <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                                            <xs:annotation>
+                                                               <xs:documentation xml:lang="de-DE">Deklaration eines Eingabeschachts</xs:documentation>
+                                                               <xs:documentation xml:lang="en-EN">Declaration of an input tray</xs:documentation>
+                                                            </xs:annotation>
+                                                            <xs:complexType>
+                                                               <xs:attribute name="deviceid" use="required">
+                                                                  <xs:annotation>
+                                                                     <xs:documentation xml:lang="de-DE">Gerätenummer des Eingabeschachts</xs:documentation>
+                                                                     <xs:documentation xml:lang="en-EN">Device ID of the input tray</xs:documentation>
+                                                                  </xs:annotation>
+                                                                  <xs:simpleType>
+                                                                     <xs:restriction base="xs:integer">
+                                                                        <xs:minInclusive value="0"/>
+                                                                        <xs:maxInclusive value="255"/>
+                                                                     </xs:restriction>
+                                                                  </xs:simpleType>
+                                                               </xs:attribute>
+                                                               <xs:attribute name="name" use="required" type="xs:string">
+                                                                  <xs:annotation>
+                                                                     <xs:documentation xml:lang="de-DE">Name des Eingabeschachts</xs:documentation>
+                                                                     <xs:documentation xml:lang="en-EN">Name of the input tray</xs:documentation>
+                                                                  </xs:annotation>
+                                                               </xs:attribute>
+                                                               <xs:attribute name="nup" default="1">
+                                                                  <xs:annotation>
+                                                                     <xs:documentation xml:lang="de-DE">Anzahl der Partitionen pro Bogen</xs:documentation>
+                                                                     <xs:documentation xml:lang="en-EN">Number of partitions per sheet</xs:documentation>
+                                                                  </xs:annotation>
+                                                                  <xs:simpleType>
+                                                                     <xs:restriction base="xs:integer">
+                                                                        <xs:minInclusive value="1"/>
+                                                                        <xs:maxInclusive value="4"/>
+                                                                     </xs:restriction>
+                                                                  </xs:simpleType>
+                                                               </xs:attribute>
+                                                            </xs:complexType>
+                                                         </xs:element>
+                                                      </xs:sequence>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="outputtrays" minOccurs="0" maxOccurs="1">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Liste der Ausgabeschächte</xs:documentation>
+                                                      <xs:documentation xml:lang="en-EN">List of output trays</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:sequence>
+                                                         <xs:element name="outputtray" minOccurs="0" maxOccurs="unbounded">
+                                                            <xs:annotation>
+                                                               <xs:documentation xml:lang="de-DE">Deklaration eines Ausgabeschachts</xs:documentation>
+                                                               <xs:documentation xml:lang="en-EN">Declaration of an output tray</xs:documentation>
+                                                            </xs:annotation>
+                                                            <xs:complexType>
+                                                               <xs:attribute name="deviceid" use="required">
+                                                                  <xs:annotation>
+                                                                     <xs:documentation xml:lang="de-DE">Gerätenummer des Ausgabeschachts</xs:documentation>
+                                                                     <xs:documentation xml:lang="en-EN">Device ID of the output tray</xs:documentation>
+                                                                  </xs:annotation>
+                                                                  <xs:simpleType>
+                                                                     <xs:restriction base="xs:integer">
+                                                                        <xs:minInclusive value="1"/>
+                                                                        <xs:maxInclusive value="65535"/>
+                                                                     </xs:restriction>
+                                                                  </xs:simpleType>
+                                                               </xs:attribute>
+                                                               <xs:attribute name="name" use="required" type="xs:string">
+                                                                  <xs:annotation>
+                                                                     <xs:documentation xml:lang="de-DE">Name des Ausgabeschachts</xs:documentation>
+                                                                     <xs:documentation xml:lang="en-EN">Name of the output tray</xs:documentation>
+                                                                  </xs:annotation>
+                                                               </xs:attribute>
+                                                            </xs:complexType>
+                                                         </xs:element>
+                                                      </xs:sequence>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" use="required" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Name einer IPDS-Druckeremulation</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">Name of an IPDS printer emulation</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="resourcememory" default="-1" type="xs:integer">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Vollständige Puffergrösse des Druckers zum Speichern von
+                Ressourcen</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">Total buffer size of printer for storing
+                resources</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="bufferpages" default="200">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Grösse des Sendepuffers im Treiber gemessen in
+                Seiten</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">Size of the send buffer in the driver specified in
+                pages</xs:documentation>
+                                       </xs:annotation>
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:integer">
+                                             <xs:minInclusive value="10"/>
+                                             <xs:maxInclusive value="4000"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="pagesperacknowledge" default="100" type="xs:integer">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Anzahl der Seiten zwischen
+                Synchronisierungsbefehlen</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">Number of pages between synchronization commands</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="secondsPerAcknowledge" default="5" type="xs:integer">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">
+                Anzahl der Sekunden zwischen Synchronisierungsbefehlen
+            </xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">Number of seconds between synchronization commands</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="default" default="File" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">Name der Standard-IPDS-Druckeremulation</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">Name of the default IPDS printer emulation</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="tcpipconnections" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Liste der TCP/IP-Verbindungen</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">List of TCP/IP connections</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="tcpipconnection" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Deklaration einer TCP/IP-Verbindung</xs:documentation>
+                           <xs:documentation xml:lang="en-EN">declaration of a TCP/IP connection</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" use="required" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">Name einer TCP/IP-Verbindung</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">name of a TCP/IP connection</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="host" use="required" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">IP-Adresse des IPDS-Druckers</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">IP address of the IPDS printer</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="port" default="5001">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">Port-Nummer des IPDS-Druckers</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">Port number of the IPDS printer</xs:documentation>
+                              </xs:annotation>
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:integer">
+                                    <xs:minInclusive value="0"/>
+                                    <xs:maxInclusive value="65535"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Speicherort von Ressourcendateien</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Location of resource files</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Liste der Dateipfade</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">List of file paths</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"),
+                Dateierweiterung ("extension") und Auflösung ("resolution") sind optional. Je mehr
+                Angaben gemacht werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="" type="xs:string"/>
+                                    <xs:attribute name="type" default="truetype">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="truetype"/>
+                                             <xs:enumeration value="type1font"/>
+                                             <xs:enumeration value="type1metrics"/>
+                                             <xs:enumeration value="icc"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

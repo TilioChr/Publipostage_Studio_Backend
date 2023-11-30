@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffcpurires xmlns="http://www.compart.com/ns/mff/cpurires" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!-- Configuration for resolving URI by URL 
+      * use 'UriMappings' to configure how to resolve URI by URL 
+      * use 'HttpHeaderRulesSets' to specify variable parts per URI scheme, e.g. for authorization or version -->
+
+   <UrlHandlingConfiguration version="1.0">
+      <!-- for each URI to be resolved by URL enter the URI scheme for 'from' and URL for 
+     'to' as demonstrated by the examples below -->
+
+      <UriMappings>
+         <UriMapping from="cpres:impress:example/resources/file.pdf" to="http://www.example.com/files/input.pdf"/>
+         <UriMapping from="resdir://example/resources/file.pdf" to="http://www.example.com/files/input.pdf"/>
+      </UriMappings>
+
+      <!-- for each URI scheme, you can enter variable headers as demonstrated below -->
+
+      <HttpHeaderRulesSets>
+         <HttpHeaderRules match="cpres:impress:foo">
+            <HttpHeaderRule headerName="Authorization" headerValue="Bearer ${TOKEN}"/>
+            <HttpHeaderRule headerName="App-Version" headerValue="${VERSION}"/>
+         </HttpHeaderRules>
+      </HttpHeaderRulesSets>
+   </UrlHandlingConfiguration>
+</mffcpurires>

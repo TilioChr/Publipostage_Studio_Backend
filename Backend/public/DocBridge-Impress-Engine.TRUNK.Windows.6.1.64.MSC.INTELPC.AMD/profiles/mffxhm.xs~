@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/xhm">
+   <xs:element name="mffxhm">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen sowohl für die Eingabe als auch für
+                die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for both input and output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="defaultchar" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="char" default="003F" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="parsingmode" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Parsing mode can be specified by "value": sax: Use SAX mode to parse the
+                file, not to use, if selectors are used in the style sheet. dom: Use DOM mode. Scan
+                the whole file before processing it in Dom mode. auto: Automatic behaviour, depends
+                on file size.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="dom"/>
+                                    <xs:enumeration value="sax"/>
+                                    <xs:enumeration value="auto"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="resolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Pixel resolution for pixel values in ppi (pixels per inch), default 72
+                ppi.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="rx" default="72">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:integer">
+                                    <xs:minInclusive value="0"/>
+                                    <xs:maxInclusive value="10000"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="ry" default="72">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:integer">
+                                    <xs:minInclusive value="0"/>
+                                    <xs:maxInclusive value="10000"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultsetting" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pointsize" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">Default point size setting.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="12">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:integer">
+                                             <xs:minInclusive value="0"/>
+                                             <xs:maxInclusive value="10000"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinitionlist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Page definition for page output.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Papiergröße für Seitenausgabe.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pagedefinition" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="en-EN">Paper size can be specified either by a combination of
+                "format" and "orientation" or "width" and "height".</xs:documentation>
+                                             <xs:documentation xml:lang="de-DE">Kann entweder durch eine Kombination aus "format" und
+                "orientation" oder aus "width" und "height" definiert werden.</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="format" default="A4">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Name einer Standardpapiergrösse</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">name of a standard paper size</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="4A0"/>
+                                                      <xs:enumeration value="2A0"/>
+                                                      <xs:enumeration value="A0"/>
+                                                      <xs:enumeration value="A1"/>
+                                                      <xs:enumeration value="A2"/>
+                                                      <xs:enumeration value="A3"/>
+                                                      <xs:enumeration value="A4"/>
+                                                      <xs:enumeration value="A4 tab"/>
+                                                      <xs:enumeration value="A5"/>
+                                                      <xs:enumeration value="A6"/>
+                                                      <xs:enumeration value="A7"/>
+                                                      <xs:enumeration value="A8"/>
+                                                      <xs:enumeration value="A9"/>
+                                                      <xs:enumeration value="A10"/>
+                                                      <xs:enumeration value="B0"/>
+                                                      <xs:enumeration value="B1"/>
+                                                      <xs:enumeration value="B2"/>
+                                                      <xs:enumeration value="B3"/>
+                                                      <xs:enumeration value="B4"/>
+                                                      <xs:enumeration value="B5"/>
+                                                      <xs:enumeration value="B5 Extra"/>
+                                                      <xs:enumeration value="B6"/>
+                                                      <xs:enumeration value="B7"/>
+                                                      <xs:enumeration value="B8"/>
+                                                      <xs:enumeration value="B9"/>
+                                                      <xs:enumeration value="B10"/>
+                                                      <xs:enumeration value="C0"/>
+                                                      <xs:enumeration value="C1"/>
+                                                      <xs:enumeration value="C2"/>
+                                                      <xs:enumeration value="C3"/>
+                                                      <xs:enumeration value="C4"/>
+                                                      <xs:enumeration value="C5"/>
+                                                      <xs:enumeration value="C6"/>
+                                                      <xs:enumeration value="C65"/>
+                                                      <xs:enumeration value="C7"/>
+                                                      <xs:enumeration value="C8"/>
+                                                      <xs:enumeration value="C9"/>
+                                                      <xs:enumeration value="C10"/>
+                                                      <xs:enumeration value="DL"/>
+                                                      <xs:enumeration value="RA0"/>
+                                                      <xs:enumeration value="RA1"/>
+                                                      <xs:enumeration value="RA2"/>
+                                                      <xs:enumeration value="RA3"/>
+                                                      <xs:enumeration value="RA4"/>
+                                                      <xs:enumeration value="SRA0"/>
+                                                      <xs:enumeration value="SRA1"/>
+                                                      <xs:enumeration value="SRA2"/>
+                                                      <xs:enumeration value="SRA3"/>
+                                                      <xs:enumeration value="SRA4"/>
+                                                      <xs:enumeration value="ID-1"/>
+                                                      <xs:enumeration value="ID-2"/>
+                                                      <xs:enumeration value="ID-3"/>
+                                                      <xs:enumeration value="LETTER"/>
+                                                      <xs:enumeration value="LEGAL"/>
+                                                      <xs:enumeration value="CSHEET"/>
+                                                      <xs:enumeration value="DSHEET"/>
+                                                      <xs:enumeration value="ESHEET"/>
+                                                      <xs:enumeration value="TABLOID"/>
+                                                      <xs:enumeration value="LEDGER"/>
+                                                      <xs:enumeration value="STATEMENT"/>
+                                                      <xs:enumeration value="EXECUTIVE"/>
+                                                      <xs:enumeration value="FOLIO"/>
+                                                      <xs:enumeration value="QUARTO"/>
+                                                      <xs:enumeration value="10X14"/>
+                                                      <xs:enumeration value="11X17"/>
+                                                      <xs:enumeration value="NOTE"/>
+                                                      <xs:enumeration value="ENV9"/>
+                                                      <xs:enumeration value="ENV10"/>
+                                                      <xs:enumeration value="ENV11"/>
+                                                      <xs:enumeration value="ENV12"/>
+                                                      <xs:enumeration value="ENV14"/>
+                                                      <xs:enumeration value="MONARCH"/>
+                                                      <xs:enumeration value="PERSONAL"/>
+                                                      <xs:enumeration value="FANFOLDUS"/>
+                                                      <xs:enumeration value="FANFOLDSTDGERMAN"/>
+                                                      <xs:enumeration value="FANFOLDLGLGERMAN"/>
+                                                      <xs:enumeration value="IMPERIALFOLIO"/>
+                                                      <xs:enumeration value="IMPERIALQUARTO"/>
+                                                      <xs:enumeration value="IMPERIALOCTAVO"/>
+                                                      <xs:enumeration value="ROYALFOLIO"/>
+                                                      <xs:enumeration value="ROYALQUARTO"/>
+                                                      <xs:enumeration value="ROYALOCTAVO"/>
+                                                      <xs:enumeration value="CROWNFOLIO"/>
+                                                      <xs:enumeration value="CROWNQUARTO"/>
+                                                      <xs:enumeration value="CROWNOCTAVO"/>
+                                                      <xs:enumeration value="FOOLSCAPFOLIO"/>
+                                                      <xs:enumeration value="FOOLSCAPQUARTO"/>
+                                                      <xs:enumeration value="FOOLSCAPOCTAVO"/>
+                                                      <xs:enumeration value="MEDIUMQUARTO"/>
+                                                      <xs:enumeration value="DEMYQUARTO"/>
+                                                      <xs:enumeration value="DEMYOCTAVO"/>
+                                                      <xs:enumeration value="CHOU1"/>
+                                                      <xs:enumeration value="CHOU2"/>
+                                                      <xs:enumeration value="CHOU3"/>
+                                                      <xs:enumeration value="CHOU31"/>
+                                                      <xs:enumeration value="CHOU30"/>
+                                                      <xs:enumeration value="CHOU40"/>
+                                                      <xs:enumeration value="CHOU4"/>
+                                                      <xs:enumeration value="KAKUA3"/>
+                                                      <xs:enumeration value="KAKU0"/>
+                                                      <xs:enumeration value="KAKU1"/>
+                                                      <xs:enumeration value="KAKU2"/>
+                                                      <xs:enumeration value="KAKU3"/>
+                                                      <xs:enumeration value="KAKU4"/>
+                                                      <xs:enumeration value="KAKU5"/>
+                                                      <xs:enumeration value="KAKU6"/>
+                                                      <xs:enumeration value="KAKU7"/>
+                                                      <xs:enumeration value="KAKU8"/>
+                                                      <xs:enumeration value="FURUSU10"/>
+                                                      <xs:enumeration value="YOU0"/>
+                                                      <xs:enumeration value="YOU1"/>
+                                                      <xs:enumeration value="YOU2"/>
+                                                      <xs:enumeration value="YOU3"/>
+                                                      <xs:enumeration value="YOU4"/>
+                                                      <xs:enumeration value="YOU5"/>
+                                                      <xs:enumeration value="YOU6"/>
+                                                      <xs:enumeration value="YOU7"/>
+                                                      <xs:enumeration value="JP PC ENV"/>
+                                                      <xs:enumeration value="JP PC"/>
+                                                      <xs:enumeration value="JP PC OFUKO"/>
+                                                      <xs:enumeration value="JIS B4"/>
+                                                      <xs:enumeration value="JIS B5"/>
+                                                      <xs:enumeration value="JIS B6"/>
+                                                      <xs:enumeration value="JIS Exec"/>
+                                                      <xs:enumeration value="BUSINESS"/>
+                                                      <xs:enumeration value="Commercial 9"/>
+                                                      <xs:enumeration value="Commercial 634"/>
+                                                      <xs:enumeration value="8K"/>
+                                                      <xs:enumeration value="16K"/>
+                                                      <xs:enumeration value="BENUTZERDEFINIERT"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="orientation" default="Portrait">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Orientierung einer Standardpapiergrösse</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">orientation of a standard paper size</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:NMTOKEN">
+                                                      <xs:enumeration value="Portrait"/>
+                                                      <xs:enumeration value="Landscape"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="height" default="29.7 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des Papierbogens</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">height of paper sheet</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="width" default="21 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des Papierbogens</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">width of paper sheet</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="margins" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Deklaration von Bogenrändern</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">declaration of sheet margins</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="left" default="1.75 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des linken Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">width of left sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="right" default="1.75 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des rechten Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">width of right sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="top" default="1 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des oberen Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">height of top sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="bottom" default="1 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des unteren Bogenrands</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">height of bottom sheet margin</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="Default" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="version" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Create an HTML file of version 5 or 4, default is HTML5.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="html5">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="html4"/>
+                                    <xs:enumeration value="html5"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="Header" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Control which header will be written, default is page. No header written if
+                the value is none.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="location" default="page">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="page"/>
+                                    <xs:enumeration value="none"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fonthandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Controls the handling of fonts for output file creation.
+                Specifies how fonts that have not been defined in the element "font" are
+                handled.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Einstellungen zum Umgang mit Fonts bei der Erzeugung der
+                Ausgabedateien. Festlegung, wie Fonts behandelt werden, die nicht im Element "font"
+                definiert sind.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="default" default="Auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="UseStandardFonts"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ImageHandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Controls the handling of images for output file
+                creation.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="embed" default="Auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="Always"/>
+                                    <xs:enumeration value="Never"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="WriteInvisibleText" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Whether to write rastered text also invisible on top.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">Default is false</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Font is specified by "family", "width" and "style". "subsetting" -
+                (only in output) - specifies, whether subsets of the embedded fonts should be
+                specified in the output files.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="fontresourcelist" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="fontresource" minOccurs="0" maxOccurs="1">
+                                                   <xs:complexType>
+                                                      <xs:attribute name="fontfile" default="COUR.ttf" type="xs:string"/>
+                                                      <xs:attribute name="fontfiletype" default="TrueType">
+                                                         <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                               <xs:enumeration value="Type1"/>
+                                                               <xs:enumeration value="TrueType"/>
+                                                            </xs:restriction>
+                                                         </xs:simpleType>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="weight" default="medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="ultralight"/>
+                                             <xs:enumeration value="extralight"/>
+                                             <xs:enumeration value="light"/>
+                                             <xs:enumeration value="semilight"/>
+                                             <xs:enumeration value="medium"/>
+                                             <xs:enumeration value="semibold"/>
+                                             <xs:enumeration value="bold"/>
+                                             <xs:enumeration value="extrabold"/>
+                                             <xs:enumeration value="ultrabold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="upright"/>
+                                             <xs:enumeration value="italic"/>
+                                             <xs:enumeration value="underscore"/>
+                                             <xs:enumeration value="overstruck"/>
+                                             <xs:enumeration value="outline"/>
+                                             <xs:enumeration value="serif"/>
+                                             <xs:enumeration value="sansserif"/>
+                                             <xs:enumeration value="proportional"/>
+                                             <xs:enumeration value="monospaced"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="truetype">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="truetype"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="default" default="false">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="true"/>
+                                             <xs:enumeration value="false"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="arial" type="xs:string"/>
+                           <xs:attribute name="subsetting" default="true" type="xs:boolean"/>
+                           <xs:attribute name="reftype" default="truetype">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="truetype"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN"> = Files ==============================================================
+                type can be "TrueType", "Type1Font", "Type1Metrics" if it is not defined, the path
+                will be used for all types, extension can be emtpy, &lt;extension&gt; or wildcard
+                ======================================================================
+            </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"),
+                Dateierweiterung ("extension") und Auflösung ("resolution") sind optional. Je mehr
+                Angaben gemacht werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="" type="xs:string"/>
+                                    <xs:attribute name="type">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="pagesegment"/>
+                                             <xs:enumeration value="overlay"/>
+                                             <xs:enumeration value="codepage"/>
+                                             <xs:enumeration value="imbedfiles"/>
+                                             <xs:enumeration value="codedfont"/>
+                                             <xs:enumeration value="charset"/>
+                                             <xs:enumeration value="formdef"/>
+                                             <xs:enumeration value="mediummap"/>
+                                             <xs:enumeration value="pagedef"/>
+                                             <xs:enumeration value="program"/>
+                                             <xs:enumeration value="resourcelib"/>
+                                             <xs:enumeration value="reslib"/>
+                                             <xs:enumeration value="object"/>
+                                             <xs:enumeration value="truetype"/>
+                                             <xs:enumeration value="type1font"/>
+                                             <xs:enumeration value="type1"/>
+                                             <xs:enumeration value="type1metrics"/>
+                                             <xs:enumeration value="pcl"/>
+                                             <xs:enumeration value="icc"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

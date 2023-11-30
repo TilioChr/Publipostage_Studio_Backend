@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/psb">
+   <xs:element name="mffpsb">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN"> Specify Font List </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="deviceid" default="1" type="xs:integer"/>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="cour" type="xs:string"/>
+                                    <xs:attribute name="size" default="12" type="xs:double"/>
+                                    <xs:attribute name="fontfiletype" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="TrueType"/>
+                                             <xs:enumeration value="Type1"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="CourierBM" type="xs:string"/>
+                           <xs:attribute name="typeface" default="3" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen sowohl für die Eingabe als auch für
+                die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for both input and output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="defaultchar" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Zeichen, das verwendet wird, wenn das angeforderte Zeichen nicht im Font enthalten ist
+            </xs:documentation>
+                           <xs:documentation xml:lang="en-US">Character to be used when the requested character is not included in the font
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="char" default="003F" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="codepagelist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="codepage" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" default="12U" type="xs:string"/>
+                                    <xs:attribute name="iana" default="IBM850" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="readcomments" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="format" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="codepage" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="iana" default="ISO-8859-1" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="macrolist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> Specify Macro File list to load before processing input data</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="file" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" default="prescribe.mcro" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="sheetmargins" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> sheetmargins are used to set the default start offset of physical
+                sheet.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="left" default="5 mm" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">Breite des linken Bogenrands</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">width of left sheet margin</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="right" default="0 mm" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">Breite des rechten Bogenrands</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">width of right sheet margin</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="top" default="5 mm" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">Höhe des oberen Bogenrands</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">height of top sheet margin</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="bottom" default="0 mm" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">Höhe des unteren Bogenrands</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">height of bottom sheet margin</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinition" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Definiert das Standard-Papierformat. Für die USA Letter, für
+                Europa A4. Es ist empfehlenswert diese Einstellung immer zu verwenden. Wenn das
+                Element &lt;inputtray&gt; ebenfalls im Profil definiert ist, wird das Papierformat
+                durch den im Element &lt;inputtray&gt; angegebenend Wert überschrieben</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Set the default paper size. Letter for US and A4 for EU. It is
+                recommended to always use this setting. If &lt;inputtray&gt; is also specified in the
+                profile, the papersize will be overwritten by the value used in
+                &lt;inputtray&gt;</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="de-DE">Deklaration einer Papiergrösse</xs:documentation>
+                                    <xs:documentation xml:lang="en-EN">Declaration of a paper size</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="format" default="A4" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Name einer Standardpapiergrösse</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">name of a standard paper size</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="orientation" default="portrait" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Orientierung einer Standardpapiergrösse</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">orientation of a standard paper size</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="margins" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="left" default="1 mm" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Breite des linken Bogenrands</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">width of left sheet margin</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="right" default="1 mm" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Breite des rechten Bogenrands</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">width of right sheet margin</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="top" default="1 mm" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Höhe des oberen Bogenrands</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">height of top sheet margin</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="bottom" default="1 mm" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Höhe des unteren Bogenrands</xs:documentation>
+                                          <xs:documentation xml:lang="en-EN">height of bottom sheet margin</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="linesperinch" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="6" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="name" default="a4_1" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="controlchars" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="controlchar" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN"> Specify control Chars and related actions to perform </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="byte" default="\x0C" type="xs:string"/>
+                                    <xs:attribute name="action1" default="formfeed" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="barcodelist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="barcode" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" default="0" type="xs:string"/>
+                                    <xs:attribute name="type" default="UPCA" type="xs:string"/>
+                                    <xs:attribute name="checkdigits" default="0" type="xs:integer"/>
+                                    <xs:attribute name="modulewidth" default="15 tw" type="xs:string"/>
+                                    <xs:attribute name="moduleshortheight" default="1.5 cm" type="xs:string"/>
+                                    <xs:attribute name="modulelongheight" default="1.5 cm" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Schachtnamen zuweisen</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Assign tray ID</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="deviceid" default="0" type="xs:integer"/>
+                                             <xs:attribute name="name" default="Multi purpose tray" type="xs:string"/>
+                                             <xs:attribute name="mediatypeid" default="1" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Geben Sie Pfade an, die für die Suche nach Ressourcen verwendet werden</xs:documentation>
+                  <xs:documentation xml:lang="en-US">Specify paths used to search for resources</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="TrueType" type="xs:string"/>
+                                    <xs:attribute name="extension" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

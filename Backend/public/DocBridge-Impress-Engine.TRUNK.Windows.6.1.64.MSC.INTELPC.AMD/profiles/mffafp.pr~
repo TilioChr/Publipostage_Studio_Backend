@@ -1,0 +1,1478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffafp xmlns="http://www.compart.com/ns/mff/afp" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for both input and output.-->
+
+   <globals>
+      <multidocument value="true"/>
+      <generateoverlays value="false"/>
+
+      <!--Specifies whether dynamic form definitions are to be created. If the
+                formdef generator is active, the output must be self-contained, because created or
+                used formdefs must be stored together with the output file. Valid values are:
+                "auto": Dynamic medium maps are created if appropriate. This is the default setting.
+                "true": Dynamic medium maps are always created (the output must be self-contained).
+                "false": Dynamic medium maps are not created.-->
+
+      <autoformdefgeneration value="auto"/>
+      <treatrectstransparent value="false"/>
+      <treatpathstransparent value="false"/>
+      <rasterunevenpointsizes value="false"/>
+
+      <!--Determines the algorithm for the rasterization of objects. Valid values
+                are: "screen" (default setting), "screenModified", "afp",
+                "afpModified"-->
+
+      <rastersettype value="screen"/>
+
+      <!--<pagesegmentasreference value="true"/>-->
+      <!--Specifies how objects in the input are processed. "true" (default): the
+                object is referenced within the document and processed as a unit. "false": the
+                object is split into its components (text, images, paths etc.) and added to the page
+                content.-->
+
+      <objectasreference value="true"/>
+
+      <!--ifdifferenttypes : 'optimize' page if 'creator/read' device is different
+                from 'write' device always : always 'optimize' page (aka Presentation Area) never :
+                never 'optimize' page (aka Presentation Area) - processing the optimizepa (page
+                optimization) rules handles all items types by default - however for some uncommon
+                converting processes it is useful to ignore some item types, eg. to prevent
+                rendering of text items built of user definded unicodes-->
+
+      <optimizepa value="ifDifferentTypes"/>
+
+      <!--Optimization is a time consuming process and in some cases it can produce
+                suprising results. Using the "optimizepaoptions" subelements, you can finetune how
+                the optimization in the Presentation Area is carried out. For some special
+                converting processes it is useful to ignore certain item types, e.g. to prevent the
+                rasterazing of text items built by user-defined Unicode.-->
+
+      <optimizepaoptions>
+         <ignoreitems value="EXTERNAL"/>
+
+         <!--Specifies whether all page objects are to be regarded as black-and-white
+                when being tested for overlapping. If the value is "true", all objects are regarded
+                as black-and-white. If the value is "false" (default), objects are not regarded as
+                black-and-white (to prevent unnecessary rasterization).-->
+
+         <ignorecolor value="false"/>
+
+         <!--Using optimizepa, the underline of a text can be lost. Enabled
+                separateunderlinesfromtext with active optimizepa separates the underline from the
+                text item. By default this switch is disabled.-->
+
+         <separateunderlinesfromtext value="false"/>
+      </optimizepaoptions>
+
+      <!--GCGIDs (graphic character global identifier) are characters defined by IBM
+                that are identified by 8-digit IDs. With the element "aliasmap" you can map unknown
+                GCGID to known GCGID. Without a known GCGID, errors may occur during capturing and
+                thus the GCGID area could be rasterized. Valid values are: "ifNotFoundInEncodings":
+                map charcter if unable to find in all code pages; "always": always map character.
+                Instead of assigning unknown to known GCGID, an assignment to Unicode characters can
+                be specified in the element encodinglist. Attributes: "devicename": Specifies the
+                name of the GCGID that is to be replaced. "map": Specifies the value of the GCGID
+                used as replacement. "condition": Specifies the replacement condition. With
+                "ifNotFoundInEncodings" a replacement is only carried out if the specified GCGID can
+                not be found. With "always", the value of the attribute "devicename" is always
+                replaced. The "aliasmaplist" works only for AFP raster fonts.-->
+
+      <aliasmaplist>
+         <!--U+02C6: Circumflex Accent-->
+         <!--<aliasmap devicename="SD150300" map="SD150000" condition="ifNotFoundInEncodings"/>-->
+         <!--U+007E: Tilde-->
+         <!--<aliasmap devicename="SD190300" map="SD190000" condition="ifNotFoundInEncodings"/>-->
+         <!--U+00AF: Macron-->
+         <!--<aliasmap devicename="SD310000" map="SM150000" condition="ifNotFoundInEncodings"/>-->
+         <!--U+03D5: Phi Small (open form)-->
+         <!--<aliasmap devicename="GF010002" map="GF010000" condition="ifNotFoundInEncodings"/>-->
+         <!--U+2013: En Dash-->
+         <!--<aliasmap devicename="SS680000" map="SP100000" condition="ifNotFoundInEncodings"/>-->
+         <!--U+2075: Five Superscript-->
+         <!--<aliasmap devicename="ND051001" map="ND051000" condition="ifNotFoundInEncodings"/>-->
+      </aliasmaplist>
+   </globals>
+
+   <resources>
+      <!--Specifies whether object containers, such as PDF documents, are cached.
+                Using TRUE, object containers are cached. With FALSE object containers are deleted
+                from the cache after usage. TRUE is the default setting.-->
+
+      <cacheobjectcontainers value="true"/>
+
+      <!--Specifies whether overlays are cached. "true" (default): overlays are
+                cached. "false": overlays are deleted from the cache after first
+                usage.-->
+
+      <cacheoverlays value="true"/>
+
+      <!--Specifies whether page segments are cached. "true" (default): page segments
+                are cached. "false": page segments are deleted from the cache after first
+                usage.-->
+
+      <cachepagesegments value="true"/>
+
+      <!--Merging several AFP input spools to one or more output spools requires a
+                resource collision handling. A resource collision is defined by the use of resources
+                with identical names and different content. Hence, the availability of all resources
+                is the key requirement for successful AFP processing. Based on the "objectmissing"
+                element the AFP resouce manager can write out Error (TreatAsError) or Warning
+                (TreatAsWarning) messages or ignore the object (IgnoreObject). In standard mode,
+                CPMcopy and other applications are stopped by error messages. In relaxed mode, error
+                messages are tolerated. In strict mode, warning messages RMG3000W...RMG3007W will
+                stop the application as well.-->
+
+      <useresourcemanager>
+         <!--Determines the font type search order-->
+
+         <FontSearchOrder>
+            <FontFileType value="Raster"/>
+            <FontFileType value="AfpZFont"/>
+         </FontSearchOrder>
+
+         <!--The element "rules" is used to define a subset of error handling for the
+                resource manager and also used to manage resource names. If specified "true", the
+                rules defined within the "objectmissing" tags are executed, if such an error occurs.
+                Each "objectmissing" set defines a rule for the error handling. The "type" defines
+                for which object the rules apply. The "scope" defines whether the rule is for input
+                or output and the "action" defines the way to handle the error. Secondly, if
+                resource names are defined in lower/upper or mixed cases in input file then user can
+                change these convension using element "NameHandling".-->
+
+         <rules active="true">
+            <NameHandling scope="input" casecontrol="asis"/>
+            <objectmissing type="mediumMap" scope="input" action="treatAsError"/>
+            <objectmissing type="pageSegment" scope="input" action="treatAsError"/>
+            <objectmissing type="overlay" scope="input" action="treatAsError"/>
+            <objectmissing type="object" scope="input" action="treatAsError"/>
+         </rules>
+
+         <!--The element "rules" is used to define a subset of error handling for the
+                resource manager and also used to manage resource names. If specified "true", the
+                rules defined within the "objectmissing" tags are executed, if such an error occurs.
+                Each "objectmissing" set defines a rule for the error handling. The "type" defines
+                for which object the rules apply. The "scope" defines whether the rule is for input
+                or output and the "action" defines the way to handle the error. Secondly, if
+                resource names are defined in lower/upper or mixed cases in input file then user can
+                change these convension using element "NameHandling".-->
+
+         <rules active="false">
+            <objectmissing type="pageSegment" scope="input" action="treatAsWarning"/>
+            <objectmissing type="overlay" scope="input" action="treatAsWarning"/>
+            <objectmissing type="object" scope="input" action="treatAsWarning"/>
+         </rules>
+
+         <!--The element "rules" is used to define a subset of error handling for the
+                resource manager and also used to manage resource names. If specified "true", the
+                rules defined within the "objectmissing" tags are executed, if such an error occurs.
+                Each "objectmissing" set defines a rule for the error handling. The "type" defines
+                for which object the rules apply. The "scope" defines whether the rule is for input
+                or output and the "action" defines the way to handle the error. Secondly, if
+                resource names are defined in lower/upper or mixed cases in input file then user can
+                change these convension using element "NameHandling".-->
+
+         <rules active="false">
+            <objectmissing type="pageSegment" scope="input" action="ignoreObject"/>
+            <objectmissing type="overlay" scope="input" action="ignoreObject"/>
+            <objectmissing type="object" scope="input" action="ignoreObject"/>
+         </rules>
+      </useresourcemanager>
+   </resources>
+
+   <encodinglist ascii="" ebcdic="" dbEbcdic="">
+      <!--Defines or starts a new encoding list. Each entry of the list
+                consists of the character name that is to be replaced, the value of the attribute
+                "devname", and the appropriate Unicode character ("char"). The name can be up to
+                eight characters long and usually starts with "T". The list can be autogenerated
+                using the attributes "mask", "from", "to" and "numberSystem". "mask" is a string
+                with up to 7 characters. "numberSystem" defines which base (hex or dec) is used to
+                generate the numbers. It also defines whether the values "to" and "from" are in
+                hexadecimal or decimal format. The attribute "padding" is used to generate a name
+                with 8 characters in length. Missing characters are filled up with the padding
+                character '0', e.g. G0000032. The attribute type is boolean. The default value is
+                'false'.-->
+
+      <encoding name="T1WING" mask="" from="0" to="255" numberSystem="dec" iana="" padding="true">
+         <!--space-->
+
+         <entry devname="TRANS032" char="0020" default="false"/>
+
+         <!--pencil-->
+
+         <entry devname="TRANS033" char="270F"/>
+
+         <!--black scissors-->
+
+         <entry devname="TRANS034" char="2702"/>
+      </encoding>
+   </encodinglist>
+
+   <fontlist enableDynamicCodepages="true">
+      <!--<font enableDynamicCodepages="true" family="OCR-A" serifstyle="sansSerif"
+            spacing="proportional"
+            encoding="T1WING"
+            deviceid=""
+            gcsgid=""
+            horizontalfontsize=""
+            oid="">        
+         <face weight="medium" width="normal" style="upright" fontfile="CZ4200"
+               fontfiletype="AfpZFont"
+               rasterize="always">        
+            <raster size="12" devname="C0920AB0"/>
+         </face>
+      </font>-->
+      <!--<font family="OCR-B">        
+         <face weight="Medium" width="Normal" style="Upright" rasterize="Always">        
+            <raster size="12" devname="C0920BB0"/>
+         </face>
+      </font>-->
+      <!--<font family="Cache 16534" serifstyle="SansSerif" spacing="Proportional">        
+         <face weight="Medium" width="Normal" style="Italic" rasterize="Always">        
+            <raster size="22" devname="C0MXXX22"/>        
+            <raster size="17" devname="C0MXXX17"/>
+         </face>
+      </font>-->
+      <!--<font family="Arial" serifstyle="SansSerif" spacing="Proportional" encoding="T1WING">        
+         <face weight="Medium" width="Normal" style="Upright">        
+            <raster devname="C0A48410" size="1"/>        
+            <raster devname="C0A48420" size="2"/>        
+            <raster devname="C0A48430" size="3"/>        
+            <raster devname="C0A48440" size="4"/>
+         </face>        
+         <face weight="Bold" width="Normal" style="Upright">        
+            <raster devname="C0A58510" size="1"/>        
+            <raster size="2" devname="C0A58520"/>        
+            <raster size="3" devname="C0A58530"/>        
+            <raster devname="C0A58540" size="4"/>        
+            <raster size="5" devname="C0A58550"/>
+         </face>
+      </font>-->
+      <!--Example for mapping font with uneven pointsize. A text item with pointsize
+                9.75 will be mapped to the entry size="10". -->
+      <!--<font family="CustomerCI" serifstyle="SansSerif" spacing="Proportional">        
+         <face weight="Medium" width="Normal" style="Upright">        
+            <raster size="9.0" devname="C0009000"/>        
+            <raster size="9.5" devname="C0009500"/>        
+            <raster size="10.0" devname="C0010000"/>
+         </face>
+      </font>-->
+      <!--Raster all text items using the font provided by the input filter.
+            -->
+      <!--<font family="Wingdings-Regular" serifstyle="SansSerif" spacing="Proportional">        
+         <face style="Upright" weight="Medium" width="Normal" rasterize="Input"/>
+      </font>-->
+      <!-- substitute font 'Courier New' by afp z fonts (outline fonts) 'CZ4200' and
+                write out MCF2 -->
+      <!--<font family="Courier New" serifstyle="Serif" spacing="Monospaced">        
+         <face weight="Medium" width="Normal" style="Upright" fontfile="CZ4200"
+               fontfiletype="AfpZFont"/>
+      </font>-->
+   </fontlist>
+
+   <codepagelist>
+      <!-- International ECECP : <codepage name="T1001148" iana="IBM01148" />
+            -->
+
+      <codepage name="T1001148" iana="IBM01148" default="yes" cpgid="0"/>
+
+      <!--coexistent codepages Austria, Germany ECECP : <codepage name="T1001141"
+                iana="IBM01141" />-->
+      <!--<codepage name="T1001141" iana="IBM01141"/>-->
+      <!--coexistent codepages USA, Canada ECECP : <codepage name="T1001140"
+                iana="IBM01140" />-->
+      <!--<codepage name="T1001140" iana="IBM01140"/>-->
+      <!--T1001252 (Windows, Latin 1) provides some additional punctuation symbols
+                eg. U0002018 SP190000 Left Single Quote U0002019 SP200000 Right Single Quote
+                U000201C SP210000 Left Double Quotes U000201D SP220000 Right Double Quotes U000201E
+                SP230000 Left Lower Double Quotes-->
+      <!--<codepage name="T1001252" iana="windows-1252"/>-->
+      <!--T1000850 (PC MULTILINGUAL) provides some additional format symbols eg.
+                U000250C SF010000 Upper Left Box Corner U0002554 SF390000 Upper Left Box Corner
+                Double U000253C SF050000 Box Intersection U000252C SF060000 Middle Box Top U0002500
+                SF100000 Center Box Bar Horizontal-->
+      <!--<codepage name="T1000850" iana="IBM850"/>-->
+   </codepagelist>
+
+   <resourcelist>
+      <librarylist>
+         <!--Specifies, where resources that are to be embedded or referenced are
+                located. Resources can be stored in different places. They can be stored as resource
+                group, also called reslib, within the AFP document. However, this resource library,
+                reslib, can also be a file. Using the attribute "filename", you can specify where
+                the file is stored.-->
+
+         <library filename="resources1" tle="reslib"/>
+         <library tle="reslib"/>
+      </librarylist>
+
+      <fileslist>
+         <!--<files path="c:\resources\RES300" type="codedFont" extension="300" resolution="300"/>-->
+         <!--<files path="c:\resources\RES240" type="codedFont" extension="240" resolution="240"/>-->
+         <!--<files path="c:\resources\RESLIBS" type="resourceLib" extension="reslib"/>-->
+         <!--<files path="c:\resources\RESIDX" type="documentIndex" extension="idx"/>-->
+         <!--<files path="http://localhost/resources" type="formDef" extension="fdf"/>-->
+         <!--<files path="c:\resources\RES" extension=""/>-->
+
+         <files path="./res" extension=""/>
+
+         <!--<files path="//filebase/resources/afp/ibm.fonts" type="codePage" extension=""/>-->
+         <!--<files path="//filebase/resources/afp/ibm.fonts" type="charSet" extension="300"/>-->
+         <!--<files path="//filebase/resources/icc/apple" type="icc" extension="icc"/>-->
+      </fileslist>
+   </resourcelist>
+
+   <traylist>
+      <inputtrays>
+         <inputtray deviceid="1" name="Tray1">
+            <!--<papersize format="A4" orientation="portrait" default="no"/>-->
+         </inputtray>
+         <inputtray deviceid="2" name="Tray2">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </inputtray>
+         <inputtray deviceid="3" name="Tray3">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </inputtray>
+         <inputtray deviceid="4" name="Tray4">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </inputtray>
+         <inputtray deviceid="5" name="Tray5">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </inputtray>
+         <inputtray deviceid="6" name="Tray6">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </inputtray>
+         <inputtray deviceid="7" name="Tray7">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </inputtray>
+         <inputtray deviceid="8" name="Tray8">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </inputtray>
+      </inputtrays>
+
+      <outputtrays>
+         <outputtray deviceid="1" name="Tray1" default="no">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </outputtray>
+         <outputtray deviceid="2" name="Tray2">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </outputtray>
+         <outputtray deviceid="3" name="Tray3">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </outputtray>
+         <outputtray deviceid="4" name="Tray4">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </outputtray>
+         <outputtray deviceid="5" name="Tray5">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </outputtray>
+         <outputtray deviceid="6" name="Tray6">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </outputtray>
+         <outputtray deviceid="7" name="Tray7">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </outputtray>
+         <outputtray deviceid="8" name="Tray8">
+            <!--<papersize format="A4" orientation="portrait"/>-->
+         </outputtray>
+      </outputtrays>
+   </traylist>
+
+   <!--The colorprofilelist element contains one colorprofile element
+                per color space. An ICC profile is a standardized record that defines the color
+                space of a device. The ICC profiles can either have the file extension icc (Windows)
+                or icm (Mac). In addition to specifying the file name of the color profile, you can
+                use the resourcelist element to specify which directories are to be searched for the
+                specified color profiles. -->
+   <!--<colorprofilelist>        
+      <colorprofile name="GenericRGB"/>        
+      <colorprofile name="GenericCMYK"/>        
+      <colorprofile name="GenericGray"/>
+   </colorprofilelist>-->
+   <!--Settings for input.-->
+
+   <input>
+      <!--Specifies how overlays are processed. "true" (default): the overlay is
+                processed as a unit and referenced inside the document. "false": the overlay is
+                split into its components (texts, images, paths etc.) which are added to the page
+                content.-->
+
+      <overlayasreference value="true"/>
+
+      <!--Specifies how page segments in the input are processed. "true" (default):
+                the page segment is referenced within the document and processed as a unit. "false":
+                the page segment is split into its components (text, images, paths etc.) and added
+                to the page content.-->
+
+      <pagesegmentasreference value="true"/>
+
+      <!--The of the element prevents that the AFP file is fully scanned when being
+                read before the individual pages are processed. If you want to process only a few
+                pages from the beginning of the document, you can prevent the entire document from
+                being scanned by specifying "true" (default) and, depending on the size of the
+                document, thus also increase performance. The full scan will still be carried out,
+                independent of the size of the document, if the page number has to be determined.
+                Moreover, the deactivation of the full scan is ignored, if the input file does not
+                adhere to the convention to tag documents with "Begin Document" and "End Document"
+                according to the specification. Specifying "false", i.e. the file is scanned
+                entirely.-->
+
+      <disablequickparse value="true"/>
+
+      <!--Specifies the code page to use for the interpretation of the reference name
+                of MO:DCA objects (overlays, charsets, etc) within the document. Valid values are:
+                standard: Uses a subset of code page T1V10500 as described in the Mixed Object
+                Document Content Architecture Reference. auto: Determines the reading of the code
+                page from the AFP document. The encoding defined by the triplet 0x01 (Coded Graphic
+                Character Set Global Identifier) at the beginning of the document (in the structured
+                field BDT) is to be used. This can be useful if you want to use umlauts in the names
+                of overlays.-->
+      <!--<documentcodepage value="standard"/>-->
+      <!-- Determines which code page is used for texts in TLEs. Any valid IANA name
+                of a code page is permitted. With the attribute apply it can be controlles which
+                information from the document are overriden. The follow levels are defined: none
+                (default value): TLE encoding is handled according to MO:DCA specification BDT:
+                Encoding specified on the Begin Document is ignored, iana value specified is applied
+                TLE: Encoding specified on the TLE is ignored, iana value specified is applied all:
+                The encoding for all TLE in the document is set to iana value specified
+            -->
+
+      <overrideTleEncoding iana="IBM500" apply="none"/>
+
+      <!--Determines which code page (IANA name) is used for texts in NOPs. Any valid
+                IANA name of a code page is permitted. Using the value 'auto' a matching code page
+                is searched.-->
+
+      <commentsdefaultcodepage iana="IBM273"/>
+
+      <!--Specifies the format definition (formdef) to be used. The attribute "name"
+                gives the name of the form definition. There is no pre-assigned default
+                value.-->
+
+      <defaultformdef name=""/>
+
+      <!--Defines which character set to use per default, if none was defined in the
+                input file. If no character set is defined and none was found, CO420000 is used as
+                default setting. This setting only takes effect, if the element "defaultcodepage" is
+                specified.-->
+
+      <defaultcharset value="C0420000"/>
+
+      <!--Specifies the default Font Grid ID (FGID) to use if a unknown FGID is used
+                in the AFP file. If not set, the default is set to 11 equivalent to Courier font.
+                The attribute pitch can be used to overwrite the text size defined with the FGID. It
+                is only applied, if the default FGID is used. With the default value 0 no adjustment
+                of the text size is done.-->
+
+      <DefaultFGID value="11" pitch="0"/>
+
+      <!--Specifies if the width parameter of Font Grid ID (FGID) in the AFP file
+                should be ignored. Default is to use the width, but there are some known issue where
+                this value is not correct.-->
+
+      <FGIDIgnoreWidth value="false"/>
+
+      <!--Specifies the resolution that is used in the Presentation Area. This
+                adjustment can help avoid issues (e.g. rounding errors) caused by a low resolution.
+                If 0 is specified, the resolutions defined by the page or by the medium map are
+                used. Problems caused by a low resolution can be avoided by larger values like
+                7200.-->
+
+      <resolution rx="0" ry="0"/>
+
+      <!--GOCA output can contain filled areas. Using the element "patternsymbol" the
+                fill pattern can be specified. The "value" specifies the GOCA fill pattern. If no
+                value is specified, 0x10 (entirely filled) is used. In addition, you can specify an
+                RGB "color" of the fill pattern.-->
+      <!--<patternsymbol value="0000" color="#00000000"/>-->
+      <!--Page size and placement can be interpreted in different ways. Valid values
+                are: 'page' : The resulting page size and placement are defined by the page.
+                'pageWithOffset' : The medium offset is taken into account in the calculation.
+                'medium' : Page size and placement are defined by the output medium. This setting is
+                useful when processing N-up placement. 'ignoreMedium' : Medium maps and all
+                information contained therein are ignored. This setting is useful if no medium map
+                related processing is required because the output is printed using an external
+                medium map. The attribute 'pagesizecalculation' determines the method for
+                calculating the page size. With the default setting the page size is calculated as
+                follows: 1) The page size is read from the profile. 2) If this does not succeed, the
+                page size of the active medium map is used. 3) If this also does not succeed, an
+                appropriate fallback value is used. With bounding, the page size is calculated in
+                the same way as with standard. In addition, however, the calculated sizes are
+                compared with the specified sizes and adjusted. The higher values are
+                used.-->
+
+      <inputinterpretationmode value="page" pagesizecalculation="bounding"/>
+
+      <!--As viewer sometimes behave different from printers, you can influence the
+                behavior of the AFP input filter using the element behaviour. With "printer"
+                (default) the filter behaves like a printer. Here, the first medium map from the
+                formdef is used. In addition, in the structured field MCF (Map Coded Font (Format
+                2)) the attribute "FtHeight" is used and the Nominal Vertical Size is ignored. With
+                "viewer" the filter behaves similar to the IBM Workbench Viewer. Therefore, the
+                medium map defined as BMM (Begin Medium Map) is used. In addition, for MCF2 (Map
+                Coded Font format 2) the MCF2 Nominal Vertical Size is used and the attribute
+                FtHeight is ignored.-->
+
+      <behavior value="printer"/>
+
+      <!--Determines how the IMM (Invoke Medium Map) is processed. This is useful in
+                conjunction with the Formdef processor for processing N-up AFP documents (see
+                "inputinterpretationmode"). For TRUE: resolve all information given by medium map
+                and do not provide medium map name via MFF interface. For FALSE: provide only medium
+                map name via MFF interface (pass through mode). For STANDARD: provide the medium map
+                name via MFF interface (default), provide simplex/duplex, copy count, tray, jog,
+                resolve medium map overlays (see "overlayasreference"), resolve constant form
+                control and resolve TRN supressions-->
+
+      <processmediummap value="standard"/>
+
+      <!--The printing of copies of a logical page can be controlled by the
+                structured field MCC (Medium Copy Count). If the value is "true", comments (NOPs)
+                are attached to all copied pages. "false" (default), comments (NOPs) are only copied
+                to the original page and not to the copies. This setting is customer specific and
+                not valid according to the AFP specification.-->
+
+      <copycomments4mccpages value="false"/>
+
+      <!--With large AFP input spools, the memory usage can exceed the system
+                capacity. The element "inputoptimizationmode" determines the priorities for the
+                processing of large amounts of AFP input data. "runtime" optimizes the speed of the
+                AFP filter and can, therefore, result in a high memory consumption. "memory"
+                optimizes the memory consumption of the AFP filter. The processing speed can be
+                adversely affected. This element also influences the caching strategy for multipage
+                documents contained in an object container if the contained data (pages) gets
+                resolved.-->
+
+      <inputoptimizationmode value="memory"/>
+
+      <!--Specifies the resolution of a GOCA image. Each image point is mapped to a
+                pixel of the output device. By setting the resolution, the size of the GOCA image
+                can be adjusted. If the value 0 (default) is used, the MFFAFP filter attempts to use
+                the resolution of the input document.-->
+
+      <gocarasterimageresolution value="0"/>
+
+      <!--Defines the basis for calculating the line width in GOCA input. Larger
+                values result in larger lines. The unit of measurement must be specified. According
+                to GOCA the base for the GOCA line width is 0.01 inch (default).-->
+
+      <GocaLineWidthBase value="0.01 in"/>
+
+      <!--Defines how lines/paths are joined in GOCA input. Since the style to join
+                lines is not defined by the AFP-GOCA specification, this is handled differently by
+                printers. Possible values are "miter", "round" (default) and "bevel".-->
+
+      <GocaLineJoinStyle value="round"/>
+
+      <!--Defines how lines ends in GOCA input. The style to end lines is not defined
+                by the old AFP-GOCA specification and printers are doing in different ways. Possible
+                values are "notset" (or "drawingdefault"), "butt" (or "flat"), "round" (default) and
+                "square". The value "drawingdefault" is currently equal to "notset", because it is
+                not possible to set the current drawing defaults outside of the profile. So it is
+                good practice to not use this value in the input.-->
+
+      <GocaLineCapStyle value="round"/>
+
+      <!--A GOCA object can be placed inside the text using the IOB structured field.
+                Inside this structured field, the parameter "RefCSys" is set. Currently the only
+                valid value is 0x01. But the deprecated value 0x05 (current text (I,B) coordinate
+                system) may still be contained in old documents. New printers ignore this value, but
+                it is possible, that it is still interpreted by old printers. The switch
+                gocaprocessrefcsys05 handles the behavior of the AFP input filter. "false"
+                (default): the value 0x05 is processed as 0x01. The switch was introduced with
+                version 201106.-->
+
+      <gocaprocessrefcsys05 value="false"/>
+
+      <!--New segments in AFP-GOCA reset the current drawing vaöues to the drawing
+                defaults. In the past reseting was ignored for some parameters, e.g. position. The
+                switch is active by default and can be deactivated when the value is set to "false".
+                The switch was introduced with version 201901. -->
+      <!--Attribute: value @comment: New segments in AFP-GOCA reset the current drawing vaöues to the drawing
+                defaults. In the past reseting was ignored for some parameters, e.g. position. The
+                switch is active by default and can be deactivated when the value is set to "false".
+                The switch was introduced with version 201901. -->
+
+      <GocaApplyDrawingDefaultsToNewSegment value="true"/>
+
+      <!--The element "MinLineQuotaToAcceptTruncatedFaxG4" is used to control the
+                processing of truncated FaxG4 images. Using the default setting (100), the
+                conversion is stopped if the FaxG4 image is truncated. All other values define an
+                quota of lines that has to be decoded to accept the image. If the number of decoded
+                lines is above this threshold the decoded image (missing lines are set to white) is
+                used and a warning message is generated, otherwise (if less lines are generated) an
+                error message is generated and the image is rejected. Set quota to define if a
+                truncated FaxG4 image should be printed or not.-->
+
+      <MinLineQuotaToAcceptTruncatedFaxG4 value="100"/>
+
+      <!--Determines whether TLEs are read and where they are placed.
+                Placing is determined by "onceperpagegroup" and "unify".-->
+      <!--Attribute: value @comment: true: Read archive fields. false (default): Ignore archive
+                fields (may increase processing speed).-->
+      <!--Attribute: onceperpagegroup @comment: true: Page group TLEs are visible only before the first page
+                of the page group. false (default): Page group TLEs are visible on all input pages
+                of the page group.-->
+      <!--Attribute: unify @comment: true: Provide TLEs in a manner where all output filters using
+                archivefields can find them. (Default) false: Provide TLEs in new extend mode.
+                Currently this is useful for AFP output only.-->
+
+      <readarchivefields value="true" onceperpagegroup="false" unify="true"/>
+
+      <!--Specifies whether blanks are removed at the end of TLEs. true: Trailing
+                spaces are trimmed. false: TLE value remains unchanged.-->
+
+      <trimarchivefields value="false"/>
+
+      <!--Determines whether page group TLEs and page TLEs are processed separately.
+                true: page group and page TLEs are processed separately. false: all TLEs are
+                processed together.-->
+
+      <separatepagearchivefields value="false"/>
+
+      <!--Specifies whether NOPs are read and how they are
+                provided.-->
+      <!--Attribute: value @comment: true: NOPs are read. false: NOPs are ignored (improves speed).
+            -->
+      <!--Attribute: unify @comment: true: Provide NOPs in traditional order. This can be used by
+                all output filters. false: Provide NOPs in new enhanced order. Only AFP output can
+                use this at this time.-->
+      <!--Attribute: binary @comment: false: Read and store NOPs as text string. This is the default
+                and do transform the data from the NOP into a valuable text string. In this case
+                some character can be lost, e.g. NUL will be transformed into space. true: Read and
+                store NOPs as binary data string. This can be used if inside the NOP special
+                characters like NUL are used. In this case such characters will not got lost and the
+                NOP will not be transformed to text string.-->
+
+      <readcomments value="true" unify="true" binary="false"/>
+
+      <!--Specifies whether spaces are removed at the end of NOPs. true: spaces at
+                the end of NOPs are truncated (default setting). The first space character of a NOP
+                containing only spaces, will not be removed. false: NOPs trailing spaces are
+                kept.-->
+
+      <trimcommentfields value="true"/>
+
+      <!--Specifies whether NOPs are available on the pages. With the value true,
+                NOPs are written to the pages as comments. With the value false (default), the NOPs
+                remain where they are, i.e. they are not added to the page but retained in their
+                original position.-->
+
+      <addcommentstopage value="false"/>
+
+      <!--Determines whether annotations to the triplet x'46' are read. true:
+                annotations are read. false (default): annotations ignored.-->
+
+      <readannotations value="false"/>
+
+      <!--Determines how the barcode size is adjusted. true: the barcode size depends
+                on the resolution. false (default): the barcode size depends on the module
+                width.-->
+
+      <adjustbarcodesize value="false" resolution="0" minSize="90%" maxSize="100%"/>
+
+      <!--Specifies additional settings for how barcodes are generated-->
+      <!--<barcodelist>        
+         <barcode name="Code 39" type="Code39" hriFontFamilyName="OCR-A"/>        
+         <barcode name="MSI" type="MSI" hriFontFamilyName="OCR-A"/>        
+         <barcode name="UPC A" type="UPCA" hriFontFamilyName="OCR-B"
+                  emulate4028BarcodeOffset="true"/>        
+         <barcode name="UPC E" type="UPCE" hriFontFamilyName="OCR-B"
+                  emulate4028BarcodeOffset="true"/>        
+         <barcode name="UPC 2 Supp" type="UPC2SUPP" hriFontFamilyName="OCR-B"
+                  emulate4028BarcodeOffset="true"/>        
+         <barcode name="UPC 5 Supp" type="UPC5SUPP" hriFontFamilyName="OCR-B"
+                  emulate4028BarcodeOffset="true"/>        
+         <barcode name="EAN 8" type="EAN8" hriFontFamilyName="OCR-B"
+                  emulate4028BarcodeOffset="true"/>        
+         <barcode name="EAN 13" type="EAN13" hriFontFamilyName="OCR-B"
+                  emulate4028BarcodeOffset="true"/>        
+         <barcode name="Code 2/5 Ind" type="CODE25INDUSTRIAL" hriFontFamilyName="OCR-A"/>        
+         <barcode name="Code 2/5 Mat" type="CODE25MATRIX" hriFontFamilyName="OCR-A"/>        
+         <barcode name="Code 2/5 Int" type="CODE25INTERLEAVED" hriFontFamilyName="OCR-A"
+                  emulate4028BarcodeOffset="true"/>        
+         <barcode name="Codabar" type="CODABAR" hriFontFamilyName="OCR-A"/>        
+         <barcode name="Code 128" type="CODE128" hriFontFamilyName="OCR-B"/>        
+         <barcode name="EAN 2 Supp" type="EAN2SUPP" hriFontFamilyName="OCR-B"
+                  emulate4028BarcodeOffset="true"/>        
+         <barcode name="EAN 5 Supp" type="EAN5SUPP" hriFontFamilyName="OCR-B"
+                  emulate4028BarcodeOffset="true"/>        
+         <barcode name="POSTNET" type="POSTNET"/>        
+         <barcode name="POSTNET5" type="POSTNET5"/>        
+         <barcode name="POSTNET9" type="POSTNET9"/>        
+         <barcode name="POSTNET11" type="POSTNET11"/>        
+         <barcode name="PLANET" type="PLANET"/>        
+         <barcode name="Royal Mail" type="ROYALMAIL"/>        
+         <barcode name="Royal Dutch Mail" type="ROYALDUTCHMAIL"/>        
+         <barcode name="Japan Post" type="JAPANPOST"/>        
+         <barcode name="DataMatrix 200" type="DATAMATRIX"/>        
+         <barcode name="Maxicode" type="MAXICODE"/>        
+         <barcode name="PDF417" type="PDF417"/>        
+         <barcode name="Australia Post" type="AUSTRALIAPOST" hriFontFamilyName="OCR-A"/>        
+         <barcode name="QR" type="QRCODE"/>        
+         <barcode name="Code 93" type="Code93" hriFontFamilyName="OCR-B"/>        
+         <barcode name="Intelligent Mail" type="INTELLIGENTMAIL" hriFontFamilyName="OCR-B"/>        
+         <barcode name="DataBar Stacked" type="DATABARSTACKED" hriFontFamilyName="OCR-B"/>        
+         <barcode name="DataBar Expanded" type="DATABAREXPAND" hriFontFamilyName="OCR-B"/>        
+         <barcode name="DataBar Omnidirect" type="DATABAROMNIDIRECT" hriFontFamilyName="OCR-B"/>        
+         <barcode name="DataBar Truncated" type="DATABARTRUNCATED" hriFontFamilyName="OCR-B"/>        
+         <barcode name="Omnidirect Stacked" type="DATABAROMNIDIRECTSTACKED"
+                  hriFontFamilyName="OCR-B"/>        
+         <barcode name="Truncated Stacked" type="DATABARTRUNCATEDSTACKED"
+                  hriFontFamilyName="OCR-B"/>        
+         <barcode name="Limited" type="DATABARLIMITED" hriFontFamilyName="OCR-B"/>        
+         <barcode name="Royal Mail Mailmark" type="ROYALMAILMAILMARK"/>        
+         <barcode name="Code 11" type="Code11" hriFontFamilyName="OCR-A"/>
+      </barcodelist>-->
+      <!--Determines whether PTX lines (defined by the control sequences DIR - Draw
+                Inline Rule and DBR - Draw Baseline Rule) are converted to rectangles. true: lines
+                are converted to rectangles (this setting is useful for varying DIR weights). false
+                (default): lines remain lines.-->
+
+      <addptxlineasrect value="false"/>
+
+      <!--Determines whether texts are joined. true: combines multiple
+                adjoining TRN (Transparent Data control sequences) of the structured field PTX to
+                one text object, if possible. false: generates separate text objects for each TRN
+                control sequence of the structured field PTX that is read, even if it only contains
+                one character.-->
+
+      <combinetext value="true"/>
+
+      <!--Use of this triplet is limited to the structured fields BBC (Begin Bar Code
+                Object), BGR (Begin Graphics Object), BII (Begin Image Object IM), BIM (Begin Image
+                Object IO), and IPS (Include Page Segment) for the migration of line data including
+                barcodes, graphics, image objects or page segments to the MO:DCA document format.
+                true: interprets the triplet 0x27. false (default): the triplet 0x27 is
+                ignored.-->
+
+      <processtriplet27 value="false"/>
+
+      <!--Defines a list to replace the predefined GOCA patterns by colors. This has
+                to be done for each pattern individually. true (default): the substitution is
+                activated to keep the old behavior in place.-->
+
+      <replaceGocaPatterns>
+         <!--The element "replaceGocaPattern" defines which pattern is to be replaced by
+                a color. The parameters "value" and "number" are mandatory, the color is optional.
+                true (default): the pattern substitution is activated. false: the pattern
+                substitution is deactivated and an internally defined IBM pattern is used. Valid
+                values for "number" range from 1 to 16. However, a substitution with 15 (NO_FILL)
+                and 16 (SOLOD_FILL) is not advisable. The attribute "color" expects a RGB color
+                value for the substitution, if you have specified value as TRUE. If you do not
+                specify a color value, the settings from version 201104 and previous are used. The
+                color value is specified using 4 channels: alpha, red, green, blue (#aarrggbb). For
+                the fill patterns 1 to 8 the following formula can also be used to achieve better
+                results: (rr|gg| bb) = 0xff * (9-number) / 0x64-->
+         <!--<replaceGocaPattern value="true" number="1" color="#00999999"/>-->
+         <!--<replaceGocaPattern value="true" number="2" color="#00c0c0c0"/>-->
+         <!--<replaceGocaPattern value="true" number="3" color="#00c0c0c0"/>-->
+         <!--<replaceGocaPattern value="true" number="4" color="#00d9d9d9"/>-->
+         <!--<replaceGocaPattern value="true" number="5" color="#00d9d9d9"/>-->
+         <!--<replaceGocaPattern value="true" number="6" color="#00d9d9d9"/>-->
+         <!--<replaceGocaPattern value="true" number="7" color="#00e6e6e6"/>-->
+         <!--<replaceGocaPattern value="true" number="8" color="#00e6e6e6"/>-->
+         <!--<replaceGocaPattern value="true" number="9" color="#000000ff"/>-->
+         <!--<replaceGocaPattern value="true" number="10" color="#0000ff00"/>-->
+         <!--<replaceGocaPattern value="true" number="11" color="#0000ffff"/>-->
+         <!--<replaceGocaPattern value="true" number="12" color="#00ffff00"/>-->
+         <!--<replaceGocaPattern value="true" number="13" color="#0000ffff"/>-->
+         <!--<replaceGocaPattern value="true" number="14" color="#00ff00ff"/>-->
+      </replaceGocaPatterns>
+
+      <!--Specifies how SVI is inherited between different BPT blocks. "true"
+                (default): SVI is inherited between different BPT. "false": SVI is reset for each
+                BPT.-->
+
+      <inheritSVI value="true"/>
+
+      <!--Some black and white printers have a second color cartridge. Using this
+                color cartridge, emphasized text (highlighting) can be printed. The element
+                ColorList at input section allows the definition of one or more highlight or oca
+                colors for AFP Input -->
+
+      <ColorList>
+         <!--Specifies the colors available in addition to black and white. The optional
+                attribute "name" specifies the color name. Common are names such as default or Color
+                1. The mandatory attribute "type" specifies the color type to be used. Valid values
+                are: rgb and cmyk. The mandatory attribute "color" specifies the color value which
+                confirms with colorType. The mandatory attribute "index" specifies the index of
+                highlight color. HIGHLIGHTCOLOR uses device specific entries. Available indices
+                range from 0x0000 to 0xFFFF.-->
+
+         <Highlight index="0x0000" name="default" colorType="rgb" color="#00000000"/>
+
+         <!--<Highlight index="0x0001" name="color 1" colorType="rgb" color="#00FF0000"/>-->
+         <!--<Named index="0x0000" name="Device Default" colorType="rgb" color="#00000000"/>-->
+      </ColorList>
+   </input>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--Specifies how overlays are processed. "true" (default): the overlay is
+                processed as a unit and referenced inside the document. "false": the overlay is
+                split into its components (texts, images, paths etc.) which are added to the page
+                content.-->
+
+      <overlayasreference value="true" maxNestingLevel="2"/>
+
+      <!--Specifies how page segments in the input are processed. "true" (default):
+                the page segment is referenced within the document and processed as a unit. "false":
+                the page segment is split into its components (text, images, paths etc.) and added
+                to the page content.-->
+
+      <pagesegmentasreference value="true"/>
+
+      <!--The "value" specifies the available resolutions in dpi and can contain a
+                list of permissible values. If you do not specify any values, internally either
+                240dpi or 1440dpi is used. The attribute "default" specifies a default value that is
+                used, if no other value is specified. It can contain only one value. If a default
+                value is specified, the value list is ignored. If a value list and no default value
+                is specified, the intended resolution from the list is used. If the respective value
+                is not available, the first value is used. 240dpi always has to be included in the
+                value list as a fallback, in case the page exceeds the AFP value range.
+            -->
+
+      <measurementunits value="1440,240" default="0"/>
+
+      <!--Controls the resolution of images. The resolution is indicated in dpi.
+                Without setting min and max, all images are written with the resolution defined in
+                "value". Setting min and max only images outside the range are re-rendered. The
+                default setting for "value" is 0, which specifies the usage of the preset
+                measurement unit with an automatic limit to 300 dpi.-->
+
+      <rasterresolution value="0" min="0" max="0"/>
+
+      <!--Resolution to be used for auto generated AFP raster fonts to output text.
+                The resolution is specified in dpi. With the value 0, the value of the element
+                "rasterresolution" is used. With other values, an independent fontresolution is
+                realized.-->
+
+      <fontresolution value="0"/>
+
+      <!--Output formdef attributes: subset=true (default): formdef containes only
+                medium maps referenced by structered field IMM Invoke Medium Map. subset=false:
+                formdef containes all medium maps provided by one or more input formdefs.
+                resolve=cascade (default): output resource list contains resources referenced by
+                medium maps. resolve=no: output resource list ignores resouces referenced by medium
+                maps. -->
+
+      <formdef subset="true" resolve="cascade"/>
+      <featureset>
+         <!--<feature name="pt2subset" enable="true"/>-->
+      </featureset>
+
+      <imagecompressions>
+         <!--The element " imagecompression" determines how images are compressed,
+                supported formats and the respective compression algorithm. Attributes:
+                "bitsperpixel": Specifies the color depth of the image in bit. Valid values for
+                bitsperpixel are 32, 24, 8 and 1. The attribute "colorformat" specifies the color
+                space of the image. Valid values for colorformat are cmyk, rgb and grayscale.
+                "compression" determines the compression algorithm. It has to be valid for the
+                specified combination of "bitsperpixel" and "colorformat" according to the AFP
+                specification. If this is not the case, the respective default compression algorithm
+                is used. Valid values for compression are: default, none, lzw, jpeg, mmr, faxg4.
+                Incompatible or not supported compressions are ignored.-->
+
+         <imagecompression bitsperpixel="32" colorformat="cmyk" compression="default"/>
+
+         <!--<imagecompression bitsperpixel="32" colorformat="cmyk" compression="none"/>-->
+         <!--<imagecompression bitsperpixel="32" colorformat="cmyk" compression="jpeg"/>-->
+         <!--<imagecompression bitsperpixel="32" colorformat="cmyk" compression="lzw"/>-->
+         <!--<imagecompression bitsperpixel="24" colorformat="rgb" compression="none"/>-->
+         <!--<imagecompression bitsperpixel="24" colorformat="rgb" compression="jpeg"/>-->
+         <!--<imagecompression bitsperpixel="8" colorformat="grayscale" compression="none"/>-->
+         <!--<imagecompression bitsperpixel="8" colorformat="grayscale" compression="jpeg"/>-->
+         <!--<imagecompression bitsperpixel="1" colorformat="grayscale" compression="mmr"/>-->
+         <!--<imagecompression bitsperpixel="1" colorformat="grayscale" compression="faxg4"/>-->
+      </imagecompressions>
+
+      <!--Contains a list of object container types to define if they can be written
+                of if they must be resolved. Object container types not mentioned in this list are
+                resolved.-->
+      <!--Attribute: allow @comment: Defines how object containers allowed to write are defined.
+                all: All object container types are allowed. none: No object container types are
+                allowed and therefore resolved. list: Object container are defined by a list of
+                object container types.-->
+
+      <ObjectContainerList allow="all">
+         <!--This defines if an object container can be written inside a page or if it
+                can be referenced as a resource using IOB.-->
+         <!--Attribute: type @comment: This defines the type of the object container. -->
+         <!--Attribute: asResource @comment: The object container can be referenced as a resource.-->
+         <!--Attribute: inPage @comment: The object container can be written inside a page.-->
+
+         <ObjectContainer type="PdfSinglePageWithTransparency" asResource="false" inPage="false"/>
+
+         <!--<ObjectContainer type="PdfSinglePageWithTransparency" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="PdfSinglePageWithoutTransparency" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="PdfMultiplePageFileWithTransparency" asResource="true" inPage="false"/>-->
+         <!--<ObjectContainer type="PdfMultiplePageFileWithoutTransparency" asResource="true" inPage="false"/>-->
+         <!--<ObjectContainer type="EpsWithTransparency" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="EpsWithoutTransparency" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="Pcx" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="PclPageObject" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="TiffWithTransparency" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="TiffWithoutTransparency" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="TiffMultipleImageFileWithTransparency" asResource="true" inPage="false"/>-->
+         <!--<ObjectContainer type="TiffMultipleImageFileWithoutTransparency" asResource="true"
+                          inPage="false"/>-->
+         <!--<ObjectContainer type="AfpcJpegSubset" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="Jp2" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="DibWindowsVersion" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="DibOs2PmVersion" asResource="true" inPage="true"/>-->
+         <!--<ObjectContainer type="Gif" asResource="true" inPage="true"/>-->
+      </ObjectContainerList>
+
+      <!-- Specifies whether a structured field, MPS (map page segment), is written.
+                A MPS identifies page segments that are necessary to display a page on a physical
+                medium. If the value is "true", MPS are written. If the value is "false" (default),
+                MPS are not written. -->
+
+      <MapPageSegments value="false"/>
+
+      <!-- Specifies whether a structured field, MDR (map data resource), is written.
+                A MDR identifies data resources that are necessary to display a page on a physical
+                medium. If the value is "true" (default), MDR are written. If the value is "false",
+                MDR are not written. MDR for TrueType object containers are always written.
+            -->
+
+      <MapDataResource value="true"/>
+
+      <!--Enable GOCA (Graphics Object Content Architecture) output for AFP. The
+                default setting is FALSE. With the attribute version, the used GOCA version can be
+                defined. Default is 2, which means Drawing Order Level 2, Version 0 (DR/2V0). The
+                other allowed value is 3, which means Graphics Subset Level 3 (GRS3).-->
+
+      <goca value="false" version="2">
+         <!--The GOCA Set Process Color (GSPCOL) order is not defined in the Drawing
+                Order Level 2, Version 0 (DR/2V0) but in Graphics Subset Level 3 (GRS3). Some older
+                devices supports GSPCOL and using SetProcessColorSupport the support can be enabled.
+                The default is 'false' for DR/2V0 and 'true' for GRS3. Attention: if GRS3 is set,
+                but SetProcessColorSupport is set to 'false', then GSPCOL order is not supported.
+            -->
+         <!--<SetProcessColorSupport value="false"/>-->
+         <!--The GOCA Box (GSBOX) order is not defined in the Drawing Order Level 2,
+                Version 0 (DR/2V0) but in Graphics Subset Level 3 (GRS3). Some older devices
+                supports GBOX and using BoxSupport the support can be enabled. The default is
+                'false' for DR/2V0 and 'true' for GRS3. Attention: if GRS3 is set, but BoxSupport is
+                set to 'false', then GBOX order is not supported.-->
+         <!--<BoxSupport value="false"/>-->
+         <!--The GOCA Set Fractional Line Width (GSFLW) order is not defined in the
+                Drawing Order Level 2, Version 0 (DR/2V0) but in Graphics Subset Level 3 (GRS3).
+                Some older devices supports GSFLW and using SetFractionalLineWidthSupport the
+                support can be enabled. The default is 'false' for DR/2V0 and 'true' for GRS3.
+                Attention: if GRS3 is set, but SetFractionalLineWidthSupport is set to 'false', then
+                GSFLW order is not supported.-->
+         <!--<SetFractionalLineWidthSupport value="false"/>-->
+         <!--Enables support for GCBEZ and GCCBEZ commands-->
+         <!--<CubicBezierCurveSupport value="false"/>-->
+         <!--The GOCA Set Line End (GSLE) order is not defined in the Graphics Subset 2
+                (GRS2, aka DR/2V0) nor in the GRS3, but supported by some printers. If the receiver
+                of this output knows the GSLE order the order can be activated by setting the value
+                to 'true'. By default the usage is deactivated.-->
+         <!--<SetLineEndOrderSupport value="false"/>-->
+         <!-- The GOCA Set Line Join (GSLJ) order is not defined in the Graphics Subset
+                2 (GRS2, aka DR/2V0) nor in the GRS3, but supported by some printers. If the
+                receiver of this output knows the GSLJ order the order can be activated by setting
+                the value to 'true'. By default the usage is deactivated.-->
+         <!--<SetLineJoinOrderSupport value="false"/>-->
+         <!--The GOCA Set Custom Line Type (GSCLT) order is not defined in the Graphics
+                Subset 2 (GRS2, aka DR/2V0) nor in the GRS3, but supported by some printers. If the
+                receiver of this output knows the GSCLT order the order can be activated by setting
+                the value to 'true'. By default the usage is deactivated.-->
+         <!--<SetCustomLineTypeOrderSupport value="false"/>-->
+         <!--With Graphics Subset Level 3 (GRS3) the support of partial arcs was added.
+                Because old receivers support this, it is possible to activate this feature for
+                Drawing Order Level 2, Version 0 (DR/2V0) with PartialArcSupport. The default value
+                is 'false' for DR/2V0 and 'true' for GRS3. Attention, if GRS3 is set, but
+                PartialArcSupport is set to 'false', then partial arcs are not supported.
+            -->
+         <!--<PartialArcSupport value="false"/>-->
+         <!--Since December 2012 AFP GOCA supports nonzero winding as second possible
+                mode for area fill. With NonzeroWindingModeSupport it is possible to activate this
+                feature.-->
+         <!--<NonzeroWindingModeSupport value="false"/>-->
+         <!--Defines the basis for calculating the line width in GOCA Output. Larger
+                values result in larger lines. The unit of measurement must be specified. According
+                to GOCA the base for the GOCA line width is 0.01 inch. This is the default
+                setting.-->
+
+         <GocaLineWidthBase value="0.01 in"/>
+
+         <!--The device specific maximum factor for line widths in GOCA. In
+                GOCA vector graphics all line widths are defined as a factor to be multiplied with
+                the normal line width of GOCA. This attribute specifies the greatest integer factor,
+                for which a line is still drawn with the width specified by this factor. For most
+                IPDS printers this value lies between 10 and 20. The type of this attribute is
+                integer between 1 and 255, and its default value is 100.-->
+
+         <GocaMaxLineWidthFactor value="100"/>
+
+         <!--Defines how lines/paths are joined in GOCA output. Since the style to join
+                lines is not defined by the AFP-GOCA specification, this is handled differently by
+                printers. Possible values are none, miter, round, and bevel. The default is set to
+                round.-->
+
+         <GocaLineJoinStyle value="round"/>
+
+         <!--Defines how lines ends in GOCA output. The style to end lines is not
+                defined by the old AFP GOCA specification and printers are doing in different ways.
+                Possible values are notset (or drawingdefault), butt (or flat), round, and square.
+                The default is set to round.-->
+
+         <GocaLineCapStyle value="round"/>
+      </goca>
+
+      <!--The element ColorList at output section allows the definition of one or
+                more oca colors for AFP Output -->
+
+      <ColorList>
+         <!--<Named index="0x0000" name="Device Default" colorType="rgb" color="#00000000"/>-->
+      </ColorList>
+
+      <!--Define a set of colorspaces used to control used colors.-->
+
+      <ColorSpacesList>
+         <!--ColorSpaces is used to influence the used color space. Attributes: With the
+                attribute "arch" you can select the architecture, for which you want to specify the
+                color space. Valid values are GOCA, IOCA and PTX. PTX stands for PTOCA. Using the
+                attribute "value", you can specify one or more permissible color spaces for the
+                selected architecture.-->
+         <!--Attribute: arch @comment: Select the architecture to define the used color spaces. Currently the
+                element is activated for IOCA (Image Object Content Architecture Reference), PTX
+                (Presentation Text Object Content Architecture Reference PTOCA) and for
+                goca(Graphics Object Content Architecture for Advanced Function Presentation
+                GOCA).-->
+         <!--Attribute: value @comment: A list defining the used color spaces. Valid values are: oca, ocaext, rgb,
+                cmyk, cielab, highlight.-->
+
+         <ColorSpaces arch="goca" value="oca, ocaext, rgb, cmyk, cielab, highlight"/>
+         <ColorSpaces arch="ioca" value="oca, ocaext, rgb, cmyk, cielab, highlight, grayscale, bilevel, bilevelext"/>
+         <ColorSpaces arch="ptx" value="oca, ocaext, rgb, cmyk, cielab, highlight"/>
+      </ColorSpacesList>
+
+      <!--Specifies the GOCA character string positioning method. The font
+                positioning uses font information to position individual characters. These
+                characters are aligned against a baseline. Using cell positioning, characters are
+                defined within a cell, the positioning is then based on the cell orientation. The
+                cell size is designed to enclose the characters. font: Use the font positioning
+                method and ignore the cell size. cell: Use the cell positioning method with cell
+                size.-->
+
+      <positioningmethod value="font"/>
+
+      <!--Determines whether line breaks (Carriage Return, CR, and Line Feed, LF) are
+                avoided in structured fields. This setting also affects the behavior of structured
+                fields in the context of image data (IPD).-->
+
+      <writecrlfafterstructuredfields value="false"/>
+
+      <!--Determines whether line breaks (Carriage Return, CR, and Line Feed, LF) are
+                avoided in structured fields. This setting also affects the behavior of structured
+                fields in the context of image data (IPD).-->
+
+      <avoidcrlfinsidestructuredfields value="false"/>
+
+      <!--Determines whether writing the data stream byte (0x5A) used for separating
+                a structured field is suppressed. true: the DS byte for separating structured fields
+                is not written. false: the DS byte for separating structured fields is
+                written.-->
+
+      <writenodsbyte value="false"/>
+
+      <!--Determines up to which thickness lines are written as PTX objects
+                (presentation text objects) regardless of their line cap property. The value of the
+                attribute "maxlinewidth" is specified in pixel. The setting applies only to
+                horizontal or vertical lines. Other lines are always converted to images. The
+                default setting is maxlinewidth="2".-->
+
+      <writelinesasptxonly maxlinewidth="2"/>
+
+      <!--Very thin lines (lines, paths, arcs) sometimes disappear or are no longer
+                visible, if the object is rasterized as an image. With this setting you can specify
+                that the width of these lines is set to a minimum of 1 pt, so that the lines remain
+                visible. true: if you want the line width to be set to a minimum of 1. false: the
+                standard behavior of the MFFAFP filter is used and the lines may not be visible
+                after conversion.-->
+
+      <forceMinimalStrokeWidth value="false"/>
+
+      <!--Determines if a transparency mask may be written in an IOCA image. allow:
+                The mask is written. deny: The mask is not written. With the renderCreatemask value
+                "always", the mask will be created during item rendering to preserve transparency.
+                With the renderCreatemask value "auto" the mask will be created during item
+                rendering as required to preserve transparency. An optimization is attempted.
+            -->
+
+      <TransparencyMasks renderCreateMask="auto">
+         <TransparencyMask colorformat="cmyk" value="allow"/>
+         <TransparencyMask colorformat="rgb" value="deny"/>
+      </TransparencyMasks>
+
+      <!--Defines whether clipping paths (polygons used to limit areas) should be
+                ignored. true: clipping paths are ignored. false: clipping paths are
+                processed.-->
+
+      <ignoreclipping value="false"/>
+
+      <!--Determines whether images and text are displayed in black and white. true:
+                images and text are converted to black and white. false: images and text are
+                displayed in color.-->
+
+      <converttomonochrome value="false"/>
+
+      <!-- Define a set of MappingOptionLists to manage and control configured
+                mapping options. -->
+
+      <MappingOptionLists>
+         <!-- Define a set of MappingOptions that can be used to add objects to a page.
+            -->
+         <!--Attribute: architecture @comment:  Select the architecture to define the used MappingOptionList. Currently
+                the element is enabled for IOCA (Image Object Content Architecture Reference).
+            -->
+
+         <MappingOptionList architecture="ioca">
+            <!-- Enables or disables a specific mapping option. Valid values are
+                'centerAndTrim', 'positionAndTrim', 'scaleToFill' and 'scaleToFit'. centerAndTrim:
+                object is placed centered, parts overlapping the surrounding rectangle are trimmed.
+                positionAndTrim: image is positioned, parts overlapping the surrounding rectangle
+                are trimmed. scaleToFill: object is stretched to fill the surrounding rectangle
+                which determines the position of the object. scaleToFit: the object is scaled to fit
+                into the surrounding rectangle which determines the position of the object.
+            -->
+
+            <MappingOption value="scaleToFit" enable="true"/>
+            <MappingOption value="centerAndTrim" enable="false"/>
+            <MappingOption value="positionAndTrim" enable="false"/>
+            <MappingOption value="scaleToFill" enable="false"/>
+         </MappingOptionList>
+      </MappingOptionLists>
+
+      <!--Determines how images are included in AFP. Valid values are scaleToFit and
+                positionAndTrim. scaleToFit: the image is scaled to fit into the surrounding
+                rectangle which determines the position of the image. positionAndTrim: the image is
+                positioned and parts overlapping the surrounding rectangle are
+                trimmed.-->
+
+      <imagemapping value="scaleToFit"/>
+
+      <!--Determines whether the tray name is used as medium map name and a
+                corresponding IMM (Invoke Medium Map) is generated. true: The tray name is used as
+                medium map name and a corresponding IMM (Invoke Medium Map) is generated. false: The
+                tray name is used for the formdef (generation), if applicable.-->
+
+      <usetrayasmediummap value="false"/>
+
+      <!--Determines the order and the mode in which the structured
+                fields TLE, NOP and IMM are written.-->
+      <!--Attribute: value @comment: Determines the order in which TLEs, NOPs and IMM are written.
+                The order of the values (TLE, NOP, IMM) specifies the write order.-->
+      <!--Attribute: tlewritemode @comment: The AFP specification restricts writing of TLEs to -
+                immediately following a Begin Named Pagegroup structured field - immediately
+                following a End Active Environment structured field inside a page - inside a
+                Document Index (currently not implemented). Values are: strict (default): Writing of
+                TLEs is restricted according to AFP specification. relaxed: Allows writing even to
+                positions not allowed by AFP specification.-->
+      <!--Attribute: tlewithencoding @comment: The encoding triplet fixes the encoding of name and value.
+                true: Write encoding triplet and encode name and value according to element
+                archivefieldsdefaultcodepage. false: Do not write encoding triplet and encode name
+                to document code page and value to element
+                archivefieldsdefaultcodepage.-->
+
+      <writeorder value="TLE, NOP, IMM" tlewritemode="strict" tlewithencoding="true"/>
+
+      <!--Determines if page TLEs are written. Page TLEs are TLEs located inside a
+                page.-->
+      <!--Attribute: value @comment: TRUE: Page TLEs are written at the page. FALSE: Page TLEs are
+                ignored while writing the page. (Default) -->
+
+      <writepagearchivefields value="false"/>
+
+      <!--Determines to which position page TLEs are written. TRUE: Page TLEs are
+                written (according to AFP specification) after the AEG - (Active Environment Group)
+                structured field. (DEFAULT) FALSE: Page TLEs are written after the BPG (Begin Page)
+                structured field. -->
+
+      <writepagearchivefieldsafteraeg value="true"/>
+
+      <!--Determines which code page is used for texts in TLEs. Any valid IANA name
+                of a code page is permitted. If this value is set, the information from the document
+                are overwritten.-->
+
+      <archivefieldsdefaultcodepage iana="IBM273"/>
+
+      <!--Determines which code page (IANA name) is used for texts in NOPs. Any valid
+                IANA name of a code page is permitted. If the value is set to 'auto', an error is
+                generated and the conversion breaks.-->
+
+      <commentsdefaultcodepage iana="IBM273"/>
+
+      <!--Determines how NOPs are processed. If the value is TRUE, the NOP order
+                remains unchanged. If necessary, several PTX blocks are generated. If the value is
+                FALSE (default setting), all NOPs are written directly to BPG (Begin Page Group).
+            -->
+
+      <keepcommentorder value="false"/>
+
+      <!-- Specifies whether barcodes are converted to images. For some barcode types
+                which can not be correctly displayed in AFP, a conversion to images makes sense.
+                However, the information contained in the barcode objects will be lost after
+                conversion. If the value is TRUE, barcodes are converted to images. If the value is
+                FALSE, barcode objects are preserved in the output as far as possible (default
+                setting). -->
+
+      <writebarcodeasimage value="false"/>
+
+      <!--The size of a barcode depends of the used module width. Due to the small
+        resolution and using integer values to describe the module width, the size of the barcode
+        can differ from the desired value, defined by the item size. maxSize and minSize can be used
+        to define the derivation of the defined bounding rectangle of the barcode. These values are
+        in percent. The default setting is 90% for the minSize and 100% for maxSize except 50% - 150% for EscP filter. 
+        If the barcode size is outside this range, the barcode will be added as image.-->
+
+      <adjustbarcodesize value="false" minSize="90%" maxSize="100%" align="left"/>
+
+      <!--Specifies the available barcode types of the printer.-->
+      <!--<barcodelist>        
+         <barcode name="Code 128" type="CODE128"/>        
+         <barcode name="Data Matrix" type="DATAMATRIX"/>        
+         <barcode name="PDF 417" type="PDF417"/>        
+         <barcode name="QR Code" type="QRCODE"/>        
+         <barcode name="MaxiCode" type="MAXICODE"/>        
+         <barcode name="Code 39" type="CODE39"/>        
+         <barcode name="Code 39ext" type="CODE39EXT"/>        
+         <barcode name="Code 2-of-5 Interleaved" type="CODE25INTERLEAVED"/>        
+         <barcode name="EAN-13" type="EAN13" emulate4028BarcodeOffset="true"/>        
+         <barcode name="Royal Mail Mailmark" type="ROYALMAILMAILMARK"/>
+      </barcodelist>-->
+      <!--Determines whether negative overlay positions are permitted. If set to
+                FALSE, negative positions for the structured fields IPO (Include Page Object), IPS
+                (Include Pages Segment) and IOB (Include Object) are set to the position (0, 0) and
+                the respective warnings are issued. If set to TRUE, negative positions for IPO, IPS
+                and IBO are permitted. The respective log messages are suppressed. The default
+                setting is TRUE.-->
+
+      <allownegativeoverlayposition value="true"/>
+
+      <!--Specifies the maximum size of a structure (composition of an AFP element)
+                in the AFP output file in bytes. The default value in AFP is 32k (32767 bytes),
+                which is also used if the value is set to 0. -->
+
+      <maxrecordsize value="0"/>
+
+      <!--Sets the maximum permitted position deviation of the character (positioning
+                tolerance) in points. Text fields are divided into several fields of the control
+                sequence TRN (Transparent Data) in order to meet the permitted tolerance.
+            -->
+
+      <characteraccuracy value="0.0"/>
+
+      <!--AFP attempts not to wrap texts. However, rounding errors may cause that
+                individual letters can not be positioned correctly. If the deviation is too high,
+                the current text element must be terminated and a new one created. The limit that is
+                used in the process is defined as attribute value of the element characteraccuracy.
+                AFP permits, however, that an additional space (also negative) can be inserted
+                between text elements that is applied between each character. In this way, it can be
+                prevented that texts are split up too much. TRUE is the default setting. Additional
+                space is inserted between characters in order to minimize the fragmentation of text
+                according to the setting of the element characteraccuracy. If set to FALSE, text is
+                split to satisfy the setting in the element characteraccuracy.-->
+
+      <enableintercharacteradjustment value="true"/>
+
+      <!--Determines how the AFP output filter handles text items for printing
+                containing not supported characters.-->
+      <!--Attribute: value @comment: Values for controlling the text rendering are: "none", "word", "line" and
+                "asIs" -->
+
+      <ControlTextRendering value="none"/>
+
+      <!-- Max difference between items in inline direction to combine text items
+                into one item. 0.0: - Use current characteraccuracy. All other values: Use this
+                value. Values less than 0 are treated as 0. -->
+
+      <combinexaccuracy value="0.0"/>
+
+      <!-- Max difference between items in baseline direction to combine text items
+                into one item. Use the given value. Values less than 0 are treated as 0.
+            -->
+
+      <combineyaccuracy value="0.0"/>
+
+      <!--Determines how multiple consecutive whitespaces are treated. If set to
+                TRUE, all blanks are written. If set to FALSE, blanks are replaced by absolute
+                positioning as far as this results in a reduction of the file size. -->
+
+      <keepspaces value="false"/>
+
+      <!--Determines how objects are handled, which extend beyond the page. Valid
+                values of the element "outsidepagehandling" are: MOVETOPAGE: The object is
+                completely moved into the valid range of the page and a log message (PAR4004W) is
+                generated. CLIP: The object is truncated or discarded. KEEP: The object outside of
+                page are not changed and a log message (PAR4005W) is generated. This is the default
+                setting. IGNORE: The object are not changed-->
+
+      <outsidepagehandling value="keep"/>
+
+      <!--Determines whether AEG (Active Environment Groups) are used in page
+                segments. If the value is TRUE, AEG (Active Environment Groups) in page segments are
+                suppressed. If the value is FALSE, AEG (Active Environment Groups) including MCF
+                (Map Coded Font) are permitted in page segments. The default setting is TRUE.
+            -->
+
+      <suppressaeginpagesegment value="true"/>
+
+      <!--Specifies the quality of written JPEG images as percentage. Valid values
+                range from 0 to 100%. The default setting is 75%.-->
+
+      <jpegquality value="75"/>
+
+      <!--Determines whether a time stamp is written to the output file (as NOP). If
+                set to TRUE, a time stamp is written; if set to FALSE, no time stamp is written. The
+                default setting is TRUE. -->
+
+      <writetimestamp value="true"/>
+
+      <!--Determines whether to write media finishing control (MFC) to the output
+                file. If set to TRUE, MFC is written; if set to FALSE, MFC received from input will
+                be ignored. The default setting is FALSE. -->
+
+      <WriteMfc value="false"/>
+
+      <!--Determines whether to write Map Media Type (MMT) in auto generated formdef
+                or not. If set to TRUE, MMT will be written if mediatype information is received
+                from input; if set to FALSE, the input mediatype information will be ignored. The
+                default setting is FALSE. -->
+
+      <WriteMapMediaType value="false"/>
+
+      <!--The code page descriptor (CPD) of dynamically generated codepages contains
+                GCSGID and CPGID, set to 0xFFFF (Graphic Character Set GID, Code Page Global
+                Identifier). Different values can be used as custom setting. The element
+                "graphiccharactersetgid" specifies the value of the CPGID. If set to USERDEV, the
+                custom CPD (Code Page Descriptor) value is used. If set to STANDARD, 0xFFFF is used
+                and the custom value is ignored. -->
+      <!--<graphiccharactersetgid value="standard" uservalue="0x0000"/>-->
+      <!--<codepageglobalidentifier value="standard" uservalue="0x0000"/>-->
+      <!-- Determines how the AFP output filter handles fonts. The attribute
+                "default" defines the appropriate fonts. AUTO: The font list is used to find the
+                appropriate fonts. If this is not successful, an internal fallback is used.
+                CONVERTTOAFP: AFP raster fonts are generated, if the input filter provides raster
+                data and no appropriate font list entry can be found. As a prerequisite the
+                attribute keepinputfonts has to be set to FALSE and the attribute enableType1Font to
+                TRUE. The attribute "keepinputfonts" determines whether the fonts from the input
+                files are preserved. This value is only interesting in connection with conversions
+                to AFP. If the value is TRUE, the fonts from the input file are preserved. If the
+                value is FALSE, new fonts are generated. "enableType1Font" determines whether Type1
+                fonts are used. The attribute can be used for the conversion of another format to
+                AFP. If the value is TRUE, the fonts from the input file are preserved. If the value
+                is FALSE, new fonts are generated. "enableTrueTypeFont" determines whether
+                TrueType/OpenType fonts are used. The attribute can be used for the conversion of
+                another format to AFP. If the value is TRUE, the fonts from the input file are
+                preserved. If the value is FALSE, new fonts are generated. "enableSurrogateSupport"
+                determines the support for three and four byte encoded unicode characters for
+                TrueType fonts. If the value is "TRUE", "enableTrueTypeFont" will be forced to
+                "TRUE" and the output may contain three and four byte unicodes. If the value is
+                "FALSE" the output will not contain three and four byte characters.
+                "treatboundedasunicode": If set to TRUE, dynamic code pages are generated for
+                dynamically generated fonts and embedded text objects. FALSE uses code points as
+                unicode and the code pages that are defined in the profile file mffafp.pro. This can
+                be useful for conversions from the Xerox format Metacode to AFP. If you specify
+                renderiffontnotmapped="true", text that cannot be mapped according to the setting of
+                the attribute "default" is rendered. This can be useful, if the output does not have
+                to be selfcontained. If you specify FALSE, fonts for displaying the text are
+                dynamically generated. In this case the generated output must be self-contained. The
+                default setting is FALSE. The attribute "PointSizeRaster" determines a raster for
+                the point size of the generated fonts. The default value is 0.1. If the default
+                value is used, the generated fonts use point sizes composed of decimal numbers such
+                as 9.9pt. The value range is not restricted, however, this setting should be
+                modified carefully, as the resulting point sizes are multiples of this value (e.g.
+                1.0: the used point sizes are 6, 7, 8, etc.; 0.2: the used point sizes are 6.8, 7.0,
+                7.2, etc.). -->
+      <!--Attribute: mapBoundedFont @comment: By default bounded font can be mapped in fontlist. This attribute is used
+                to activate or deactivate the mapping of bounded font.-->
+      <!--Attribute: forceFixedMetricFont @comment:  Afp support relative and fixed metric fonts. In some case the generating
+                of fixed metric font is needed. This can be done controlled by setting the value to
+                    . -->
+
+      <fonthandling default="auto" keepinputfonts="true" enableType1Font="false" enableTrueTypeFont="false" enableSurrogateSupport="false" treatboundedasunicode="false" renderiffontnotmapped="false" PointSizeRaster="0.0" mapBoundedFont="true" forceFixedMetricFont="false"/>
+
+      <!--Determines the Dithering method for conversions of color images to black
+                and white. Valid attributes are: default: specifies the dithering algorithm. Valid
+                values are: AUTO (equals CLUSTERED), CLUSTERED, DISPERSED, FLOYDSTEINBERG, STUCKI,
+                JARVISJUDICENINKE, THRESHOLD. Parameter: controls the algorithm. Valid value ranges
+                for different dithering methods are e.g. "AUTO" (or "CLUSTERED"): values 2-8;
+                "DISPERSED": values values 2-8; "THRESHOLD": values 1-100-->
+
+      <dithermethod default="auto" parameter="4"/>
+
+      <!--The element gammalist determines whether (and how) a gamma correction for
+                gray values is executed. By default, no gamma correction is done. Values that have
+                not been entered are linearly interpolated. If no value is specified, no correction
+                will be done. The attribute "name" specifies the name of the gamma correction list
+                as string.-->
+
+      <gammalist name="Default">
+         <gammavalue from="0" to="0"/>
+         <gammavalue from="7" to="48"/>
+         <gammavalue from="15" to="72"/>
+         <gammavalue from="23" to="88"/>
+         <gammavalue from="31" to="104"/>
+         <gammavalue from="39" to="112"/>
+         <gammavalue from="47" to="120"/>
+         <gammavalue from="55" to="128"/>
+         <gammavalue from="63" to="136"/>
+         <gammavalue from="71" to="144"/>
+         <gammavalue from="79" to="152"/>
+         <gammavalue from="87" to="160"/>
+         <gammavalue from="95" to="160"/>
+         <gammavalue from="103" to="168"/>
+         <gammavalue from="111" to="176"/>
+         <gammavalue from="119" to="184"/>
+         <gammavalue from="127" to="184"/>
+         <gammavalue from="135" to="192"/>
+         <gammavalue from="143" to="200"/>
+         <gammavalue from="151" to="200"/>
+         <gammavalue from="159" to="208"/>
+         <gammavalue from="167" to="208"/>
+         <gammavalue from="175" to="216"/>
+         <gammavalue from="183" to="216"/>
+         <gammavalue from="191" to="224"/>
+         <gammavalue from="199" to="224"/>
+         <gammavalue from="207" to="232"/>
+         <gammavalue from="215" to="232"/>
+         <gammavalue from="223" to="240"/>
+         <gammavalue from="231" to="240"/>
+         <gammavalue from="239" to="248"/>
+         <gammavalue from="247" to="248"/>
+         <gammavalue from="255" to="255"/>
+      </gammalist>
+
+      <!--Experimental prewriting modification of 24bpp RGB images in order to view
+                monochrome printer characteristics (requires aktive element <colorprofilelist>
+                and proper icc resource access).-->
+      <!--<modificationlist active="true">        
+         <modification action="Convert" applyto="image" targetcolorspace="grayscale"
+                       gammalist="brighten"/>
+      </modificationlist>-->
+      <!--<gammalist name="brighten">        
+         <gammavalue from="0" to="0"/>        
+         <gammavalue from="20" to="100"/>        
+         <gammavalue from="255" to="255"/>
+      </gammalist>-->
+      <!--Use memory cache in AFP output, to improve output performance. Values for
+                size and limit are specified in megabytes-->
+      <!--<memorycache size="0" limit="1000"/>-->
+   </output>
+</mffafp>

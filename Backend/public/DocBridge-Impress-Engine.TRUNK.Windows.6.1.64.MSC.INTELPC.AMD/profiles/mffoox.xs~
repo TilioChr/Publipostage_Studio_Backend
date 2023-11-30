@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/oox">
+   <xs:element name="mffoox">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="defaultsetting" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pointsize" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="de-DE">Standardeinstellung für Punktgröße</xs:documentation>
+                                    <xs:documentation xml:lang="en-US">Default pointsize setting</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="10">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:integer">
+                                             <xs:minInclusive value="0"/>
+                                             <xs:maxInclusive value="10000"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="ColumnWidth" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Defines the default column width in an Excel
+                file.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="0.72 in" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinitionlist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Pagedefinition for page output.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Seitendefinition (pagedefinition) für Seitenausgabe.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pagedefinition" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="de-DE">Definiert das Standard-Papierformat. Für die USA Letter, für
+                Europa A4. Es ist empfehlenswert diese Einstellung immer zu verwenden. Wenn das
+                Element &lt;inputtray&gt; ebenfalls im Profil definiert ist, wird das Papierformat
+                durch den im Element &lt;inputtray&gt; angegebenend Wert
+                überschrieben</xs:documentation>
+                                    <xs:documentation xml:lang="en-US">Set the default paper size. Letter for US and A4 for EU. It is
+                recommended to always use this setting. If &lt;inputtray&gt; is also specified in
+                the profile, the papersize will be overwritten by the value used in
+                &lt;inputtray&gt;</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Deklaration einer Papiergrösse</xs:documentation>
+                                             <xs:documentation xml:lang="en-EN">Declaration of a paper size</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="format" default="A4">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Name einer Standardpapiergrösse</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">name of a standard paper size</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="4A0"/>
+                                                      <xs:enumeration value="2A0"/>
+                                                      <xs:enumeration value="A0"/>
+                                                      <xs:enumeration value="A1"/>
+                                                      <xs:enumeration value="A2"/>
+                                                      <xs:enumeration value="A3"/>
+                                                      <xs:enumeration value="A4"/>
+                                                      <xs:enumeration value="A4 tab"/>
+                                                      <xs:enumeration value="A5"/>
+                                                      <xs:enumeration value="A6"/>
+                                                      <xs:enumeration value="A7"/>
+                                                      <xs:enumeration value="A8"/>
+                                                      <xs:enumeration value="A9"/>
+                                                      <xs:enumeration value="A10"/>
+                                                      <xs:enumeration value="B0"/>
+                                                      <xs:enumeration value="B1"/>
+                                                      <xs:enumeration value="B2"/>
+                                                      <xs:enumeration value="B3"/>
+                                                      <xs:enumeration value="B4"/>
+                                                      <xs:enumeration value="B5"/>
+                                                      <xs:enumeration value="B5 Extra"/>
+                                                      <xs:enumeration value="B6"/>
+                                                      <xs:enumeration value="B7"/>
+                                                      <xs:enumeration value="B8"/>
+                                                      <xs:enumeration value="B9"/>
+                                                      <xs:enumeration value="B10"/>
+                                                      <xs:enumeration value="C0"/>
+                                                      <xs:enumeration value="C1"/>
+                                                      <xs:enumeration value="C2"/>
+                                                      <xs:enumeration value="C3"/>
+                                                      <xs:enumeration value="C4"/>
+                                                      <xs:enumeration value="C5"/>
+                                                      <xs:enumeration value="C6"/>
+                                                      <xs:enumeration value="C65"/>
+                                                      <xs:enumeration value="C7"/>
+                                                      <xs:enumeration value="C8"/>
+                                                      <xs:enumeration value="C9"/>
+                                                      <xs:enumeration value="C10"/>
+                                                      <xs:enumeration value="DL"/>
+                                                      <xs:enumeration value="RA0"/>
+                                                      <xs:enumeration value="RA1"/>
+                                                      <xs:enumeration value="RA2"/>
+                                                      <xs:enumeration value="RA3"/>
+                                                      <xs:enumeration value="RA4"/>
+                                                      <xs:enumeration value="SRA0"/>
+                                                      <xs:enumeration value="SRA1"/>
+                                                      <xs:enumeration value="SRA2"/>
+                                                      <xs:enumeration value="SRA3"/>
+                                                      <xs:enumeration value="SRA4"/>
+                                                      <xs:enumeration value="ID-1"/>
+                                                      <xs:enumeration value="ID-2"/>
+                                                      <xs:enumeration value="ID-3"/>
+                                                      <xs:enumeration value="LETTER"/>
+                                                      <xs:enumeration value="LEGAL"/>
+                                                      <xs:enumeration value="CSHEET"/>
+                                                      <xs:enumeration value="DSHEET"/>
+                                                      <xs:enumeration value="ESHEET"/>
+                                                      <xs:enumeration value="TABLOID"/>
+                                                      <xs:enumeration value="LEDGER"/>
+                                                      <xs:enumeration value="STATEMENT"/>
+                                                      <xs:enumeration value="EXECUTIVE"/>
+                                                      <xs:enumeration value="FOLIO"/>
+                                                      <xs:enumeration value="QUARTO"/>
+                                                      <xs:enumeration value="10X14"/>
+                                                      <xs:enumeration value="11X17"/>
+                                                      <xs:enumeration value="NOTE"/>
+                                                      <xs:enumeration value="ENV9"/>
+                                                      <xs:enumeration value="ENV10"/>
+                                                      <xs:enumeration value="ENV11"/>
+                                                      <xs:enumeration value="ENV12"/>
+                                                      <xs:enumeration value="ENV14"/>
+                                                      <xs:enumeration value="MONARCH"/>
+                                                      <xs:enumeration value="PERSONAL"/>
+                                                      <xs:enumeration value="FANFOLDUS"/>
+                                                      <xs:enumeration value="FANFOLDSTDGERMAN"/>
+                                                      <xs:enumeration value="FANFOLDLGLGERMAN"/>
+                                                      <xs:enumeration value="IMPERIALFOLIO"/>
+                                                      <xs:enumeration value="IMPERIALQUARTO"/>
+                                                      <xs:enumeration value="IMPERIALOCTAVO"/>
+                                                      <xs:enumeration value="ROYALFOLIO"/>
+                                                      <xs:enumeration value="ROYALQUARTO"/>
+                                                      <xs:enumeration value="ROYALOCTAVO"/>
+                                                      <xs:enumeration value="CROWNFOLIO"/>
+                                                      <xs:enumeration value="CROWNQUARTO"/>
+                                                      <xs:enumeration value="CROWNOCTAVO"/>
+                                                      <xs:enumeration value="FOOLSCAPFOLIO"/>
+                                                      <xs:enumeration value="FOOLSCAPQUARTO"/>
+                                                      <xs:enumeration value="FOOLSCAPOCTAVO"/>
+                                                      <xs:enumeration value="MEDIUMQUARTO"/>
+                                                      <xs:enumeration value="DEMYQUARTO"/>
+                                                      <xs:enumeration value="DEMYOCTAVO"/>
+                                                      <xs:enumeration value="CHOU1"/>
+                                                      <xs:enumeration value="CHOU2"/>
+                                                      <xs:enumeration value="CHOU3"/>
+                                                      <xs:enumeration value="CHOU31"/>
+                                                      <xs:enumeration value="CHOU30"/>
+                                                      <xs:enumeration value="CHOU40"/>
+                                                      <xs:enumeration value="CHOU4"/>
+                                                      <xs:enumeration value="KAKUA3"/>
+                                                      <xs:enumeration value="KAKU0"/>
+                                                      <xs:enumeration value="KAKU1"/>
+                                                      <xs:enumeration value="KAKU2"/>
+                                                      <xs:enumeration value="KAKU3"/>
+                                                      <xs:enumeration value="KAKU4"/>
+                                                      <xs:enumeration value="KAKU5"/>
+                                                      <xs:enumeration value="KAKU6"/>
+                                                      <xs:enumeration value="KAKU7"/>
+                                                      <xs:enumeration value="KAKU8"/>
+                                                      <xs:enumeration value="FURUSU10"/>
+                                                      <xs:enumeration value="YOU0"/>
+                                                      <xs:enumeration value="YOU1"/>
+                                                      <xs:enumeration value="YOU2"/>
+                                                      <xs:enumeration value="YOU3"/>
+                                                      <xs:enumeration value="YOU4"/>
+                                                      <xs:enumeration value="YOU5"/>
+                                                      <xs:enumeration value="YOU6"/>
+                                                      <xs:enumeration value="YOU7"/>
+                                                      <xs:enumeration value="JP PC ENV"/>
+                                                      <xs:enumeration value="JP PC"/>
+                                                      <xs:enumeration value="JP PC OFUKO"/>
+                                                      <xs:enumeration value="JIS B4"/>
+                                                      <xs:enumeration value="JIS B5"/>
+                                                      <xs:enumeration value="JIS B6"/>
+                                                      <xs:enumeration value="JIS Exec"/>
+                                                      <xs:enumeration value="BUSINESS"/>
+                                                      <xs:enumeration value="Commercial 9"/>
+                                                      <xs:enumeration value="Commercial 634"/>
+                                                      <xs:enumeration value="8K"/>
+                                                      <xs:enumeration value="16K"/>
+                                                      <xs:enumeration value="BENUTZERDEFINIERT"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="orientation" default="Portrait">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Orientierung einer Standardpapiergrösse</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">orientation of a standard paper size</xs:documentation>
+                                                </xs:annotation>
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:NMTOKEN">
+                                                      <xs:enumeration value="Portrait"/>
+                                                      <xs:enumeration value="Landscape"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="height" default="29.7 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des Papierbogens</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">height of paper sheet</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="width" default="21 cm" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des Papierbogens</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">width of paper sheet</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="Default" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="formfields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Einstellungen für Formfields</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Formfield settings</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="textonly" default="true" type="xs:boolean"/>
+                           <xs:attribute name="altfont" default="Courier" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Definitionen für die Font-Zuordnung</xs:documentation>
+                  <xs:documentation xml:lang="en-US">Font matching definitions</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="Arial" type="xs:string"/>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="Arial" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="Type1"/>
+                                             <xs:enumeration value="TrueType"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="Arial" type="xs:string"/>
+                           <xs:attribute name="reftype" default="TrueType">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="Type1"/>
+                                    <xs:enumeration value="TrueType"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Font-Ressourcen</xs:documentation>
+                  <xs:documentation xml:lang="en-US">Font resources</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type") und
+                Dateiendung ("extension") sind optional. Je mehr Angaben gemacht werden, desto
+                genauer wird die Suche eingegrenzt.</xs:documentation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "type" and "extension" are optional.
+                However, the more detailed the settings are, the more specific the search will be.
+            </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="TrueType"/>
+                                             <xs:enumeration value="type1"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" default="ttf" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

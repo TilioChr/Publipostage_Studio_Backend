@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffijp xmlns="http://www.compart.com/ns/mff/ijp" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for both input and output.-->
+
+   <globals>
+      <!--Determines the algorithm for the rasterization of objects. Valid values
+                are: "screen" (default setting), "screenModified", "afp",
+                "afpModified"-->
+
+      <rastersettype value="Screen"/>
+
+      <!-- always : always 'optimize' page never : never 'optimize' page (default
+                value) -->
+
+      <optimizepa value="Never"/>
+   </globals>
+
+   <!--cutout spot colored items-->
+   <!--Attribute: value @comment: -->
+
+   <cutout value="false"/>
+
+   <!--left / right / none-->
+
+   <cuemark value="None"/>
+
+   <!--font / fixedfile / none-->
+
+   <OptimizationMethod value="Font"/>
+
+   <!--import / export / none-->
+
+   <fontfile value="none"/>
+
+   <!--Specifies how overlays are processed. With the value TRUE, the overlay is
+                referenced and processed as a unit. With FALSE, the overlay is resolved into
+                components (text, graphics, paths etc.) and added to the page content.-->
+
+   <overlayasreference value="false"/>
+
+   <!--Top Margin in pixels-->
+
+   <margintop value="0"/>
+
+   <!--Bottom Margin in pixels-->
+
+   <marginbottom value="0"/>
+
+   <!--Printer/RIP memory in bytes-->
+
+   <ripmemory value="67108864"/>
+
+   <!-- RIP/PRINTHEAD CONFIGURATION generateijq: specify the complete ijq file
+                name. It will be used by kodak proofer. default is "" (empty string). Nothing is
+                generated. shiftoffset is deprecated. For N-UP the rip type front2, back2,
+                frontcolor2 and backcolor2 are deprecated, please use ppml to generate composite
+                page Please always set duplex information explicitly to map front- and backside RIPs
+                RelPos attributes: RIP RelPos is deprecated. Printhead RelPos means the offset in
+                dots of this printhead relative to the starting position of the first printhead of
+                the printer. Type can be "front" "frontblack" "frontcolor" - for spot color
+                "frontcyan" "frontmagenta" "frontyellow" "frontblack" - for full color "back"
+                "backblack" "backcolor" - for spot color "backcyan" "backmagenta" "backyellow"
+                "backblack" - for full color -->
+
+   <rips generateijq="">
+      <rip id="0" type="frontcyan">
+         <printheads ResX="300" ResY="300">
+            <PH Jets="2688" Drops="1" RelPos="0"/>
+         </printheads>
+      </rip>
+
+      <rip id="1" type="backcyan">
+         <printheads ResX="300" ResY="300">
+            <PH Jets="2688" Drops="1" RelPos="0"/>
+         </printheads>
+      </rip>
+
+      <rip id="2" type="frontmagenta">
+         <printheads ResX="300" ResY="300">
+            <PH Jets="2688" Drops="1" RelPos="0"/>
+         </printheads>
+      </rip>
+
+      <rip id="3" type="backmagenta">
+         <printheads ResX="300" ResY="300">
+            <PH Jets="2688" Drops="1" RelPos="0"/>
+         </printheads>
+      </rip>
+
+      <rip id="4" type="frontblack">
+         <printheads ResX="300" ResY="300">
+            <PH Jets="2688" Drops="1" RelPos="0"/>
+         </printheads>
+      </rip>
+
+      <rip id="5" type="backblack">
+         <printheads ResX="300" ResY="300">
+            <PH Jets="2688" Drops="1" RelPos="0"/>
+         </printheads>
+      </rip>
+
+      <rip id="6" type="frontyellow">
+         <printheads ResX="300" ResY="300">
+            <PH Jets="2688" Drops="1" RelPos="0"/>
+         </printheads>
+      </rip>
+
+      <rip id="7" type="backyellow">
+         <printheads ResX="300" ResY="300">
+            <PH Jets="2688" Drops="1" RelPos="0"/>
+         </printheads>
+      </rip>
+   </rips>
+
+   <!--The colorprofilelist element contains one colorprofile element
+                per color space. An ICC profile is a standardized record that defines the color
+                space of a device. The ICC profiles can either have the file extension icc (Windows)
+                or icm (Mac). In addition to specifying the file name of the color profile, you can
+                use the resourcelist element to specify which directories are to be searched for the
+                specified color profiles. -->
+
+   <colorprofilelist>
+      <!--<colorprofile name="JapanWebCoated.icc"/>-->
+      <!--<colorprofile name="ScitexVM_Profil01_Draft_TR_310304.icm"/>-->
+      <!--<colorprofile name="ScitexVM_Profil02_Draft_TR_310304.icm"/>-->
+      <!--<colorprofile name="ScitexVM_Profil03_Draft_TR_310304.icm"/>-->
+      <!--<colorprofile name="ScitexVM_Profil04_Draft_TR_310304.icm"/>-->
+   </colorprofilelist>
+   <colormappinglist>
+      <!--<colormapping color="#00000000" cmyk="#FF000000"/>-->
+      <!--<colormapping color="#00FFFFFF" cmyk="#0000FF00"/>-->
+   </colormappinglist>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--define the dither method to create 1 bpp image (ink drops) for intensity
+                percent 1 - 99 of each separate CMYK channel. intensity percent 0 means no ink
+                drops, 100 means full ink drops. dithermethod parameter range AUTO = FLOYDSTEINBERG
+            -->
+
+      <dithermethod default="Auto" parameter="2"/>
+
+      <gammalists>
+         <!--gamma correction for gray patterns; intermediate values are interpolated if
+                no value is specified, no correction will be done Default:-->
+
+         <gammalist name="cyan" lut="">
+            <gammavalue from="0" to="0"/>
+            <gammavalue from="255" to="255"/>
+         </gammalist>
+
+         <gammalist name="magenta" lut="">
+            <gammavalue from="0" to="0"/>
+            <gammavalue from="255" to="255"/>
+         </gammalist>
+
+         <gammalist name="yellow" lut="">
+            <gammavalue from="0" to="0"/>
+            <gammavalue from="255" to="255"/>
+         </gammalist>
+
+         <gammalist name="black" lut="">
+            <gammavalue from="0" to="0"/>
+            <gammavalue from="255" to="255"/>
+         </gammalist>
+      </gammalists>
+   </output>
+
+   <resourcelist>
+      <fileslist>
+         <files path="." ext="icm"/>
+         <files path="." ext="icc"/>
+         <files path="."/>
+      </fileslist>
+   </resourcelist>
+</mffijp>

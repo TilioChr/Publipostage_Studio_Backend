@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/pxl">
+   <xs:element name="mffpxl">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN"> In pxl the devname is unique, it must be specified to match the font name
+                in pxl file Font specified by "devname", "family", "weight" and "style", optional:
+                style can be "UPRIGHT" or "ITALIC" weight can be "ULTRALIGHT", "EXTRALIGHT",
+                "LIGHT", "SEMILIGHT", "MEDIUM", "SEMIBOLOD", "BOLD", "EXTRABOLD", "ULTRABOLD"
+                "typeface" is only for PCL input. The pcl select font with font characteristic
+                including typeface. If you want to add a new font, just specify the font devname,
+                family name, weight, style and typeface in font list. </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="LetterGothic" type="xs:string"/>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="letr45w" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Type1"/>
+                                             <xs:enumeration value="TrueType"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="Letter Gothic" type="xs:string"/>
+                           <xs:attribute name="typeface" default="4102" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> please remember tray id is printer dependent, you must read the printer
+                documentation to get it. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="deviceid" default="0" type="xs:string"/>
+                                             <xs:attribute name="name" default="Default" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="outputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="outputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="deviceid" default="0" type="xs:string"/>
+                                             <xs:attribute name="name" default="Default" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultsetting" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> the following table specify the value of the default media size in pxl
+                _________________________________________ | page size | value |
+                _________________________________________ | Letter | 0 |
+                _________________________________________ | Legal | 1 |
+                _________________________________________ | A4 | 2 |
+                _________________________________________ | Executive | 3 |
+                _________________________________________ | Ledger | 4 |
+                _________________________________________ | A3 | 5 |
+                _________________________________________ | COM 10 Envelope | 6 |
+                _________________________________________ | Monarch Envelope | 7 |
+                _________________________________________ | C5 Envelope | 8 |
+                _________________________________________ | DL Envelope | 9 |
+                _________________________________________ | JIS B4 Paper | 10 |
+                _________________________________________ | JIS B5 Paper | 11 |
+                _________________________________________ | B5 Envelope | 12 |
+                __________________________________________ | B5 Paper | 13 |
+                __________________________________________ | JPostcard | 14 |
+                _________________________________________ | JDouble Postcard | 15 |
+                __________________________________________ | A5 | 16 |
+                _________________________________________ | A6 | 17 |
+                _________________________________________ | JIS B6 Paper | 18 |
+                _________________________________________ | JIS 8K | 19 |
+                __________________________________________ | JIS 16K | 20 |
+                __________________________________________ | JIS Exec | 21 |
+                __________________________________________ The default page size ist A4. You can see
+                all of the default setting in your printer menu or documentation. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pagesize" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="2" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="orientation" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="portrait">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="portrait"/>
+                                             <xs:enumeration value="landscape"/>
+                                             <xs:enumeration value="revportrait"/>
+                                             <xs:enumeration value="revlandscape"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="duplexcontrol" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="simplex" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinition" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> The name is media size name in pxl file. It must be unique. Orientation
+                must be in portrait Paper size can be specified by "format" and "orientation" or
+                "width" and "height </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="format" default="Letter" type="xs:string"/>
+                                    <xs:attribute name="orientation" default="portrait" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="name" default="LETTER 8.5x11" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="version" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> PXL version for output. The common value is 1.1, 2.0, 2.1 and 3.0. Default
+                value is 2.1. The measure unit in BeginSession and SetPageScale must be the same in
+                v2.0 </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="2.1" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="measurementunits" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the device dependent resolution of a page, i.e. the
+                raster to place objects on the page.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die geräteabhängige Auflösung für eine Seite,
+                also das Raster, in dem Objekte auf der Seite platziert werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ErrorReporting" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Hex value for PXL error reporting level for output. Possible values are
+                0x00 eNoReporting version 1.1 0x01 eBackChannel(BackCh) version 1.1 0x02
+                eErrorPage(ErrPage) version 1.1 Default 0x03 eBackChAndErrPage version 1.1 0x04
+                eNWBackChannel version 2.0 0x05 eNWErrorPage version 2.0 0x06 eNWBackChAndErrPage
+                version 2.0</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0x02" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> please remember tray id is printer dependent, you must read the printer
+                documentation to get it. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="deviceid" default="0" type="xs:string"/>
+                                             <xs:attribute name="name" default="Default" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="outputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="outputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="deviceid" default="0" type="xs:string"/>
+                                             <xs:attribute name="name" default="Default" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fontresolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> resolution to use for generated raster fonts. If the input font have
+                already resolution and output filter can support it, it will be used, otherwise the
+                specified value here will be used. default 0: let the application make decision. For
+                PXL Font: only 300, 600 and 1200 dpi is allowed. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="jpegquality" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the quality of written JPEG images as
+                percentage.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Qualität von JPEG-Images in
+                Prozent.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="75" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"), Dateiendung
+                ("extension") und Auflösung ("resolution") sind optional. Je mehr Angaben gemacht
+                werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="TrueType" type="xs:string"/>
+                                    <xs:attribute name="extension" default="ttf" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

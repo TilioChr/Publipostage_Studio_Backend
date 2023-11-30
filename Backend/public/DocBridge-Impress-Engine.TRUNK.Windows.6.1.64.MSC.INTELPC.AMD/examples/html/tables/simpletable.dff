@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Simple Table</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+	    <xi:include href="../../common/standardheader.dfb"/>
+        <p>This example shows how a simple table with a header row is rendered without any
+            additional styling, with the default settings.</p>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Ice Cream Flavor</th>
+                    <th>Availability</th>
+                    <th>Customer Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Almond</td>
+                    <td>Seasonal</td>
+                    <td>*****</td>
+                </tr>
+                <tr>
+                    <td>Banana</td>
+                    <td>Seasonal</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Blueberry</td>
+                    <td>Seasonal</td>
+                    <td>**</td>
+                </tr>
+                <tr>
+                    <td>Buttermilk</td>
+                    <td>Seasonal</td>
+                    <td>***</td>
+                </tr>
+                <tr>
+                    <td>Cherry</td>
+                    <td>Seasonal</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Chocolate</td>
+                    <td>Standard</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Coconut</td>
+                    <td>Seasonal</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Grape</td>
+                    <td>Seasonal</td>
+                    <td>**</td>
+                </tr>
+                <tr>
+                    <td>Hazelnut</td>
+                    <td>Standard</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Honey</td>
+                    <td>Seasonal</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Lemon</td>
+                    <td>Seasonal</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Mango</td>
+                    <td>Seasonal</td>
+                    <td>*****</td>
+                </tr>
+                <tr>
+                    <td>Passion fruit</td>
+                    <td>Seasonal</td>
+                    <td>***</td>
+                </tr>
+                <tr>
+                    <td>Pistachio</td>
+                    <td>Seasonal</td>
+                    <td>*****</td>
+                </tr>
+                <tr>
+                    <td>Raspberry</td>
+                    <td>Seasonal</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Salt caramel</td>
+                    <td>Seasonal</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Stracciatella</td>
+                    <td>Standard</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Strawberry</td>
+                    <td>Standard</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Tutti frutti</td>
+                    <td>Seasonal</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Vanilla</td>
+                    <td>Standard</td>
+                    <td>****</td>
+                </tr>
+                <tr>
+                    <td>Walnut</td>
+                    <td>Seasonal</td>
+                    <td>****</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

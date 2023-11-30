@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+  xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+  <head>
+    <title>Text fields and text area</title>
+    <style type="text/css">
+      @import url("../../common/cp-sample-style.css");</style>
+  </head>
+  <body>
+    <xi:include href="../../common/standardheader.dfb"/>
+    <h1>Text fields and textareas</h1>
+    <p>This example shows how text inputs and a text area are rendered without any additional
+      styling, with the default settings.</p>
+    <br />
+    <p><strong>&lt;input type="text"></strong> defines a text field:</p>
+    <form>
+      <p>Name some of your favorite ice cream flavors in the fields below</p>
+      <p>
+        <label for="flavor1">Flavor 1: </label>
+        <input type="text" name="flavor1" id="flavor1" required="required" />
+      </p>
+      <p>
+        <label for="flavor2">Flavor 2: </label>
+        <input type="text" name="flavor2" id="flavor2" /></p>
+      <p>
+        <label for="flavor3">Flavor 3: </label>
+        <input type="text" name="flavor3" id="flavor3" readonly="readonly" value="Chocolate" /></p>
+    </form>
+    <p><strong>&lt;textarea rows="" cols=""></strong> defines a text box:</p>
+    <label class="textarea" for="story">Tell us your favorite ice cream story:</label>
+    <textarea class="textarea" id="story" name="story" rows="5" cols="33">Your text goes here ...</textarea>
+  </body>
+</html>

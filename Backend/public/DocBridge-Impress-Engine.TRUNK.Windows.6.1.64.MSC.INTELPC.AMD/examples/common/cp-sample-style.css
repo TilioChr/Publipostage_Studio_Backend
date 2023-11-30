@@ -1,0 +1,37 @@
+@page {
+    size: A4;
+    margin-left: 2cm;
+    margin-right: 2cm;
+    margin-top: 2.5cm;
+    margin-bottom: 2.5cm;
+    @top-left {
+        content: element(myheader);
+        font-size: 6pt;
+    }
+}
+@media print {
+    body {
+        font-family: Arial;
+        font-size: 12pt;
+        padding: 0;
+    }
+
+    .header {
+        position: running(myheader);
+        font-size: 6pt;
+        color: gray;
+    }
+}
+@media screen {
+    html {
+        background: black
+    }
+    body {
+        width: 80%;
+        margin: 3em auto;
+        padding: 2em;
+        color: #373637;
+        background: white;
+        font-family: Arial;
+    }
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Radio buttons</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+	    <xi:include href="../../common/standardheader.dfb"/>
+        <p>This example shows how a quote is rendered without any additional styling, with the default settings.</p>
+        <p>By default, Compart does not do any styling of the text in q.</p>
+        <br />
+        <b>Quote</b>
+        <p>Here is a quote from Compart's website:</p>
+        <p><q>Compart enables its customer to process, deliver and access documents &amp; content -
+                in any form and format and via any channel</q></p>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffeml xmlns="http://www.compart.com/ns/mff/eml" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+
+   <input>
+      <!--Specifies which action will be applied to email attachments.
+                Use the default value "convert" to convert attachments in formats supported by
+                Compart software. Attachments in unsupported formats will be extracted. Use the
+                value "extract" to extract all attachments.-->
+
+      <Attachments action="convert"/>
+   </input>
+</mffeml>

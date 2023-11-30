@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/mmd">
+   <xs:element name="mffmmd">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen sowohl für die Eingabe als auch für
+                die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for both input and output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="defaultchar" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="char" default="003F" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how overlays are processed</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert wie Overlays verarbeitet werden</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagesegmentasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> Resolve Page segments or include it as external Item (default:
+                FALSE)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="aliasmaplist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">GCGIDs are characters defined by IBM that are identified by
+                8-digit IDs. With the element "aliasmap" you can map unknown GCGID (graphic
+                character global identifier) to known GCGID. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bei GCGID (Graphic Character Global Identifier) handelt es
+                sich um von IBM definierte Zeichen, die über achtstellige IDs, die
+                GCGID,identifiziert werden. Mit dem Element "aliasmap" können GCGID, deren
+                Bedeutung unbekannt ist, auf andere GCGID abgebildet werden, deren Bedeutung bekannt
+                ist. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="aliasmap" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devicename" default="SD150300" type="xs:string"/>
+                                    <xs:attribute name="map" default="SD150000" type="xs:string"/>
+                                    <xs:attribute name="condition" default="IfNotFoundInEncodings">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="IfNotFoundInEncodings"/>
+                                             <xs:enumeration value="Always"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="encodinglist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="encoding" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Defines or starts a new encoding list. Each entry of the list
+                consists of the character name that is to be replaced, the value of the attribute
+                "devname", and the Unicode mapping. Please edit carefully.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert bzw. startet eine neue Encoding-Liste. Jeder Eintrag
+                in der Liste besteht aus dem zu ersetzenden Zeichennamen, der Wert des Attributs
+                "devname", und der Unicode-Zuordnung. Bitte vorsichtig editieren.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="TRANS032" type="xs:string"/>
+                                    <xs:attribute name="char" default="0020" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="name" default="T1WING" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct or dummy device names must be specified </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="raster" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="size" default="12" type="xs:double"/>
+                                             <xs:attribute name="devname" default="C0920AB0" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="rasterize" default="Always">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Always"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="baselineincrement" default="1150" type="xs:double"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="OCR-A" type="xs:string"/>
+                           <xs:attribute name="serifstyle" default="SansSerif">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="SansSerif"/>
+                                    <xs:enumeration value="Serif"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="spacing" default="Proportional">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Proportional"/>
+                                    <xs:enumeration value="Monospaced"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="encoding" default="T1WING" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="codepagelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="codepage" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:attribute name="name" default="T1001148" type="xs:string"/>
+                           <xs:attribute name="iana" default="IBM01148" type="xs:string"/>
+                           <xs:attribute name="default" default="yes" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"), Dateiendung
+                ("extension") und Auflösung ("resolution") sind optional. Je mehr Angaben gemacht
+                werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="TrueType">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Overlay"/>
+                                             <xs:enumeration value="Pagesegment"/>
+                                             <xs:enumeration value="CodedFont"/>
+                                             <xs:enumeration value="CodePage"/>
+                                             <xs:enumeration value="CharSet"/>
+                                             <xs:enumeration value="FormDef"/>
+                                             <xs:enumeration value="PageDef"/>
+                                             <xs:enumeration value="ResourceLib"/>
+                                             <xs:enumeration value="PageDef"/>
+                                             <xs:enumeration value="Object"/>
+                                             <xs:enumeration value="Icc"/>
+                                             <xs:enumeration value="TrueType"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Schachtnamen zuweisen</xs:documentation>
+                  <xs:documentation xml:lang="en-US">Assign tray ID</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="deviceid" default="1" type="xs:integer"/>
+                                    <xs:attribute name="name" default="Tray1" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="defaultcodepage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">output codepage used for input data translation</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="IBM273" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="format" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="codepage" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="iana" default="ISO-8859-1" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="usecc" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">enable/disable Carriage Control Characters (default: TRUE)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="cctype" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Specify Carriage Control Type (default: z)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="z">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="z">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="EN">use only if ansi carriage control characters defined in ascii format in
+                input file</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:enumeration>
+                                    <xs:enumeration value="a">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="EN">use only if ansi carriage control characters are defined in ebcdic format
+                in input file</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:enumeration>
+                                    <xs:enumeration value="m">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="EN">use only if machine carriage control characters are defined in input
+                file</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:enumeration>
+                                    <xs:enumeration value="s">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="EN">use only if siemens ansi carriage control characters are defined in input
+                file</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:enumeration>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fileformat" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Specify file format (default: stream)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="type" default="Stream">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Stream"/>
+                                    <xs:enumeration value="Record"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="value" default="0x0D0A" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ignorespace" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Specifiy ignorespace to ignore white spaces and newline chars after AFP
+                structure field (default: FALSE)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="treatAlphaNumericAsSpace" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="useafplength" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Specifiy useafplength only if the length specified in AFP header is being
+                used. (default: FALSE)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="deleteafpnopsfromdata" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Identify and delete AFP NOPs used in input data file. (default:
+                FALSE)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="rdw" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Record Descriptor word (rdw) will only be used if length of each record is
+                speicified as a prefix within input data file. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="" type="xs:string"/>
+                           <xs:attribute name="lengthincluded" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="skiptonextpage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">If channel code is found in data file but not defined in pagedef then skip
+                to next page (default: FALSE)</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="usetrc" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">use Table Reference Characters (default: FALSE) </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="chars" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">chars parameter specifies the font name of 1 to 4 coded fonts seperated by
+                ',' </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultpagedef" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Specify default pagedefinition used to process current input
+                file</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultformdef" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Specify default formdefinition used to process current input
+                file</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultcharset" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">default charset for font ids not defined in MCF</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="C0420000" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ignorebeforelinecondition" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">If &lt;ignorebeforelinecondition&gt; is 'false' and 'before line' condition
+                is occured within pagedef then a switch to a new page format </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="adjustbarcodesize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how the barcode size is adjusted.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Bestimmt, wie die Größe von Barcodes angepasst wird.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="resolution" default="0" type="xs:int"/>
+                           <xs:attribute name="minSize" default="90%" type="xs:string"/>
+                           <xs:attribute name="maxSize" default="100%" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="useCode128Algorithm" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines which start character algorithm is used for Code
+                128 (AIM USS-128)</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, welcher Algorithmus zum Feststellen der Startzeichen
+                für den Code 128 (AIM USS-128) verwendet wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="standard">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="standard"/>
+                                    <xs:enumeration value="1986"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="processmediummap" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">process IMM structured fields found from input or through conditional
+                processing</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="commentsdefaultcodepage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Determines which code page (IANA name) is used for texts in
+                NOPs</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="iana" default="IBM500" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readcomments" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether NOPs are read and the way they are
+                provided.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob NOPs gelesen und wie sie bereitgestellt werden.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">true: NOPs are read. false: NOPs are ignored (improves speed).
+            </xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="addcommentstopage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether NOPs are added to the pages or are available
+                on the pages. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob NOPs in die Seiten eingefügt werden sollen bzw.
+                auf der Seite zur Verfügung stehen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ReadTLEs" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether TLEs are read and where they are
+                placed.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob TLEs gelesen werden sollen und wo sie
+                bereitgestellt werden. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">TRUE: Read TLEs. FALSE: Ignore TLEs. </xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

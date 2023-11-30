@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-login</title>
+    <defs></defs>
+    <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="icon-login" sketch:type="MSArtboardGroup" fill="#bdbebf">
+            <path d="M32.9624265,29.7471962 C32.9624265,25.39461 29.3619415,21.8334031 24.9613489,21.8334031 L15.963504,21.8334031 C11.5629114,21.8334031 7.96242645,25.39461 7.96242645,29.7471962 L7.96242645,34.1799548 L32.9624265,34.1799548 L32.9624265,29.7471962 Z M20.0744954,18.4894376 C24.0514812,18.4894376 27.2754652,15.3006243 27.2754652,11.3670238 C27.2754652,7.43342328 24.0514812,4.24461 20.0744954,4.24461 C16.0975096,4.24461 12.8735256,7.43342328 12.8735256,11.3670238 C12.8735256,15.3006243 16.0975096,18.4894376 20.0744954,18.4894376 Z" id="Oval-Copy" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

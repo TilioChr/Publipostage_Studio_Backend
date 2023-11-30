@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Background Colors</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");
+            @page {
+                margin: 0;
+                background-image: url('images/Template-Letter-CP-AG2.pdf');
+            }
+            body {
+                margin-left: 2cm;
+                margin-right: 2cm;
+                margin-top: 8.5cm;
+                margin-bottom: 2.5cm;
+            }</style>
+    </head>
+    <body>
+<!--        <xi:include href="../../common/standardheader.dfb"/>-->
+        <h1>Page Background Images</h1>
+        <p>In the @page rule, you can use the <code>background-image</code> property to specify a
+            background image for pages. We also call background images for pages <q>Underlays</q>.
+            Compart does not only suppport image formats, but all MFF supported formats as
+            background images.</p>
+        <p>This document demonstrates how to use a simple underlay with one page.</p>
+    </body>
+</html>

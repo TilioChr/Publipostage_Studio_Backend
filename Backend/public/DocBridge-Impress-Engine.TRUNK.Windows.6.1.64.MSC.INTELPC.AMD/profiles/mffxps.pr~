@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffxps xmlns="http://www.compart.com/ns/mff/xps" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct or dummy device names must be specified -->
+
+   <fontlist>
+      <font family="Arial">
+         <!--<face weight="Medium" width="Normal" style="Upright" fontfile="arial"
+               fontfiletype="TrueType"
+               overrideembeddedfont="false"/>-->
+         <!--<face weight="Bold" width="Normal" style="Upright" fontfile="arialbd"
+               fontfiletype="TrueType"
+               overrideembeddedfont="false"/>-->
+      </font>
+   </fontlist>
+
+   <resourcelist>
+      <fileslist>
+         <!--Several directories can be specified for the search for external resources.
+                The "path" is mandatory. "Type", "extension" and "resolution" are optional. However,
+                the more detailed the settings are, the more specific the search will be. Valid
+                values for "type" are: "overlay", "pageSegment", "codedFont", "codePage", "charSet",
+                "formDef", "resourceLib", "pageDef", "object", "icc", "documentIndex". If the type
+                is not defined, the path will be used for all types. The "extension" can be emtpy,
+                <extension> or a wildcard. If the "resolution" is not specified, resources
+                with any resolution will be searched in the path. -->
+
+         <files path="." type="TrueType" extension="ttf"/>
+         <files path="c:\WINDOWS\Fonts" type="TrueType" extension="ttf"/>
+         <files path="c:\WINNT\Fonts" type="TrueType" extension="ttf"/>
+         <files path="c:\fonts" type="TrueType" extension="ttf"/>
+      </fileslist>
+   </resourcelist>
+</mffxps>

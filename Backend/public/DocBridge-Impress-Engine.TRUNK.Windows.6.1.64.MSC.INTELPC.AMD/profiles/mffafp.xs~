@@ -1,0 +1,2540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/afp">
+   <xs:element name="mffafp">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen sowohl für die Eingabe als auch für
+                die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for both input and output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="multidocument" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="generateoverlays" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="autoformdefgeneration" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether dynamic form definitions are to be
+                created.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob dynamische Form-Definitions erzeugt
+                werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="auto"/>
+                                    <xs:enumeration value="true"/>
+                                    <xs:enumeration value="false"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="treatrectstransparent" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="treatpathstransparent" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="rasterunevenpointsizes" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="rastersettype" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines the algorithm for the rasterization of
+                objects.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, welcher Algorithmus für das Rastern von Objekten
+                verwendet wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="screen">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="screen"/>
+                                    <xs:enumeration value="screenModified"/>
+                                    <xs:enumeration value="afp"/>
+                                    <xs:enumeration value="afpModified"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagesegmentasreference" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="objectasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how objects in the input are processed. "true":
+                objects are included via IBO (default setting); "false": objects are resolved
+                inline</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie Objekte in der Eingabe verarbeitet werden.
+                "true": Objekte werden über IBO eingebunden (Defaultwert); "false": Objekte werden
+                aufgelöst und dem Seiteninhalt hinzugefügt.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="optimizepa" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">ifdifferenttypes : 'optimize' page if 'creator/read' device is
+                different from 'write' device always : always 'optimize' page (aka Presentation
+                Area) never : never 'optimize' page (aka Presentation Area) - processing the
+                optimizepa (page optimization) rules handles all items types by default - however
+                for some uncommon converting processes it is useful to ignore some item types, eg.
+                to prevent rendering of text items built of user definded unicodes</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="ifDifferentTypes">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="ifDifferentTypes"/>
+                                    <xs:enumeration value="always"/>
+                                    <xs:enumeration value="never"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="optimizepaoptions" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> Optimization is a time consuming process and in some cases it
+                can produce suprising results. Using the "optimizepaoptions" subelements, you can
+                finetune how the optimization in the Presentation Area is carried out. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Die Optimierung kann ein zeitintensiver Die Details der
+                Optimierung können über das Element optimizepaoptions gesteuert werden. Mit den
+                "optimizepaoptions" Unterelementen legen Sie fest, wie die Optimierung in der
+                Presentation Area durchgeführt werden soll. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="ignoreitems" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="EXTERNAL" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="ignorecolor" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Specifies whether all page objects are to be regarded as
+                black-and -white when being tested for overlapping. This may prevent unnecessary
+                rasterization.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Bestimmt, ob alle Objekte einer Seite als schwarz-weiß
+                betrachtet werden sollen, wenn auf Überschneidungen getestet wird. Dadurch kann in
+                speziellen Fällen eine unnötige Rasterung verhindert werden.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="separateunderlinesfromtext" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Separates the underline from a text item to retain the
+                underline.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Trennt Unterstriche von Textelementen um die Unterstriche zu
+                erhalten.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="aliasmaplist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">GCGIDs are characters defined by IBM that are identified by
+                8-digit IDs. With the element "aliasmap" you can map unknown GCGID (graphic
+                character global identifier) to known GCGID. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bei GCGID (Graphic Character Global Identifier) handelt es
+                sich um von IBM definierte Zeichen, die über achtstellige IDs, die
+                GCGID,identifiziert werden. Mit dem Element "aliasmap" können GCGID, deren
+                Bedeutung unbekannt ist, auf andere GCGID abgebildet werden, deren Bedeutung bekannt
+                ist. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="aliasmap" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">U+02C6: Circumflex Accent</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="devicename" default="SD150300" type="xs:string"/>
+                                    <xs:attribute name="map" default="SD150000" type="xs:string"/>
+                                    <xs:attribute name="condition" default="ifNotFoundInEncodings">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="ifNotFoundInEncodings"/>
+                                             <xs:enumeration value="always"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resources" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="cacheobjectcontainers" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether object containers, such as PDF documents,
+                are cached.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE"/>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="cacheoverlays" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether overlays are cached.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Overlays zwischengespeichert
+                werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="cachepagesegments" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether page segments are cached. Valid values:
+                "true" (default): store page segments in global cache; "false": destroy page segment
+                after usage.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Specifies whether page segments are cached. Gültige Werte:
+                "true" (default): Pagesegments zwischenspeichern; "false": Pagesegment nach
+                Verwendung löschen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="useresourcemanager" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines the handling of errors and messages of the resource
+                manager component.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie Fehler und Nachrichten von der
+                Resourcemanager-Komponente behandelt werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="FontSearchOrder" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Font Search Order</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE"/>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="FontFileType" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="en-US">Type of font file</xs:documentation>
+                                             <xs:documentation xml:lang="de-DE"/>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="Raster">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="Raster"/>
+                                                      <xs:enumeration value="TrueType"/>
+                                                      <xs:enumeration value="Type1"/>
+                                                      <xs:enumeration value="AfpZFont"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="rules" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Specifies rules for the resource manager's error handling and
+                also resource name handling.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Bestimmt Regeln für den Resourcemanager für die
+                Fehlerbehandlung.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="NameHandling" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="scope" default="input">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="input"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="casecontrol" default="asis">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="upper"/>
+                                                      <xs:enumeration value="asis"/>
+                                                      <xs:enumeration value="lower"/>
+                                                      <xs:enumeration value="ignore"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                       <xs:element name="objectmissing" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="type" default="mediumMap">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="mediumMap"/>
+                                                      <xs:enumeration value="pageSegment"/>
+                                                      <xs:enumeration value="overlay"/>
+                                                      <xs:enumeration value="object"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="scope" default="input">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="input"/>
+                                                      <xs:enumeration value="output"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="action" default="treatAsError">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="treatAsError"/>
+                                                      <xs:enumeration value="treatAsWarning"/>
+                                                      <xs:enumeration value="ignoreObject"/>
+                                                      <xs:enumeration value="useDefaultFromFormdef"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="active" default="true" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="encodinglist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="encoding" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Defines or starts a new encoding list. Each entry of the list
+                consists of the character name that is to be replaced, the value of the attribute
+                "devname", and the Unicode mapping. Please edit carefully.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert bzw. startet eine neue Encoding-Liste. Jeder Eintrag
+                in der Liste besteht aus dem zu ersetzenden Zeichennamen, der Wert des Attributs
+                "devname", und der Unicode-Zuordnung. Bitte vorsichtig editieren.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">space</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="TRANS032" type="xs:string"/>
+                                    <xs:attribute name="char" default="0020" type="xs:string"/>
+                                    <xs:attribute name="default" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="name" default="T1WING" type="xs:string"/>
+                           <xs:attribute name="mask" default="" type="xs:string"/>
+                           <xs:attribute name="from" default="0" type="xs:string"/>
+                           <xs:attribute name="to" default="255" type="xs:string"/>
+                           <xs:attribute name="numberSystem" default="dec">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="dec"/>
+                                    <xs:enumeration value="hex"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="iana" default="" type="xs:string"/>
+                           <xs:attribute name="padding" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="ascii" default="" type="xs:string"/>
+                  <xs:attribute name="ebcdic" default="" type="xs:string"/>
+                  <xs:attribute name="dbEbcdic" default="" type="xs:string"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="raster" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="size" default="12" type="xs:double"/>
+                                             <xs:attribute name="devname" default="C0920AB0" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="weight" default="medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="ultraLight"/>
+                                             <xs:enumeration value="extraLight"/>
+                                             <xs:enumeration value="light"/>
+                                             <xs:enumeration value="semiLight"/>
+                                             <xs:enumeration value="medium"/>
+                                             <xs:enumeration value="semiBold"/>
+                                             <xs:enumeration value="bold"/>
+                                             <xs:enumeration value="extraBold"/>
+                                             <xs:enumeration value="ultraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="ultraCondensed"/>
+                                             <xs:enumeration value="extraCondensed"/>
+                                             <xs:enumeration value="condensed"/>
+                                             <xs:enumeration value="semiCondensed"/>
+                                             <xs:enumeration value="normal"/>
+                                             <xs:enumeration value="semiExpanded"/>
+                                             <xs:enumeration value="expanded"/>
+                                             <xs:enumeration value="extraExpanded"/>
+                                             <xs:enumeration value="ultraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="upright"/>
+                                             <xs:enumeration value="italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="CZ4200" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="AfpZFont" type="xs:string"/>
+                                    <xs:attribute name="rasterize" default="always">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="always"/>
+                                             <xs:enumeration value="never"/>
+                                             <xs:enumeration value="default"/>
+                                             <xs:enumeration value="input"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="enableDynamicCodepages" default="true" type="xs:boolean"/>
+                           <xs:attribute name="family" default="OCR-A" type="xs:string"/>
+                           <xs:attribute name="serifstyle" default="sansSerif">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="sansSerif"/>
+                                    <xs:enumeration value="serif"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="spacing" default="proportional">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="proportional"/>
+                                    <xs:enumeration value="monospaced"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="encoding" default="T1WING" type="xs:string"/>
+                           <xs:attribute name="deviceid" type="xs:int"/>
+                           <xs:attribute name="gcsgid" type="xs:int"/>
+                           <xs:attribute name="horizontalfontsize" type="xs:int"/>
+                           <xs:attribute name="oid" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="enableDynamicCodepages" default="true" type="xs:boolean"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="codepagelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="codepage" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> International ECECP : &lt;codepage name="T1001148" iana="IBM01148" /&gt;
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="T1001148" type="xs:string"/>
+                           <xs:attribute name="iana" default="IBM01148" type="xs:string"/>
+                           <xs:attribute name="default" default="yes" type="xs:string"/>
+                           <xs:attribute name="cpgid" default="0" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="librarylist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="library" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Specifies the file name of the reslib file.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Definiert den Dateinamen der reslib-Datei.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="filename" default="resources1" type="xs:string"/>
+                                    <xs:attribute name="tle" default="reslib" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"), Dateiendung
+                ("extension") und Auflösung ("resolution") sind optional. Je mehr Angaben gemacht
+                werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="resourceLib">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="overlay"/>
+                                             <xs:enumeration value="pageSegment"/>
+                                             <xs:enumeration value="codedFont"/>
+                                             <xs:enumeration value="codePage"/>
+                                             <xs:enumeration value="charSet"/>
+                                             <xs:enumeration value="formDef"/>
+                                             <xs:enumeration value="resourceLib"/>
+                                             <xs:enumeration value="pageDef"/>
+                                             <xs:enumeration value="object"/>
+                                             <xs:enumeration value="icc"/>
+                                             <xs:enumeration value="documentIndex"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" type="xs:string"/>
+                                    <xs:attribute name="resolution" type="xs:int"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="format" default="A4" type="xs:string"/>
+                                             <xs:attribute name="orientation" default="portrait">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="portrait"/>
+                                                      <xs:enumeration value="landscape"/>
+                                                      <xs:enumeration value="revportrait"/>
+                                                      <xs:enumeration value="revlandscape"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="default" default="no" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="deviceid" default="1" type="xs:int"/>
+                                    <xs:attribute name="name" default="Tray1" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="outputtrays" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="outputtray" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="format" default="A4" type="xs:string"/>
+                                             <xs:attribute name="orientation" default="portrait">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="portrait"/>
+                                                      <xs:enumeration value="landscape"/>
+                                                      <xs:enumeration value="revportrait"/>
+                                                      <xs:enumeration value="revlandscape"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="deviceid" default="1" type="xs:int"/>
+                                    <xs:attribute name="name" default="Tray1" type="xs:string"/>
+                                    <xs:attribute name="default" default="no" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="colorprofilelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="colorprofile" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:attribute name="name" default="GenericRGB" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how overlays are processed. "true": overlays are
+                included via IPO (default setting); "false": overlays are resolved inline </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie Overlays in der Eingabe verarbeitet werden.
+                "true": Overlays werden über IPO eingebunden (Defaultwert); "false": Overlays
+                werden aufgelöst und dem Seiteninhalt hinzugefügt. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagesegmentasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how page segments in the input and output are
+                processed. "true": segments are included via IPS (default setting); "false":
+                segments are resolved inline</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie Pagesegmente in der Eingabe und der Ausgabe
+                verarbeitet werden. "true": Segmente werden über IPS eingebunden (Defaultwert);
+                "false": Segmente werden aufgelöst und dem Seiteninhalt hinzugefügt.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="disablequickparse" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether the AFP file is scanned when being read
+                before the individual pages are processed. "true" (default): Do not scan the whole
+                file. Useful if only a few pages of a large file are required. "false": Scan the
+                whole file before processing it.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob die AFP-Datei beim Lesen zuerst komplett gescannt
+                wird bevor die Verarbeitung der einzelnen Seiten beginnt. "true" (default): Die
+                Datei wird vor der Verarbeitung nicht komplett gescannt. Nützlich, wenn nur ein
+                paar Seiten einer großen Datei benötigt werden. "false": Die Datei wird komplett
+                gescannt. Defaultwert ist FALSE.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="documentcodepage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the code page to use for the interpretation of the
+                reference name of MO:DCA objects (overlays, charsets, etc) within the
+                document.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die zu verwendende Codepage für die Interpretation
+                der Referenznamen von MO:DCA-Objekten (Overlays, Zeichensätze usw.) innerhalb des
+                Dokuments.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="standard">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="standard"/>
+                                    <xs:enumeration value="auto"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="overrideTleEncoding" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> Determines which code page (IANA name) is used for texts in
+                TLEs. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Bestimmt, welche Codepage (IANA Name) für Texte in TLEs
+                verwendet wird. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="iana" default="IBM500" type="xs:string"/>
+                           <xs:attribute name="apply" default="none">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="none"/>
+                                    <xs:enumeration value="bdt"/>
+                                    <xs:enumeration value="BDT"/>
+                                    <xs:enumeration value="tle"/>
+                                    <xs:enumeration value="TLE"/>
+                                    <xs:enumeration value="all"/>
+                                    <xs:enumeration value="ALL"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="commentsdefaultcodepage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines which code page (IANA name) is used for texts in
+                NOPs.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, welche Codepage (IANA Name) für NOPs verwendet
+                wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="iana" default="IBM273" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultformdef" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the Format Definition (formdef) to be
+                used.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, welche Format-Definition (formdef) verwendet werden
+                soll.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="name" default="" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultcharset" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Defines which character set to use per default, if none was
+                defined in the input file.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert, welcher Zeichensatz als Standard verwendet werden
+                soll, wenn keiner in der eingelesenen Datei definiert wurde.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="C0420000" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="DefaultFGID" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the default font grid id (FGID) to use if a unknown
+                FGID is used in the AFP file.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die primäre Font Grid ID (FGID) die verwendet werden
+                soll, wenn die benutzte FGID unbekannt ist.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="11" type="xs:int"/>
+                           <xs:attribute name="pitch" default="0" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="FGIDIgnoreWidth" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies if the width parameter of Font Grid ID (FGID) in the
+                AFP file should be ignored.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt ob der width Parameter des Font Grid ID (FGID) die
+                verwendet werden soll.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="resolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies which resolution is used in the Presentation Area.
+                By adjusting the values, problems (e.g. rounding errors) caused by a low resolution
+                can be avoided.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, welche Auflösung in der Presentation Area verwendet
+                wird. Durch eine Anpassung lassen sich Probleme (z. B. Rundungsfehler), die durch
+                eine geringe Auflösung verursacht werden vermeiden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="rx" default="0" type="xs:int"/>
+                           <xs:attribute name="ry" default="0" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="patternsymbol" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">GOCA output can contain filled areas. Using the element
+                "patternsymbol" the fill pattern can be specified.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Die GOCA-Ausgabe kann gefüllte Flächen enthalten. Mit dem
+                Element "patternsymbol" können Sie das Füllmuster bestimmen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0000" type="xs:string"/>
+                           <xs:attribute name="color" default="#00000000" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="inputinterpretationmode" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Page size and placement can be interpreted in different ways.
+                The 'value' of the element 'inputinterpretationmode' determines where the
+                information originates.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Seitengröße und Seitenpositionierung können auf
+                unterschiedliche Arten interpretiert werden. Das Attribut 'value' des
+                'inputinterpretationmode' Elements bestimmt, woher die Informationen
+                stammen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="page">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="page"/>
+                                    <xs:enumeration value="pageWithOffset"/>
+                                    <xs:enumeration value="medium"/>
+                                    <xs:enumeration value="ignoreMedium"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="pagesizecalculation" default="bounding">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="bounding"/>
+                                    <xs:enumeration value="standard"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="behavior" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">As viewer sometimes behave different from printers, you can
+                influence the behavior of the AFP input filter using the element
+                behaviour.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Da sich Viewer teilweise anders verhalten als Drucker, kann
+                man mit "behaviour" das Verhalten des AFP-Eingabefilters beeinflussen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="printer">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="printer"/>
+                                    <xs:enumeration value="viewer"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="processmediummap" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how the IMM (Invoke Medium Map) is processed. This
+                is useful in conjunction with the Formdef processor. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt wie die IMM (Invoke Medium Map) verarbeitet wird.
+                Dies ist besonders in Verbindung mit dem Formdef Prozessor nützlich.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="standard">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="standard"/>
+                                    <xs:enumeration value="true"/>
+                                    <xs:enumeration value="false"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="copycomments4mccpages" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">The printing of copies of a logical page can be controlled by
+                the structured field MCC (Medium Copy Count). Thereby, comments (NOPs) are only
+                copied to the original page and not to the copies. This setting is customer specific
+                and not valid according to the AFP specification.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Das Drucken von Kopien einer logischen Seite kann durch das
+                Structured Field MCC (MediumCopy Count) gesteuert werden. Kommentare (NOPs) werden
+                dabei nur auf die originale Seite kopiert und nicht in die Kopien. Diese Einstellung
+                ist eine kundenspezifische Modifikation und entspricht nicht der
+                AFP-Spezifikation.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="inputoptimizationmode" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">With large AFP input spools, the memory usage can exceed the
+                system capacity. The element "inputoptimizationmode" determines the priorities for
+                the processing of large amounts of AFP input data.</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Bei großen AFP Eingangs-Spools kann die Speicherauslastung
+                die Systemkapazitäten übersteigen. Das Element "inputoptimizationmode" bestimmt
+                die Prioritäten bei der Verarbeitung von großvolumigen
+                AFP-Eingangsdaten.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="memory">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="memory"/>
+                                    <xs:enumeration value="runtime"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="gocarasterimageresolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the resolution of a GOCA image. Each image point is
+                mapped to a pixel of the output device. By setting the resolution, the size of the
+                GOCA image can be adjusted.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Auflösung eines GOCA-Inages. Jeder Bildpunkt
+                wird auf ein Pixel des Ausgabegeräts abgebildet. Durch die Einstellung der
+                Auflösung, kann die Größe des GOCA-Images angepasst werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:int">
+                                    <xs:enumeration value="0"/>
+                                    <xs:enumeration value="300"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="GocaLineWidthBase" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Defines the basis for calculating the line width in GOCA
+                input.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Basis zur Berechnung der Linienbreite in der
+                GOCA-Eingabe.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0.01 in" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="GocaLineJoinStyle" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Defines how lines/paths are joined in GOCA
+                input.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt wie Linien bzw. Pfade aus GOCA-Eingabe miteinander
+                verbunden werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="round">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="none"/>
+                                    <xs:enumeration value="miter"/>
+                                    <xs:enumeration value="round"/>
+                                    <xs:enumeration value="bevel"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="GocaLineCapStyle" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Defines how lines ends in GOCA input.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt wie Linienenden aus GOCA-Eingabe gestaltet
+                werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="round">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="notset"/>
+                                    <xs:enumeration value="drawingdefault"/>
+                                    <xs:enumeration value="butt"/>
+                                    <xs:enumeration value="flat"/>
+                                    <xs:enumeration value="round"/>
+                                    <xs:enumeration value="square"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="gocaprocessrefcsys05" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">This is a deprecated mapping option no longer processed by all
+                systems. true: Process using last PTX position. false (default): Process as standard
+                option 01.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Dies ist eine veraltete Mapping-Option, die nicht mehr von
+                allen Systemen verarbeitet werden kann. true: Verarbeitung auf Basis der letzten PTX
+                Position. false (default): Verarbeitung des Wertes 05 als Standard-Option
+                01.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="GocaApplyDrawingDefaultsToNewSegment" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">New segments in AFP-GOCA reset the current drawing values to
+                the drawing defaults. In the past reseting of drawing values, e.g. position, was not
+                done. Deactivate this switch if reseting to the drawing defaults should be omitted. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Neue Segmente in AFP-GOCA setzen die aktuelle
+                Zeichenparameter zurück. In der Vergangenheit wurde das Zurücksetzen der Werte,
+                wie z.B. der Position ignoriert. Deaktivieren Sie diesen Schalter, wenn das
+                Zurücksetzen der Zeichenparameter unterlassen werden soll. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">New segments in AFP-GOCA reset the current drawing values to
+                the drawing defaults. In the past reseting of drawing values, e.g. position, was not
+                done. Deactivate this switch if reseting to the drawing defaults should be omitted. </xs:documentation>
+                                 <xs:documentation xml:lang="de-DE"> Neue Segmente in AFP-GOCA setzen die aktuelle
+                Zeichenparameter zurück. In der Vergangenheit wurde das Zurücksetzen der Werte,
+                wie z.B. der Position ignoriert. Deaktivieren Sie diesen Schalter, wenn das
+                Zurücksetzen der Zeichenparameter unterlassen werden soll. </xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="MinLineQuotaToAcceptTruncatedFaxG4" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">The element is used to set a quota that determines if a
+                truncated FaxG4 image is printed. If fewer lines than specified by the quota are
+                generated, this results in an error message and the image is rejected.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Das Element dient dazu, über eine Quote festzulegen, ob ein
+                abgeschnittenes FaxG4-Image gedruckt werden soll. Werden weniger Linien erzeugt als
+                über die Quote festgelegt, wird eine Nachricht generiert und das Image wird
+                zurückgewiesen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="100" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readarchivefields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether TLEs are read and where they are
+                placed.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob TLEs gelesen werden sollen und wo sie
+                bereitgestellt werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">true: Read archive fields. false: Ignore archive
+                fields.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="onceperpagegroup" default="false" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">true: Page group TLEs are visible only before the first page
+                of the page group. false (default): Page group TLEs are visible on all input pages
+                of the page group.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="unify" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">true: Provide TLEs in a manner where all output filters using
+                archivefields can find them. (Default) false: Provide TLEs in new extend mode.
+            </xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="trimarchivefields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether blanks are removed at the end of TLEs. true:
+                Trailing spaces are trimmed. false: TLE value remains unchanged.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt ob Leerzeichen am Ende der TLEs entfernt werden
+                sollen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="separatepagearchivefields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether page group TLEs and page TLEs are processed
+                separately.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt ob Page Group-TLEs und Page-TLEs getrennt verarbeitet
+                werden sollen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readcomments" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether NOPs are read and the way they are
+                provided.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob NOPs gelesen und wie sie bereitgestellt werden.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">true: NOPs are read. false: NOPs are ignored (improves speed).
+            </xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="unify" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">true: Provide NOPs in traditional order. false: Provide NOPs
+                in new extended order.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="binary" default="false" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">false: Read and store NOPs as text string. true: Read and
+                store NOPs as binary data string.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="trimcommentfields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether spaces are removed at the end of
+                NOPs.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Leerzeichen am Ende von NOPs entfern werden
+                sollen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="addcommentstopage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether NOPs are available on the
+                pages.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob NOPs auf der Seite zur Verfügung
+                stehen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readannotations" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether annotations to the triplet x'46' are
+                read.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Annotations gelesen werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="adjustbarcodesize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how the barcode size is adjusted.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie die Größe von Barcodes angepasst
+                wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="resolution" default="0" type="xs:int"/>
+                           <xs:attribute name="minSize" default="90%" type="xs:string"/>
+                           <xs:attribute name="maxSize" default="100%" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="barcodelist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies additional settings for how barcodes are
+                generated</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert zusätzliche Einstellungen zum Generieren von
+                Barcodes</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="barcode" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" type="xs:string"/>
+                                    <xs:attribute name="type" type="xs:string"/>
+                                    <xs:attribute name="hriFontFamilyName" type="xs:string"/>
+                                    <xs:attribute name="hriPointsize" default="12" type="xs:integer"/>
+                                    <xs:attribute name="emulate4028BarcodeOffset" default="true" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="addptxlineasrect" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether PTX lines (defined by the control sequences
+                DIR - Draw Inline Rule and DBR - Draw Baseline Rule) are converted to
+                rectangles.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Linien, definiert durch die Kontrollsequenzen DIR
+                (Draw Inline Rule) und DBR (DrawBaseline Rule) des Structured Fields PTX in
+                Rechtecke umgewandelt werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="combinetext" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether texts are joined.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Texte zusammengefügt werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="processtriplet27" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Use of this triplet is limited to the structured fields BBC
+                (Begin Bar Code Object), BGR (Begin Graphics Object), BII (Begin Image Object IM),
+                BIM (Begin Image Object IO), and IPS (Include Page Segment) for the migration of
+                line data including barcodes, graphics, image objects or page segments to the MO:DCA
+                document format.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Die Verwendung diese Triplets ist beschränkt auf die
+                Structured Fields BBC (Begin Bar CodeObject), BGR (Begin Graphics Object), BII
+                (Begin Image Object IM), BIM (Begin Image Object IO)und IPS (Include Page Segment)
+                für die Migration von Line-Data mit Barcode-, Grafik-, Image-Objekten und
+                Pagesegmenten in das MO:DCA-Dokumentenformat.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="replaceGocaPatterns" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Defines a list to replace the predefined GOCA patterns by
+                colors.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert eine Liste, um vordefinierte AFP-GOCA-Pattern durch
+                Farben zu ersetzen. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="replaceGocaPattern" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Defines if the AFP-GOCA pattern should be replaced by a color
+                or not.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Bestimmt, ob das AFP-GOCA-Pattern durch eine Farbe ersetzt
+                werden soll oder nicht.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="true" type="xs:boolean"/>
+                                    <xs:attribute name="number" default="1" type="xs:int"/>
+                                    <xs:attribute name="color" default="#00999999" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="inheritSVI" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how SVI is inherited between different BPT blocks.
+                "true" (default): SVI is inherit between different BPT. "false": SVI is reset for
+                each BPT.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie SVI an weitere BPT-Blöcke vererbt wird. "true"
+                (default): SVI wird an den nächsten BPR-Block weiter gegeben. "false": SVI wird
+                für jeden BPT-Block neu gesetzt.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ColorList" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Allows the definition of one or more highlight or oca colors
+                for AFP Input.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="Highlight" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Specifies the highlight colors available in addition to black
+                and white.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Gibt die Highlight Farben an, die zusätzlich zu Schwarz und
+                Weiß verfügbar ist.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="index" default="0x0000" type="xs:string"/>
+                                    <xs:attribute name="name" default="default" type="xs:string"/>
+                                    <xs:attribute name="colorType" default="rgb">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="rgb"/>
+                                             <xs:enumeration value="cmyk"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="color" default="#00000000" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Named" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="index" default="0x0000" type="xs:string"/>
+                                    <xs:attribute name="name" default="Device Default" type="xs:string"/>
+                                    <xs:attribute name="colorType" default="rgb">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="rgb"/>
+                                             <xs:enumeration value="cmyk"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="color" default="#00000000" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how overlays are processed. "true": overlays are
+                included via IPO (default setting); "false": overlays are resolved inline </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie Overlays in der Eingabe verarbeitet werden.
+                "true": Overlays werden über IPO eingebunden (Defaultwert); "false": Overlays
+                werden aufgelöst und dem Seiteninhalt hinzugefügt. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                           <xs:attribute name="maxNestingLevel" default="2" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagesegmentasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how page segments in the input and output are
+                processed. "true": segments are included via IPS (default setting); "false":
+                segments are resolved inline</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie Pagesegmente in der Eingabe und der Ausgabe
+                verarbeitet werden. "true": Segmente werden über IPS eingebunden (Defaultwert);
+                "false": Segmente werden aufgelöst und dem Seiteninhalt hinzugefügt.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="measurementunits" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the device dependent resolution of a page, i.e. the
+                raster to place objects on the page.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die geräteabhängige Auflösung für eine Seite,
+                also das Raster, in dem Objekte auf der Seite platziert werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="1440,240" type="xs:string"/>
+                           <xs:attribute name="default" default="0" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="rasterresolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the resolution that is to be used for
+                images.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Auflösung, die für Images verwendet werden
+                soll. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0" type="xs:int"/>
+                           <xs:attribute name="min" default="0" type="xs:int"/>
+                           <xs:attribute name="max" default="0" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fontresolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Resolution to be used for auto generated AFP raster fonts to
+                output text.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Auflösung, die für automatisch generierte AFP Raster-Fonts
+                zur Ausgabe von Text verwendet werden soll. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="formdef" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Output formdef attributes: subset=true (default): formdef contains only
+                medium maps referenced by structered field IMM Invoke Medium Map. subset=false:
+                formdef contains all medium maps provided by one or more input formdefs.
+                resolve=cascade (default): output resource list contains resources referenced by
+                medium maps. resolve=no: output resource list ignores resouces referenced by medium
+                maps. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="subset" default="true" type="xs:boolean"/>
+                           <xs:attribute name="resolve" default="cascade">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="cascade"/>
+                                    <xs:enumeration value="no"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="featureset" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="feature" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" default="pt2subset">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="pt2subset"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="enable" default="true" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="imagecompressions" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="imagecompression" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Determines how images are compressed, supported formats and
+                the respective compression algorithm.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Bestimmt, wie Images komprimiert werden, unterstützte
+                Image-Formate und entsprechende Kompressionsalgorithmen.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="bitsperpixel" default="32">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:int">
+                                             <xs:enumeration value="1"/>
+                                             <xs:enumeration value="8"/>
+                                             <xs:enumeration value="24"/>
+                                             <xs:enumeration value="32"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="colorformat" default="cmyk">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="grayscale"/>
+                                             <xs:enumeration value="rgb"/>
+                                             <xs:enumeration value="cmyk"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="compression" default="default">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="default"/>
+                                             <xs:enumeration value="lzw"/>
+                                             <xs:enumeration value="none"/>
+                                             <xs:enumeration value="jpeg"/>
+                                             <xs:enumeration value="mmr"/>
+                                             <xs:enumeration value="faxg4"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ObjectContainerList" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Contains a list of object container types to define if they
+                can be written or if they must be resolved. Object container types not mentioned in
+                this list are resolved.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Enthält eine Liste von Object-Containertypen um festzulegen,
+                ob diese geschrieben werden können oder ob sie aufgelöst werden müssen.
+                Object-Containertyp, die in dieser Liste nicht enthalten sind, werden aufgelöst.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="ObjectContainer" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">This defines if an object container can be written inside a
+                page or referenced as a resource.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Dies definiert, ob ein Objekt-Container innerhalb einer Seite
+                geschrieben bzw. als Ressource referenziert werden kann.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="type" default="PdfSinglePageWithTransparency">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="en-US">This defines the type of the object container.</xs:documentation>
+                                          <xs:documentation xml:lang="de-DE">Dies definiert den Typ des Objekt-Containers.</xs:documentation>
+                                       </xs:annotation>
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="PdfSinglePageWithTransparency"/>
+                                             <xs:enumeration value="PdfSinglePageWithoutTransparency"/>
+                                             <xs:enumeration value="PdfMultiplePageFileWithTransparency"/>
+                                             <xs:enumeration value="PdfMultiplePageFileWithoutTransparency"/>
+                                             <xs:enumeration value="EpsWithTransparency"/>
+                                             <xs:enumeration value="EpsWithoutTransparency"/>
+                                             <xs:enumeration value="Pcx"/>
+                                             <xs:enumeration value="PclPageObject"/>
+                                             <xs:enumeration value="TiffWithTransparency"/>
+                                             <xs:enumeration value="TiffWithoutTransparency"/>
+                                             <xs:enumeration value="TiffMultipleImageFileWithTransparency"/>
+                                             <xs:enumeration value="TiffMultipleImageFileWithoutTransparency"/>
+                                             <xs:enumeration value="AfpcJpegSubset"/>
+                                             <xs:enumeration value="AfpcTiffSubset"/>
+                                             <xs:enumeration value="AfpcSvgSubset"/>
+                                             <xs:enumeration value="IocaFs10"/>
+                                             <xs:enumeration value="Jp2"/>
+                                             <xs:enumeration value="Gif"/>
+                                             <xs:enumeration value="DibWindowsVersion"/>
+                                             <xs:enumeration value="DibOs2PmVersion"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="asResource" default="false" type="xs:boolean">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="en-US">The object container can be referenced as a
+                resource.</xs:documentation>
+                                          <xs:documentation xml:lang="de-DE">Der Objectcontainer kann als Ressource referenziert werden.
+            </xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="inPage" default="false" type="xs:boolean">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="en-US">The object container can be written inside a
+                page.</xs:documentation>
+                                          <xs:documentation xml:lang="de-DE">Der Objectcontainer kann in eine Seite geschrieben werden.
+            </xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="allow" default="all">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">Defines how object containers allowed to write are defined.
+                Allowed settings: all, none, list.</xs:documentation>
+                                 <xs:documentation xml:lang="de-DE">Definiert, wie definiert wird, welche Objectcontainer
+                geschrieben werden dürfen. Erlaubte Einstellungen: all, none, list.</xs:documentation>
+                              </xs:annotation>
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="all"/>
+                                    <xs:enumeration value="none"/>
+                                    <xs:enumeration value="list"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="MapPageSegments" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> Specifies whether a structured field, MPS (map page segment),
+                is written. A MPS identifies page segments that are necessary to display a page on a
+                physical medium. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Bestimmt, ob ein Structured Field MPS (Map Page Segment)
+                geschrieben wird. Ein Structured Field MPS identifiziert Pagesegmente, die zur
+                Darstellung einer Seite auf einem physischen Medium erforderlich sind.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="MapDataResource" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> Specifies whether a structured field, MDR (map data
+                resource), is written. A MDR identifies data resources that are necessary to display
+                a page on a physical medium. MDR for TrueType object containers are always written. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Bestimmt, ob ein Structured Field MDR (Map Data Resource)
+                geschrieben wird. Ein Structured Field MDR identifiziert Daten Resourcen, die zur
+                Darstellung einer Seite auf einem physischen Medium erforderlich sind. MDR für
+                TrueType Objekt Container werden immer geschrieben. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="goca" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Enable GOCA (Graphics Object Content Architecture) output for
+                AFP, indicating the used version (currently 2 or 3).</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Aktiviert GOCA (Graphics Object Content Architecture) Ausgabe
+                für AFP, wobei die verwendete Version (zurzeit 2 oder 3) gesetzt werden
+                kann.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="SetProcessColorSupport" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Activate the usage of the GOCA Set Process Color (GSPCOL)
+                order in the GOCA output.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Erlaubt die Benutzung des GOCA Set Process Color (GSPCOL)
+                Befehls in der GOCA-Ausgabe.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="BoxSupport" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Activate the usage of the GOCA Box (GBOX) order in the GOCA
+                output.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Erlaubt die Benutzung des GOCA Box (GBOX) Befehls in der
+                GOCA-Ausgabe.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="SetFractionalLineWidthSupport" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Activate the usage of the GOCA Set Fractional Line Width
+                (GSFLW) order in the GOCA output.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Erlaubt die Benutzung des GOCA Set Fractional Line Width
+                (GSFLW) Befehls in der GOCA-Ausgabe.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="CubicBezierCurveSupport" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Activate Cubic Bezier Curves Support</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Unterstützung für kubische Bezierkurven
+                aktivieren</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="SetLineEndOrderSupport" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Activate the usage of the GOCA Set Line End (GSLE) order in
+                the GOCA output.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Erlaubt die Benutzung des GOCA Set Line End (GSLE) Befehls in
+                der GOCA-Ausgabe.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="SetLineJoinOrderSupport" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Activate the usage of the GOCA Set Line Join (GSLJ) order in
+                the GOCA output.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Erlaubt die Benutzung des GOCA Set Line Join (GSLJ) Befehls in
+                der GOCA-Ausgabe.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="SetCustomLineTypeOrderSupport" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Activate the usage of the GOCA Set Custom Line Type (GSCLT)
+                order in the GOCA output.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Erlaubt die Benutzung des GOCA Set Custom Line Type (GSCLT)
+                Befehls in der GOCA-Ausgabe.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="PartialArcSupport" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Activate the support of partial arcs.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE"/>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="NonzeroWindingModeSupport" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Activate nonzero winding mode for area fill.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Aktiviert nonzero winding Algorithmus um Flächen zu
+                füllen.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="false" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="GocaLineWidthBase" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Defines the basis for calculating the line width in GOCA
+                output.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Bestimmt die Basis zur Berechnung der Linienbreite in der
+                GOCA-Ausgabe.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="0.01 in" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="GocaMaxLineWidthFactor" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="de-DE">Gerätespezifischer maximaler Faktor für
+                Linienbreiten in GOCA</xs:documentation>
+                                    <xs:documentation xml:lang="en-EN">Device specific maximum factor for line widths in
+                GOCA</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="100">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:integer">
+                                             <xs:minInclusive value="1"/>
+                                             <xs:maxInclusive value="255"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="GocaLineJoinStyle" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Defines how lines/paths are joined in GOCA
+                output.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Bestimmt wie Linien/Pfade aus GOCA-Ausgabe miteinander
+                verbunden werden.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="round">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="none"/>
+                                             <xs:enumeration value="miter"/>
+                                             <xs:enumeration value="round"/>
+                                             <xs:enumeration value="bevel"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="GocaLineCapStyle" minOccurs="0" maxOccurs="1">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Defines how lines ends in GOCA output.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Bestimmt wie Linienenden aus GOCA-Ausgabe gestaltet
+                werden.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="value" default="round">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="notset"/>
+                                             <xs:enumeration value="drawingdefault"/>
+                                             <xs:enumeration value="butt"/>
+                                             <xs:enumeration value="flat"/>
+                                             <xs:enumeration value="round"/>
+                                             <xs:enumeration value="square"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="version" default="2" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ColorList" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Allows the definition of one or more oca colors for AFP
+                Input.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="Named" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="index" default="0x0000" type="xs:string"/>
+                                    <xs:attribute name="name" default="Device Default" type="xs:string"/>
+                                    <xs:attribute name="colorType" default="rgb">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="rgb"/>
+                                             <xs:enumeration value="cmyk"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="color" default="#00000000" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ColorSpacesList" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Define a set of color spaces used to control used
+                colors.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert eine Reihe von Farbräumen um die verwendeten Farben
+                zu kontrollieren.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="ColorSpaces" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">With the element "colorspaces" you can influence the used
+                color space. The architectures GOCA, IOCA, and PTX (PTOCA) are currently
+                supported.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Über das Element colorspaces können Sie den verwendeten
+                Farbraum beeinflussen. Aktuell werden die Architekturen GOCA, IOCA und PTX (PTOCA)
+                unterstützt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="arch" default="goca">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="en-US">Architecture to be defined. The setting can be made for fill
+                and stroke mode.</xs:documentation>
+                                          <xs:documentation xml:lang="en-US">Zu definierende Architektur. Die Einstellungen können jeweils
+                für den fill und/oder stroke Modus vorgenommen werden.</xs:documentation>
+                                       </xs:annotation>
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="goca"/>
+                                             <xs:enumeration value="ioca"/>
+                                             <xs:enumeration value="ptx"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="value" default="oca, ocaext, rgb, cmyk, cielab, highlight"
+                                                  type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="en-US">Define valid color spaces. Use a set of: oca, ocaext, rgb,
+                cmyk, cielab, highlight.</xs:documentation>
+                                          <xs:documentation xml:lang="en-US">Definieren Sie die zulässigen Farbräume. Verwenden Sie dazu
+                eine Untermenge von: oca, ocaext, rgb, cmyk, cielab, highlight.</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="positioningmethod" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the GOCA character string positioning
+                method.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Positionierungsmethode für GOCA
+                Zeichen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="font">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="font"/>
+                                    <xs:enumeration value="cell"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writecrlfafterstructuredfields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether line breaks (Carriage Return, CR, and Line
+                Feed, LF) are avoided in structured fields.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Zeilenumbrüche (Carriage Return, CR, und Line
+                Feed, LF) in Structured Fields vermieden werden. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="avoidcrlfinsidestructuredfields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether line breaks (Carriage Return, CR, and Line
+                Feed, LF) are avoided in structured fields.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Zeilenumbrüche (Carriage Return, CR, und Line
+                Feed, LF) in Structured Fields vermieden werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writenodsbyte" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether writing the data stream byte (0x5A) used
+                for separating a structured field is suppressed.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob das Schreiben des Datenstrom-Byte (0x5A) zum
+                Trennen von Structured Fields unterdrückt wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writelinesasptxonly" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines up to which thickness lines are written as PTX
+                objects (presentation text objects) regardless of their line cap
+                property.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, bis zu welcher Dicke Linien unabhängig von ihrer
+                Linienenden-Eigenschaft als Objekte des Structured Fields PTX gezeichnet
+                werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="maxlinewidth" default="2" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="forceMinimalStrokeWidth" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specify whether the width of very thin lines is set to a
+                minimum of 1 pt, so that the lines remain visible after conversion.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob sehr dünne Linien auf mindestens 1 pt gesetzt
+                werden sollen, damit die Linien auch dem Rastern sichtbar bleiben.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="TransparencyMasks" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Write transparency mask in IOCA</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Transparenzmaske in IOCA schreiben</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="TransparencyMask" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Write transparency mask in IOCA</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Transparenzmaske in IOCA schreiben</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="colorformat" default="cmyk">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="rgb"/>
+                                             <xs:enumeration value="cmyk"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="value" default="allow">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="allow"/>
+                                             <xs:enumeration value="deny"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="renderCreateMask" default="auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="auto"/>
+                                    <xs:enumeration value="always"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ignoreclipping" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Defines whether clipping paths (polygons used to limit areas)
+                should be ignored.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert ob Clipping-Pfade, d. h. Polygone zum Begrenzen von
+                Flächen, ignoriert werden sollen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="converttomonochrome" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether images and text are displayed in black and
+                white.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Images und Text schwarz-weiß dargestellt
+                werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="MappingOptionLists" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Define a set of MappingOptionLists to manage and control
+                mapping options.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert ein Set verwendeter Arten der Einbindung von
+                Objekten.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="MappingOptionList" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Define which mapping options can be used to include
+                objects.</xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Definiert, welche Optionen zum Einbinden von Objekten
+                verwendet werden können.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="MappingOption" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="en-US">Enables or disables a specific mapping option.</xs:documentation>
+                                             <xs:documentation xml:lang="de-DE">Aktiviert oder deaktiviert eine spezifische Art der
+                Einbindung.</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="value" default="scaleToFit">
+                                                <xs:simpleType>
+                                                   <xs:restriction base="xs:string">
+                                                      <xs:enumeration value="scaleToFit"/>
+                                                      <xs:enumeration value="centerAndTrim"/>
+                                                      <xs:enumeration value="positionAndTrim"/>
+                                                      <xs:enumeration value="scaleToFill"/>
+                                                   </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:attribute>
+                                             <xs:attribute name="enable" default="true" type="xs:boolean"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="architecture" default="ioca">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="en-US"> Defines the architecture the MappingOptionList is used for. </xs:documentation>
+                                          <xs:documentation xml:lang="de-DE"> Definiert die Architektur, für welche die MappingOptionList
+                verwendet wird. </xs:documentation>
+                                       </xs:annotation>
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="bcoca"/>
+                                             <xs:enumeration value="ioca"/>
+                                             <xs:enumeration value="goca"/>
+                                             <xs:enumeration value="object"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="imagemapping" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how images are included in AFP.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie Images in AFP eingebunden werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="scaleToFit">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="scaleToFit"/>
+                                    <xs:enumeration value="positionAndTrim"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="usetrayasmediummap" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether the tray name is used as medium map name
+                and a corresponding IMM (Invoke Medium Map) is generated.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob der Schachtname als Medium Map-Name verwendet und
+                eine entsprechendes IMM (Invoke Medium Map) erzeugt wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writeorder" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines the order and mode in which TLEs, NOPs and IMM are
+                written.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt Reihenfolge und Modus, in dem TLEs, NOPs und IMM
+                geschrieben werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="TLE, NOP, IMM" type="xs:string">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">Determines the order in which TLEs, NOPs and IMM are
+                written.</xs:documentation>
+                                 <xs:documentation xml:lang="de-DE">Bestimmt, in welcher Reihenfolge TLEs, NOPs und IMM
+                geschrieben werden.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="tlewritemode" default="strict">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">strict (default): Writing of TLEs is restricted to the places
+                allowed by the AFP specification. relaxed: Writing of TLEs is allowed at all
+                positions.</xs:documentation>
+                                 <xs:documentation xml:lang="de-DE">strict (default): Das Schreiben von TLEs ist auf die per
+                AFP-Spezifikation erlaubten Positionen beschränkt. relaxed: Das Schreiben von TLEs
+                ist an allen Positionen erlaubt.</xs:documentation>
+                              </xs:annotation>
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="strict"/>
+                                    <xs:enumeration value="relaxed"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="tlewithencoding" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US"> true (default): Write encoding triplet. false: Do not write
+                encoding triplet.</xs:documentation>
+                                 <xs:documentation xml:lang="de-DE">true (default): Encoding Triplet wird geschrieben. false:
+                Encoding Triplet wird nicht geschrieben.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writepagearchivefields" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines if page TLEs are written.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Page-TLEs geschrieben werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">TRUE: Page TLEs are written. FALSE: Page TLEs are ignored.
+                (Default) </xs:documentation>
+                                 <xs:documentation xml:lang="de-DE">TRUE: Page-TLEs werden geschrieben. FALSE: Page-TLEs werden
+                ignoriert. (Default) </xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writepagearchivefieldsafteraeg" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines where page TLEs are written. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, an welche Stelle Page TLEs geschrieben werden.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="archivefieldsdefaultcodepage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> Determines which code page (IANA name) is used for texts in
+                TLEs. This element is deprecated and is replaced by overrideTleEncoding. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Bestimmt, welche Codepage (IANA Name) für Texte in TLEs
+                verwendet wird. Dieses Element ist veraltet und wurde durch overrideTleEncoding
+                ersetzt. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="iana" default="IBM273" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="commentsdefaultcodepage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines which code page (IANA name) is used for texts in
+                NOPs.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, welche Codepage (IANA Name) für NOPs verwendet
+                wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="iana" default="IBM273" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="keepcommentorder" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how NOPs are processed.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie NOPs behandelt werden sollen.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writebarcodeasimage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether barcodes are converted to images. For some
+                barcode types which can not be correctly displayed in AFP, a conversion to images
+                makes sense. However, the information contained in the barcode objects will be lost
+                after conversion. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob Barcodes in Images umgewandelt werden. Bei
+                einigen Barcode-Typen, die von AFP nicht korrekt angezeigt werden können, ist es
+                sinnvoll diese in Images umzuwandeln. Informationen des Barcode-Objekts gehen dabei
+                allerdings verloren.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="adjustbarcodesize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how the barcode size is adjusted and
+        aligned.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie die Größe und Positionierung von Barcodes angepasst
+        wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="minSize" default="90%" type="xs:string"/>
+                           <xs:attribute name="maxSize" default="100%" type="xs:string"/>
+                           <xs:attribute name="align" default="left">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="left"/>
+                                    <xs:enumeration value="center"/>
+                                    <xs:enumeration value="right"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="barcodelist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the available barcode types of the
+                printer.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="barcode" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" type="xs:string"/>
+                                    <xs:attribute name="type" type="xs:string"/>
+                                    <xs:attribute name="emulate4028BarcodeOffset" default="true" type="xs:boolean"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="allownegativeoverlayposition" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether negative overlay positions are
+                permitted.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob negative Overlay-Positionen erlaubt
+                sind.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="maxrecordsize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Controls the maximum size of a structure (composition of an
+                AFP element) in the AFP output file.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Beeinflusst die maximale Größe einer Struktur (Aufbau eines
+                AFP-Elements) in der AFP-Ausgabedatei.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="characteraccuracy" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Sets the maximum permitted position deviation of the character
+                (positioning tolerance). Text fields are divided into several fields of the control
+                sequence TRN (Transparent Data) in order to meet the permitted
+                tolerance.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die maximal erlaubte Positionierungsabweichung der
+                Zeichen(Positionierungstoleranz). Textfelder werden in mehrere Felder der
+                Kontrollsequenz TRN (Trans-parent Data) aufgeteilt, um die erlaubte Toleranz
+                einzuhalten.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0.0" type="xs:double"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="enableintercharacteradjustment" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether additional space (may be negative) can be
+                inserted between characters in order to minimize text fragmentation. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob zusätzlicher Platz (auch negativ) zwischen
+                Zeichen eingefügt werden darf, um die Fragmentierung von Text zu minimieren.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="ControlTextRendering" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="none">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="none"/>
+                                    <xs:enumeration value="word"/>
+                                    <xs:enumeration value="line"/>
+                                    <xs:enumeration value="asIs"/>
+                                    <xs:enumeration value="asis"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="combinexaccuracy" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> Max difference between items in inline direction to combine text items
+                into one item. 0.0: - Use current characteraccuracy. All other values: Use this
+                value. Values less than 0 are treated as 0. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0.0" type="xs:double"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="combineyaccuracy" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> Max difference between items in baseline direction to combine text items
+                into one item. Use the given value. Values less than 0 are treated as 0.
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0.0" type="xs:double"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="keepspaces" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how multiple consecutive whitespaces are treated. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie mehrere aufeinanderfolgende Leerzeichen
+                behandelt werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="outsidepagehandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how objects are handled, which extend beyond the
+                page.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie Objekte behandelt werden, die über die Seite
+                hinausragen. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="keep">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="moveToPage"/>
+                                    <xs:enumeration value="clip"/>
+                                    <xs:enumeration value="keep"/>
+                                    <xs:enumeration value="ignore"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="suppressaeginpagesegment" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether AEG (Active Environment Groups) are used in
+                page segments. </xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob AEG (Active Environment Groups) innerhalb von
+                Pagesegmenten verwendet werden.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="jpegquality" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies the quality of written JPEG images as
+                percentage.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Qualität von JPEG-Images in
+                Prozent.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="75" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="writetimestamp" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether a time stamp is written to the output file
+                (as NOP).</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob ein Zeitstempel (als NOP) in die Ausgabedatei
+                geschrieben wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="WriteMfc" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether to write media finishing control (MFC) in
+                output file </xs:documentation>
+                           <xs:documentation xml:lang="de-DE"/>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="WriteMapMediaType" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines whether Map Media Type (MMT) is written to
+                output</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob der Map Media Type (MMT) in die Ausgabe
+                geschrieben wird</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="graphiccharactersetgid" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> The code page descriptor (CPD) of dynamically generated
+                codepages contains GCSGID and CPGID, set to 0xFFFF (Graphic Character Set GID, Code
+                Page Global Identifier). Different values can be used as custom setting. The element
+                "graphiccharactersetgid" specifies the value of the CPGID.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Der Code Page Descriptor (CPD) dynamisch erzeugter Codepages
+                enthält Coded Graphic Cha-racter Set Global Identifier (GCSGID) und Code Page
+                Global Identifier (CPGID), gesetzt auf0xFFFF. Für benutzerdefinierte Einstellungen
+                können abweichende Werte verwendet werden.Das Element bestimmt den Wert der Code
+                Page Global Identifier (CPGID).</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="standard">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="standard"/>
+                                    <xs:enumeration value="userdev"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="uservalue" default="0x0000" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="codepageglobalidentifier" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="standard">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="standard"/>
+                                    <xs:enumeration value="userdev"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="uservalue" default="0x0000" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="fonthandling" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how the AFP output filter handles
+                fonts.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie der MFFAFP-Ausgabefilter Fonts
+                behandelt.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="default" default="auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="auto"/>
+                                    <xs:enumeration value="convertToAfp"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="keepinputfonts" default="true" type="xs:boolean"/>
+                           <xs:attribute name="enableType1Font" default="false" type="xs:boolean"/>
+                           <xs:attribute name="enableTrueTypeFont" default="false" type="xs:boolean"/>
+                           <xs:attribute name="enableSurrogateSupport" default="false" type="xs:boolean"/>
+                           <xs:attribute name="treatboundedasunicode" default="false" type="xs:boolean"/>
+                           <xs:attribute name="renderiffontnotmapped" default="false" type="xs:boolean"/>
+                           <xs:attribute name="PointSizeRaster" default="0.0" type="xs:double"/>
+                           <xs:attribute name="mapBoundedFont" default="true" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US">This attribute is used to map bounded font in
+                fontlist</xs:documentation>
+                                 <xs:documentation xml:lang="de-DE"/>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="forceFixedMetricFont" default="false" type="xs:boolean">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="en-US"> This attribute is used to force creating fixed metric font
+                insteat of relative metric </xs:documentation>
+                                 <xs:documentation xml:lang="de-DE"/>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="dithermethod" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines the Dithering method for conversions of color
+                images to black and white</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Dithering-Methode, um Farbbilder in
+                schwarz-weiße Images umzuwandeln</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="default" default="auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="auto"/>
+                                    <xs:enumeration value="dispersed"/>
+                                    <xs:enumeration value="floydSteinberg"/>
+                                    <xs:enumeration value="stucki"/>
+                                    <xs:enumeration value="jarvisJudiceninke"/>
+                                    <xs:enumeration value="threshold"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="parameter" default="4" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="gammalist" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies whether and how a gamma correction for gray values
+                occurs.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, ob und wie eine Gammakorrektur der Graustufenwerte
+                durchgeführt werden soll.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="gammavalue" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="from" default="0" type="xs:int"/>
+                                    <xs:attribute name="to" default="0" type="xs:int"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="name" default="Default" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="modificationlist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> Experimental prewriting modification of 24bpp RGB images in
+                order to view monochrome printer characteristics (requires aktive element
+                &lt;colorprofilelist&gt; and proper icc resource access).</xs:documentation>
+                           <xs:documentation xml:lang="en-US"> Experimentelle prewriting Modifikation von 24bpp RGB Images
+                um die Eigenschaften von schwarz-weiß Druckern anzuzeigen (setzt aktives
+                &lt;colorprofilelist&gt; Element und Zugriff auf ICC Ressourcen
+                voraus).</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="modification" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="action" default="Convert" type="xs:string"/>
+                                    <xs:attribute name="applyto" default="image" type="xs:string"/>
+                                    <xs:attribute name="targetcolorspace" default="grayscale" type="xs:string"/>
+                                    <xs:attribute name="gammalist" default="brighten" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="active" default="true" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

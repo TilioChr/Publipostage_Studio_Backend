@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Heading references</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");
+            h1 {
+                counter-reset: heading;
+            }
+            
+            h2 {
+                counter-reset: subheading;
+                counter-increment: heading;
+            }
+            
+            h2::before {
+                content: counter(heading) " ";
+            }
+            h3 {
+                counter-increment: subheading;
+            }
+            h3::before {
+                content: counter(heading) "." counter(subheading) " ";
+            }
+            .h2likeheading {
+                font-size: 1.5em;
+                margin: .75em 0;
+                font-weight: bolder;
+            }
+            
+            a {
+                color: blue;
+            }
+            a.sectionref::before {
+                content: "section " target-counter(attr(href, url), heading);
+            }
+            a.titleref::before {
+                content: target-counter(attr(href, url), heading) " " target-text(attr(href, url), content);
+            }
+            a.titlepageref::before {
+                content: target-counter(attr(href, url), heading) " " target-text(attr(href, url), content) " on page " target-counter(attr(href, url), page);
+            }</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <h1>Cross References to Headings</h1>
+        <p>In print output, cross references should be more than links to ensure that readers can
+            still follow the links when the documents are printed. The links often mention the
+            target section number or the target page.</p>
+        <span class="h2likeheading">Cross References to Heading Counters</span>
+        <p>The example below demonstrates how cross references to <code>h2</code> elements with
+            counter can be used in the text. Section is generated as text before the counter
+            reference.</p>
+        <p>This text is about ice cream. There are various types of ice cream. For more information
+            about milk ice see <a class="sectionref" href="#milkice"></a>, about fruit ice see <a
+                class="sectionref" href="#fruitice"></a>, and about house specials see <a
+                class="sectionref" href="#specials"></a>.</p>
+        <span class="h2likeheading">Cross References to Heading Texts</span>
+        <p>The example below demonstrates how cross references to <code>h2</code> elements with
+            counter can be used in the text. The link text points to counter and heading title.</p>
+        <p>This text is about ice cream. There are various types of ice cream. For more information
+            about milk ice see <a class="titleref" href="#milkice"></a>, about fruit ice see <a
+                class="titleref" href="#fruitice"></a>, and about house specials see <a
+                class="titleref" href="#specials"></a>.</p>
+        <span class="h2likeheading">Cross References to Headings on Pages</span>
+        <p>The example below demonstrates how cross references to <code>h2</code> elements with
+            counter can be used in the text. The link text points to the heading counter and text on
+            the page.</p>
+        <p>This text is about ice cream. There are various types of ice cream. For more information
+            about milk ice see <a class="titlepageref" href="#milkice"></a>, about fruit ice see <a
+                class="titlepageref" href="#fruitice"></a>, and about house specials see <a
+                class="titlepageref" href="#specials"></a>.</p>
+        <h1>Headings with Counters</h1>
+        <h2 id="milkice">Milk ice</h2>
+        <h3>Vanilla</h3>
+        <h3>Chocolate</h3>
+        <h2 id="fruitice">Fruit ice</h2>
+        <h3>Strawberry</h3>
+        <h3>Mango</h3>
+        <h2 id="specials">House specials</h2>
+        <h3>Ginger</h3>
+        <h3>Wasabi</h3>
+    </body>
+</html>

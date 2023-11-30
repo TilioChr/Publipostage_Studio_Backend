@@ -1,0 +1,736 @@
+body {
+    background-color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #373637;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*Media Query independent*/
+
+img {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #DF000F;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0399F7;
+    cursor: pointer;
+}
+
+.tile h4 a {
+    color: black;
+    text-decoration: none;
+}
+
+.tile h4 a:hover {
+    color: #0399F7;
+    cursor: pointer;
+}
+
+h1, h3 {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*Header*/
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 25;
+    background-color: white;
+    display: inline-flex;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.control-panel{
+    width: 20%;
+    transform: translate(0, 0);
+    transition: transform 250ms ease;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 100;
+    height: 70px;
+    overflow: hidden;
+    padding-bottom: 1px;
+    vertical-align: middle;
+    position: flex;
+    text-align: center;
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.menu-panel {
+    width: 20%;
+    transform: translate(0, 0);
+    transition: transform 250ms ease;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 100;
+    height: 70px;
+    overflow: hidden;
+    padding-bottom: 1px;
+    vertical-align: middle;
+    position: flex;
+    text-align: center;
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.nav-button {
+    width: 74px;
+    height: 74px;
+    vertical-align: middle;
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    padding-bottom: 1px;
+    margin-bottom: -1px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    text-align: center;
+    border-right: 1px solid #e5e5e5;
+}
+
+.mod_navigation {
+    padding-bottom: 1px;
+    top: 0;
+    transform: translate(0, 0);
+    position: relative;
+    height: 70px;
+    z-index: 100;
+    background: #fff;
+    transition: transform 250ms ease;
+    overflow: hidden;
+    position: flex;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.mod_navigation span{
+    padding: 0;
+    font-size: 18px;
+    font-weight: 400;
+    border-bottom: 0;
+    line-height: 75px;
+    text-align: center;
+}
+
+.compart-logo {
+    width: 20%;;
+    padding: 0;
+    position: flex;
+    text-align: right;
+    margin-right: 0;
+    margin-left: auto;
+    height: 70px;
+}
+
+.compart-logo img {
+    height: 40px;
+    margin: 15px;
+}
+
+/*Login Form Field*/
+
+.form-area-wrapper {
+    margin: 30px auto 0 auto;
+    padding: 20px 0;
+    background-color: #F3F3F3;
+}
+
+.form-area {
+    text-align: left;
+    padding: 0;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.form-area h3 {
+    margin: 0;
+    text-align: left;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 16px 12px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    background-color: white;
+    font-weight: 100;
+    font-size: 16px;
+    border: 1px solid #cfd5d8;
+    border-left: 1px solid #DF000F;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    outline: none;
+    border: 1px solid #0399F7;
+}
+
+input[type=submit] {
+    background-color: white;
+    border: 1px solid #DF000F;
+    color: #DF000F;
+    padding: 16px 12px;
+    text-decoration: none;
+    margin: 30px 0 0 0;
+    cursor: pointer;
+    font-weight: 100;
+    font-size: 16px;
+    width: 50%;
+}
+
+p.login-button {
+    background-color: white;
+    border: 1px solid #DF000F;
+    color: #DF000F;
+    padding: 16px 12px;
+    text-decoration: none;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 100;
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    margin-top: 10px;
+    line-height: 18px;
+}
+
+p.login-button:hover {
+    border: 1px solid #0399F7;
+    color: #0399F7;
+}
+
+/*Breadcrumb*/
+
+.breadcrumb-wrapper{
+    background: #f3f3f3;
+    border-bottom: 1px solid #0399f7;
+    display: block !important;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    margin-top: 0;
+    font-weight: 100;
+    top: 70px;
+}
+
+.breadcrumb-wrapper span{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    padding-left: 0;
+    padding-right: 35px;
+}
+
+.breadcrumb-wrapper span.naviconafter:after{
+    content: '';
+    position: absolute;
+    top: 1px;
+    height: 100%;
+    width: 16px;
+    display: inline-block;
+    background: url("../images/more-hover-icon.svg");
+    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 0 10px;
+}
+
+.breadcrumb {
+    display: flex;
+    justify-content: center;
+}
+
+/*Hero Icon Image*/
+
+.hero-image {
+    margin-top: 60px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image-breadcrumb {
+    margin-top: 120px;
+}
+
+/*Dropdown*/
+
+.dropdown-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.dropdown {
+    width: 320px;
+    box-sizing: border-box;
+    background-color: white;
+    font-weight: 100;
+    font-size: 16px;
+    border: 1px solid #cfd5d8;
+    border-left: 1px solid #DF000F;
+    background: url(../images/arrow-down-round.svg) no-repeat 275px ;
+    background-size: 36px;
+    outline: none;
+}
+
+.dropdown select {
+    background: transparent;
+    font-size: 16px;
+    line-height: 1;
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    background-color: none;
+    padding: 16px 12px;
+    width: 320px;
+    outline: none;
+    color: #A0A8AF;
+}
+
+/*Tile Area*/
+
+.tile-area-background {
+    margin: 30px auto 0 auto;
+    background-color: #F3F3F3;
+}
+
+.tile-area-wrapper {
+    max-width: 1300px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto; 
+}
+
+.tile {
+    border: 1px solid #cfd5d8;
+    padding: 25px;
+    background-color: white;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    position: relative;
+}
+
+.text-button-tile {
+    position: absolute;
+    bottom: 0;
+}
+
+p.naviconafter:after{
+    content: '';
+    position: absolute;
+    top: 1px;
+    height: 100%;
+    width: 16px;
+    display: inline-block;
+    background: url("../images/more-icon.svg");
+    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+p.naviconafter:hover:after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    height: 100%;
+    width: 16px;
+    display: inline-block;
+    background: url("../images/more-hover-icon.svg");
+    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+img.document-icon  {
+    display: flex;
+    margin-right: 0;
+    margin-left: auto;
+    height: 150px;
+}
+
+/*Footer*/
+
+footer {
+    background-color: #35495D;
+    border-top: 1px solid #DF000F;
+    margin: 0;
+    padding: 10px;
+    color: #A3C1DE;
+}
+
+footer p {
+    color: #A3C1DE;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+
+/*Media Query oriented------------------------------------------------------------------------*/
+
+@media only screen and (min-width : 1200px){
+    
+    /*Faked position for presentation*/
+    .tile-area-wrapper .last-tile  {
+        margin-right: 776px;
+    }
+    
+    .menu-panel {
+        display: none;
+    }
+    
+    .form-area {
+        max-width: 1200px;
+    }
+
+    p.login-button {
+        width: 50%;
+    }
+
+    h1, h3 {
+        max-width: 1000px;
+    }
+    
+    h1 {
+        font-weight: 100;
+        font-size: 68px;
+        line-height: 84px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-weight: 100;
+        font-size: 56px;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    h3 {
+        font-weight: 100;
+        font-size: 28px;
+        line-height: 40px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    h4 {
+        font-weight: 100;
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    p.text-table-headline {
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    p {
+        font-weight: 300;
+        font-size: 18px;
+    }
+
+    p.text-big {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    p.text-button {
+        font-weight: 100;
+        font-size: 18px;
+        line-height: 18px;
+    }
+    
+    .breadcrumb-wrapper{
+        font-size: 18px;
+        padding-bottom: 12px;
+        padding-top: 12px;
+    }
+
+    .hero-image {
+        background: url("../images/waves-desktop.png");   
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100%;
+    }
+    
+    .hero-image img {
+        height: 300px;
+    }
+
+    .dropdown-wrapper {
+        margin: 40px 0;
+    }
+
+    .tile {
+        width: 320px;
+        max-width: 340px;
+        margin: 5px 5px 10px;
+        padding: 25px;
+        height: 250px;
+    }
+    
+    .tile-area-background {
+        padding: 40px 0;
+    }
+    
+    footer p {
+        text-align: left;
+    }
+}
+
+
+@media only screen and (min-width : 768px) and (max-width : 1199px){
+    .compart-logo {
+        width: 200px;
+    }
+
+    .control-panel{
+        display: none;
+    }
+    
+    .mod_navigation {
+        display: none;
+    }
+    
+    .form-area {
+        max-width: 80%;
+    }
+
+    p.login-button {
+        width: 50%;
+    }
+
+    h1, h3 {
+        max-width: 800px;
+    }
+    
+    h1 {
+        font-weight: 100;
+        font-size: 56px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-weight: 100;
+        font-size: 44px;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    h3 {
+        font-weight: 100;
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    h4 {
+        font-weight: 100;
+        font-size: 22px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    p.text-table-headline {
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    p {
+        font-weight: 300;
+        font-size: 18px;
+    }
+
+    p.text-big {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    p.text-button {
+        font-weight: 100;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .breadcrumb-wrapper{
+        font-size: 16px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    
+    .hero-image {
+        background: url("../images/waves-desktop.png");   
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 200%;
+    }
+    
+    .hero-image img {
+        height: 200px;
+    }
+    
+    .dropdown-wrapper {
+        margin: 30px 0;
+    }
+    
+    .tile {
+        width: 40%;
+        max-width: 400px;
+        margin: 5px 5px 10px;
+        padding: 25px;
+        height: 250px;
+    }
+    
+    .tile-area-background {
+        padding: 30px 0;
+    }
+    
+    footer p {
+        text-align: center;
+    }
+    
+}
+
+
+@media only screen and (max-width : 767px){
+    
+    .control-panel{
+        display: none;
+    }
+    
+    .mod_navigation {
+        display: none;
+    }
+    
+    .compart-logo {
+        width: 200px;
+    }
+    
+    .form-area {
+        max-width: 90%;
+    }
+
+    p.login-button {
+        width: auto;
+    }
+   
+    h1, h3 {
+        max-width: 80%;
+    }
+    
+    h1 {
+        font-weight: 100;
+        font-size: 32px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-weight: 100;
+        font-size: 28px;
+        margin-top: 0;
+        margin-bottom: 30px;
+        
+    }
+
+    h3 {
+        font-weight: 100;
+        font-size: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    h4 {
+        font-weight: 100;
+        font-size: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    p.text-table-headline {
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    p {
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+    p.text-big {
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    p.text-button {
+        font-weight: 100;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .breadcrumb-wrapper{
+        font-size: 14px;
+        padding-bottom: 8px;
+        padding-top: 8px;
+    }
+    
+    .hero-image {
+        background: url("../images/waves-desktop.png");   
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 280%;
+    }
+    
+    .hero-image img {
+        height: 140px;
+    }
+    
+    .dropdown-wrapper {
+        margin: 20px 0;
+    }
+    
+    .tile {
+        width: 80%;
+        max-width: 360px;
+        margin: 10px 10px;
+        padding: 25px;
+        min-height: 220px;
+    }
+    
+    .tile-area-background {
+        padding: 20px 0;
+    }
+    
+    footer p {
+        text-align: center;
+    }
+    
+}

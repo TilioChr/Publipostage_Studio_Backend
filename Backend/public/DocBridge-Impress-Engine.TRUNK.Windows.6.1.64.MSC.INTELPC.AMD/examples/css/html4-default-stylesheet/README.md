@@ -1,0 +1,1 @@
+DocBridge Impress Engine applies the HTML4 default stylesheet by default. In addition, pages are formatted to A4 page size.

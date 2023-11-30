@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Background Colors</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");
+            div.background {
+                background-image: url("images/programicon_impress.png");
+                width: 15cm;
+                height: 3cm;
+            }
+            p.background {
+                background-image: url("images/x.png");
+                width: 15cm;
+            }            
+            div.backgroundNoRepeat {
+                background-image: url("images/programicon_impress.png");
+                width: 15cm;
+                height: 3cm;
+                background-repeat: no-repeat;
+            }
+            p.backgroundNoRepeat {
+                background-image: url("images/x.png");
+                width: 15cm;
+                background-repeat: no-repeat;
+            }           
+            div.backgroundRepeatX {
+                background-image: url("images/programicon_impress.png");
+                width: 15cm;
+                height: 3cm;
+                background-repeat: repeat-x;
+            }
+            div.backgroundRepeatY {
+                background-image: url("images/programicon_impress.png");
+                width: 15cm;
+                height: 3cm;
+                background-repeat: repeat-y;
+            }
+            div.backgroundPosition {
+                background-image: url("images/programicon_impress.png");
+                width: 15cm;
+                height: 3cm;
+                background-repeat: no-repeat;
+                background-position: top center;
+            }</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <h1>Background Images</h1>
+        <p>The <code>background-image</code> property specifies a background image for an HTML
+            element.</p>
+        <p>By default, the background image is repeated.</p>
+        <h2>Background Images for HTML Elements</h2>
+        <div class="background">This div has an image as background.</div>
+        <p class="background">This paragraph has an image as background.</p>
+        <h2>Background Images Not Repeated</h2>
+        <div class="backgroundNoRepeat">This div has an image as background that is not
+            repeated.</div>
+        <p class="backgroundNoRepeat">This paragraph has an image as background that is not
+            repeated.</p>
+        <h2>Background Images With Repeat Direction</h2>
+        <div class="backgroundRepeatX">This div has an image as background that is repeated only in
+            X direction.</div>
+        <div class="backgroundRepeatY">This div has an image as background that is repeated only in
+            y direction.</div>
+        <h2>Background Image Positioning</h2>
+        <div class="backgroundPosition">This div has an image as background that is not repeated and
+            positioned in the top center of the div.</div>
+    </body>
+</html>

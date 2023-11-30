@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffips xmlns="http://www.compart.com/ns/mff/ips" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Configuration of IPDS printer behavior when data is
+                received-->
+
+   <Input>
+      <!--The list of IPDS printer emulations.-->
+      <!--Attribute: default @comment: Name of the default IPDS printer emulation. If this attribute
+                is specified, then a printer emulation with this name must be specified in the list
+                of IPDS printer emulations.-->
+
+      <IPDSPrinters default="NAME_EXAMPLE_VALUE">
+         <!--Definition of an IPDS printer emulation. You can configure
+                multiple IPDS printer emulations.-->
+         <!--Attribute: name @comment: The name of the IPDS printer emulation. Every name may be used
+                only once in the list of IPDS printers.-->
+         <!--Attribute: resourceMemory @comment: The memory space in bytes which can be used by the IPDS
+                printer emulation. The default value is 0 (unlimited).-->
+         <!--Attribute: bufferPages @comment: The number of pages converted in memory before the first page
+                is sent to the printer. The minimum value is "10", the maximum value is "4000". The
+                default value is "200".-->
+         <!--Attribute: haidResourceDirectory @comment: Specifies the directory used to temporarily store resources
+                sent by the host. The default value is an empty string.-->
+
+         <IPDSPrinter name="NAME_EXAMPLE_VALUE" resourceMemory="0" bufferPages="200" haidResourceDirectory="">
+            <!--Name of the TCP/IP connection defined in "tcpipconnections".
+                The input is read from a file, the output is written to a file.-->
+            <!--Attribute: name @comment: The name of the IPDS printer emulation. Every name may be used
+                only once in the list of IPDS printers.-->
+            <!--Attribute: dataPacketSize @comment: Maximum packet size in the IPDS carrier protocol PPR/PPD in
+                KBytes. The minimum value is 1, the maximum value is 32. The default value is
+                8.-->
+            <!--Attribute: connectionTimeOut @comment: Time in seconds the IPDS printer emulation waits after the
+                host has stopped transmitting data.-->
+
+            <Connection name="CONNECTION_EXAMPLE_VALUE" dataPacketSize="8" connectionTimeOut="300"/>
+
+            <!--The configuration settings for tracing IPDS communication
+                between host and IPDS Receiver (pprPpdTrace).-->
+            <!--Attribute: recordingDirectory @comment: Directory where PPR/PPD trace files are written. The default
+                value is an empty string.-->
+            <!--Attribute: pprPpdTrace @comment: The configuration settings for tracing IPDS communication
+                between IPDS filter and the printer (pprppdTrace). If enabled, the trace files are
+                written in the directory specified by attribute "recordingDirectory". The default
+                value is "false".-->
+
+            <IPDSTrace recordingDirectory="" pprPpdTrace="false"/>
+
+            <!--The element "Job" acts as a container element for all
+                configuration elements and attributes used to create IPDS jobs.-->
+
+            <Job>
+               <!--The element "CloseJob" defines triggers used to create
+                jobs.-->
+               <!--Attribute: timeOut @comment: Time (in seconds), the IPDS printer emulation waits for more
+                pages before closing a job. The default value is "0" (infinitely).-->
+               <!--Attribute: pages @comment: Specifies the (maximum) number of pages the IPDS printer
+                emulation writes per output file. The default value is 0, which means that files or
+                jobs are not split by the number of pages.-->
+               <!--Attribute: stackReceivedPages @comment: Specifies whether the current job is closed when the host
+                sends the "stack received pages" command. The default value is "true".-->
+               <!--Attribute: hostEvent @comment: Specifies whether jobs are started and closed when the host
+                sends "initiate" and "terminate" group commands. The default value is
+                "true".-->
+
+               <CloseJob timeOut="0" pages="0" stackReceivedPages="true" hostEvent="true"/>
+
+               <!--Defines the fields used to compose the document
+                name.-->
+               <!--Attribute: fields @comment: A comma separated list of the fields to be used to compose the
+                document name. The default value is an empty string.-->
+               <!--Attribute: fieldSeparator @comment: Defines the symbol used to separate the document name fields.
+                The valid values are ".", "_" and " ". The default value is "_".-->
+
+               <DocumentName fields="JOBNAME,JOBID,FORMS,DATE,TIME" fieldSeparator="_"/>
+            </Job>
+
+            <!--Defines the IPDS printer type to emulate. Valid values are
+                "GenericContinuous", "GenericContinuousDuplex", "GenericCutSheet", "GenericCutSheetRRL4028",
+                "IBMLaserPrint4028", "IBMLaserPrint4028Simplex", "IBMMatrixPrint4224". The default
+                value is "GenericContinuous".-->
+
+            <Emulation type="GenericContinuous"/>
+
+            <CodePageList>
+               <!--The element "CodePage" defines the code page used if the host
+                does not explicitly specify a code page.-->
+               <!--Attribute: name @comment: Specifies the code page file name-->
+               <!--Attribute: iana @comment: Specifies the registered code page iana name-->
+               <!--Attribute: default @comment: Specifies whether the code page is to be used as default code
+                page-->
+
+               <CodePage name="T1001148" iana="IBM01148" default="yes"/>
+            </CodePageList>
+
+            <!--Defines the character set used when the host does not
+                explicitly specify one-->
+
+            <DefaultCharset value="C0420000"/>
+
+            <!--Defines the list of input and output trays.-->
+
+            <TrayList>
+               <!--The list of input trays.-->
+
+               <InputTrays>
+                  <!--The declaration of an input tray. The main function of this
+                XML element is to assign the media source ID of a printer input tray to an input
+                tray name used in the input data stream.-->
+                  <!--Attribute: deviceID @comment: The media source ID of the input tray. Valid values are
+                integers between "0" and "255". The default value is "0".-->
+                  <!--Attribute: name @comment: The name of the input tray. The default value is an empty
+                string.-->
+                  <!--Attribute: default @comment: Set the value of the attribute "default' to "yes" or "no"
+                to select or deselect the input tray as default. If no input tray from IPDS input
+                is mapped in profile then the default tray is used as fallback.-->
+
+                  <InputTray deviceID="0" name="Tray1" default="yes">
+                     <!--Defines the paper size associated with the input
+                tray.-->
+                     <!--Attribute: width @comment: The width of the paper sheet. Valid length units are "tcm",
+                "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch", and
+                "ln".-->
+                     <!--Attribute: height @comment: The height of the paper sheet. Valid length units are "tcm",
+                "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch", and
+                "ln".-->
+
+                     <PaperSize width="21.0cm" height="29.7cm"/>
+
+                     <!--Defines the sheet margins.-->
+                     <!--Attribute: left @comment: Defines the left margin.-->
+                     <!--Attribute: right @comment: Defines the right margin.-->
+                     <!--Attribute: top @comment: Defines the top margin.-->
+                     <!--Attribute: bottom @comment: Defines the bottom margin.-->
+
+                     <Margins left="0cm" right="0cm" top="0cm" bottom="0cm"/>
+                  </InputTray>
+               </InputTrays>
+
+               <!--The list of output trays.-->
+
+               <OutputTrays>
+                  <!--The declaration of an output tray. One device ID may have
+                multiple names, but one name can only be mapped to one device ID.-->
+                  <!--Attribute: deviceID @comment: The device ID of the output tray. The IPDS term for this
+                number is "media destination ID". The device ID is an integer between "1" and
+                "65535". The default value is "1".-->
+                  <!--Attribute: name @comment: The name of the output tray. The type of this attribute is
+                string. The default value is an empty string.-->
+                  <!--Attribute: default @comment: Set the value of the attribute "default' to "yes" or "no"
+                to select or deselect the output tray as default. If no output tray from IPDS input
+                is mapped in profile then the default tray is used as fallback.-->
+
+                  <OutputTray deviceID="1" name="OutputTray1" default="yes"/>
+               </OutputTrays>
+            </TrayList>
+         </IPDSPrinter>
+      </IPDSPrinters>
+   </Input>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--The list of IPDS printers.-->
+      <!--Attribute: default @comment: Name of the default IPDS printer emulation. If this attribute
+                is specified, then a printer emulation with this name must be specified in the list
+                of IPDS printer emulations.-->
+
+      <ipdsprinters default="File">
+         <!--Definition of an IPDS printer emulation. You can configure
+                multiple printer emulations.-->
+         <!--Attribute: name @comment: The name of the IPDS printer emulation. Every printer name may
+                be used only once in the list of IPDS printers.-->
+         <!--Attribute: resourcememory @comment: For debugging purposes only. Used to overrule the total
+                resource storage size, in bytes reported by the printer. The attribute type is
+                integer. The default value is "-1".-->
+         <!--Attribute: bufferpages @comment: The size of the send buffer in the driver measured in pages.
+                The minimum value is "10". The maximum value is "4000". The default value is
+                "200".-->
+         <!--Attribute: pagesperacknowledge @comment: The number of pages between synchronization commands. The
+                minimum value is "1". The default value is "100".-->
+         <!--Attribute: secondsPerAcknowledge @comment: 
+                The number of seconds between synchronization commands. The
+                minimum value is "1". The default value is "5".
+            -->
+
+         <ipdsprinter name="NAME_EXAMPLE_VALUE" resourcememory="-1" bufferpages="200" pagesperacknowledge="100" secondsPerAcknowledge="5">
+            <!--The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: name @comment: The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: datapacketsize @comment: Maximum packet size in the IPDS carrier protocol PPR/PPD in
+                KBytes. The minimum value is 1, the maximum value is 32. The default value is
+                8.-->
+            <!--Attribute: connectiontimeout @comment: Connection timeout of the TCP/IP connection in seconds.
+                Specifies the time the printer has to accept an IPDS command or to respond to an
+                IPDS command. The minimum value is "1". The default value is "300".-->
+            <!--Attribute: disconnectiondelay @comment: Specifies the delay (in seconds) before the connection is
+                terminated. The minimum value is "0". The default value is "10".-->
+
+            <connection name="CONNECTION_EXAMPLE_VALUE" datapacketsize="8" connectiontimeout="300" disconnectiondelay="10"/>
+
+            <!--The configuration settings for tracing IPDS communication
+                between IPDS filter and the printer (pprPpdTrace).-->
+            <!--Attribute: enablestmopc @comment: Controls whether or not the self-identifying fields that
+                describe characteristics of the printer are written to STM and OPC files. The
+                default value is "false".-->
+            <!--Attribute: stmfile @comment: STM file name with path. If specified and enablestmopc is
+                "true", the STM data for the IPDS printer will be written to the STM file. If
+                connection "file" is set, the STM data is read from this file. The default value is
+                an empty string.-->
+            <!--Attribute: opcfile @comment: OPC file name with path. If specified and enablestmopc is
+                "true", the OPC data for the IPDS printer will be written to the OPC file. If
+                connection "file" is set, the OPC data is read from this file. The default value is
+                an empty string.-->
+            <!--Attribute: recordingdir @comment: Directory where PPR/PPD trace files are written. The default
+                value is an empty string.-->
+            <!--Attribute: pprppdtrace @comment: The configuration settings for tracing IPDS communication
+                between IPDS filter and the printer (pprppdTrace). If enabled, the trace files are
+                written in the directory specified by attribute "recordingDirectory". The default
+                value is "false". This attribute should be used for troubleshooting
+                only!-->
+            <!--Attribute: enableNetTrace @comment: Specifies whether network trace files are written to the
+                directory specified by attribute "recordingDirectory". The default value is "false".
+                If the value of the "enableNetTrace" attribute is "true", the attribute
+                "pprppdtrace" is ignored.-->
+
+            <IPDSTrace enablestmopc="false" stmfile="" opcfile="" recordingdir="" pprppdtrace="false" enableNetTrace="false"/>
+
+            <!--The optimization of overlapping graphics
+                objects.-->
+            <!--Attribute: value @comment: This attribute controls the optimization of overlapping
+                objects on the page. Valid values are "Always" and "Never". The default value is
+                "Never".-->
+
+            <optimizepa value="Never"/>
+
+            <Job>
+               <!--Attribute: enable @comment: Enables or disables alternate offset stacking. The default
+                value is "true".-->
+               <!--Attribute: jogmode @comment: This attibute specifies the jog mode. Valid values are
+                "default" and "jogperjob". The default value is "default".-->
+               <!--Attribute: useCopyMarks @comment:  Specifies whether control edge marks are used to separate
+                sheets on printers that do not support jogging. The default value is "false".
+            -->
+
+               <Jog enable="true" jogmode="default" useCopyMarks="false"/>
+
+               <!--The element "dataFidelity" bundles all configuration
+                attributes for data fidelity and exception reporting on IPDS job
+                boundaries.-->
+               <!--Attribute: maxerrorpages @comment: The number of pages with data-stream exceptions after which a
+                print job is terminated. The default value is "1".-->
+               <!--Attribute: reportundefinedchars @comment: Specifies whether or not the printer reports font-related data
+                stream exceptions. Valid values are "printer", "filter" and "never". The default
+                value is "never".-->
+               <!--Attribute: reportprintoutsidepage @comment: Specifies whether the printer generates position-check
+                exceptions for objects outside the printable area. The default value is
+                "true".-->
+               <!--Attribute: positioncheckhighlight @comment: Specifies whether the printer generates markers for objects
+                outside the printable area. The default value is "true".-->
+               <!--Attribute: clipoutsidepage @comment: Specifies whether the driver clips the pages to be printed to
+                the printable area before they are sent to the printer. The default value is
+                "false".-->
+
+               <dataFidelity maxerrorpages="1" reportundefinedchars="never" reportprintoutsidepage="true" positioncheckhighlight="true" clipoutsidepage="false"/>
+
+               <!--The element "MarkForm" specifies whether printer defined marks
+                are printed on the edges of the first and last sheets of jobs to make it easy to
+                find the end of a job.-->
+               <!--Attribute: value @comment: Specifies whether the printer will print marks. The default
+                value is "false".-->
+
+               <MarkForm value="false"/>
+            </Job>
+
+            <!--The element "fonthandling" is used as a container element for
+                the configuration attributes for controlling the usage of font types.-->
+            <!--Attribute: enableType1Font @comment: Enables or disables usage of Type 1 fonts. The default value
+                is "false".-->
+            <!--Attribute: enableTrueTypeFont @comment: Enables or disables usage of TrueType fonts. The default value
+                is "false".-->
+
+            <fonthandling enableType1Font="false" enableTrueTypeFont="false"/>
+
+            <!--Resolution to be used for auto-generated raster fonts to output text. The
+                resolution is specified in dpi. Valid values are 0, 240, 300 and 600. 0 means the
+                highest valid FOCA raster font resolution reported by the printer is
+                used.-->
+
+            <fontresolution value="0"/>
+
+            <!--The element "PageSegmentAsReference" specifies whether page
+                segments are sent to the printer or resolved.-->
+            <!--Attribute: value @comment: Specifies whether page segments are sent to the printer or
+                resolved. The default value is "true".-->
+
+            <PageSegmentAsReference value="true"/>
+
+            <!--This element "goca" specifies whether the driver shall try to
+                convert vector graphics from input to GOCA vector graphics instead of raster
+                images.-->
+            <!--Attribute: value @comment: Specifies whether the driver shall try to convert vector
+                graphics from input to GOCA vector graphics. The default value is
+                "false".-->
+
+            <goca value="false">
+               <!--Defines the basis for calculating the line width in GOCA
+                Output of GOCA version DR/2V0. The default value is "0.01in".-->
+
+               <gocalinewidthbase value="0.01in"/>
+
+               <!--Defines the device specific maximum factor for line widths in
+                GOCA. Valid values are integers between "1" and "255". The default value is
+                "10".-->
+
+               <gocamaxlinewidthfactor value="10"/>
+
+               <!--Defines how lines/paths are joined in GOCA output. Valid
+                values are "none", "miter", "round" and "bevel". The default value is
+                "round".-->
+
+               <GocaLineJoinStyle value="round"/>
+
+               <!--Defines how lines end in GOCA output for GOCA version DR/2V0.
+                The shape is device-dependent for GOCA version DR/2V0, but not for GOCA version GR3.
+                Supported values are "notset" (or drawingdefault), "butt" (or flat), "round" and
+                "square". The default value is "round".-->
+
+               <GocaLineCapStyle value="round"/>
+            </goca>
+
+            <!--The list of input and output trays. This element can have as
+                child elements lists of type inputtrays and outputtrays.-->
+
+            <traylist>
+               <!--The list of input trays.-->
+
+               <inputtrays>
+                  <!--The declaration of an input tray. The main function of this
+                element is to assign a device ID of an input tray of the printer to an input tray
+                name from the input data stream.-->
+                  <!--Attribute: deviceid @comment: The device ID of the input tray. Valid values are integers
+                between "0" and "255". The default value is "0".-->
+                  <!--Attribute: name @comment: The name of the input tray. The default value is an empty
+                string.-->
+                  <!--Attribute: nup @comment: The number of partitions per sheet, also called "N-up value".
+                Valid values for this attribute are "1", "2", "3", and "4". The default value is
+                "1".-->
+
+                  <inputtray deviceid="0" name="NAME_EXAMPLE_VALUE" nup="1"/>
+               </inputtrays>
+
+               <!--The list of output trays.-->
+
+               <outputtrays>
+                  <!--The declaration of an output tray. One device ID may have
+                multiple names, but one name can only be mapped to one device ID.-->
+                  <!--Attribute: deviceid @comment: The device ID of the output tray. The IPDS term for this
+                number is "media destination ID". The device ID is an integer between "1" and
+                "65535". The default value is "1".-->
+                  <!--Attribute: name @comment: The name of the output tray. The type of this attribute is
+                string. The default value is an empty string.-->
+
+                  <outputtray deviceid="1" name="NAME_EXAMPLE_VALUE"/>
+               </outputtrays>
+            </traylist>
+         </ipdsprinter>
+
+         <ipdsprinter name="File" bufferpages="200" pagesperacknowledge="100" secondsPerAcknowledge="5">
+            <!--The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: name @comment: The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: datapacketsize @comment: Maximum packet size in the IPDS carrier protocol PPR/PPD in
+                KBytes. The minimum value is 1, the maximum value is 32. The default value is
+                8.-->
+            <!--Attribute: connectiontimeout @comment: Connection timeout of the TCP/IP connection in seconds.
+                Specifies the time the printer has to accept an IPDS command or to respond to an
+                IPDS command. The minimum value is "1". The default value is "300".-->
+            <!--Attribute: disconnectiondelay @comment: Specifies the delay (in seconds) before the connection is
+                terminated. The minimum value is "0". The default value is "10".-->
+
+            <connection name="file" datapacketsize="16" connectiontimeout="200" disconnectiondelay="10"/>
+            <IPDSTrace stmfile=":InfoPrint1585:" opcfile=":InfoPrint1585:"/>
+
+            <!--The optimization of overlapping graphics
+                objects.-->
+            <!--Attribute: value @comment: The control of optimization of overlapping graphics objects.
+                Valid values are "Always", "Never", and "IfDifferentTypes". The default value is
+                "Always". The value "Always" enables the graphics object optimization within pages
+                and "Never" disables it. "IfDifferentTypes" enables graphics object optimization
+                exactly if the format type of input and output is different. Graphics object
+                optimization combines overlapping objects, adapts color to the capabilites of the
+                output device, often improves visual appearance of the result, but slows down
+                conversions substantially.-->
+
+            <optimizepa value="Never"/>
+
+            <Job>
+               <Jog enable="true" jogmode="default"/>
+               <dataFidelity reportprintoutsidepage="false" positioncheckhighlight="false" clipoutsidepage="true"/>
+
+               <!--The element "MarkForm" specifies whether printer defined marks
+                are printed on the edges of the first and last sheets of jobs to make it easy to
+                find the end of a job.-->
+               <!--Attribute: value @comment: Specifies whether the printer will print marks. The default
+                value is "false".-->
+
+               <MarkForm value="false"/>
+            </Job>
+
+            <fonthandling enableType1Font="false" enableTrueTypeFont="false"/>
+
+            <!--Resolution to be used for auto-generated raster fonts to output text. The
+                resolution is specified in dpi. Valid values are 0, 240, 300 and 600. 0 means the
+                highest valid FOCA raster font resolution reported by the printer is
+                used.-->
+
+            <fontresolution value="0"/>
+            <PageSegmentAsReference value="true"/>
+
+            <traylist>
+               <inputtrays>
+                  <inputtray deviceid="0" name="BIN1" nup="1"/>
+                  <inputtray deviceid="0" name="InputTray1" nup="1"/>
+                  <inputtray deviceid="0" name="Tray1" nup="1"/>
+                  <inputtray deviceid="1" name="InputTray2" nup="1"/>
+                  <inputtray deviceid="64" name="InputTray3" nup="1"/>
+                  <inputtray deviceid="98" name="InputTray4" nup="1"/>
+                  <inputtray deviceid="99" name="InputTray5" nup="1"/>
+               </inputtrays>
+
+               <outputtrays>
+                  <outputtray deviceid="1" name="OutputTray1"/>
+               </outputtrays>
+            </traylist>
+         </ipdsprinter>
+
+         <ipdsprinter name="InfoPrint_1585" bufferpages="200" pagesperacknowledge="100" secondsPerAcknowledge="5">
+            <!--The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: name @comment: The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: datapacketsize @comment: Maximum packet size in the IPDS carrier protocol PPR/PPD in
+                KBytes. The minimum value is 1, the maximum value is 32. The default value is
+                8.-->
+            <!--Attribute: connectiontimeout @comment: Connection timeout of the TCP/IP connection in seconds.
+                Specifies the time the printer has to accept an IPDS command or to respond to an
+                IPDS command. The minimum value is "1". The default value is "300".-->
+            <!--Attribute: disconnectiondelay @comment: Specifies the delay (in seconds) before the connection is
+                terminated. The minimum value is "0". The default value is "10".-->
+
+            <connection name="TCPIP_InfoPrint_1585" datapacketsize="16" connectiontimeout="120" disconnectiondelay="10"/>
+
+            <!--The optimization of overlapping graphics
+                objects.-->
+            <!--Attribute: value @comment: The control of optimization of overlapping graphics objects.
+                Valid values are "Always", "Never", and "IfDifferentTypes". The default value is
+                "Always". The value "Always" enables the graphics object optimization within pages
+                and "Never" disables it. "IfDifferentTypes" enables graphics object optimization
+                exactly if the format type of input and output is different. Graphics object
+                optimization combines overlapping objects, adapts color to the capabilites of the
+                output device, often improves visual appearance of the result, but slows down
+                conversions substantially.-->
+
+            <optimizepa value="Never"/>
+
+            <Job>
+               <Jog enable="true" jogmode="default"/>
+               <dataFidelity reportprintoutsidepage="false" positioncheckhighlight="false" clipoutsidepage="true"/>
+
+               <!--The element "MarkForm" specifies whether printer defined marks
+                are printed on the edges of the first and last sheets of jobs to make it easy to
+                find the end of a job.-->
+               <!--Attribute: value @comment: Specifies whether the printer will print marks. The default
+                value is "false".-->
+
+               <MarkForm value="false"/>
+            </Job>
+
+            <fonthandling enableType1Font="false" enableTrueTypeFont="false"/>
+
+            <!--Resolution to be used for auto-generated raster fonts to output text. The
+                resolution is specified in dpi. Valid values are 0, 240, 300 and 600. 0 means the
+                highest valid FOCA raster font resolution reported by the printer is
+                used.-->
+
+            <fontresolution value="0"/>
+            <PageSegmentAsReference value="true"/>
+
+            <traylist>
+               <inputtrays>
+                  <inputtray deviceid="0" name="BIN1" nup="1"/>
+                  <inputtray deviceid="0" name="InputTray1" nup="1"/>
+                  <inputtray deviceid="0" name="Tray1" nup="1"/>
+                  <inputtray deviceid="1" name="InputTray2" nup="1"/>
+                  <inputtray deviceid="64" name="InputTray3" nup="1"/>
+                  <inputtray deviceid="98" name="InputTray4" nup="1"/>
+                  <inputtray deviceid="99" name="InputTray5" nup="1"/>
+               </inputtrays>
+
+               <outputtrays>
+                  <outputtray deviceid="1" name="OutputTray1"/>
+               </outputtrays>
+            </traylist>
+         </ipdsprinter>
+
+         <ipdsprinter name="InfoPrint_1985" bufferpages="200" pagesperacknowledge="100" secondsPerAcknowledge="5">
+            <!--The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: name @comment: The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: datapacketsize @comment: Maximum packet size in the IPDS carrier protocol PPR/PPD in
+                KBytes. The minimum value is 1, the maximum value is 32. The default value is
+                8.-->
+            <!--Attribute: connectiontimeout @comment: Connection timeout of the TCP/IP connection in seconds.
+                Specifies the time the printer has to accept an IPDS command or to respond to an
+                IPDS command. The minimum value is "1". The default value is "300".-->
+            <!--Attribute: disconnectiondelay @comment: Specifies the delay (in seconds) before the connection is
+                terminated. The minimum value is "0". The default value is "10".-->
+
+            <connection name="TCPIP_InfoPrint_1985" datapacketsize="16" connectiontimeout="120" disconnectiondelay="10"/>
+
+            <!--The optimization of overlapping graphics
+                objects.-->
+            <!--Attribute: value @comment: The control of optimization of overlapping graphics objects.
+                Valid values are "Always", "Never", and "IfDifferentTypes". The default value is
+                "Always". The value "Always" enables the graphics object optimization within pages
+                and "Never" disables it. "IfDifferentTypes" enables graphics object optimization
+                exactly if the format type of input and output is different. Graphics object
+                optimization combines overlapping objects, adapts color to the capabilites of the
+                output device, often improves visual appearance of the result, but slows down
+                conversions substantially.-->
+
+            <optimizepa value="Never"/>
+
+            <Job>
+               <Jog enable="true" jogmode="default"/>
+               <dataFidelity reportprintoutsidepage="false" positioncheckhighlight="false" clipoutsidepage="true"/>
+
+               <!--The element "MarkForm" specifies whether printer defined marks
+                are printed on the edges of the first and last sheets of jobs to make it easy to
+                find the end of a job.-->
+               <!--Attribute: value @comment: Specifies whether the printer will print marks. The default
+                value is "false".-->
+
+               <MarkForm value="false"/>
+            </Job>
+
+            <fonthandling enableType1Font="false" enableTrueTypeFont="false"/>
+
+            <!--Resolution to be used for auto-generated raster fonts to output text. The
+                resolution is specified in dpi. Valid values are 0, 240, 300 and 600. 0 means the
+                highest valid FOCA raster font resolution reported by the printer is
+                used.-->
+
+            <fontresolution value="0"/>
+            <PageSegmentAsReference value="true"/>
+
+            <traylist>
+               <inputtrays>
+                  <inputtray deviceid="0" name="BIN1" nup="1"/>
+                  <inputtray deviceid="0" name="InputTray1" nup="1"/>
+                  <inputtray deviceid="0" name="Tray1" nup="1"/>
+                  <inputtray deviceid="1" name="InputTray2" nup="1"/>
+                  <inputtray deviceid="64" name="InputTray3" nup="1"/>
+                  <inputtray deviceid="98" name="InputTray4" nup="1"/>
+                  <inputtray deviceid="99" name="InputTray5" nup="1"/>
+               </inputtrays>
+
+               <outputtrays>
+                  <outputtray deviceid="1" name="OutputTray1"/>
+               </outputtrays>
+            </traylist>
+         </ipdsprinter>
+
+         <ipdsprinter name="InfoPrint_Color_1834" bufferpages="200">
+            <!--The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: name @comment: The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: datapacketsize @comment: Maximum packet size in the IPDS carrier protocol PPR/PPD in
+                KBytes. The minimum value is 1, the maximum value is 32. The default value is
+                8.-->
+            <!--Attribute: connectiontimeout @comment: Connection timeout of the TCP/IP connection in seconds.
+                Specifies the time the printer has to accept an IPDS command or to respond to an
+                IPDS command. The minimum value is "1". The default value is "300".-->
+            <!--Attribute: disconnectiondelay @comment: Specifies the delay (in seconds) before the connection is
+                terminated. The minimum value is "0". The default value is "10".-->
+
+            <connection name="TCPIP_InfoPrint_Color_1834" datapacketsize="16" connectiontimeout="120" disconnectiondelay="10"/>
+
+            <!--The optimization of overlapping graphics
+                objects.-->
+            <!--Attribute: value @comment: The control of optimization of overlapping graphics objects.
+                Valid values are "Always", "Never", and "IfDifferentTypes". The default value is
+                "Always". The value "Always" enables the graphics object optimization within pages
+                and "Never" disables it. "IfDifferentTypes" enables graphics object optimization
+                exactly if the format type of input and output is different. Graphics object
+                optimization combines overlapping objects, adapts color to the capabilites of the
+                output device, often improves visual appearance of the result, but slows down
+                conversions substantially.-->
+
+            <optimizepa value="Never"/>
+
+            <Job>
+               <Jog enable="true" jogmode="default"/>
+               <dataFidelity reportprintoutsidepage="false" positioncheckhighlight="false" clipoutsidepage="true"/>
+
+               <!--The element "MarkForm" specifies whether printer defined marks
+                are printed on the edges of the first and last sheets of jobs to make it easy to
+                find the end of a job.-->
+               <!--Attribute: value @comment: Specifies whether the printer will print marks. The default
+                value is "false".-->
+
+               <MarkForm value="false"/>
+            </Job>
+
+            <fonthandling enableType1Font="false" enableTrueTypeFont="false"/>
+
+            <!--Resolution to be used for auto-generated raster fonts to output text. The
+                resolution is specified in dpi. Valid values are 0, 240, 300 and 600. 0 means the
+                highest valid FOCA raster font resolution reported by the printer is
+                used.-->
+
+            <fontresolution value="0"/>
+            <PageSegmentAsReference value="true"/>
+
+            <traylist>
+               <inputtrays>
+                  <inputtray deviceid="0" name="InputTray1" nup="1"/>
+                  <inputtray deviceid="64" name="InputTray2" nup="1"/>
+                  <inputtray deviceid="98" name="InputTray3" nup="1"/>
+                  <inputtray deviceid="99" name="InputTray4" nup="1"/>
+               </inputtrays>
+
+               <outputtrays>
+                  <outputtray deviceid="1" name="OutputTray1"/>
+               </outputtrays>
+            </traylist>
+         </ipdsprinter>
+
+         <ipdsprinter name="InfoPrint_70" bufferpages="200" pagesperacknowledge="100" secondsPerAcknowledge="5">
+            <!--The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: name @comment: The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: datapacketsize @comment: Maximum packet size in the IPDS carrier protocol PPR/PPD in
+                KBytes. The minimum value is 1, the maximum value is 32. The default value is
+                8.-->
+            <!--Attribute: connectiontimeout @comment: Connection timeout of the TCP/IP connection in seconds.
+                Specifies the time the printer has to accept an IPDS command or to respond to an
+                IPDS command. The minimum value is "1". The default value is "300".-->
+            <!--Attribute: disconnectiondelay @comment: Specifies the delay (in seconds) before the connection is
+                terminated. The minimum value is "0". The default value is "10".-->
+
+            <connection name="TCPIP_InfoPrint_70" datapacketsize="8" connectiontimeout="300" disconnectiondelay="10"/>
+
+            <!--The optimization of overlapping graphics
+                objects.-->
+            <!--Attribute: value @comment: The control of optimization of overlapping graphics objects.
+                Valid values are "Always", "Never", and "IfDifferentTypes". The default value is
+                "Always". The value "Always" enables the graphics object optimization within pages
+                and "Never" disables it. "IfDifferentTypes" enables graphics object optimization
+                exactly if the format type of input and output is different. Graphics object
+                optimization combines overlapping objects, adapts color to the capabilites of the
+                output device, often improves visual appearance of the result, but slows down
+                conversions substantially.-->
+
+            <optimizepa value="Never"/>
+
+            <Job>
+               <Jog enable="true" jogmode="default"/>
+               <dataFidelity reportprintoutsidepage="false" positioncheckhighlight="false" clipoutsidepage="true"/>
+
+               <!--The element "MarkForm" specifies whether printer defined marks
+                are printed on the edges of the first and last sheets of jobs to make it easy to
+                find the end of a job.-->
+               <!--Attribute: value @comment: Specifies whether the printer will print marks. The default
+                value is "false".-->
+
+               <MarkForm value="false"/>
+            </Job>
+
+            <fonthandling enableType1Font="false" enableTrueTypeFont="false"/>
+
+            <!--Resolution to be used for auto-generated raster fonts to output text. The
+                resolution is specified in dpi. Valid values are 0, 240, 300 and 600. 0 means the
+                highest valid FOCA raster font resolution reported by the printer is
+                used.-->
+
+            <fontresolution value="0"/>
+            <PageSegmentAsReference value="true"/>
+
+            <traylist>
+               <inputtrays>
+                  <inputtray deviceid="0" name="InputTray1" nup="1"/>
+                  <inputtray deviceid="0" name="Tray1" nup="1"/>
+                  <inputtray deviceid="1" name="InputTray2" nup="1"/>
+                  <inputtray deviceid="1" name="Tray2" nup="1"/>
+                  <inputtray deviceid="2" name="InputTray3" nup="1"/>
+                  <inputtray deviceid="2" name="Tray3" nup="1"/>
+                  <inputtray deviceid="99" name="InputTray4" nup="1"/>
+                  <inputtray deviceid="99" name="Tray4" nup="1"/>
+               </inputtrays>
+
+               <outputtrays>
+                  <outputtray deviceid="1" name="OutputTray1"/>
+                  <outputtray deviceid="2" name="OutputTray2"/>
+               </outputtrays>
+            </traylist>
+         </ipdsprinter>
+
+         <ipdsprinter name="Loopback_InfoPrint_1585" bufferpages="200" pagesperacknowledge="100" secondsPerAcknowledge="5">
+            <!--The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: name @comment: The name of the IPDS printer connection. If the value "file"
+                is specified, the output is written to a file. If the value "tcpipconnection" is
+                set, the data is send via the network.-->
+            <!--Attribute: datapacketsize @comment: Maximum packet size in the IPDS carrier protocol PPR/PPD in
+                KBytes. The minimum value is 1, the maximum value is 32. The default value is
+                8.-->
+            <!--Attribute: connectiontimeout @comment: Connection timeout of the TCP/IP connection in seconds.
+                Specifies the time the printer has to accept an IPDS command or to respond to an
+                IPDS command. The minimum value is "1". The default value is "300".-->
+            <!--Attribute: disconnectiondelay @comment: Specifies the delay (in seconds) before the connection is
+                terminated. The minimum value is "0". The default value is "10".-->
+
+            <connection name="TCPIP_Loopback" datapacketsize="16" connectiontimeout="120" disconnectiondelay="10"/>
+
+            <!--The optimization of overlapping graphics
+                objects.-->
+            <!--Attribute: value @comment: The control of optimization of overlapping graphics objects.
+                Valid values are "Always", "Never", and "IfDifferentTypes". The default value is
+                "Always". The value "Always" enables the graphics object optimization within pages
+                and "Never" disables it. "IfDifferentTypes" enables graphics object optimization
+                exactly if the format type of input and output is different. Graphics object
+                optimization combines overlapping objects, adapts color to the capabilites of the
+                output device, often improves visual appearance of the result, but slows down
+                conversions substantially.-->
+
+            <optimizepa value="Never"/>
+
+            <Job>
+               <Jog enable="true" jogmode="default"/>
+               <dataFidelity reportprintoutsidepage="false" positioncheckhighlight="false" clipoutsidepage="true"/>
+
+               <!--The element "MarkForm" specifies whether printer defined marks
+                are printed on the edges of the first and last sheets of jobs to make it easy to
+                find the end of a job.-->
+               <!--Attribute: value @comment: Specifies whether the printer will print marks. The default
+                value is "false".-->
+
+               <MarkForm value="false"/>
+            </Job>
+
+            <fonthandling enableType1Font="false" enableTrueTypeFont="false"/>
+
+            <!--Resolution to be used for auto-generated raster fonts to output text. The
+                resolution is specified in dpi. Valid values are 0, 240, 300 and 600. 0 means the
+                highest valid FOCA raster font resolution reported by the printer is
+                used.-->
+
+            <fontresolution value="0"/>
+            <PageSegmentAsReference value="true"/>
+
+            <traylist>
+               <inputtrays>
+                  <inputtray deviceid="0" name="BIN1" nup="1"/>
+                  <inputtray deviceid="0" name="InputTray1" nup="1"/>
+                  <inputtray deviceid="0" name="Tray1" nup="1"/>
+                  <inputtray deviceid="1" name="InputTray2" nup="1"/>
+                  <inputtray deviceid="64" name="InputTray3" nup="1"/>
+                  <inputtray deviceid="98" name="InputTray4" nup="1"/>
+                  <inputtray deviceid="99" name="InputTray5" nup="1"/>
+               </inputtrays>
+
+               <outputtrays>
+                  <outputtray deviceid="1" name="OutputTray1"/>
+               </outputtrays>
+            </traylist>
+         </ipdsprinter>
+      </ipdsprinters>
+   </output>
+
+   <!--The list of TCP/IP connections.-->
+
+   <tcpipconnections>
+      <!--The declaration of a TCP/IP connection.-->
+      <!--Attribute: name @comment: The name of a TCP/IP connection. The default value is
+                "NAME_EXAMPLE_VALUE".-->
+      <!--Attribute: host @comment: The IP address of the IPDS printer. The default value is
+                "127.0.0.1".-->
+      <!--Attribute: port @comment: The port number of the IPDS printer. The default value is
+                "5001".-->
+
+      <tcpipconnection name="NAME_EXAMPLE_VALUE" host="127.0.0.1" port="5001"/>
+      <tcpipconnection name="TCPIP_InfoPrint_1585" host="172.20.17.26" port="5001"/>
+      <tcpipconnection name="TCPIP_InfoPrint_1985" host="172.20.17.222" port="5001"/>
+      <tcpipconnection name="TCPIP_InfoPrint_Color_1834" host="172.20.17.221" port="5001"/>
+      <tcpipconnection name="TCPIP_InfoPrint_70" host="172.20.17.22" port="5001"/>
+      <tcpipconnection name="TCPIP_Loopback" host="127.0.0.1" port="5001"/>
+      <tcpipconnection name="TCPIP_Receiver" host="127.0.0.1" port="5001"/>
+   </tcpipconnections>
+
+   <!--Contains a list of locations for resource files.-->
+
+   <resourcelist>
+      <!--Contains a list of file paths.-->
+
+      <fileslist>
+         <files path="c:\WINDOWS\Fonts" type="truetype" extension="ttf"/>
+         <files path="\resource" type="icc" extension="icc"/>
+         <files path="\resource" type="icc" extension="icm"/>
+      </fileslist>
+   </resourcelist>
+</mffips>

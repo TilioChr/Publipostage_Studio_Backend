@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Heading counters</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");
+            h1 {
+                counter-reset: heading;
+            }
+            
+            h2 {
+                counter-reset: subheading;
+                counter-increment: heading;
+            }
+            
+            h2::before {
+                content: "Section " counter(heading) " ";
+            }
+            
+            h3 {
+                counter-increment: subheading;
+            }
+            
+            h3::before {
+                content: counter(heading) "." counter(subheading) " ";
+            }
+            
+            #startRoman {
+                counter-reset: heading;
+            }
+            
+            h2.Roman {
+                counter-reset: subheading;
+            }
+            
+            h2.Roman::before {
+                counter-increment: heading;
+                content: "Section " counter(heading, upper-roman) " ";
+            }
+            
+            h3.Roman::before {
+                counter-increment: subheading;
+                content: counter(heading, upper-roman) "." counter(subheading, lower-roman) " ";
+            }</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <h1>Heading Counters</h1>
+        <p>Counters for HTML elements can be defined in CSS similar to variables. Counters first
+            have to be initialized, then they are used until the document ends or the counter is
+            reset. Counters can also be nested. </p>
+        <p>The example below demonstrates how counters can be set for <code>h2</code> and
+                <code>h3</code> elements, and how different counter styles can be used. </p>
+        <h1>Heading Counters</h1>
+        <h2>Milk ice</h2>
+        <h3>Vanilla</h3>
+        <h3>Chocolate</h3>
+        <h2>Fruit ice</h2>
+        <h3>Strawberry</h3>
+        <h3>Mango</h3>
+        <h2>House specials</h2>
+        <h3>Ginger</h3>
+        <h3>Wasabi</h3>
+        <h1 id="startRoman">Counters With Roman Numerals</h1>
+        <h2 class="Roman">Milk ice</h2>
+        <h3 class="Roman">Vanilla</h3>
+        <h3 class="Roman">Chocolate</h3>
+        <h2 class="Roman">Fruit ice</h2>
+        <h3 class="Roman">Strawberry</h3>
+        <h3 class="Roman">Mango</h3>
+        <h2 class="Roman">House specials</h2>
+        <h3 class="Roman">Ginger</h3>
+        <h3 class="Roman">Wasabi</h3>
+    </body>
+</html>

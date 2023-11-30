@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Addresses name="my" count="4">
+    <Address>
+        <FirstName>Michaela</FirstName>
+        <LastName>Obermaier</LastName>
+        <ZipCode>88302</ZipCode>
+        <City>Westtal</City>
+        <POBox></POBox>
+        <StreetName>Nasenbachtalweg</StreetName>
+        <StreetNumber>89</StreetNumber>
+        <FederalState>Bayern</FederalState>
+        <EMail>michi@webxy.de</EMail>
+        <Gender>F</Gender>
+        <PreferredLang>de</PreferredLang>
+    </Address>
+    <Address>
+        <FirstName>Wolfgang</FirstName>
+        <LastName>Nordfall</LastName>
+        <ZipCode>26999</ZipCode>
+        <City>Bad Münzesbrück</City>
+        <POBox>Postfach 3456</POBox>
+        <StreetName>Hauptstraße</StreetName>
+        <StreetNumber>53/2</StreetNumber>
+        <FederalState>Niedersachsen</FederalState>
+        <EMail>wolfgang.nordfall01@gookeexy.de</EMail>
+        <Gender>M</Gender>
+        <PreferredLang>de</PreferredLang>
+    </Address>
+    <Address>
+        <FirstName>Bud</FirstName>
+        <LastName>Weiser</LastName>
+        <ZipCode>04547</ZipCode>
+        <City>Friendship</City>
+        <POBox></POBox>
+        <StreetName>Mulberry Street</StreetName>
+        <StreetNumber>244</StreetNumber>
+        <FederalState>KY</FederalState>
+        <EMail>bud.weiser@outlook.com</EMail>
+        <Gender>M</Gender>
+        <PreferredLang>en</PreferredLang>
+    </Address>
+</Addresses>

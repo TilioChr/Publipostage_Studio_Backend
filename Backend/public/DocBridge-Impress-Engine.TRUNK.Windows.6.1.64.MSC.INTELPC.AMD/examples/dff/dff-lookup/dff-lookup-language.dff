@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xsl:version="1.0">
+    <dff:dffhead>
+        <dff:data loop="/*/*">
+            <Addresses xmlns="">
+                <Address gender="F" preferredLang="de">
+                    <FirstName>Michaela</FirstName>
+                    <LastName>Obermaier</LastName>
+                    <ZipCode>88302</ZipCode>
+                    <City>Westtal</City>
+                    <StreetName>Nasenbachtalweg</StreetName>
+                    <StreetNumber>89</StreetNumber>
+                    <State>Bayern</State>
+                    <EMail>michi@webxy.de</EMail>
+                    <Country>Deutschland</Country>
+                </Address>
+                <Address gender="M" preferredLang="en">
+                    <FirstName>Wolfgang</FirstName>
+                    <LastName>Nordfall</LastName>
+                    <ZipCode>26999</ZipCode>
+                    <City>Bad Münzesbrück</City>
+                    <POBox>Postfach 3456</POBox>
+                    <StreetName>Hauptstraße</StreetName>
+                    <StreetNumber>53/2</StreetNumber>
+                    <State>Niedersachsen</State>
+                    <EMail>wolfgang.nordfall01@gookeexy.de</EMail>
+                    <Country>Deutschland</Country>
+                </Address>
+                <Address gender="female" preferredLang="en">
+                    <FirstName>Anne T.</FirstName>
+                    <LastName>Lope</LastName>
+                    <ZipCode>31407</ZipCode>
+                    <City>Savannah</City>
+                    <StreetName>Academy Street</StreetName>
+                    <StreetNumber>57</StreetNumber>
+                    <State>GA</State>
+                    <EMail>anne.t.lope@googlemail.com</EMail>
+                    <Country>United States of America</Country>
+                </Address>
+                <Address gender="male" preferredLang="en">
+                    <FirstName>Bud</FirstName>
+                    <LastName>Weiser</LastName>
+                    <ZipCode>04547</ZipCode>
+                    <City>Friendship</City>
+                    <StreetName>Mulberry Street</StreetName>
+                    <StreetNumber>244</StreetNumber>
+                    <State>KY</State>
+                    <EMail>bud.weiser@outlook.com</EMail>
+                    <Country>United States of America</Country>
+                </Address>
+                <Address gender="female" preferredLang="fr">
+                    <FirstName>Emma</FirstName>
+                    <LastName>Delacroix</LastName>
+                    <ZipCode>4000</ZipCode>
+                    <City>Liège</City>
+                    <StreetName>Rue de Augustins</StreetName>
+                    <StreetNumber>38</StreetNumber>
+                    <State/>
+                    <EMail>emma.delacroix1234@email.fr</EMail>
+                    <Country>France</Country>
+                </Address>
+                <Address gender="male" preferredLang="fr">
+                    <FirstName>Jules</FirstName>
+                    <LastName>Dumont</LastName>
+                    <ZipCode>20169</ZipCode>
+                    <City>Bonifacio</City>
+                    <StreetName>Rue Monsieur-La-Prince</StreetName>
+                    <StreetNumber>77</StreetNumber>
+                    <State/>
+                    <EMail>jules.Dumont99@email.fr</EMail>
+                    <Country>France</Country>
+                </Address>
+            </Addresses>
+        </dff:data>
+
+        <dff:lookupref href="translation-table.dfl"/>
+    </dff:dffhead>
+    <head>
+        <title>dff:lookup test case</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body xml:lang="{@preferredLang}">
+        <xi:include href="../../common/standardheader.dfb"/>
+        <div>
+            <p>
+                <xsl:choose>
+                    <xsl:when test="@gender = 'M'"><xsl:copy-of select="dff:lookup('SalutM')"/>
+                        <xsl:value-of select="LastName"/></xsl:when>
+                    <xsl:when test="@gender = 'F'"><xsl:copy-of select="dff:lookup('SalutF')"/>
+                        <xsl:value-of select="LastName"/></xsl:when>
+                    <xsl:otherwise><xsl:copy-of select="dff:lookup('SalutD')"/></xsl:otherwise>
+                </xsl:choose>
+            </p>
+        </div>
+        <div>
+            <xsl:copy-of select="dff:lookup('Content')"/>
+            <ul>
+                <li><xsl:copy-of select="dff:lookup('SnailMail')"/>
+                    <xsl:value-of select="StreetName"/><span>&nbsp;</span><xsl:value-of
+                        select="StreetNumber"/>, <xsl:value-of select="ZipCode"
+                        /><span>&nbsp;</span><xsl:value-of select="City"/></li>
+                <li>Email: <xsl:value-of select="EMail"/></li>
+            </ul>
+        </div>
+        <div>
+            <xsl:copy-of select="dff:lookup('Greetings')"/>
+            <p>
+                <img src="images/Compart-Logo.jpg" />
+            </p>
+        </div>
+    </body>
+</html>

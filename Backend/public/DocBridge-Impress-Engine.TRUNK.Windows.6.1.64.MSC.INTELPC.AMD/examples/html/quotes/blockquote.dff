@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Blockquote</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+	    <xi:include href="../../common/standardheader.dfb"/>
+        <p>This example shows how a blockquote is rendered without any additional styling, with the default settings.</p>
+        <p>By default, Compart indents the text in blockquote.</p>
+        <br />
+        <p>Here is a quote from Compart's website:</p>
+        <blockquote cite="https://www.compart.com/en-US/about-compart">
+            <p>The DocBridge platform as a flexible and secure solution offers all the features of a modern input and output document processing, in particular, bridges the gap between legacy systems and the ever increasing demands of a channel-oriented customer communications.</p>
+            <br />
+            <p>More than 1,500 customers with thousands of installations in over 50 countries rely on the long-standing and proven expertise of Compart.</p>
+        </blockquote> 
+    </body>
+</html>

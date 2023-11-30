@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/shl">
+   <xs:element name="mffshl">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="Input" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="Processes" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">List of Processes</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="Process" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="de-DE">Deklaration eines Prozesses</xs:documentation>
+                                    <xs:documentation xml:lang="en-US">Declaration of a Process</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="Parameters" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="de-DE">Liste der Parameter</xs:documentation>
+                                             <xs:documentation xml:lang="en-US">List of Parameters</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+                                                   <xs:annotation>
+                                                      <xs:documentation xml:lang="de-DE">Parameter, der in den Befehl eingefügt werden
+                soll</xs:documentation>
+                                                      <xs:documentation xml:lang="en-US">Parameter to insert into the command</xs:documentation>
+                                                   </xs:annotation>
+                                                   <xs:complexType>
+                                                      <xs:attribute name="name" default="" type="xs:string">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Name des Parameters oder Switchs</xs:documentation>
+                                                            <xs:documentation xml:lang="en-US">Name of the parameter or switch</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="value" default="$TEMP_OUTPUT_FILE_FULLNAME$" type="xs:string">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Der Wert, der des im Attribut 'name' angegebenen
+                Parameters</xs:documentation>
+                                                            <xs:documentation xml:lang="en-US">The value of the parameter specified in the name
+                attribute</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="type" default="" type="xs:string">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Typ der Ausgabedatei, die mit dem Befehl erstellt
+                wird</xs:documentation>
+                                                            <xs:documentation xml:lang="en-US">Type of the output file created from command</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="treatAsOutput" default="true" type="xs:boolean">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Benachrichtigt den SHL-Filter bei Vorhandensein einer
+                Ausgabedatei oder eines Verzeichnisses. Die Ausgabedatei wird als Eingabedokument
+                für die weitere Verarbeitung behandelt</xs:documentation>
+                                                            <xs:documentation xml:lang="en-US">Alerts the SHL filter to the presence of an output file or
+                directory; output document(s) will be treated as input document(s) for further
+                processing</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="separator" default=" " type="xs:string">
+                                                         <xs:annotation>
+                                                            <xs:documentation xml:lang="de-DE">Trennzeichen zwischen Parametername und -wert</xs:documentation>
+                                                            <xs:documentation xml:lang="en-US">Separator between parameter name and value</xs:documentation>
+                                                         </xs:annotation>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                             <xs:attribute name="separator" default=" " type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Trennzeichen zwischen Parametername und -wert</xs:documentation>
+                                                   <xs:documentation xml:lang="en-US">Separator between parameter name and value</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" use="required" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Prozessname</xs:documentation>
+                                          <xs:documentation xml:lang="en-US">Name of Process</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="cmd" use="required" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Vollständiger Pfad des auszuführenden Befehls</xs:documentation>
+                                          <xs:documentation xml:lang="en-US">Full Path of Command to execute</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="extensions" default="" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Durch den Prozess unterstützte Dateierweiterung</xs:documentation>
+                                          <xs:documentation xml:lang="en-US">File extension supported by the process</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="timeout" default="-1" type="xs:string">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Zeitlimit für Prozess in Sekunden</xs:documentation>
+                                          <xs:documentation xml:lang="en-US">Time limit for process in seconds</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="killCrashWindow" default="true" type="xs:boolean">
+                                       <xs:annotation>
+                                          <xs:documentation xml:lang="de-DE">Steuert den Umgang mit Absturzfenstern nach einem Timeout</xs:documentation>
+                                          <xs:documentation xml:lang="en-US">Controls the handling of crash windows after a timeout</xs:documentation>
+                                       </xs:annotation>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

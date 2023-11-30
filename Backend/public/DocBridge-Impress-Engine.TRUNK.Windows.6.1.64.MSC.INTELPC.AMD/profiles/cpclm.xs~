@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/cpclm">
+   <xs:element name="cpclm">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="ColorMappings" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">The 'ColorMappings' element could have one or more
+                'ColorMapping' elements each in-turn having required color mapping elements.
+            </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="ColorMapping" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">The 'ColorMapping'element could have one or more 'MapColor'
+                elements with input and output color values. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="MapColor" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="de-DE">Das Element 'MapColor' steuert die Zuordnung von Farbwerten
+                eines Farbraums (z. B. RGB) zu anderen Farbwerten eines anderen Farbraums (z. B.
+                CMYK). </xs:documentation>
+                                    <xs:documentation xml:lang="en-US">The 'MapColor' element controls the mapping of a given color
+                value in mentioned colorspace (e.g fromRGB) to another colorvalue of same or
+                different colorspace (e.g. to toCMYK). </xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="fromRGB" type="xs:string"/>
+                                    <xs:attribute name="toRGB" type="xs:string"/>
+                                    <xs:attribute name="fromCMYK" type="xs:string"/>
+                                    <xs:attribute name="toCMYK" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="name" default="colormapping" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mfftxt xmlns="http://www.compart.com/ns/mff/txt" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+
+   <globals>
+      <!--character to be used when the requested character is not in the
+                font-->
+
+      <defaultchar char="0020"/>
+   </globals>
+
+   <!--Font specified by "family", "weight", "width" and "style" can be rasterised
+                To rasterize the text, rasterize="always" has to be specified. Important: for all
+                point sizes correct or dummy device names must be specified -->
+
+   <fontlist>
+      <!--Font definitions. If no font selection by channel is done, the font with ID
+                '1' will be used for the entire input. If no font with ID '1' is defined, the first
+                font in the font list will be used. If the font list does not contain any fonts, a
+                default font with the properties 'Courier New', '15' pitch, '10' points, 'medium',
+                'upright', 'serif', 'monospaced' will be created. Commonly used Pitch-Point
+                Relationships: Pitch Size 6 pitch 20 points 8.5 pitch 14 points 10 pitch 12 points
+                12 pitch 10 points 13.3 pitch 9 points 15 pitch 8 points 17.1 pitch 7 points 20
+                pitch 6 points 24 pitch 5 points-->
+
+      <font family="Courier New" serifstyle="Serif" spacing="Monospaced">
+         <face weight="Medium" width="Normal" style="Upright" devname="Courier" id="1" size="10" pitch="15000" fontfile="cour" fontfiletype="TrueType"/>
+         <face weight="Medium" width="Normal" style="Upright" devname="Courier" id="2" size="12" pitch="12000" fontfile="cour" fontfiletype="TrueType"/>
+      </font>
+   </fontlist>
+
+   <!--Settings for input.-->
+
+   <input>
+      <!--dump input text file-->
+      <!--<inputtestfile filename="test.txt"/>-->
+      <!--suppress only empty first page?-->
+
+      <SuppressEmptyFirstPage value="false"/>
+
+      <!--suppress only empty last page?-->
+
+      <SuppressEmptyLastPage value="false"/>
+
+      <!--suppress all empty pages?-->
+
+      <SuppressEmptyPages value="false"/>
+
+      <!--format text position-->
+
+      <format>
+         <codepage iana="native"/>
+
+         <!--columns for line length (without control columns) may be number, "auto" or
+                "variable". Automatic line length detection is only available with control
+                columns-->
+
+         <linelength columns="variable"/>
+
+         <!--wrap text not fitting in line?-->
+
+         <wraplines value="true"/>
+
+         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Definition of
+                control characters Only characters which are not standard have to be defined
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ standard control chars
+                for line oriented carriage control controlchars scheme="asa"
+                ******************************************************************* ** Printing with
+                ASA control characters under UNIX: ** ** "a.out | asa | lpr - Pzam13ad" **
+                ******************************************************************* ** standard
+                control chars for channel oriented carriage control ** controlchar char=" "
+                action1="linefeed" action2="printline" controlchar char="0" action1="doublelinefeed"
+                action2="printline" controlchar char="-" action1="triplelinefeed"
+                action2="printline" ** used for printing with different fonts in one line **
+                controlchar char="+" action1="printline" ** standard control chars for channel
+                oriented carriage control ** controlchar char="1" action1="skiptochannel1"
+                action2="printline" controlchar char="2" action1="skiptochannel2"
+                action2="printline" controlchar char="3" action1="skiptochannel3"
+                action2="printline" controlchar char="4" action1="skiptochannel4"
+                action2="printline" controlchar char="5" action1="skiptochannel5"
+                action2="printline" controlchar char="6" action1="skiptochannel6"
+                action2="printline" controlchar char="7" action1="skiptochannel7"
+                action2="printline" controlchar char="8" action1="skiptochannel8"
+                action2="printline" controlchar char="9" action1="skiptochannel9"
+                action2="printline" controlchar char="A" action1="skiptochannel10"
+                action2="printline" controlchar char="B" action1="skiptochannel11"
+                action2="printline" controlchar char="C" action1="skiptochannel12"
+                action2="printline" controlchars controlchars scheme="machinecode" controlchar
+                byte="\x01" action1="printline" controlchar byte="\x09" action1="printline"
+                action2="linefeed" controlchar byte="\x11" action1="printline"
+                action2="doublelinefeed" controlchar byte="\x19" action1="printline"
+                action2="triplelinefeed" controlchar byte="\x0B" action1="linefeed" controlchar
+                byte="\x13" action1="doublelinefeed" controlchar byte="\x1B"
+                action1="triplelinefeed" controlchar byte="\x03" controlchar byte="\x89"
+                action1="printline" action2="skiptochannel1" controlchar byte="\x91"
+                action1="printline" action2="skiptochannel2" controlchar byte="\x99"
+                action1="printline" action2="skiptochannel3" controlchar byte="\xA1"
+                action1="printline" action2="skiptochannel4" controlchar byte="\xA9"
+                action1="printline" action2="skiptochannel5" controlchar byte="\xB1"
+                action1="printline" action2="skiptochannel6" controlchar byte="\xB9"
+                action1="printline" action2="skiptochannel7" controlchar byte="\xC1"
+                action1="printline" action2="skiptochannel8" controlchar byte="\xC9"
+                action1="printline" action2="skiptochannel9" controlchar byte="\xD1"
+                action1="printline" action2="skiptochannel10" controlchar byte="\xD9"
+                action1="printline" action2="skiptochannel11" controlchar byte="\xE1"
+                action1="printline" action2="skiptochannel12" controlchar byte="\x8B"
+                action1="skiptochannel1" controlchar byte="\x93" action1="skiptochannel2"
+                controlchar byte="\x9B" action1="skiptochannel3" controlchar byte="\xA3"
+                action1="skiptochannel4" controlchar byte="\xAB" action1="skiptochannel5"
+                controlchar byte="\xB3" action1="skiptochannel6" controlchar byte="\xBB"
+                action1="skiptochannel7" controlchar byte="\xC3" action1="skiptochannel8"
+                controlchar byte="\xCB" action1="skiptochannel9" controlchar byte="\xD3"
+                action1="skiptochannel10" controlchar byte="\xDB" action1="skiptochannel11"
+                controlchar byte="\xE3" action1="skiptochannel12" controlchars ** control chars for
+                font selection ** controlchars scheme="fontselect" controlchar byte="\x00"
+                action1="switchtofont1" controlchar byte="\x01" action1="switchtofont2" controlchar
+                byte="\x02" action1="switchtofont3" **default** controlchar char="0"
+                action1="switchtofont0" controlchar char="1" action1="switchtofont1" controlchar
+                char="2" action1="switchtofont2" controlchar char="3" action1="switchtofont3"
+                controlchar char="4" action1="switchtofont4" controlchar char="5"
+                action1="switchtofont5" controlchar char="6" action1="switchtofont6" controlchar
+                char="7" action1="switchtofont7" controlchar char="8" action1="switchtofont8"
+                controlchar char="9" action1="switchtofont9" controlchars -->
+
+         <controlchars scheme="machinecode">
+            <!--<controlchar byte="" char="" action1="" action2=""/>-->
+         </controlchars>
+
+         <!--Columns with special meaning-->
+
+         <controlcolumns count="0">
+            <!--control column type can be "carriagecontrol" or
+                "fontselection"-->
+
+            <controlcolumn type="carriagecontrol" column="1"/>
+            <controlcolumn type="fontselection" column="2"/>
+         </controlcolumns>
+
+         <!--Channel definitions - lines to jump to-->
+
+         <channels>
+            <!--Channel lines can be seperated by space, comma and semicolon - line begins
+                with value 1-->
+
+            <channeldefinition channel="1" lines="1"/>
+         </channels>
+
+         <!--count characters to next tabulator position alternate definition possible
+                by explict positions: <tabulatordefinition position ='9, 17, 25, 33, 41, 49'
+                /> - position of character behind tabulator depending on current position -
+                example for step 8-->
+
+         <tabulatordefinition step="8" position="8"/>
+
+         <!--Switch for removing leading blank when processing the input
+                file-->
+
+         <removeleadingblanks value="true"/>
+
+         <!--remove the trailing blanks (space, tab, backspace) of text. default value
+                is 'true' -->
+
+         <removetrailingblanks value="true"/>
+      </format>
+
+      <indexlist>
+         <!--for every index value it can be specified what to do if there is no data or
+                less data than expected. Possible values: nothing, skip, warn, warnandskip and stop
+                line and column begin with value 1 no default - only example here-->
+         <!--<index name="kontonummer" line="1" column="28" length="10" ifsmallerdo="Warn"
+                ifemptydo="Stop"/>-->
+         <!--<index name="jahr" line="1" column="53" length="4" ifsmallerdo="Warn" ifemptydo="Stop"/>-->
+      </indexlist>
+
+      <pagedefinitionlist>
+         <!--if there is more than one pagedefinition, the first in alphabetical order
+                is used!-->
+
+         <pagedefinition name="a4_1">
+            <papersize format="A4" orientation="Portrait"/>
+
+            <!--The declaration of sheet margins.-->
+            <!--Attribute: left @comment: The width of the left sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+            <!--Attribute: right @comment: The width of the right sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+            <!--Attribute: top @comment: The height of the top sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+            <!--Attribute: bottom @comment: The height of the bottom sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+
+            <margins left="1 cm" right="0 cm" top="1 cm" bottom="0 cm"/>
+            <linesperinch value="7"/>
+            <linesperpage value="0"/>
+         </pagedefinition>
+
+         <!--only one should be present - here just another example-->
+         <!--<pagedefinition name="a4_2">        
+            <papersize format="A4" orientation="Landscape"/>        
+            <margins left="2 cm" right="2 cm" top="1 cm" bottom="1 cm"/>        
+            <linesperinch value="7"/>        
+            <linesperpage value="0"/>
+         </pagedefinition>-->
+      </pagedefinitionlist>
+   </input>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--Resolve references to other pages (overlays, ...)-->
+
+      <resolveoverlays value="false"/>
+
+      <!--Determines the Page Processing method used. options: "capturing" "grid"
+                (default) and "textAsLines"-->
+
+      <PageProcessing method="grid">
+         <!--In the "grid" method the text will be set into lines and columns. To define
+                the grid, the lines per inch(lpi) and the characters per inch(cpi) must be
+                defined.-->
+
+         <Grid>
+            <LinesPerInch value="7"/>
+            <Pitch value="12000"/>
+         </Grid>
+
+         <!--Enables the capturing of text. The complete text of a page is captured and
+                stored.-->
+
+         <Capturing>
+            <Threshold value="0"/>
+            <PercentSpace value="75"/>
+            <RemoveDuplicatedCharacters value="true"/>
+            <RemoveRotatedText value="false"/>
+            <TextIndent value="false"/>
+            <LinesPerInch value="7"/>
+            <Pitch value="12000"/>
+         </Capturing>
+      </PageProcessing>
+
+      <format>
+         <codepage iana="native" writebyteordermark="false"/>
+
+         <!--Columns with special meaning-->
+
+         <controlcolumns count="0"/>
+         <firstpage string=""/>
+         <newpage string="\x0C"/>
+
+         <!--<linebreak string = "..." /> system dependent entries for ASCII
+                codepage: windows: <linebreak string = "\x0D\x0A" /> unix/linux: <linebreak
+                string = "\x0A" /> for EBCDIC codepage: <linebreak string =
+                "\x15"/>-->
+
+         <linebreak string=""/>
+
+         <!--when the value of <linesperpage> is '0' then the output will write
+                the complete page on output.-->
+
+         <linesperpage value="0"/>
+
+         <!--when the value of <wraplines> is 'false' then the output will write
+                the line without wrap when the value of <wraplines> is 'true' then the output
+                will wrap the line when the number of characters are >= columns specified in
+                <linelength> when specified 'auto' in columns, the columns will be calculated
+                based on the input page size and pitch specified in <opage>-->
+
+         <wraplines value="false"/>
+
+         <!--columns for line length (without control columns) may be number, "auto" or
+                "variable". Automatic line length detection is only available with control
+                columns-->
+
+         <linelength columns="80"/>
+      </format>
+   </output>
+
+   <resourcelist>
+      <fileslist>
+         <!--Files type can be "TrueType", "Type1Font", "Type1Metrics", "ICC" if it is
+                not defined, the path will be used for all types extension can be emtpy,
+                <extension> or wildcard values for casecontrol are "asis", "upper" and
+                "lower"-->
+         <!--Attribute: casecontrol @comment: -->
+         <!--<files path="." type="TrueType" extension="ttf" casecontrol="Ignore"/>-->
+         <!--<files path="c:\WINNT\Fonts" type="TrueType" extension="ttf" casecontrol="Ignore"/>-->
+         <!--<files path="c:\fonts" type="TrueType" extension="ttf" casecontrol="Ignore"/>-->
+      </fileslist>
+   </resourcelist>
+</mfftxt>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mfffdp xmlns="http://www.compart.com/ns/mff/fdp" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for input.-->
+
+   <globals>
+      <!--Specifies how overlays are processed. With the value TRUE, the overlay is
+                referenced and processed as a unit. With FALSE, the overlay is resolved into
+                components (text, graphics, paths etc.) and added to the page content.-->
+
+      <overlayasreference value="true"/>
+   </globals>
+
+   <resourcelist>
+      <fileslist>
+         <!--Several directories can be specified for the search for external resources.
+                The "path" is mandatory. "Type", "extension" and "resolution" are optional. However,
+                the more detailed the settings are, the more specific the search will be. Valid
+                values for "type" are: "overlay", "pageSegment", "codedFont", "codePage", "charSet",
+                "formDef", "resourceLib", "pageDef", "object", "icc", "documentIndex". If the type
+                is not defined, the path will be used for all types. The "extension" can be emtpy,
+                <extension> or a wildcard. If the "resolution" is not specified, resources
+                with any resolution will be searched in the path. -->
+         <!--<files path="." type="formDef" extension="FDEF38PP" resolution=""/>-->
+         <!--<files path="c:\resources\RES300" type="codedFont" extension="300" resolution="300"/>-->
+         <!--<files path="c:\resources\RES240" type="codedFont" extension="240" resolution="240"/>-->
+         <!--<files path="c:\resources\RESLIBS" type="resourceLib" extension="reslib"/>-->
+         <!--<files path="http://localhost/resources" type="formDef" extension="fdf"/>-->
+         <!--<files path="c:\resources\RES" extension=""/>-->
+         <!--<files path="./res" extension=""/>-->
+         <!--<files path="." type="formDef" extension=""/>-->
+         <!--<files path="//filebase/resources/afp/ibm.fonts" type="codePage" extension=""/>-->
+         <!--<files path="//filebase/resources/afp/ibm.fonts" type="charSet" extension="300"/>-->
+         <!--<files path="//filebase/resources/icc/apple" type="icc" extension="icc"/>-->
+      </fileslist>
+   </resourcelist>
+
+   <!--<traylist>        
+      <inputtrays>        
+         <inputtray deviceid="1" name="Tray1">        
+            <papersize format="A4" orientation="Portrait"/>
+         </inputtray>        
+         <inputtray deviceid="2" name="Tray2">        
+            <papersize format="A4" orientation="portrait"/>
+         </inputtray>        
+         <inputtray deviceid="3" name="Tray3">        
+            <papersize format="A4" orientation="portrait"/>
+         </inputtray>
+      </inputtrays>
+   </traylist>-->
+   <!--Settings for input.-->
+
+   <input>
+      <!--Specifies the format definition (formdef) to be used. The attribute "name"
+                gives the name of the form definition. There is no pre-assigned default
+                value.-->
+
+      <defaultformdef name=""/>
+
+      <!--Specify the default paper size-->
+      <!--<defaultpapersize format="A4"/>-->
+      <!--
+                As viewer sometimes behave different from printers, you can influence the
+                behavior of the input filter using the element behaviour. 
+                PRINTER : With PRINTER the filter behaves like a printer. 
+                VIEWER  : With VIEWER the filter behaves similar to the IBM Workbench Viewer, 
+                          the medium map defined in Triplet 0x81 is used first, if it is not defined
+                          than first medium map defined in formdef is used for processing. 
+            -->
+
+      <behavior value="printer"/>
+
+      <!--
+                value: resulting page size and placement can be interpreted in several ways
+                    PAGE            : resulting page size and placement is defined by page
+                    PAGEWITHOFFSET  : page to medium offset will be taken into account
+                    MEDIUM          : resulting page size and placement is defined by medium, useful for parsing N-UP placement.
+                    IGNOREMEDIUM    : Mediummaps and all information contained therein are ignored. This is useful if no
+                                      mediumap related processing is wanted because the output is printed using an own
+                                      external mediummap.
+                
+                pagesizecalculation: specify the method to calculate sheet size
+                    STANDARD : page size is calculated in following order 
+                            1) query pagesize from active medium map 
+                            2) if page size is not specified in active medium map then it will use
+                               the size specified in inputtray where tray is mapped with paper size
+                            3) if size is not specified even in tray then it will use the logical page size as
+                               default sheet size or calculate based on N-up
+                    BOUNDING : page size is calculated based on the rule
+                            1) size calculation order will be same as defined in STANDARD
+                            2) but if size of the any object is greater then the specified object then 
+                               it will re-adjust the page size and bigger size will always win.
+                    USEMEDIUMSIZE : page size is calculated based on the rule
+                            1) query pagesize from active medium map 
+                            2) if page size is not specified in active medium map, settings are used in the following order:
+                               size specified in the inputtray where tray is mapped to paper size
+                            3) if size is not specified in tray then, the <defaultpapersize>
+                               defined in profile is used
+                            4) if <defaultpapersize> is not defined in the profile, the value A4 is used as default
+                                
+                printertype : specify to manage page orientation on a sheet
+                    Cutsheet : Behave like a cutsheet printer (default).
+                    Continuous : Behave like a continuous wide/narrow fanfold printer based on media size.
+                
+                Note: By default <inputinterpretationmode> is disabled and default value
+                of inputinterpretationmode is "MEDIUM" and pagesizecalculation will be queried from
+                input filter because this property can also be define in AFP, MMD and SAPGOF
+                filters. The FDP filter asks this information from input filters to interpret
+                input pages, but if explicitly user want to define <inputinterpretationmode>
+                then this property will overwrite input filter defaults.
+            -->
+      <!--<inputinterpretationmode value="Medium" pagesizecalculation="Standard" printertype="Cutsheet"/>-->
+      <!-- 
+                    Process IMM structured fields
+                    Standard : provide medium map name by MFF interface (default) 
+                               provide simplex/duplex, copy count, tray, jog resolve medium map overlays 
+                               (s.a. element overlayasreference...) resolve constant form control, resolve TRN suppressions 
+                    TRUE     : Resolve all information given by medium map and do not provide medium map name by
+                               MFF interface 
+                    FALSE    : Provides only medium map name by MFF interface (pass through mode) 
+            -->
+
+      <processmediummap value="Standard"/>
+
+      <!--Determines whether the tray name is used as medium map name and a
+                corresponding IMM (Invoke Medium Map) is generated. true: The tray name is used as
+                medium map name and a corresponding IMM (Invoke Medium Map) is generated. false: The
+                tray name is used for the formdef (generation), if applicable.-->
+
+      <usetrayasmediummap value="false"/>
+   </input>
+</mfffdp>

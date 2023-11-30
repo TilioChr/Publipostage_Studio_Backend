@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>List counters</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");
+            
+            body {
+                counter-reset: divlist;
+            }
+            .divList {
+                counter-increment: divlist;
+            }
+            .divList::before {
+                content: counter(divlist);
+                display: inline-block;
+                color: white;
+                background: green;
+                border: 3px solid green;
+                padding: 1px;
+                margin-right: 10px;
+            }
+            div.divList {
+                margin-bottom: 10px;
+            }
+            
+            ol {
+                margin: 0;
+                padding: 0;
+                counter-reset: item;
+                margin-bottom: 0.6em;
+                list-style-type: none;
+            }
+            li {
+                display: block;
+            }
+            li:before {
+                counter-increment: item;
+                content: counters(item, ".") " ";
+                padding-right: 0.6em;
+            }</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <h1>List Counters</h1>
+        <p>Counters for HTML elements can be defined in CSS similar to variables. Counters first
+            have to be initialized, then they are used until the document ends or the counter is
+            reset. Counters can also be nested. </p>
+        <p>The example below demonstrates how counters can be set for <code>div</code> and
+                <code>ol</code> elements, and how different counter styles can be used. </p>
+        <h2>Custom <code>div</code> List</h2>
+        <div class="divList">Vanilla </div>
+        <div class="divList">Chocolate </div>
+        <div class="divList">Coconut </div>
+        <h2>Nested <code>ol</code> Counters</h2>
+        <ol>
+            <li>Milk ice <ol>
+                    <li>Vanilla</li>
+                    <li>Chocolate</li>
+                    <li>Coconut</li>
+                </ol>
+            </li>
+            <li>Fruit ice <ol>
+                    <li>Strawberry</li>
+                    <li>Raspberry</li>
+                    <li>Mango</li>
+                </ol></li>
+            <li>House specials <ol>
+                    <li>Ginger</li>
+                    <li>Wasabi</li>
+                    <li>Green tea</li>
+                </ol>
+            </li>
+        </ol>
+    </body>
+</html>

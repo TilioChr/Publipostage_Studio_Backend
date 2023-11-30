@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffpxl xmlns="http://www.compart.com/ns/mff/pxl" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!-- In pxl the devname is unique, it must be specified to match the font name
+                in pxl file Font specified by "devname", "family", "weight" and "style", optional:
+                style can be "UPRIGHT" or "ITALIC" weight can be "ULTRALIGHT", "EXTRALIGHT",
+                "LIGHT", "SEMILIGHT", "MEDIUM", "SEMIBOLOD", "BOLD", "EXTRABOLD", "ULTRABOLD"
+                "typeface" is only for PCL input. The pcl select font with font characteristic
+                including typeface. If you want to add a new font, just specify the font devname,
+                family name, weight, style and typeface in font list. -->
+
+   <fontlist>
+      <font family="Letter Gothic" typeface="4102">
+         <face devname="LetterGothic" weight="Medium" style="Upright" fontfile="letr45w" fontfiletype="TrueType"/>
+         <face devname="LetterGothic  It" weight="Medium" style="Italic" fontfile="letr46w" fontfiletype="TrueType"/>
+         <face devname="LetterGothic  Bd" weight="Bold" style="Upright" fontfile="letr65w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="CG Omega" typeface="4113">
+         <face devname="CG Omega        " weight="Medium" style="Upright" fontfile="cgor45w" fontfiletype="TrueType"/>
+         <face devname="CG Omega      It" weight="Medium" style="Italic" fontfile="cgor46w" fontfiletype="TrueType"/>
+         <face devname="CG Omega      Bd" weight="Bold" style="Upright" fontfile="cgor65w" fontfiletype="TrueType"/>
+         <face devname="CG Omega    BdIt" weight="Bold" style="Italic" fontfile="cgor66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Coronet" typeface="4116">
+         <face devname="Coronet         " weight="Medium" style="Upright" fontfile="coronet" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Clarendon Condensed" typeface="4140">
+         <face devname="Clarendon   CdBd" weight="Bold" style="Upright" fontfile="clar67w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Marigold" typeface="4297">
+         <face devname="Marigold        " weight="Medium" style="Upright" fontfile="marigold" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Garamond" typeface="4197">
+         <face devname="Garamond Antiqua" weight="Medium" style="Upright" fontfile="garr45w" fontfiletype="TrueType"/>
+         <face devname="Garamond    Krsv" weight="Medium" style="Italic" fontfile="garr46w" fontfiletype="TrueType"/>
+         <face devname="Garamond     Hlb" weight="Bold" style="Upright" fontfile="garr65w" fontfiletype="TrueType"/>
+         <face devname="Garamond KrsvHlb" weight="Bold" style="Italic" fontfile="garr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Univers" typeface="4148">
+         <face devname="Univers       Md" weight="Medium" style="Upright" fontfile="unvr55w" fontfiletype="TrueType"/>
+         <face devname="Univers     MdIt" weight="Medium" style="Italic" fontfile="unvr56w" fontfiletype="TrueType"/>
+         <face devname="Univers       Bd" weight="Bold" style="Upright" fontfile="unvr65w" fontfiletype="TrueType"/>
+         <face devname="Univers     BdIt" weight="Bold" style="Italic" fontfile="unvr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Univers Condensed" typeface="4148">
+         <face devname="Univers     CdMd" weight="Medium" style="Upright" fontfile="unvr57w" fontfiletype="TrueType"/>
+         <face devname="Univers   CdMdIt" weight="Medium" style="Italic" fontfile="unvr58w" fontfiletype="TrueType"/>
+         <face devname="Univers     CdBd" weight="Bold" style="Upright" fontfile="unvr67w" fontfiletype="TrueType"/>
+         <face devname="Univers   CdBdIt" weight="Bold" style="Italic" fontfile="unvr68w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Antique Olive" typeface="4168">
+         <face devname="Antique Olive   " weight="Medium" style="Upright" fontfile="olvr55w" fontfiletype="TrueType"/>
+         <face devname="Antique Olive It" weight="Medium" style="Italic" fontfile="olvr56w" fontfiletype="TrueType"/>
+         <face devname="Antique Olive Bd" weight="Bold" style="Upright" fontfile="olvr75w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Albertus" typeface="4362">
+         <face devname="Albertus      Md" weight="Medium" style="Upright" fontfile="albr55w" fontfiletype="TrueType"/>
+         <face devname="Albertus      Xb" weight="ExtraBold" style="Upright" fontfile="albr85w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Arial" typeface="16602">
+         <face devname="Arial           " weight="Medium" style="Upright" fontfile="arial" fontfiletype="TrueType"/>
+         <face devname="Arial         It" weight="Medium" style="Italic" fontfile="ariali" fontfiletype="TrueType"/>
+         <face devname="Arial         Bd" weight="Bold" style="Upright" fontfile="arialbd" fontfiletype="TrueType"/>
+         <face devname="Arial       BdIt" weight="Bold" style="Italic" fontfile="arialbi" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="CG Times" typeface="4101">
+         <face devname="CG Times        " weight="Medium" style="Upright" fontfile="cgtr45w" fontfiletype="TrueType"/>
+         <face devname="CG Times      It" weight="Medium" style="Italic" fontfile="cgtr46w" fontfiletype="TrueType"/>
+         <face devname="CG Times      Bd" weight="Bold" style="Upright" fontfile="cgtr65w" fontfiletype="TrueType"/>
+         <face devname="CG Times    BdIt" weight="Bold" style="Italic" fontfile="cgtr66w" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Times New Roman" typeface="16901">
+         <face devname="TimesNewRmn     " weight="Medium" style="Upright" fontfile="times" fontfiletype="TrueType"/>
+         <face devname="TimesNewRmn   It" weight="Medium" style="Italic" fontfile="timesi" fontfiletype="TrueType"/>
+         <face devname="TimesNewRmn   Bd" weight="Bold" style="Upright" fontfile="timesbd" fontfiletype="TrueType"/>
+         <face devname="TimesNewRmn BdIt" weight="Bold" style="Italic" fontfile="timesbi" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Courier" typeface="4099">
+         <face devname="Courier         " weight="Medium" style="Upright" fontfile="cour" fontfiletype="TrueType"/>
+         <face devname="Courier       It" weight="Medium" style="Italic" fontfile="couri" fontfiletype="TrueType"/>
+         <face devname="Courier       Bd" weight="Bold" style="Upright" fontfile="courbd" fontfiletype="TrueType"/>
+         <face devname="Courier     BdIt" weight="Bold" style="Italic" fontfile="courbi" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Wingdings" typeface="31402">
+         <face devname="Wingdings       " weight="Medium" style="Upright" fontfile="wingding" fontfiletype="TrueType"/>
+      </font>
+
+      <font family="Symbol" typeface="16686">
+         <face devname="Symbol          " weight="Medium" style="Upright" fontfile="symbol" fontfiletype="TrueType"/>
+      </font>
+   </fontlist>
+
+   <!--Settings for input.-->
+
+   <input>
+      <!-- please remember tray id is printer dependent, you must read the printer
+                documentation to get it. -->
+
+      <traylist>
+         <inputtrays>
+            <inputtray deviceid="0" name="Default"/>
+            <inputtray deviceid="1" name="AutoSelect"/>
+            <inputtray deviceid="2" name="ManualFeed"/>
+            <inputtray deviceid="3" name="MultiPurpose"/>
+            <inputtray deviceid="4" name="UpperCassette"/>
+            <inputtray deviceid="5" name="LowerCassette"/>
+            <inputtray deviceid="6" name="Envelope"/>
+            <inputtray deviceid="7" name="ThirdCassette"/>
+         </inputtrays>
+
+         <outputtrays>
+            <outputtray deviceid="0" name="Default"/>
+            <outputtray deviceid="1" name="FaceDown"/>
+            <outputtray deviceid="2" name="FaceUp"/>
+            <outputtray deviceid="3" name="JobOffset"/>
+         </outputtrays>
+      </traylist>
+
+      <!-- the following table specify the value of the default media size in pxl
+                _________________________________________ | page size | value |
+                _________________________________________ | Letter | 0 |
+                _________________________________________ | Legal | 1 |
+                _________________________________________ | A4 | 2 |
+                _________________________________________ | Executive | 3 |
+                _________________________________________ | Ledger | 4 |
+                _________________________________________ | A3 | 5 |
+                _________________________________________ | COM 10 Envelope | 6 |
+                _________________________________________ | Monarch Envelope | 7 |
+                _________________________________________ | C5 Envelope | 8 |
+                _________________________________________ | DL Envelope | 9 |
+                _________________________________________ | JIS B4 Paper | 10 |
+                _________________________________________ | JIS B5 Paper | 11 |
+                _________________________________________ | B5 Envelope | 12 |
+                __________________________________________ | B5 Paper | 13 |
+                __________________________________________ | JPostcard | 14 |
+                _________________________________________ | JDouble Postcard | 15 |
+                __________________________________________ | A5 | 16 |
+                _________________________________________ | A6 | 17 |
+                _________________________________________ | JIS B6 Paper | 18 |
+                _________________________________________ | JIS 8K | 19 |
+                __________________________________________ | JIS 16K | 20 |
+                __________________________________________ | JIS Exec | 21 |
+                __________________________________________ The default page size ist A4. You can see
+                all of the default setting in your printer menu or documentation. -->
+
+      <defaultsetting>
+         <pagesize value="2"/>
+         <orientation value="portrait"/>
+         <duplexcontrol value="simplex"/>
+      </defaultsetting>
+
+      <!-- The name is media size name in pxl file. It must be unique. Orientation
+                must be in portrait Paper size can be specified by "format" and "orientation" or
+                "width" and "height"-->
+
+      <pagedefinition name="LETTER 8.5x11">
+         <papersize format="Letter" orientation="portrait"/>
+      </pagedefinition>
+   </input>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!-- PXL version for output. The common value is 1.1, 2.0, 2.1 and 3.0. Default
+                value is 2.1. The measure unit in BeginSession and SetPageScale must be the same in
+                v2.0 -->
+
+      <version value="2.1"/>
+
+      <!-- The 'value' specifies the available resolutions in dpi and
+                can contain a list of permissible values as a comma-separated list
+                ('value="600,1200"'). If a value list is specified, the specified resolution from
+                the list will be used. If the respective value is not available, then the highest
+                value will be used. If no values are specified, one of the internally defined
+                default values 1200dpi or 1440dpi will be used. -->
+
+      <measurementunits value="0"/>
+
+      <!--Hex value for PXL error reporting level for output. Possible values are
+                0x00 eNoReporting version 1.1 0x01 eBackChannel(BackCh) version 1.1 0x02
+                eErrorPage(ErrPage) version 1.1 Default 0x03 eBackChAndErrPage version 1.1 0x04
+                eNWBackChannel version 2.0 0x05 eNWErrorPage version 2.0 0x06 eNWBackChAndErrPage
+                version 2.0-->
+
+      <ErrorReporting value="0x02"/>
+
+      <!-- please remember tray id is printer dependent, you must read the printer
+                documentation to get it. -->
+
+      <traylist>
+         <inputtrays>
+            <inputtray deviceid="0" name="Default"/>
+            <inputtray deviceid="1" name="AutoSelect"/>
+            <inputtray deviceid="2" name="ManualFeed"/>
+            <inputtray deviceid="3" name="MultiPurpose"/>
+            <inputtray deviceid="4" name="UpperCassette"/>
+            <inputtray deviceid="5" name="LowerCassette"/>
+            <inputtray deviceid="6" name="Envelope"/>
+            <inputtray deviceid="7" name="ThirdCassette"/>
+         </inputtrays>
+
+         <outputtrays>
+            <outputtray deviceid="0" name="Default"/>
+            <outputtray deviceid="1" name="FaceDown"/>
+            <outputtray deviceid="2" name="FaceUp"/>
+            <outputtray deviceid="3" name="JobOffset"/>
+         </outputtrays>
+      </traylist>
+
+      <!-- resolution to use for generated raster fonts. If the input font have
+                already resolution and output filter can support it, it will be used, otherwise the
+                specified value here will be used. default 0: let the application make decision. For
+                PXL Font: only 300, 600 and 1200 dpi is allowed. -->
+
+      <fontresolution value="0"/>
+
+      <!--Specifies the quality of written JPEG images as percentage. Valid values
+                range from 0 to 100%. The default setting is 75%.-->
+
+      <jpegquality value="75"/>
+   </output>
+
+   <resourcelist>
+      <fileslist>
+         <!--Several directories can be specified for the search for external resources.
+                The "path" is mandatory. "Type", "extension" and "resolution" are optional. However,
+                the more detailed the settings are, the more specific the search will be. Valid
+                values for "type" are: "overlay", "pageSegment", "codedFont", "codePage", "charSet",
+                "formDef", "resourceLib", "pageDef", "object", "icc", "documentIndex". If the type
+                is not defined, the path will be used for all types. The "extension" can be emtpy,
+                <extension> or a wildcard. If the "resolution" is not specified, resources
+                with any resolution will be searched in the path. -->
+         <!--<files path="." type="TrueType" extension="ttf"/>-->
+      </fileslist>
+   </resourcelist>
+</mffpxl>

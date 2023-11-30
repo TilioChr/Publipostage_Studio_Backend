@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/ijp">
+   <xs:element name="mffijp">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen sowohl für die Eingabe als auch für
+                die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for both input and output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="rastersettype" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines the algorithm for the rasterization of
+                objects.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, welcher Algorithmus für das Rastern von Objekten
+                verwendet wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="Screen">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Screen"/>
+                                    <xs:enumeration value="ScreenModified"/>
+                                    <xs:enumeration value="Afp"/>
+                                    <xs:enumeration value="AfpModified"/>
+                                    <xs:enumeration value="Roughw0"/>
+                                    <xs:enumeration value="Roughw15"/>
+                                    <xs:enumeration value="Roughw45"/>
+                                    <xs:enumeration value="Roughw75"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="optimizepa" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN"> always : always 'optimize' page never : never 'optimize' page (default
+                value) </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="Never">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Never"/>
+                                    <xs:enumeration value="Always"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="cutout" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">cutout spot colored items</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="value" default="false" type="xs:boolean">
+                     <xs:annotation>
+                        <xs:documentation xml:lang="EN"> </xs:documentation>
+                     </xs:annotation>
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="cuemark" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">left / right / none</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="value" default="None">
+                     <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                           <xs:enumeration value="None"/>
+                           <xs:enumeration value="Left"/>
+                           <xs:enumeration value="Right"/>
+                        </xs:restriction>
+                     </xs:simpleType>
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="OptimizationMethod" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">font / fixedfile / none</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="value" default="Font">
+                     <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                           <xs:enumeration value="Font"/>
+                           <xs:enumeration value="FixedFile"/>
+                           <xs:enumeration value="None"/>
+                        </xs:restriction>
+                     </xs:simpleType>
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontfile" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">import / export / none</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="value" default="none">
+                     <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                           <xs:enumeration value="none"/>
+                           <xs:enumeration value="import"/>
+                           <xs:enumeration value="export"/>
+                        </xs:restriction>
+                     </xs:simpleType>
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="en-US">Specifies how overlays are processed</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Definiert wie Overlays verarbeitet werden</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="value" default="false" type="xs:boolean"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="margintop" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Top Margin in pixels</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="value" default="0" type="xs:integer"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="marginbottom" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Bottom Margin in pixels</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="value" default="0" type="xs:integer"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="ripmemory" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Printer/RIP memory in bytes</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="value" default="67108864" type="xs:integer"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="rips" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN"> RIP/PRINTHEAD CONFIGURATION generateijq: specify the complete ijq file
+                name. It will be used by kodak proofer. default is "" (empty string). Nothing is
+                generated. shiftoffset is deprecated. For N-UP the rip type front2, back2,
+                frontcolor2 and backcolor2 are deprecated, please use ppml to generate composite
+                page Please always set duplex information explicitly to map front- and backside RIPs
+                RelPos attributes: RIP RelPos is deprecated. Printhead RelPos means the offset in
+                dots of this printhead relative to the starting position of the first printhead of
+                the printer. Type can be "front" "frontblack" "frontcolor" - for spot color
+                "frontcyan" "frontmagenta" "frontyellow" "frontblack" - for full color "back"
+                "backblack" "backcolor" - for spot color "backcyan" "backmagenta" "backyellow"
+                "backblack" - for full color </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="rip" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="printheads" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="PH" minOccurs="0" maxOccurs="1">
+                                          <xs:complexType>
+                                             <xs:attribute name="Jets" default="2688" type="xs:integer"/>
+                                             <xs:attribute name="Drops" default="1" type="xs:integer"/>
+                                             <xs:attribute name="RelPos" default="0" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="ResX" default="300" type="xs:integer"/>
+                                    <xs:attribute name="ResY" default="300" type="xs:integer"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="id" default="0" type="xs:string"/>
+                           <xs:attribute name="type" default="frontcyan">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="front"/>
+                                    <xs:enumeration value="frontcolor"/>
+                                    <xs:enumeration value="frontcyan"/>
+                                    <xs:enumeration value="frontmagenta"/>
+                                    <xs:enumeration value="frontyellow"/>
+                                    <xs:enumeration value="frontblack"/>
+                                    <xs:enumeration value="back"/>
+                                    <xs:enumeration value="backcolor"/>
+                                    <xs:enumeration value="backcyan"/>
+                                    <xs:enumeration value="backmagenta"/>
+                                    <xs:enumeration value="backblack"/>
+                                    <xs:enumeration value="backyellow"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="generateijq" default="" type="xs:string"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="colorprofilelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="colorprofile" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:attribute name="name" default="JapanWebCoated.icc" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="colormappinglist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="colormapping" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:attribute name="color" default="#00000000" type="xs:string"/>
+                           <xs:attribute name="cmyk" default="#FF000000" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="dithermethod" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">define the dither method to create 1 bpp image (ink drops) for intensity
+                percent 1 - 99 of each separate CMYK channel. intensity value 0 means no ink drops,
+                value 100 means full ink drops. dithermethod parameter range AUTO = FLOYDSTEINBERG
+            </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="default" default="Auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Auto"/>
+                                    <xs:enumeration value="FloydSteinberg"/>
+                                    <xs:enumeration value="Stucki"/>
+                                    <xs:enumeration value="JarvisJudiceninke"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="parameter" default="2" type="xs:integer"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="gammalists" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="gammalist" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">gamma correction for gray patterns; intermediate values are
+                interpolated if no value is specified, no correction will be done
+                Default:</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="gammavalue" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="from" default="0" type="xs:integer"/>
+                                             <xs:attribute name="to" default="0" type="xs:integer"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="cyan" type="xs:string"/>
+                                    <xs:attribute name="lut" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="ext" default="icm">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="icc"/>
+                                             <xs:enumeration value="icm"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xsl:version="1.0">
+    <dff:dffhead>
+        <dff:lookupref href="string-table.dfl"/>
+    </dff:dffhead>
+    <head>
+        <title>dff:lookup test case</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th><xsl:copy-of select="dff:lookup('Item')"/></th>
+                    <th><xsl:copy-of select="dff:lookup('Description')"/></th>
+                    <th><xsl:copy-of select="dff:lookup('Amount')"/></th>
+                    <th><xsl:copy-of select="dff:lookup('Number')"/></th>
+                    <th><xsl:copy-of select="dff:lookup('Total')"/></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>ABC</th>
+                    <th>Article ABC</th>
+                    <th>10.00</th>
+                    <th>2</th>
+                    <th>20.00</th>
+                </tr>
+                <tr>
+                    <th>XYZ</th>
+                    <th>Article XYZ</th>
+                    <th>12.00</th>
+                    <th>1</th>
+                    <th>12.00</th>
+                </tr>
+                <tr>
+                    <th>123</th>
+                    <th>Article 123</th>
+                    <th>8.00</th>
+                    <th>3</th>
+                    <th>24.00</th>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

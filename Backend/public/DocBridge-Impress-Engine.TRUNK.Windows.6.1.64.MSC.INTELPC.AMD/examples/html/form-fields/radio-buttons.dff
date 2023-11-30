@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+  xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+  <head>
+    <title>Radio buttons</title>
+    <style type="text/css">
+      @import url("../../common/cp-sample-style.css");</style>
+  </head>
+  <body>
+    <xi:include href="../../common/standardheader.dfb"/>
+    <h1>Radio Buttons</h1>
+    <p>This example shows how radio buttons are rendered without any additional styling, with the
+      default settings.</p>
+    <br />
+    <p><strong>input type="radio"</strong> defines a radio button:</p>
+    <form>
+      <p>Choose your favorite ice cream flavor</p>
+      <input type="radio" id="chocolate" name="icecream" value="chocolate" />
+      <label for="chocolate">Chocolate</label><br />
+      <input type="radio" id="coconut" name="icecream" value="coconut" />
+      <label for="coconut">Coconut</label><br />
+      <input type="radio" id="almond" name="icecream" value="almond" />
+      <label for="almond">Almond</label>
+    </form>
+    <p>The <strong>input name=""</strong> identifies radio buttons as buttons of one group. A user
+      can only select one option from this group.</p>
+  </body>
+</html>

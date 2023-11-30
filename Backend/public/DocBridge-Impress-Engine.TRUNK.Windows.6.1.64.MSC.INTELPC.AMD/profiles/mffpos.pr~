@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffpos xmlns="http://www.compart.com/ns/mff/pos" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Example for Type 1 font embedding."glyphsuffixasunicode" - (input) - for
+                badly encoded fonts read the numeric suffixes of the glyphnames as unicode (true).
+                This is a very particular setting, which is applicable only to a small group of
+                documents. Use it only if advised and check carefully, whether the resulting unicode
+                meets your expectations. "hinting" - (only in input) - If this attribute is set to
+                FALSE, hints in the input files are not evaluated. Some Type 1 fonts are rendered
+                better without hinting. -->
+
+   <fontlist glyphsuffixasunicode="false" hinting="true">
+      <!--<font family="Arial" reftype="Type1" encoding="">        
+         <face devname="Arial" weight="Medium" width="Normal" style="Upright"
+               fontfile="_a______"
+               fontfiletype="Type1"
+               overrideembeddedfont="false"/>        
+         <face devname="Arial-Bold" weight="Bold" style="Upright" fontfile="_ab_____"
+               fontfiletype="Type1"
+               overrideembeddedfont="false"/>
+      </font>-->
+      <!--<font family="Courier" reftype="Type1" encoding="">        
+         <face devname="Courier" weight="Medium" style="Upright" fontfile="com_____"
+               fontfiletype="Type1"
+               overrideembeddedfont="false"/>
+      </font>-->
+   </fontlist>
+
+   <!--Settings for both input and output.-->
+
+   <globals>
+      <!--The optimization of overlapping graphics
+                objects.-->
+
+      <optimizepa value="Never"/>
+   </globals>
+
+   <!--Settings for input.-->
+
+   <input>
+      <!-- As viewer application sometimes do not behave the same as printers, you
+                can influence the behavior of the input filter using the element behavior. With
+                PRINTER the filter behaves like a printer. With VIEWER the filter also processes
+                some of the DSC commands e.g. %%ViewingOrientation for page orientation.
+            -->
+
+      <behavior value="printer"/>
+
+      <!--default codepage for text with standard encoding but unknown character
+                names , default value none "AdobeStandard"-->
+
+      <defaultcodepage value=""/>
+
+      <!--Specifies how overlays are processed. With the value TRUE, the overlay is
+                referenced and processed as a unit. With FALSE, the overlay is resolved into
+                components (text, graphics, paths etc.) and added to the page content.-->
+
+      <overlayasreference value="false"/>
+
+      <!--true : create overlays from the .eps or run operator or from external
+                images (default) false : doesn't create overlays-->
+
+      <createoverlay value="true"/>
+
+      <!--true : cache text items false: doesn't cache text
+                items(default)-->
+
+      <cachetextitems value="false"/>
+
+      <!--true : cache overlay items false: doesn't cache overlays(default
+                true)-->
+
+      <cacheoverlays value="true"/>
+
+      <!--false : use random function from operating system true : use the
+                pseudorandom function x[n+1] = (16807 * x[n]) mod (2^31 -1)-->
+
+      <usepseudorandom value="false"/>
+
+      <!--false : use CMAP resources true : use the CIDMap from the
+                font-->
+
+      <usecidmap value="false"/>
+
+      <!--true : Select the page size by DSC comment PageBoundingBox.
+                This element is only used for Postscript but for EPS file this element is
+                ignored.-->
+
+      <autopagesize value="false"/>
+
+      <!--Set the default paper size. Letter for US and A4 for EU. It is recommended
+                to always use this setting. If <inputtray> is also specified in the profile,
+                the papersize will be overwritten by the value used in
+                <inputtray>-->
+
+      <pagedefinition name="Default">
+         <!--The declaration of a paper size. The paper size can be
+                specified by the name of a standard paper size with orientation or by numeric
+                specification of width and length.-->
+         <!--Attribute: format @comment: The name of a standard paper size. Examples for possible
+                values are "A4" and "LETTER". A complete list of the possible values is included in
+                the DocBridge Mill Manual. This attribute does not have a default
+                value.-->
+         <!--Attribute: orientation @comment: The orientation of a standard paper size. Possible values of
+                this attribute are "Portrait", "Landscape", "RevPortrait", and "RevLandscape". The
+                default value of this attribute is "Portrait".-->
+
+         <papersize format="A4" orientation="Portrait"/>
+      </pagedefinition>
+
+      <!--controls if the startjob operator is executed-->
+
+      <password startjob="" systemparams=""/>
+
+      <!--Ignore EOF (0x04) char in input files-->
+
+      <multidocument value="true"/>
+
+      <!--false : % comments are ignored (default) true : Comments are
+                read-->
+
+      <readcomments value="false" regexp="%Page" matchregexp="false" avaloqendsequence="%TKBEndMetadata"/>
+
+      <!--Specifies the default code page for comments-->
+
+      <CommentsDefaultCodepage iana="ISO-8859-1-PS"/>
+
+      <encodinglist>
+         <!--Defines or starts a new encoding list. Each entry of the list
+                consists of the character name that is to be replaced, the value of the attribute
+                "devname", and the appropriate Unicode character ("char"). The name can be up to
+                eight characters long and usually starts with "T". The list can be autogenerated
+                using the attributes "mask", "from", "to" and "numberSystem". "mask" is a string
+                with up to 7 characters. "numberSystem" defines which base (hex or dec) is used to
+                generate the numbers. It also defines whether the values "to" and "from" are in
+                hexadecimal or decimal format. The attribute "padding" is used to generate a name
+                with 8 characters in length. Missing characters are filled up with the padding
+                character '0', e.g. G0000032. The attribute type is boolean. The default value is
+                'false'.-->
+
+         <encoding name="ModifiedWindows1252" mask="G" from="0" to="255" numberSystem="dec" iana="" padding="false">
+            <entry devname="G4" char="0032"/>
+            <entry devname="G5" char="0033"/>
+            <entry devname="G6" char="0034"/>
+         </encoding>
+
+         <encoding name="Custom">
+            <entry devname="height" char="0038"/>
+
+            <!--Fix for wrong name written by OpenPrint-->
+
+            <entry devname="applelogo" char="F8FF"/>
+         </encoding>
+      </encodinglist>
+
+      <!--comments default codepage-->
+
+      <traylist>
+         <inputtrays>
+            <!--If there are not any inputtray, it enables the virtual tray mode which is
+                useful to read the number and the attributes of the trays that there are on the
+                file-->
+            <!--<inputtray name="Tray1" command="%None command" insertsheet="false" leadingedge="1"
+                       manualfeed="true"
+                       mediaclass="Envelope"
+                       mediacolor="blue"
+                       mediaposition="1"
+                       mediatype="office"
+                       medianame=""
+                       mediaweight="10"
+                       trayswitch="true"
+                       deferredmediaselection="true">        
+               <papersize format="A4" orientation="Portrait"/>
+            </inputtray>-->
+            <!--<inputtray mediaposition="2" name="Tray2" command="%None command"/>-->
+            <!--<inputtray name="Tray3" insertsheet="false" leadingedge="1" manualfeed="true"
+                       mediaclass="Envelope"
+                       mediacolor="blue"
+                       mediaposition="2"
+                       mediatype="office"
+                       mediaweight="10"
+                       trayswitch="true"
+                       deferredmediaselection="true"/>-->
+         </inputtrays>
+      </traylist>
+
+      <!--Controls the usage of DSC data, when only page count is requested. With
+                default 'Never' the DSC is not used, and the whole document is parsed to determine
+                the number of pages. With 'Auto' the DSC "%%Pages:" entry is used, if present, with
+                the document structure being checked: if it does not conform to the DSC
+                specification, it will be parsed to obtain the page count. Multiple documents can be
+                present in a single file, with 'multidocument' parameter taken into account.
+            -->
+
+      <UseDscPageCount value="Never"/>
+
+      <!--Controls the processing of repeated setting of /Duplex on sequential pages.
+                With default 'Always' each time the /Duplex is set to true, the page is considered
+                to be on the front side. With 'Never' sequential pages with explicit setting of
+                <</Duplex true>> will be considered a series of front and back sides,
+                starting with front side. -->
+
+      <FrontSideOnRepeatedDuplex value="Always"/>
+   </input>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--NONE, - Generate core font name(Courier, Helvetica, Time) according to the
+                font attributes (weight, style etc), the fonts just reference(not embed) AUTO, -
+                Generate font according to the input font. CONVERTTOTYPE3 - Generate Type3
+                Font.WRITEFONTSIFISEMBEDDEDININPUT - Generate core font name in case that is not
+                embedded it in the input file, if the font is embedded in the input file then it
+                will be written.-->
+
+      <fonthandling default="Auto"/>
+
+      <!--It writes xspacing at the PostScript file, it creates more accurance
+                results. Set false when the input has not font data and you embedd a font by
+                mapping.-->
+
+      <writexspacing value="true"/>
+
+      <PrintControl>
+         <!--Jog related information is device dependent, so it can be enabled or
+                disabled based on printer vendor. And currently value 'None' or 'Xerox' can be used
+                for attribute 'vendor'.-->
+
+         <Jog enable="true" vendor="None"/>
+
+         <!--Staple related information is also device dependent, so it can be enabled
+                or disabled based on printer vendor. Currently values 'None', 'Xerox', 'Ricoh' or
+                'Canon' can be used for attribute 'vendor'. Based on vendor the 'value' attributes
+                can be defined. 'Standard' value is only used when 'None', 'Ricoh' or 'Canon'
+                defined in 'vendor' attribute. All other values "Dt1xxhlc", "DocuTech61xx",
+                "DocuPrint92c" and "DocuPrintIot" can only defined when vendor is 'Xerox'.
+            -->
+
+         <Staple enable="false" vendor="None" value="Standard"/>
+
+         <!--Bind related information can be enabled or disabled using Bind
+                parameter.-->
+
+         <Bind enable="true"/>
+      </PrintControl>
+
+      <!--
+            NONE - Write all resources at the top of file only if Postscript level 3 is selected.
+            FILEHEADER - Writes all resources at the top of the file irrespective to Postscript level.
+            BODY - Write the resources just in time
+          -->
+
+      <strategywriteresource value="None"/>
+
+      <!--Create a postscript file with language level 3, default false(language
+                level 2)-->
+
+      <generatePS3 value="false"/>
+
+      <!--Write at the Postscript file overlays(forms). It creates smaller Postscript
+                file-->
+
+      <generateoverlays value="false"/>
+
+      <!--Write CFF fonts-->
+
+      <usecff value="false"/>
+
+      <!--Replace rects with patterns by gray rects.Replacing means nicer and smaller
+                PostScript files.-->
+
+      <replacepattern value="false"/>
+
+      <!--Control simplex or duplex output generation, possible values are "Never",
+                "AsInput", "Always" (default). Boolean values "false" and "true" also accepted, they
+                are equivalents of "Never" and "Always", respectively.-->
+
+      <writesimplexduplex value="Always"/>
+
+      <!--In duplex printing, if the last page of the previous document was printed
+                on the front side, some Xerox printers do not start printing the next document on a
+                new sheet's front side. When writesimplexduplexXerox is set to TRUE, the last page
+                of the previous document is produced with /Duplex set to false to avoid the
+                issue.-->
+
+      <writesimplexduplexXerox value="false"/>
+
+      <!--write pagesize: the values can be 'always', 'never' and 'asinput'. The
+                value 'asinput' means if the input page size is explicitly set, it will be written.
+                If it is per default, it will not be written. (default always)-->
+
+      <writepagesize value="Always"/>
+
+      <!--Write mediatype: Valid values are: 'always', 'asinput',
+                'never' and 'changed'. With the value 'changed' (default value) the mediatype is
+                only written if it is changed. With 'always', the mediatype is written before each
+                page. With 'asinput', the behavior is similar to that of 'always' but the mediatype
+                defined in the profile is overwritten with the mediatype received from input. With
+                the value 'never', the mediatype is not written-->
+
+      <writemediatype value="Changed"/>
+
+      <!--write unsupported page device parameter: the values can be 'true' and
+                'false'. The value 'true' means unsupported page device parameter from postscript
+                input file will be written in postscript output file. (default
+                "false")-->
+
+      <writeUnsupportedPageDeviceParameter value="false"/>
+
+      <!--Specifies the default code page for comments-->
+
+      <CommentsDefaultCodepage iana="ISO-8859-1-PS"/>
+
+      <!--resolution to use for output bitmap TYPE3 fonts default 0: 600 dpi for
+                input vector fonts, otherwise font resolution of input bitmap other value:
+                independent fontresolution-->
+
+      <fontresolution value="600"/>
+
+      <!--Specifies the compression level for the ZIP compression.
+                Attributes: "level": Specifies the level of compression. Valid values range from 0
+                (fastest, no compression) to 9 (highest compression); "purpose": Specifies the
+                object to be ZIP-compressed. Currently this setting is ingored. The default value is
+                IMAGE.-->
+
+      <zipcompression level="Default" purpose="Image"/>
+
+      <!--Specifies the quality of written JPEG images as percentage. Valid values
+                range from 0 to 100%. The default setting is 75%.-->
+
+      <jpegquality value="75"/>
+
+      <imagecompressions>
+         <!--Control image compression type. Incompatible types are ignored Multiple
+                xml-imagecompression-elements are allowed (basically one for every possible
+                (bitsperpixel, colorformat) pair). Valid values for bits per pixel: "1", "4", "8",
+                "24", "32" Valid values for colorformat: "grayscale", "palette", "rgb", "cmyk"
+                Monochrome equals 1 bit per pixel grayscale. Valid values for compression are:
+                "default", "faxg4", "jpeg", "zip" Incompatible or unsupported compressions are
+                ignored keeporiginal: The image will written with the compression in the input, if
+                possible binarycopy: The image will not be recompressed, if possible (significantly
+                faster, but less save)-->
+
+         <imagecompression bitsperpixel="1" colorformat="GrayScale" compression="Default" keeporiginal="true" binarycopy="false"/>
+         <imagecompression bitsperpixel="1" colorformat="Palette" compression="Default" keeporiginal="true" binarycopy="false"/>
+         <imagecompression bitsperpixel="8" colorformat="GrayScale" compression="Default" keeporiginal="true" binarycopy="false"/>
+         <imagecompression bitsperpixel="8" colorformat="Palette" compression="Default" keeporiginal="true" binarycopy="false"/>
+         <imagecompression bitsperpixel="24" colorformat="Rgb" compression="Default" keeporiginal="true" binarycopy="false"/>
+         <imagecompression bitsperpixel="32" colorformat="Cmyk" compression="Default" keeporiginal="true" binarycopy="false"/>
+      </imagecompressions>
+
+      <!--comments default codepage-->
+
+      <traylist>
+         <inputtrays>
+            <!--If there are not any inputtray, it enables the virtual tray mode which is
+                useful to read the number and the attributes of the trays that there are on the
+                file-->
+            <!--<inputtray name="Tray1" command="%None command" insertsheet="false" leadingedge="1"
+                       manualfeed="true"
+                       mediaclass="Envelope"
+                       mediacolor="blue"
+                       mediaposition="1"
+                       mediatype="office"
+                       mediaweight="10"
+                       trayswitch="true"
+                       deferredmediaselection="true">        
+               <papersize format="A4" orientation="Portrait"/>
+            </inputtray>-->
+            <!--<inputtray mediaposition="3" name="Tray3" command="%None command"/>-->
+            <!--<inputtray name="Tray2" insertsheet="false" leadingedge="1" manualfeed="true"
+                       mediaclass="Envelope"
+                       mediacolor="blue"
+                       mediaposition="2"
+                       mediatype="office"
+                       mediaweight="10"
+                       trayswitch="true"
+                       deferredmediaselection="true"/>-->
+         </inputtrays>
+
+         <outputtrays>
+            <!--Page Delivery (see PostScript Reference Manual) * jog * 0 Do not jog pages
+                at all. 1 Jog at device deactivation. 2 Jog at the end of the job. Jogging between
+                jobs is controlled by the value of Jog for the page device that is current between
+                jobs. Thus, this feature can be turned on or off only by executing setpagedevice as
+                part of an unencapsulated job. 3 Jog after each page set (as defined by the Collate
+                parameter).-->
+
+            <outputtray name="FirstOutputTray" collate="true" jog="2" numcopies="2" device="" faceup="true" type="" command="%None command"/>
+            <outputtray name="SecondOutputTray" command="%None command"/>
+         </outputtrays>
+      </traylist>
+   </output>
+
+   <!--The colorprofilelist element contains one colorprofile element
+                per color space. An ICC profile is a standardized record that defines the color
+                space of a device. The ICC profiles can either have the file extension icc (Windows)
+                or icm (Mac). In addition to specifying the file name of the color profile, you can
+                use the resourcelist element to specify which directories are to be searched for the
+                specified color profiles. -->
+   <!--<colorprofilelist>        
+      <colorprofile name="GenericRGB"/>        
+      <colorprofile name="GenericCMYK"/>        
+      <colorprofile name="GenericGray"/>
+   </colorprofilelist>-->
+
+   <resourcelist>
+      <fileslist>
+         <files path="." type="Type1Font" extension="*"/>
+      </fileslist>
+   </resourcelist>
+</mffpos>

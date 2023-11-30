@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffvip xmlns="http://www.compart.com/ns/mff/vip" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct or dummy device names must be specified -->
+
+   <fontlist>
+      <!--VIPP Font short names and their mapping with Standard Postscript fonts
+                according to VIPP reference manual-->
+
+      <font family="Courier" encoding="">
+         <face devname="NCR" weight="Medium" width="Normal" style="Upright" fontfile="Courier" fontfiletype="Type1"/>
+         <face devname="NCRO" weight="Medium" width="Normal" style="Italic" fontfile="Courier-Oblique" fontfiletype="Type1"/>
+         <face devname="NCRB" weight="Bold" width="Normal" style="Upright" fontfile="Courier-Bold" fontfiletype="Type1"/>
+         <face devname="NCRBO" weight="Bold" width="Normal" style="Italic" fontfile="Courier-BoldOblique" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Helvetica">
+         <face devname="NHE" weight="Medium" width="Normal" style="Upright" fontfile="Helvetica" fontfiletype="Type1"/>
+         <face devname="NHEO" weight="Medium" width="Normal" style="Italic" fontfile="Helvetica-Oblique" fontfiletype="Type1"/>
+         <face devname="NHEB" weight="Bold" width="Normal" style="Upright" fontfile="Helvetica-Bold" fontfiletype="Type1"/>
+         <face devname="NHEBO" weight="Bold" width="Normal" style="Italic" fontfile="Helvetica-BoldOblique" fontfiletype="Type1"/>
+         <face devname="NHEL" weight="Light" width="Normal" style="Upright" fontfile="Helvetica-Light" fontfiletype="Type1"/>
+         <face devname="NHELO" weight="Light" width="Normal" style="Italic" fontfile="Helvetica-LightOblique" fontfiletype="Type1"/>
+         <face devname="NHEBL" weight="ExtraBold" width="Normal" style="Upright" fontfile="Helvetica-Black" fontfiletype="Type1"/>
+         <face devname="NHEBLO" weight="ExtraBold" width="Normal" style="Italic" fontfile="Helvetica-BlackOblique" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Helvetica Condensed">
+         <face devname="NHEC" weight="Medium" width="Condensed" style="Upright" fontfile="Helvetica-Condensed" fontfiletype="Type1"/>
+         <face devname="NHECO" weight="Medium" width="Condensed" style="Italic" fontfile="Helvetica-Condensed-Oblique" fontfiletype="Type1"/>
+         <face devname="NHECB" weight="Bold" width="Condensed" style="Upright" fontfile="Helvetica-Condensed-Bold" fontfiletype="Type1"/>
+         <face devname="NHECBO" weight="Bold" width="Condensed" style="Italic" fontfile="Helvetica-Condensed-BoldOblique" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Helvetica Narrow">
+         <face devname="NHEN" weight="Medium" width="Normal" style="Upright" fontfile="Helvetica-Narrow" fontfiletype="Type1"/>
+         <face devname="NHENO" weight="Medium" width="Normal" style="Italic" fontfile="Helvetica-Narrow-Bold" fontfiletype="Type1"/>
+         <face devname="NHENB" weight="Bold" width="Normal" style="Upright" fontfile="Helvetica-Narrow-Oblique" fontfiletype="Type1"/>
+         <face devname="NHENBO" weight="Bold" width="Normal" style="Italic" fontfile="Helvetica-Narrow-BoldOblique" fontfiletype="Type1"/>
+      </font>
+
+      <font family="ITC Bookman">
+         <face devname="NBKL" weight="Medium" width="Normal" style="Upright" fontfile="Bookman-Light" fontfiletype="Type1"/>
+         <face devname="NBKLI" weight="Medium" width="Normal" style="Italic" fontfile="Bookman-LightItalic" fontfiletype="Type1"/>
+         <face devname="NBKD" weight="Bold" width="Normal" style="Upright" fontfile="Bookman-Demi" fontfiletype="Type1"/>
+         <face devname="NBKDI" weight="Bold" width="Normal" style="Italic" fontfile="Bookman-DemiItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Times Roman">
+         <face devname="NTMR" weight="Medium" width="Normal" style="Upright" fontfile="TimesNewRomanPSMT" fontfiletype="Type1"/>
+         <face devname="NTNIM" weight="Medium" width="Normal" style="Italic" fontfile="TimesNewRomanPS-ItalicMT" fontfiletype="Type1"/>
+         <face devname="NTNBM" weight="Bold" width="Normal" style="Upright" fontfile="TimesNewRomanPS-BoldMT" fontfiletype="Type1"/>
+         <face devname="NTNBI" weight="Bold" width="Normal" style="Italic" fontfile="TimesNewRomanPS-BoldItalicMT" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Palatino">
+         <face devname="NPAR" weight="Medium" width="Normal" style="Upright" fontfile="Palatino-Roman" fontfiletype="Type1"/>
+         <face devname="NPAI" weight="Medium" width="Normal" style="Italic" fontfile="Palatino-Italic" fontfiletype="Type1"/>
+         <face devname="NPAB" weight="Bold" width="Normal" style="Upright" fontfile="Palatino-Bold" fontfiletype="Type1"/>
+         <face devname="NPABI" weight="Bold" width="Normal" style="Italic" fontfile="Palatino-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Stempel Garamond">
+         <face devname="NSGR" weight="Medium" width="Normal" style="Upright" fontfile="StempelGaramond-Roman" fontfiletype="Type1"/>
+         <face devname="NSGI" weight="Medium" width="Normal" style="Italic" fontfile="StempelGaramond-Italic" fontfiletype="Type1"/>
+         <face devname="NSGB" weight="Bold" width="Normal" style="Upright" fontfile="StempelGaramond-Bold" fontfiletype="Type1"/>
+         <face devname="NSGBI" weight="Bold" width="Normal" style="Italic" fontfile="StempelGaramond-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Optima">
+         <face devname="NOP" weight="Medium" width="Normal" style="Upright" fontfile="Optima-Roman" fontfiletype="Type1"/>
+         <face devname="NOPI" weight="Medium" width="Normal" style="Italic" fontfile="Optima-Italic" fontfiletype="Type1"/>
+         <face devname="NOPB" weight="Bold" width="Normal" style="Upright" fontfile="Optima-Bold" fontfiletype="Type1"/>
+         <face devname="NOPBI" weight="Bold" width="Normal" style="Italic" fontfile="Optima-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="New Century Schoolbook">
+         <face devname="NNCSR" weight="Medium" width="Normal" style="Upright" fontfile="NewCenturySchlbk-Roman" fontfiletype="Type1"/>
+         <face devname="NNCSI" weight="Medium" width="Normal" style="Italic" fontfile="NewCenturySchlbk-Italic" fontfiletype="Type1"/>
+         <face devname="NNCSB" weight="Bold" width="Normal" style="Upright" fontfile="NewCenturySchlbk-Bold" fontfiletype="Type1"/>
+         <face devname="NNCSBI" weight="Bold" width="Normal" style="Italic" fontfile="NewCenturySchlbk-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="ITC Avant Garde Gothic">
+         <face devname="NAGB" weight="Medium" width="Normal" style="Upright" fontfile="AvantGarde-Book" fontfiletype="Type1"/>
+         <face devname="NAGBO" weight="Medium" width="Normal" style="Italic" fontfile="AvantGarde-BookOblique" fontfiletype="Type1"/>
+         <face devname="NAGD" weight="Bold" width="Normal" style="Upright" fontfile="AvantGarde-Demi" fontfiletype="Type1"/>
+         <face devname="NAGDO" weight="Bold" width="Normal" style="Italic" fontfile="AvantGarde-DemiOblique" fontfiletype="Type1"/>
+      </font>
+
+      <font family="ITC Zapf Chancery">
+         <face devname="NZCMI" weight="Medium" width="Normal" style="Italic" fontfile="ZapfChancery-MediumItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Times New Roman">
+         <face devname="NTNM" weight="Medium" width="Normal" style="Upright" fontfile="Times-Roman" fontfiletype="Type1"/>
+         <face devname="NTMI" weight="Medium" width="Normal" style="Italic" fontfile="Times-Italic" fontfiletype="Type1"/>
+         <face devname="NTMB" weight="Bold" width="Normal" style="Upright" fontfile="Times-Bold" fontfiletype="Type1"/>
+         <face devname="NTMBI" weight="Bold" width="Normal" style="Italic" fontfile="Times-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="GillSans">
+         <face devname="NGS" weight="Medium" width="Normal" style="Upright" fontfile="GillSans" fontfiletype="Type1"/>
+         <face devname="NGSI" weight="Medium" width="Normal" style="Italic" fontfile="GillSans-Italic" fontfiletype="Type1"/>
+         <face devname="NGSB" weight="Bold" width="Normal" style="Upright" fontfile="GillSans-Bold" fontfiletype="Type1"/>
+         <face devname="NGSBI" weight="Bold" width="Normal" style="Italic" fontfile="GillSans-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Arial">
+         <face devname="NARM" weight="Medium" width="Normal" style="Upright" fontfile="ArialMT" fontfiletype="Type1"/>
+         <face devname="NARI" weight="Medium" width="Normal" style="Italic" fontfile="Arial-ItalicMT" fontfiletype="Type1"/>
+         <face devname="NARB" weight="Bold" width="Normal" style="Upright" fontfile="Arial-BoldMT" fontfiletype="Type1"/>
+         <face devname="NARBI" weight="Bold" width="Normal" style="Italic" fontfile="Arial-BoldItalicMT" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Goudy">
+         <face devname="NGO" weight="Medium" width="Normal" style="Upright" fontfile="Goudy" fontfiletype="Type1"/>
+         <face devname="NGOI" weight="Medium" width="Normal" style="Italic" fontfile="Goudy-Italic" fontfiletype="Type1"/>
+         <face devname="NGOB" weight="Bold" width="Normal" style="Upright" fontfile="Goudy-Bold" fontfiletype="Type1"/>
+         <face devname="NGOBI" weight="Bold" width="Normal" style="Italic" fontfile="Goudy-BoldItalic" fontfiletype="Type1"/>
+         <face devname="NGOEB" weight="ExtraBold" width="Normal" style="Upright" fontfile="Goudy-ExtraBold" fontfiletype="Type1"/>
+      </font>
+
+      <font family="JoannaMT">
+         <face devname="NJM" weight="Medium" width="Normal" style="Upright" fontfile="JoannaMT-Roman" fontfiletype="Type1"/>
+         <face devname="NJMI" weight="Medium" width="Normal" style="Italic" fontfile="JoannaMT-Italic" fontfiletype="Type1"/>
+         <face devname="NJMB" weight="Bold" width="Normal" style="Upright" fontfile="JoannaMT-Bold" fontfiletype="Type1"/>
+         <face devname="NJMBI" weight="Bold" width="Normal" style="Italic" fontfile="JoannaMT-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Korinna">
+         <face devname="NKR" weight="Medium" width="Normal" style="Upright" fontfile="Korinna-Roman" fontfiletype="Type1"/>
+         <face devname="NKRI" weight="Medium" width="Normal" style="Italic" fontfile="Korinna-KursivRegular" fontfiletype="Type1"/>
+         <face devname="NKRB" weight="Bold" width="Normal" style="Upright" fontfile="Korinna-Bold" fontfiletype="Type1"/>
+         <face devname="NKRBI" weight="Bold" width="Normal" style="Italic" fontfile="Korinna-KursivBold" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Hoefler Text">
+         <face devname="NHTR" weight="Medium" width="Normal" style="Upright" fontfile="HoeflerText-Regular" fontfiletype="Type1"/>
+         <face devname="NHTI" weight="Medium" width="Normal" style="Italic" fontfile="HoeflerText-Italic" fontfiletype="Type1"/>
+         <face devname="NHTB" weight="Bold" width="Normal" style="Upright" fontfile="HoeflerText-Black" fontfiletype="Type1"/>
+         <face devname="NHTBI" weight="Bold" width="Normal" style="Italic" fontfile="HoeflerText-BlackItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Lubalin Graph">
+         <face devname="NLUB" weight="Medium" width="Normal" style="Upright" fontfile="LubalinGraph-Book" fontfiletype="Type1"/>
+         <face devname="NLUBO" weight="Medium" width="Normal" style="Italic" fontfile="LubalinGraph-BookItalic" fontfiletype="Type1"/>
+         <face devname="NLUD" weight="Bold" width="Normal" style="Upright" fontfile="LubalinGraph-Demi" fontfiletype="Type1"/>
+         <face devname="NLUDO" weight="Bold" width="Normal" style="Italic" fontfile="LubalinGraph-DemiItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="ACaslon">
+         <face devname="NACR" weight="Medium" width="Normal" style="Upright" fontfile="ACaslon-Regular" fontfiletype="Type1"/>
+         <face devname="NACI" weight="Medium" width="Normal" style="Italic" fontfile="ACaslon-Italic" fontfiletype="Type1"/>
+         <face devname="NACS" weight="SemiBold" width="Normal" style="Upright" fontfile="ACaslon-SemiBold" fontfiletype="Type1"/>
+         <face devname="NACSI" weight="SemiBold" width="Normal" style="Italic" fontfile="ACaslon-SemiBoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Adobe SansSerif">
+         <face devname="NASM" weight="Medium" width="Normal" style="Upright" fontfile="AdobeSansMM" fontfiletype="Type1"/>
+         <face devname="NABM" weight="Bold" width="Normal" style="Upright" fontfile="AdobeSansMM" fontfiletype="Type1"/>
+         <face devname="NAFM" weight="Medium" width="Normal" style="Upright" fontfile="AdobeSerifMM" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Letter Gothic">
+         <face devname="NLG" weight="Medium" width="Normal" style="Upright" fontfile="LetterGothic" fontfiletype="Type1"/>
+         <face devname="NLGS" weight="Medium" width="Normal" style="Italic" fontfile="LetterGothic-Slanted" fontfiletype="Type1"/>
+         <face devname="NLGB" weight="Bold" width="Normal" style="Upright" fontfile="LetterGothic-Bold" fontfiletype="Type1"/>
+         <face devname="NLGBS" weight="Bold" width="Normal" style="Italic" fontfile="LetterGothic-BoldSlanted" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Garamond">
+         <face devname="NGML" weight="Medium" width="Normal" style="Upright" fontfile="Garamond-Light" fontfiletype="Type1"/>
+         <face devname="NGMLI" weight="Medium" width="Normal" style="Italic" fontfile="Garamond-LightItalic" fontfiletype="Type1"/>
+         <face devname="NGMB" weight="Bold" width="Normal" style="Upright" fontfile="Garamond-Bold" fontfiletype="Type1"/>
+         <face devname="NGMBI" weight="Bold" width="Normal" style="Italic" fontfile="Garamond-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="AGaramond">
+         <face devname="NAGR" weight="Medium" width="Normal" style="Upright" fontfile="AGaramond" fontfiletype="Type1"/>
+         <face devname="NAGI" weight="Medium" width="Normal" style="Italic" fontfile="AGaramond-Italic" fontfiletype="Type1"/>
+         <face devname="NAGBL" weight="Bold" width="Normal" style="Upright" fontfile="AGaramond-Bold" fontfiletype="Type1"/>
+         <face devname="NAGBI" weight="Bold" width="Normal" style="Italic" fontfile="AGaramond-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Bodoni">
+         <face devname="NBO" weight="Medium" width="Normal" style="Upright" fontfile="Bodoni" fontfiletype="Type1"/>
+         <face devname="NBOI" weight="Medium" width="Normal" style="Italic" fontfile="Bodoni-Italic" fontfiletype="Type1"/>
+         <face devname="NBOB" weight="Bold" width="Normal" style="Upright" fontfile="Bodoni-Bold" fontfiletype="Type1"/>
+         <face devname="NBOBI" weight="Bold" width="Normal" style="Italic" fontfile="Bodoni-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Verdana">
+         <face devname="NVER" weight="Medium" width="Normal" style="Upright" fontfile="Verdana" fontfiletype="Type1"/>
+         <face devname="NVERI" weight="Medium" width="Normal" style="Italic" fontfile="Verdana-Italic" fontfiletype="Type1"/>
+         <face devname="NVERB" weight="Bold" width="Normal" style="Upright" fontfile="Verdana-Bold" fontfiletype="Type1"/>
+         <face devname="NVERBI" weight="Bold" width="Normal" style="Italic" fontfile="Verdana-BoldItalic" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Bodoni Poster">
+         <face devname="NBOP" weight="Medium" width="Normal" style="Upright" fontfile="Bodoni-Poster" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Bodoni PosterCompressed">
+         <face devname="NBOPC" weight="Medium" width="Condensed" style="Upright" fontfile="Bodoni-PosterCompressed" fontfiletype="Type1"/>
+      </font>
+
+      <font family="AntiqueOlive">
+         <face devname="NAOR" weight="Medium" width="Normal" style="Upright" fontfile="AntiqueOlive" fontfiletype="Type1"/>
+         <face devname="NAOI" weight="Medium" width="Normal" style="Italic" fontfile="AntiqueOlive-Italic" fontfiletype="Type1"/>
+         <face devname="NAOB" weight="Bold" width="Normal" style="Upright" fontfile="AntiqueOlive-Bold" fontfiletype="Type1"/>
+         <face devname="NAOC" weight="Bold" width="Condensed" style="Upright" fontfile="AntiqueOlive-Compact" fontfiletype="Type1"/>
+      </font>
+
+      <font family="AlbertusMT">
+         <face devname="NALL" weight="Light" width="Normal" style="Upright" fontfile="AlbertusMT-Light" fontfiletype="Type1"/>
+         <face devname="NALI" weight="Medium" width="Normal" style="Italic" fontfile="AlbertusMT-Italic" fontfiletype="Type1"/>
+         <face devname="NAL" weight="Medium" width="Normal" style="Upright" fontfile="AlbertusMT" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Cooper Black">
+         <face devname="NCB" weight="Medium" width="Normal" style="Upright" fontfile="CooperBlack" fontfiletype="Type1"/>
+         <face devname="NCBI" weight="Medium" width="Normal" style="Italic" fontfile="CooperBlack-Italic" fontfiletype="Type1"/>
+         <face devname="NCBB" weight="Bold" width="Normal" style="Upright" fontfile="CooperBlack" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Copperplate">
+         <face devname="NCTW" weight="Medium" width="Normal" style="Upright" fontfile="Copperplate-ThirtyTwoBC" fontfiletype="Type1"/>
+         <face devname="NCTT" weight="Medium" width="Normal" style="Upright" fontfile="Copperplate-ThirtyThreeBC" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Americana">
+         <face devname="NAMER" weight="Medium" width="Normal" style="Upright" fontfile="Americana" fontfiletype="Type1"/>
+         <face devname="NAEB" weight="ExtraBold" width="Normal" style="Upright" fontfile="Americana-ExtraBold" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Lithos">
+         <face devname="NLIR" weight="Medium" width="Normal" style="Upright" fontfile="Lithos-Regular" fontfiletype="Type1"/>
+         <face devname="NLIB" weight="SemiBold" width="Normal" style="Upright" fontfile="Lithos-Black" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Univers">
+         <face devname="NUN" weight="Medium" width="Normal" style="Upright" fontfile="Univers" fontfiletype="Type1"/>
+         <face devname="NUNO" weight="Medium" width="Normal" style="Italic" fontfile="Univers-Oblique" fontfiletype="Type1"/>
+         <face devname="NUNB" weight="Bold" width="Normal" style="Upright" fontfile="Univers-Bold" fontfiletype="Type1"/>
+         <face devname="NUNBO" weight="Bold" width="Normal" style="Italic" fontfile="Univers-BoldOblique" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Univers Condensed">
+         <face devname="NUNC" weight="Medium" width="Normal" style="Upright" fontfile="Univers-Condensed" fontfiletype="Type1"/>
+         <face devname="NUNCO" weight="Medium" width="Normal" style="Italic" fontfile="Univers-CondensedOblique" fontfiletype="Type1"/>
+         <face devname="NUNCB" weight="Bold" width="Normal" style="Upright" fontfile="Univers-CondensedBold" fontfiletype="Type1"/>
+         <face devname="NUNCBO" weight="Bold" width="Normal" style="Italic" fontfile="Univers-CondensedBoldOblique" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Univers Light">
+         <face devname="NUNL" weight="Medium" width="Normal" style="Upright" fontfile="Univers-Light" fontfiletype="Type1"/>
+         <face devname="NUNLO" weight="Medium" width="Normal" style="Italic" fontfile="Univers-LightOblique" fontfiletype="Type1"/>
+         <face devname="NUNLB" weight="Bold" width="Normal" style="Upright" fontfile="Univers-LightBold" fontfiletype="Type1"/>
+         <face devname="NUNLBO" weight="Bold" width="Normal" style="Italic" fontfile="Univers-LightBoldOblique" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Univers Extended">
+         <face devname="NUNE" weight="Medium" width="Normal" style="Upright" fontfile="Univers-Extended" fontfiletype="Type1"/>
+         <face devname="NUNEO" weight="Medium" width="Normal" style="Italic" fontfile="Univers-ExtendedObl" fontfiletype="Type1"/>
+         <face devname="NUNBE" weight="Bold" width="Normal" style="Upright" fontfile="Univers-BoldExt" fontfiletype="Type1"/>
+         <face devname="NUNBX" weight="Bold" width="Normal" style="Italic" fontfile="Univers-BoldExtObl" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Eurostile">
+         <face devname="NES" weight="Medium" width="Normal" style="Upright" fontfile="Eurostile-Extended" fontfiletype="Type1"/>
+         <face devname="NESET" weight="Medium" width="Normal" style="Upright" fontfile="Eurostile-ExtendedTwo" fontfiletype="Type1"/>
+         <face devname="NESB" weight="Bold" width="Normal" style="Upright" fontfile="Eurostile-Bold" fontfiletype="Type1"/>
+         <face devname="NESBE" weight="Bold" width="Normal" style="Upright" fontfile="Eurostile-BoldExtendedTwo" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Tekton">
+         <face devname="NTEK" weight="Medium" width="Normal" style="Upright" fontfile="Tekton" fontfiletype="Type1"/>
+         <face devname="NTEBO" weight="Bold" width="Normal" style="Upright" fontfile="Tekton-Bold" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Clarendon">
+         <face devname="NCL" weight="Medium" width="Normal" style="Upright" fontfile="Clarendon" fontfiletype="Type1"/>
+         <face devname="NCLB" weight="Bold" width="Normal" style="Upright" fontfile="Clarendon-Bold" fontfiletype="Type1"/>
+         <face devname="NCLL" weight="Light" width="Normal" style="Upright" fontfile="Clarendon-Light" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Trajan">
+         <face devname="NTRBO" weight="Bold" width="Normal" style="Upright" fontfile="Trajan-Bold" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Park Avenue">
+         <face devname="NPAV" weight="Medium" width="Normal" style="Upright" fontfile="ParkAvenue" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Apple Chancery">
+         <face devname="NAPC" weight="Medium" width="Normal" style="Upright" fontfile="Apple-Chancery" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Parisian">
+         <face devname="NPAP" weight="Medium" width="Normal" style="Upright" fontfile="Parisian" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Oxford">
+         <face devname="NOX" weight="Medium" width="Normal" style="Upright" fontfile="Oxford" fontfiletype="Type1"/>
+      </font>
+
+      <font family="NewYork">
+         <face devname="NNY" weight="Medium" width="Normal" style="Upright" fontfile="NewYork" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Blackoak">
+         <face devname="NBLO" weight="Medium" width="Normal" style="Upright" fontfile="Blackoak" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Chicago">
+         <face devname="NCH" weight="Medium" width="Normal" style="Upright" fontfile="Chicago" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Coronet">
+         <face devname="NCOR" weight="Medium" width="Normal" style="Upright" fontfile="Coronet-Regular" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Geneva">
+         <face devname="NGEN" weight="Medium" width="Normal" style="Upright" fontfile="Geneva" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Marigold">
+         <face devname="NMA" weight="Medium" width="Normal" style="Upright" fontfile="Marigold" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Monaco">
+         <face devname="NMO" weight="Medium" width="Normal" style="Upright" fontfile="Monaco" fontfiletype="Type1"/>
+      </font>
+
+      <font family="MonaLisa">
+         <face devname="NMR" weight="Medium" width="Normal" style="Upright" fontfile="MonaLisa-Recut" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Kaufmann">
+         <face devname="NKAU" weight="Medium" width="Normal" style="Upright" fontfile="Kaufmann" fontfiletype="Type1"/>
+      </font>
+
+      <font family="ZapfDingbats">
+         <face devname="NZDB" weight="Medium" width="Normal" style="Upright" fontfile="ZapfDingbats" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Symbol">
+         <face devname="NSY" weight="Medium" width="Normal" style="Upright" fontfile="Symbol" fontfiletype="Type1"/>
+      </font>
+
+      <font family="Wingdings">
+         <face devname="NWDR" weight="Medium" width="Normal" style="Upright" fontfile="Wingdings-Regular" fontfiletype="Type1"/>
+      </font>
+   </fontlist>
+
+   <!--Settings for input.-->
+
+   <input>
+      <!--Set the default paper size. Letter for US and A4 for EU. It is recommended
+                to always use this setting. If <inputtray> is also specified in the profile,
+                the papersize will be overwritten by the value used in
+                <inputtray>-->
+
+      <pagedefinition name="Default">
+         <!--The declaration of a paper size. The paper size can be
+                specified by the name of a standard paper size with orientation or by numeric
+                specification of width and length.-->
+         <!--Attribute: orientation @comment: The orientation of a standard paper size. Possible values of
+                this attribute are "Portrait", "Landscape", "RevPortrait", and "RevLandscape". The
+                default value of this attribute is "Portrait".-->
+
+         <papersize format="A4" orientation="Portrait"/>
+      </pagedefinition>
+
+      <!--FALSE : doesn't create overlays (default) TRUE : create overlays from the
+                .eps on run operator or from external images-->
+
+      <createoverlay value="false"/>
+
+      <!--TRUE : delete the files which are generated from PS internally (default)
+                FALSE : doesn't delete the generated files-->
+
+      <deletegeneratefiles value="true"/>
+
+      <!--false : % comments are ignored (default) true : Comments are
+                read-->
+
+      <readcomments value="false" regexp="%Page" matchregexp="false" avaloqendsequence="%TKBEndMetadata"/>
+
+      <!--Specifies the default code page for comments-->
+
+      <commentsdefaultcodepage iana="ISO-8859-1-PS"/>
+
+      <!--If the VIPP file needs some default configure setting defined in external
+                resources then these resources should be specified here. The path of the default
+                config files will be specified in 'resourcelist'-->
+
+      <defaultconfiglist>
+         <file name="xgf.gep"/>
+         <file name="xgf.def"/>
+         <file name="xgf.bat"/>
+      </defaultconfiglist>
+
+      <!--Assign tray ID-->
+
+      <traylist>
+         <inputtrays>
+            <!--If there are not any inputtray, it enables the virtual tray mode which is
+                useful to read the number and the attributes of the trays that there are on the
+                file-->
+
+            <inputtray name="Tray1" deviceid="0" command="" insertsheet="false" leadingedge="1" manualfeed="true" mediaclass="Envelope" mediacolor="blue" mediaposition="2" mediatype="office" mediaweight="10" trayswitch="true" deferredmediaselection="true">
+               <!--The declaration of a paper size. The paper size can be
+                specified by the name of a standard paper size with orientation or by numeric
+                specification of width and length.-->
+               <!--Attribute: orientation @comment: The orientation of a standard paper size. Possible values of
+                this attribute are "Portrait", "Landscape", "RevPortrait", and "RevLandscape". The
+                default value of this attribute is "Portrait".-->
+
+               <papersize format="A4" orientation="Portrait"/>
+            </inputtray>
+
+            <inputtray deviceid="2" name="Tray3" command=""/>
+            <inputtray name="Tray2" deviceid="1" insertsheet="false" leadingedge="1" manualfeed="true" mediaclass="Envelope" mediacolor="blue" mediaposition="2" mediatype="office" mediaweight="10" trayswitch="true" deferredmediaselection="true"/>
+         </inputtrays>
+      </traylist>
+
+      <!--<barcodelist>        
+         <barcode name="DataMatrix" type="DataMatrix" modulewidth="15 mil"/>
+      </barcodelist>-->
+   </input>
+
+   <resourcelist>
+      <fileslist>
+         <!--Several directories can be specified for the search for external resources.
+                The "path" is mandatory. "Type", "extension" and "resolution" are optional. However,
+                the more detailed the settings are, the more specific the search will be. Valid
+                values for "type" are: "overlay", "pageSegment", "codedFont", "codePage", "charSet",
+                "formDef", "resourceLib", "pageDef", "object", "icc", "documentIndex". If the type
+                is not defined, the path will be used for all types. The "extension" can be emtpy,
+                <extension> or a wildcard. If the "resolution" is not specified, resources
+                with any resolution will be searched in the path. -->
+
+         <files path="." type="Type1Font" extension="*"/>
+      </fileslist>
+   </resourcelist>
+</mffvip>

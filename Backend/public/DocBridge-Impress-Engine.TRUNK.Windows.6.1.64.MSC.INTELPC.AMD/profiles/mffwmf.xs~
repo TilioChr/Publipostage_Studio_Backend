@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/wmf">
+   <xs:element name="mffwmf">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Font is specified by "family", "weight" and "style".</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="weight" default="medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="ultralight"/>
+                                             <xs:enumeration value="extralight"/>
+                                             <xs:enumeration value="light"/>
+                                             <xs:enumeration value="semilight"/>
+                                             <xs:enumeration value="medium"/>
+                                             <xs:enumeration value="semibold"/>
+                                             <xs:enumeration value="bold"/>
+                                             <xs:enumeration value="extrabold"/>
+                                             <xs:enumeration value="ultrabold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="upright"/>
+                                             <xs:enumeration value="italic"/>
+                                             <xs:enumeration value="underscore"/>
+                                             <xs:enumeration value="overstruck"/>
+                                             <xs:enumeration value="outline"/>
+                                             <xs:enumeration value="serif"/>
+                                             <xs:enumeration value="sansserif"/>
+                                             <xs:enumeration value="proportional"/>
+                                             <xs:enumeration value="monospaced"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="truetype">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="truetype"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="arial" type="xs:string"/>
+                           <xs:attribute name="reftype" default="truetype">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="truetype"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN"> = Files ==============================================================
+                type can be "TrueType", "Type1Font", "Type1Metrics" if it is not defined, the path
+                will be used for all types, extension can be emtpy, &lt;extension&gt; or wildcard
+                ======================================================================
+            </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"),
+                Dateierweiterung ("extension") und Auflösung ("resolution") sind optional. Je mehr
+                Angaben gemacht werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="" type="xs:string"/>
+                                    <xs:attribute name="type">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="pagesegment"/>
+                                             <xs:enumeration value="overlay"/>
+                                             <xs:enumeration value="codepage"/>
+                                             <xs:enumeration value="imbedfiles"/>
+                                             <xs:enumeration value="codedfont"/>
+                                             <xs:enumeration value="charset"/>
+                                             <xs:enumeration value="formdef"/>
+                                             <xs:enumeration value="mediummap"/>
+                                             <xs:enumeration value="pagedef"/>
+                                             <xs:enumeration value="program"/>
+                                             <xs:enumeration value="resourcelib"/>
+                                             <xs:enumeration value="reslib"/>
+                                             <xs:enumeration value="object"/>
+                                             <xs:enumeration value="truetype"/>
+                                             <xs:enumeration value="type1font"/>
+                                             <xs:enumeration value="type1"/>
+                                             <xs:enumeration value="type1metrics"/>
+                                             <xs:enumeration value="pcl"/>
+                                             <xs:enumeration value="icc"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

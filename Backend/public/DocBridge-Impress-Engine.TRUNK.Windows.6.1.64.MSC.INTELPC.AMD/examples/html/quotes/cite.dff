@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Radio buttons</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+	    <xi:include href="../../common/standardheader.dfb"/>
+        <p>This example shows how a citation is rendered without any additional styling, with the default settings.</p>
+        <p>By default, Compart renders citations in italics.</p>
+        <br />
+        <b>Citation</b>
+        <p><cite>DocBridge Impress</cite> by Compart AG</p>
+    </body>
+</html>

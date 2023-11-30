@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Background Colors</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");
+            @page one {
+                margin: 0;
+                background-image: url('images/Template-Letter-CP-AG2.pdf');
+            }
+            @page two {
+                margin: 0;
+                background-image: url('images/background.pdf');
+                -cp-background-image-page-number: 3;
+            }
+            .pageone {
+                page: one;
+            }
+            .pagetwo {
+                page: two;
+            }
+            .pageonecontent {
+                margin-left: 2cm;
+                margin-right: 2cm;
+                margin-top: 8.5cm;
+                margin-bottom: 2.5cm;
+            }
+            .pagetwocontent {
+                margin-left: 2cm;
+                margin-right: 2cm;
+                margin-top: 4.5cm;
+                margin-bottom: 2.5cm;
+            }</style>
+    </head>
+    <body>
+        <!--        <xi:include href="../../common/standardheader.dfb"/>-->
+        <div class="pageone">
+            <div class="pageonecontent">
+                <h1>Page Background Images</h1>
+                <p>You can use the Compart proprietary <code>-cp-background-image-page-number</code>
+                    property to specify the behavior for background images with multiple pages.</p>
+                <p>This document demonstrates how to use different background images for different
+                    page types.</p>
+                <p>This is page 1 with page type one.</p>
+            </div>
+        </div>
+        <div class="pagetwo">
+            <div class="pagetwocontent">
+                <p>This is page 2 with page type two.</p>
+            </div>
+        </div>
+    </body>
+</html>

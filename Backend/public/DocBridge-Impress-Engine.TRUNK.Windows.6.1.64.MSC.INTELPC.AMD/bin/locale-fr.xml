@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Language id="fr" defCountry="FR" xmlns="http://www.compart.com/ns/locale">
+    <!-- Separators -->
+    <Separators>
+        <DecimalSeparator>,</DecimalSeparator>
+        <ThousandsSeparator>.</ThousandsSeparator>
+        <ListSeparator>;</ListSeparator>
+    </Separators>
+    <!-- Quote Characters -->
+    <Quotes>
+        <Quote type="opening" use="standard" scope="primary">«</Quote>
+        <Quote type="closing" use="standard" scope="primary">»</Quote>
+        <Quote type="opening" use="standard" scope="secondary">‹</Quote>
+        <Quote type="closing" use="standard" scope="secondary">›</Quote>
+        <Quote type="alternate" use="standard" scope="primary">“</Quote>
+        <Quote type="alternate" use="standard" scope="primary">”</Quote>
+        <Quote type="alternate" use="standard" scope="secondary">‘</Quote>
+        <Quote type="alternate" use="standard" scope="secondary">’</Quote>
+        <Spacing>-4</Spacing>
+    </Quotes>
+    <!-- Date and Time Formatting -->
+    <!-- format types are short, standard, and long -->
+    <DateFormats>
+        <DateFormat type="short">
+            <Picture components="1">[Y0001]</Picture>
+            <Picture components="2">[Mn,*-4] [Y0001]</Picture>
+            <Picture components="3">[D] [Mn,*-4] [Y0001]</Picture>
+        </DateFormat>
+        <DateFormat type="standard">
+            <Picture components="1">[Y0001]</Picture>
+            <Picture components="2">[Mn,*-4] [Y0001]</Picture>
+            <Picture components="3">[D] [Mn,*-4] [Y0001]</Picture>
+        </DateFormat>
+        <DateFormat type="long">
+            <Picture components="1">[Y0001]</Picture>
+            <Picture components="2">[Mn,*-4] [Y0001]</Picture>
+            <Picture components="3">[D] [Mn,*-4] [Y0001]</Picture>
+        </DateFormat>
+    </DateFormats>
+    <TimeFormats>
+        <TimeFormat type="short">
+            <Picture components="1">[H01]</Picture>
+            <Picture components="2">[H01]:[m01]</Picture>
+            <Picture components="3">[H01]:[m01]:[s01]</Picture>
+            <Picture components="4">[H01]:[m01]:[s01],[f,3-3]</Picture>
+        </TimeFormat>
+        <TimeFormat type="standard">
+            <Picture components="1">[H01]</Picture>
+            <Picture components="2">[H01]:[m01]</Picture>
+            <Picture components="3">[H01]:[m01]:[s01]</Picture>
+            <Picture components="4">[H01]:[m01]:[s01],[f,3-3]</Picture>
+        </TimeFormat>
+    </TimeFormats>
+    <DateTimeFormats>
+        <DateTimeFormat type="short">
+            <Picture components="1">[Y0001]</Picture>
+            <Picture components="2">[Mn,*-4] [Y0001]</Picture>
+            <Picture components="3">[D] [Mn,*-4] [Y0001]</Picture>
+            <Picture components="4">[D] [Mn,*-4] [Y0001] [H01]</Picture>
+            <Picture components="5">[D] [Mn,*-4] [Y0001] [H01]:[m01]</Picture>
+            <Picture components="6">[D] [Mn,*-4] [Y0001] [H01]:[m01]:[s01]</Picture>
+            <Picture components="7">[D] [Mn,*-4] [Y0001] [H01]:[m01]:[s01],[f,3-3]</Picture>
+        </DateTimeFormat>
+        <DateTimeFormat type="standard">
+            <Picture components="1">[Y0001]</Picture>
+            <Picture components="2">[Mn,*-4] [Y0001]</Picture>
+            <Picture components="3">[D] [Mn,*-4] [Y0001]</Picture>
+            <Picture components="4">[D] [Mn,*-4] [Y0001] [H01]</Picture>
+            <Picture components="5">[D] [Mn,*-4] [Y0001] [H01]:[m01]</Picture>
+            <Picture components="6">[D] [Mn,*-4] [Y0001] [H01]:[m01]:[s01]</Picture>
+            <Picture components="7">[D] [Mn,*-4] [Y0001] [H01]:[m01]:[s01],[f,3-3]</Picture>
+        </DateTimeFormat>
+        <DateTimeFormat type="long">
+            <Picture components="1">[Y0001]</Picture>
+            <Picture components="2">[Mn,*-4] [Y0001]</Picture>
+            <Picture components="3">[D] [Mn,*-4] [Y0001]</Picture>
+            <Picture components="4">[D] [Mn,*-4] [Y0001] [H01]</Picture>
+            <Picture components="5">[D] [Mn,*-4] [Y0001] [H01]:[m01]</Picture>
+            <Picture components="6">[D] [Mn,*-4] [Y0001] [H01]:[m01]:[s01]</Picture>
+            <Picture components="7">[D] [Mn,*-4] [Y0001] [H01]:[m01]:[s01],[f,3-3]</Picture>
+        </DateTimeFormat>
+    </DateTimeFormats>
+    <!-- Months -->
+    <MonthsInYear>
+        <MonthInYear index="1">
+            <Entry>Janvier</Entry>
+            <Entry>Jan.</Entry>
+            <Entry>Jan</Entry>
+            <Entry>Jr</Entry>
+        </MonthInYear>
+        <MonthInYear index="2">
+            <Entry>Février</Entry>
+            <Entry>Fév.</Entry>
+            <Entry>Fév</Entry>
+            <Entry>Fr</Entry>
+        </MonthInYear>
+        <MonthInYear index="3">
+            <Entry>Mars</Entry>
+            <Entry>Mrs</Entry>
+            <Entry>Ms</Entry>
+        </MonthInYear>
+        <MonthInYear index="4">
+            <Entry>Avril</Entry>
+            <Entry>Avr.</Entry>
+            <Entry>Avr</Entry>
+            <Entry>Al</Entry>
+        </MonthInYear>
+        <MonthInYear index="5">
+            <Entry>Mai</Entry>
+            <Entry>Mi</Entry>
+        </MonthInYear>
+        <MonthInYear index="6">
+            <Entry>Juin</Entry>
+            <Entry>Jun.</Entry>
+            <Entry>Jun</Entry>
+            <Entry>Jn</Entry>
+        </MonthInYear>
+        <MonthInYear index="7">
+            <Entry>Juillet</Entry>
+            <Entry>Jul.</Entry>
+            <Entry>Jul</Entry>
+            <Entry>Jt</Entry>
+        </MonthInYear>
+        <MonthInYear index="8">
+            <Entry>Août</Entry>
+            <Entry>At</Entry>
+        </MonthInYear>
+        <MonthInYear index="9">
+            <Entry>Septembre</Entry>
+            <Entry>Sep.</Entry>
+            <Entry>Se</Entry>
+        </MonthInYear>
+        <MonthInYear index="10">
+            <Entry>Octobre</Entry>
+            <Entry>Oct.</Entry>
+            <Entry>Oe</Entry>
+        </MonthInYear>
+        <MonthInYear index="11">
+            <Entry>Novembre</Entry>
+            <Entry>Nov.</Entry>
+            <Entry>Ne</Entry>
+        </MonthInYear>
+        <MonthInYear index="12">
+            <Entry>Décembre</Entry>
+            <Entry>Déc.</Entry>
+            <Entry>De</Entry>
+        </MonthInYear>
+    </MonthsInYear>
+    <!-- Weekdays -->
+    <DaysOfWeek>
+        <DayOfWeek ref="mon" index="1">
+            <Entry>Lundi</Entry>
+        </DayOfWeek>
+        <DayOfWeek ref="tue" index="2">
+            <Entry>Mardi</Entry>
+        </DayOfWeek>
+        <DayOfWeek ref="wed" index="3">
+            <Entry>Mercredi</Entry>
+        </DayOfWeek>
+        <DayOfWeek ref="thu" index="4">
+            <Entry>Jeudi</Entry>
+        </DayOfWeek>
+        <DayOfWeek ref="fri" index="5">
+            <Entry>Vendredi</Entry>
+        </DayOfWeek>
+        <DayOfWeek ref="sat" index="6">
+            <Entry>Samedi</Entry>
+        </DayOfWeek>
+        <DayOfWeek ref="sun" index="7">
+            <Entry>Dimanche</Entry>
+        </DayOfWeek>
+    </DaysOfWeek>
+    <!-- Calendar Formatting -->
+    <CalendarFormatting firstDayOfWeek="mon" showCalendarWeek="true" showHolidays="true"/>
+    <!-- Numeral Formatting -->
+    <Numerals defUntil="12" onesFirst="false" tensSeparator="-" hundredsSeparator="-"
+        thousandsSeparator="-" ordinalSuffix="ième" ordinalRemove="e">
+        <OrdinalSuffixes>
+            <OrdinalSuffix module="0" reminder="0">e</OrdinalSuffix>
+            <OrdinalSuffix module="0" reminder="1">er</OrdinalSuffix>
+            <OrdinalSuffix module="0" reminder="2">e</OrdinalSuffix>
+            <OrdinalSuffix module="1" reminder="0">e</OrdinalSuffix>
+        </OrdinalSuffixes>
+        <Specials>
+            <Numbers>
+                <Number value="0" cardinal="zéro"/>
+                <Number value="1" cardinal="un" singleOrdinal="premier"/>
+                <Number value="2" cardinal="deux"/>
+                <Number value="3" cardinal="trois"/>
+                <Number value="4" cardinal="quatre"/>
+                <Number value="5" cardinal="cinq" ordinal="cinquième"/>
+                <Number value="6" cardinal="six"/>
+                <Number value="7" cardinal="sept"/>
+                <Number value="8" cardinal="huit"/>
+                <Number value="9" cardinal="neuf" ordinal="neuvième"/>
+                <Number value="10" cardinal="dix"/>
+                <Number value="11" cardinal="onze"/>
+                <Number value="12" cardinal="douze" ordinal="douxième"/>
+                <Number value="13" cardinal="treize"/>
+                <Number value="14" cardinal="quatorze"/>
+                <Number value="15" cardinal="quinze"/>
+                <Number value="16" cardinal="seize"/>
+                <Number value="17" cardinal="dix-sept"/>
+                <Number value="18" cardinal="dix-huit"/>
+                <Number value="19" cardinal="dix-neuf" ordinal="dix-neuvième"/>
+                <Number value="20" cardinal="vingt"/>
+                <Number value="21" cardinal="vingt-et-un"/>
+                <Number value="30" cardinal="trente"/>
+                <Number value="31" cardinal="trente-et-un"/>
+                <Number value="40" cardinal="quarante"/>
+                <Number value="41" cardinal="quarante-et-un"/>
+                <Number value="50" cardinal="cinquante"/>
+                <Number value="51" cardinal="cinquante-et-un"/>
+                <Number value="60" cardinal="soixante"/>
+                <Number value="61" cardinal="soixante-et-un"/>
+                <Number value="71" cardinal="soixante-et-onze"/>
+                <Number value="80" cardinal="quatre-vingt" lastCardinal="quatre-vingts"/>
+                <Number value="100" singular="cent" plural="-cent" last="-cents"/>
+                <Number value="1000" plural="-mille" singular="mille"/>
+                <Number value="1000000" plural=" millions " singular="un million "/>
+                <Number value="1000000000" plural=" milliards " singular="un milliard "/>
+                <Number value="1000000000000" plural=" billions " singular="un billion "/>
+                <Number value="1000000000000000" plural=" billiards " singular="un billiard "/>
+                <Number value="1000000000000000000" plural=" trillions " singular="un trillion "/>
+                <Number value="1000000000000000000000" plural=" trilliards " singular="un trilliard "/>
+            </Numbers>
+        </Specials>
+    </Numerals>
+    <!-- Hypenation Rules -->
+    <Hyphenations pushCharacterCount="2" remainCharacterCount="3" hyphenationCharacter="-">
+        <Entries hyphenChar="-">
+            <Entry lineOverflow="false">DocBridge</Entry>
+        </Entries>
+        <Patterns src="hyph-fr.tex"/>
+    </Hyphenations>
+    <!-- Translated Strings, Prefix identifies Category -->
+    <Texts prefix="cal">
+        <Text key="gregorian">grégorien</Text>
+        <Text key="today">aujourd'hui</Text>
+        <Text key="yesterday">hier</Text>
+        <Text key="tomorrow">demain</Text>
+        <Text key="GMT">GMT</Text>
+        <Text key="AnnoDomino">AD</Text>
+    </Texts>
+    <Texts prefix="country">
+        <Options key="AC">
+            <Option preferred="true">Île de l’Ascension</Option>
+        </Options>
+        <Options key="AD">
+            <Option preferred="true">Andorre</Option>
+        </Options>
+        <Options key="AE">
+            <Option preferred="true">Émirats arabes unis</Option>
+        </Options>
+        <Options key="AF">
+            <Option preferred="true">Afghanistan</Option>
+        </Options>
+        <Options key="AG">
+            <Option preferred="true">Antigua-et-Barbuda</Option>
+        </Options>
+        <Options key="AI">
+            <Option preferred="true">Anguilla</Option>
+        </Options>
+        <Options key="AL">
+            <Option preferred="true">Albanie</Option>
+        </Options>
+        <Options key="AM">
+            <Option preferred="true">Arménie</Option>
+        </Options>
+        <Options key="AO">
+            <Option preferred="true">Angola</Option>
+        </Options>
+        <Options key="AQ">
+            <Option preferred="true">Antarctique</Option>
+        </Options>
+        <Options key="AR">
+            <Option preferred="true">Argentine</Option>
+        </Options>
+        <Options key="AS">
+            <Option preferred="true">Samoa américaines</Option>
+        </Options>
+        <Options key="AT">
+            <Option preferred="true">Autriche</Option>
+        </Options>
+        <Options key="AU">
+            <Option preferred="true">Australie</Option>
+        </Options>
+        <Options key="AW">
+            <Option preferred="true">Aruba</Option>
+        </Options>
+        <Options key="AX">
+            <Option preferred="true">Îles Åland</Option>
+            <Option>Åland</Option>
+        </Options>
+        <Options key="AZ">
+            <Option preferred="true">Azerbaïdjan</Option>
+        </Options>
+        <Options key="BA">
+            <Option preferred="true">Bosnie-Herzégovine</Option>
+        </Options>
+        <Options key="BB">
+            <Option preferred="true">Barbade</Option>
+        </Options>
+        <Options key="BD">
+            <Option preferred="true">Bangladesh</Option>
+        </Options>
+        <Options key="BE">
+            <Option preferred="true">Belgique</Option>
+        </Options>
+        <Options key="BF">
+            <Option preferred="true">Burkina Faso</Option>
+        </Options>
+        <Options key="BG">
+            <Option preferred="true">Bulgarie</Option>
+        </Options>
+        <Options key="BH">
+            <Option preferred="true">Bahreïn</Option>
+        </Options>
+        <Options key="BI">
+            <Option preferred="true">Burundi</Option>
+        </Options>
+        <Options key="BJ">
+            <Option preferred="true">Bénin</Option>
+        </Options>
+        <Options key="BL">
+            <Option preferred="true">Saint-Barthélemy</Option>
+            <Option>Saint-Barthélemy (Antilles françaises)</Option>
+        </Options>
+        <Options key="BM">
+            <Option preferred="true">Bermudes</Option>
+        </Options>
+        <Options key="BN">
+            <Option preferred="true">Brunéi Darussalam</Option>
+            <Option>Brunei</Option>
+        </Options>
+        <Options key="BO">
+            <Option preferred="true">Bolivie</Option>
+            <Option>Bolivie (État plurinational de)</Option>
+        </Options>
+        <Options key="BQ">
+            <Option preferred="true">Pays-Bas caribéens</Option>
+        </Options>
+        <Options key="BR">
+            <Option preferred="true">Brésil</Option>
+        </Options>
+        <Options key="BS">
+            <Option preferred="true">Bahamas</Option>
+        </Options>
+        <Options key="BT">
+            <Option preferred="true">Bhoutan</Option>
+        </Options>
+        <Options key="BW">
+            <Option preferred="true">Botswana</Option>
+        </Options>
+        <Options key="BY">
+            <Option preferred="true">Biélorussie</Option>
+        </Options>
+        <Options key="BZ">
+            <Option preferred="true">Belize</Option>
+        </Options>
+        <Options key="CA">
+            <Option preferred="true">Canada</Option>
+        </Options>
+        <Options key="CC">
+            <Option preferred="true">Îles Cocos</Option>
+        </Options>
+        <Options key="CD">
+            <Option preferred="true">Congo-Kinshasa</Option>
+            <Option>Congo, république démocratique</Option>
+            <Option>République démocratique du Congo</Option>
+            <Option>Rép. dém. du Congo</Option>
+        </Options>
+        <Options key="CF">
+            <Option preferred="true">République centrafricaine</Option>
+            <Option>Centrafrique</Option>
+        </Options>
+        <Options key="CG">
+            <Option preferred="true">Congo-Brazzaville</Option>
+            <Option>Congo, république</Option>
+            <Option>République du Congo</Option>
+            <Option>Congo</Option>
+        </Options>
+        <Options key="CH">
+            <Option preferred="true">Suisse</Option>
+        </Options>
+        <Options key="CI">
+            <Option preferred="true">Côte d’Ivoire</Option>
+        </Options>
+        <Options key="CK">
+            <Option preferred="true">Îles Cook</Option>
+        </Options>
+        <Options key="CL">
+            <Option preferred="true">Chili</Option>
+        </Options>
+        <Options key="CM">
+            <Option preferred="true">Cameroun</Option>
+        </Options>
+        <Options key="CN">
+            <Option preferred="true">Chine</Option>
+            <Option>République populaire de Chine</Option>
+        </Options>
+        <Options key="CO">
+            <Option preferred="true">Colombie</Option>
+        </Options>
+        <Options key="CR">
+            <Option preferred="true">Costa Rica</Option>
+        </Options>
+        <Options key="CU">
+            <Option preferred="true">Cuba</Option>
+        </Options>
+        <Options key="CV">
+            <Option preferred="true">Cap-Vert</Option>
+        </Options>
+        <Options key="CW">
+            <Option preferred="true">Curaçao</Option>
+        </Options>
+        <Options key="CX">
+            <Option preferred="true">Île Christmas</Option>
+            <Option>Île Christmas (Australie)</Option>
+        </Options>
+        <Options key="CY">
+            <Option preferred="true">Chypre</Option>
+        </Options>
+        <Options key="CZ">
+            <Option preferred="true">Tchéquie</Option>
+            <Option>République tchèque</Option>
+            <Option>Tchèque</Option>
+        </Options>
+        <Options key="DE">
+            <Option preferred="true">Allemagne</Option>
+        </Options>
+        <Options key="DG">
+            <Option preferred="true">Diego Garcia</Option>
+        </Options>
+        <Options key="DJ">
+            <Option preferred="true">Djibouti</Option>
+        </Options>
+        <Options key="DK">
+            <Option preferred="true">Danemark</Option>
+        </Options>
+        <Options key="DM">
+            <Option preferred="true">Dominique</Option>
+        </Options>
+        <Options key="DO">
+            <Option preferred="true">République dominicaine</Option>
+            <Option>Dominicaine</Option>
+        </Options>
+        <Options key="DZ">
+            <Option preferred="true">Algérie</Option>
+        </Options>
+        <Options key="EA">
+            <Option preferred="true">Ceuta et Melilla</Option>
+        </Options>
+        <Options key="EC">
+            <Option preferred="true">Équateur</Option>
+        </Options>
+        <Options key="EE">
+            <Option preferred="true">Estonie</Option>
+        </Options>
+        <Options key="EG">
+            <Option preferred="true">Égypte</Option>
+        </Options>
+        <Options key="EH">
+            <Option preferred="true">Sahara occidental</Option>
+        </Options>
+        <Options key="ER">
+            <Option preferred="true">Érythrée</Option>
+        </Options>
+        <Options key="ES">
+            <Option preferred="true">Espagne</Option>
+        </Options>
+        <Options key="ET">
+            <Option preferred="true">Éthiopie</Option>
+        </Options>
+        <Options key="FI">
+            <Option preferred="true">Finlande</Option>
+        </Options>
+        <Options key="FJ">
+            <Option preferred="true">Fidji</Option>
+        </Options>
+        <Options key="FK">
+            <Option preferred="true">Îles Malouines</Option>
+        </Options>
+        <Options key="FM">
+            <Option preferred="true">États fédérés de Micronésie</Option>
+            <Option>Micronésie</Option>
+            <Option>Micronésie (États fédérés de)</Option>
+        </Options>
+        <Options key="FO">
+            <Option preferred="true">Îles Féroé</Option>
+        </Options>
+        <Options key="FR">
+            <Option preferred="true">France</Option>
+        </Options>
+        <Options key="GA">
+            <Option preferred="true">Gabon</Option>
+        </Options>
+        <Options key="GB">
+            <Option preferred="true">Royaume-Uni</Option>
+            <Option>Grande-Bretagne</Option>
+            <Option>Royaume-Uni de Grande-Bretagne et d'Irlande du Nord</Option>
+        </Options>
+        <Options key="GD">
+            <Option preferred="true">Grenade</Option>
+        </Options>
+        <Options key="GE">
+            <Option preferred="true">Géorgie</Option>
+        </Options>
+        <Options key="GF">
+            <Option preferred="true">Guyane française</Option>
+            <Option>Guyane</Option>
+        </Options>
+        <Options key="GG">
+            <Option preferred="true">Guernesey</Option>
+        </Options>
+        <Options key="GH">
+            <Option preferred="true">Ghana</Option>
+        </Options>
+        <Options key="GI">
+            <Option preferred="true">Gibraltar</Option>
+        </Options>
+        <Options key="GL">
+            <Option preferred="true">Groenland</Option>
+        </Options>
+        <Options key="GM">
+            <Option preferred="true">Gambie</Option>
+        </Options>
+        <Options key="GN">
+            <Option preferred="true">Guinée</Option>
+        </Options>
+        <Options key="GP">
+            <Option preferred="true">Guadeloupe</Option>
+        </Options>
+        <Options key="GQ">
+            <Option preferred="true">Guinée équatoriale</Option>
+        </Options>
+        <Options key="GR">
+            <Option preferred="true">Grèce</Option>
+        </Options>
+        <Options key="GS">
+            <Option preferred="true">Géorgie du Sud et îles Sandwich du Sud</Option>
+            <Option>Géorgie du Sud-et-les Îles Sandwich du Sud</Option>
+        </Options>
+        <Options key="GT">
+            <Option preferred="true">Guatemala</Option>
+            <Option>Guatémala</Option>
+        </Options>
+        <Options key="GU">
+            <Option preferred="true">Guam</Option>
+        </Options>
+        <Options key="GW">
+            <Option preferred="true">Guinée-Bissau</Option>
+        </Options>
+        <Options key="GY">
+            <Option preferred="true">Guyana</Option>
+            <Option>Guyane</Option>
+        </Options>
+        <Options key="HK">
+            <Option preferred="true">R.A.S. chinoise de Hong Kong</Option>
+            <Option>Hong Kong</Option>
+        </Options>
+        <Options key="HN">
+            <Option preferred="true">Honduras</Option>
+        </Options>
+        <Options key="HR">
+            <Option preferred="true">Croatie</Option>
+        </Options>
+        <Options key="HT">
+            <Option preferred="true">Haïti</Option>
+        </Options>
+        <Options key="HU">
+            <Option preferred="true">Hongrie</Option>
+        </Options>
+        <Options key="IC">
+            <Option preferred="true">Îles Canaries</Option>
+        </Options>
+        <Options key="ID">
+            <Option preferred="true">Indonésie</Option>
+        </Options>
+        <Options key="IE">
+            <Option preferred="true">Irlande</Option>
+        </Options>
+        <Options key="IL">
+            <Option preferred="true">Israël</Option>
+        </Options>
+        <Options key="IM">
+            <Option preferred="true">Île de Man</Option>
+        </Options>
+        <Options key="IN">
+            <Option preferred="true">Inde</Option>
+        </Options>
+        <Options key="IO">
+            <Option preferred="true">Territoire britannique de l’océan Indien</Option>
+        </Options>
+        <Options key="IQ">
+            <Option preferred="true">Irak</Option>
+            <Option>Iraq</Option>
+        </Options>
+        <Options key="IR">
+            <Option preferred="true">Iran</Option>
+            <Option>Iran (République islamique d')</Option>
+        </Options>
+        <Options key="IS">
+            <Option preferred="true">Islande</Option>
+        </Options>
+        <Options key="IT">
+            <Option preferred="true">Italie</Option>
+        </Options>
+        <Options key="JE">
+            <Option preferred="true">Jersey</Option>
+        </Options>
+        <Options key="JM">
+            <Option preferred="true">Jamaïque</Option>
+        </Options>
+        <Options key="JO">
+            <Option preferred="true">Jordanie</Option>
+        </Options>
+        <Options key="JP">
+            <Option preferred="true">Japon</Option>
+        </Options>
+        <Options key="KE">
+            <Option preferred="true">Kenya</Option>
+        </Options>
+        <Options key="KG">
+            <Option preferred="true">Kirghizistan</Option>
+        </Options>
+        <Options key="KH">
+            <Option preferred="true">Cambodge</Option>
+        </Options>
+        <Options key="KI">
+            <Option preferred="true">Kiribati</Option>
+        </Options>
+        <Options key="KM">
+            <Option preferred="true">Comores</Option>
+        </Options>
+        <Options key="KN">
+            <Option preferred="true">Saint-Christophe-et-Niévès</Option>
+            <Option>Saint-Christophe (Saint-Kitts)-et-Nevis</Option>
+            <Option>Saint-Kitts-et-Nevis</Option>
+        </Options>
+        <Options key="KP">
+            <Option preferred="true">Corée du Nord</Option>
+            <Option>Rép. pop. dém. de Corée</Option>
+            <Option>République populaire démocratique de Corée</Option>
+        </Options>
+        <Options key="KR">
+            <Option preferred="true">Corée du Sud</Option>
+            <Option>Corée</Option>
+            <Option>République de Corée</Option>
+        </Options>
+        <Options key="KW">
+            <Option preferred="true">Koweït</Option>
+            <Option>Kuwait</Option>
+        </Options>
+        <Options key="KY">
+            <Option preferred="true">Îles Caïmans</Option>
+        </Options>
+        <Options key="KZ">
+            <Option preferred="true">Kazakhstan</Option>
+        </Options>
+        <Options key="LA">
+            <Option preferred="true">Laos</Option>
+            <Option>Lao</Option>
+            <Option>République démocratique populaire lao</Option>
+        </Options>
+        <Options key="LB">
+            <Option preferred="true">Liban</Option>
+        </Options>
+        <Options key="LC">
+            <Option preferred="true">Sainte-Lucie</Option>
+        </Options>
+        <Options key="LI">
+            <Option preferred="true">Liechtenstein</Option>
+        </Options>
+        <Options key="LK">
+            <Option preferred="true">Sri Lanka</Option>
+        </Options>
+        <Options key="LR">
+            <Option preferred="true">Libéria</Option>
+            <Option>Liberia</Option>
+        </Options>
+        <Options key="LS">
+            <Option preferred="true">Lesotho</Option>
+        </Options>
+        <Options key="LT">
+            <Option preferred="true">Lituanie</Option>
+        </Options>
+        <Options key="LU">
+            <Option preferred="true">Luxembourg</Option>
+        </Options>
+        <Options key="LV">
+            <Option preferred="true">Lettonie</Option>
+        </Options>
+        <Options key="LY">
+            <Option preferred="true">Libye</Option>
+            <Option>Jamahiriya libyenne</Option>
+            <Option>Jamahiriya arabe libyenne</Option>
+        </Options>
+        <Options key="MA">
+            <Option preferred="true">Maroc</Option>
+        </Options>
+        <Options key="MC">
+            <Option preferred="true">Monaco</Option>
+        </Options>
+        <Options key="MD">
+            <Option preferred="true">Moldavie</Option>
+            <Option>Moldova</Option>
+            <Option>République de Moldavie</Option>
+        </Options>
+        <Options key="ME">
+            <Option preferred="true">Monténégro</Option>
+        </Options>
+        <Options key="MF">
+            <Option preferred="true">Saint-Martin</Option>
+            <Option>Saint-Martin (île)</Option>
+        </Options>
+        <Options key="MG">
+            <Option preferred="true">Madagascar</Option>
+        </Options>
+        <Options key="MH">
+            <Option preferred="true">Îles Marshall</Option>
+        </Options>
+        <Options key="MK">
+            <Option preferred="true">Macédoine</Option>
+            <Option>L'ex-République yougoslave de Macédoine</Option>
+        </Options>
+        <Options key="ML">
+            <Option preferred="true">Mali</Option>
+        </Options>
+        <Options key="MM">
+            <Option preferred="true">Myanmar (Birmanie)</Option>
+            <Option>Myanmar</Option>
+            <Option>Birmanie</Option>
+        </Options>
+        <Options key="MN">
+            <Option preferred="true">Mongolie</Option>
+        </Options>
+        <Options key="MO">
+            <Option preferred="true">R.A.S. chinoise de Macao</Option>
+            <Option>Macao</Option>
+        </Options>
+        <Options key="MP">
+            <Option preferred="true">Îles Mariannes du Nord</Option>
+        </Options>
+        <Options key="MQ">
+            <Option preferred="true">Martinique</Option>
+        </Options>
+        <Options key="MR">
+            <Option preferred="true">Mauritanie</Option>
+        </Options>
+        <Options key="MS">
+            <Option preferred="true">Montserrat</Option>
+        </Options>
+        <Options key="MT">
+            <Option preferred="true">Malte</Option>
+        </Options>
+        <Options key="MU">
+            <Option preferred="true">Maurice</Option>
+        </Options>
+        <Options key="MV">
+            <Option preferred="true">Maldives</Option>
+        </Options>
+        <Options key="MW">
+            <Option preferred="true">Malawi</Option>
+        </Options>
+        <Options key="MX">
+            <Option preferred="true">Mexique</Option>
+        </Options>
+        <Options key="MY">
+            <Option preferred="true">Malaisie</Option>
+        </Options>
+        <Options key="MZ">
+            <Option preferred="true">Mozambique</Option>
+        </Options>
+        <Options key="NA">
+            <Option preferred="true">Namibie</Option>
+        </Options>
+        <Options key="NC">
+            <Option preferred="true">Nouvelle-Calédonie</Option>
+        </Options>
+        <Options key="NE">
+            <Option preferred="true">Niger</Option>
+        </Options>
+        <Options key="NF">
+            <Option preferred="true">Île Norfolk</Option>
+        </Options>
+        <Options key="NG">
+            <Option preferred="true">Nigéria</Option>
+            <Option>Nigeria</Option>
+        </Options>
+        <Options key="NI">
+            <Option preferred="true">Nicaragua</Option>
+        </Options>
+        <Options key="NL">
+            <Option preferred="true">Pays-Bas</Option>
+        </Options>
+        <Options key="NO">
+            <Option preferred="true">Norvège</Option>
+        </Options>
+        <Options key="NP">
+            <Option preferred="true">Népal</Option>
+        </Options>
+        <Options key="NR">
+            <Option preferred="true">Nauru</Option>
+        </Options>
+        <Options key="NU">
+            <Option preferred="true">Niue</Option>
+        </Options>
+        <Options key="NZ">
+            <Option preferred="true">Nouvelle-Zélande</Option>
+        </Options>
+        <Options key="OM">
+            <Option preferred="true">Oman</Option>
+        </Options>
+        <Options key="PA">
+            <Option preferred="true">Panama</Option>
+            <Option>Panamá</Option>
+        </Options>
+        <Options key="PE">
+            <Option preferred="true">Pérou</Option>
+        </Options>
+        <Options key="PF">
+            <Option preferred="true">Polynésie française</Option>
+        </Options>
+        <Options key="PG">
+            <Option preferred="true">Papouasie-Nouvelle-Guinée</Option>
+            <Option>Papouasie - Nouvelle-Guinée</Option>
+        </Options>
+        <Options key="PH">
+            <Option preferred="true">Philippines</Option>
+        </Options>
+        <Options key="PK">
+            <Option preferred="true">Pakistan</Option>
+        </Options>
+        <Options key="PL">
+            <Option preferred="true">Pologne</Option>
+        </Options>
+        <Options key="PM">
+            <Option preferred="true">Saint-Pierre-et-Miquelon</Option>
+        </Options>
+        <Options key="PN">
+            <Option preferred="true">Îles Pitcairn</Option>
+        </Options>
+        <Options key="PR">
+            <Option preferred="true">Porto Rico</Option>
+        </Options>
+        <Options key="PS">
+            <Option preferred="true">Territoires palestiniens</Option>
+        </Options>
+        <Options key="PT">
+            <Option preferred="true">Portugal</Option>
+        </Options>
+        <Options key="PW">
+            <Option preferred="true">Palaos</Option>
+        </Options>
+        <Options key="PY">
+            <Option preferred="true">Paraguay</Option>
+        </Options>
+        <Options key="QA">
+            <Option preferred="true">Qatar</Option>
+        </Options>
+        <Options key="RE">
+            <Option preferred="true">La Réunion</Option>
+            <Option>Réunion</Option>
+        </Options>
+        <Options key="RO">
+            <Option preferred="true">Roumanie</Option>
+        </Options>
+        <Options key="RS">
+            <Option preferred="true">Serbie</Option>
+        </Options>
+        <Options key="RU">
+            <Option preferred="true">Russie</Option>
+            <Option>Fédération de Russie</Option>
+        </Options>
+        <Options key="RW">
+            <Option preferred="true">Rwanda</Option>
+        </Options>
+        <Options key="SA">
+            <Option preferred="true">Arabie saoudite</Option>
+        </Options>
+        <Options key="SB">
+            <Option preferred="true">Îles Salomon</Option>
+            <Option>Salomon</Option>
+        </Options>
+        <Options key="SC">
+            <Option preferred="true">Seychelles</Option>
+        </Options>
+        <Options key="SD">
+            <Option preferred="true">Soudan</Option>
+        </Options>
+        <Options key="SE">
+            <Option preferred="true">Suède</Option>
+        </Options>
+        <Options key="SG">
+            <Option preferred="true">Singapour</Option>
+        </Options>
+        <Options key="SH">
+            <Option preferred="true">Sainte-Hélène</Option>
+            <Option>Sainte-Hélène (territoire)</Option>
+        </Options>
+        <Options key="SI">
+            <Option preferred="true">Slovénie</Option>
+        </Options>
+        <Options key="SJ">
+            <Option preferred="true">Svalbard et Jan Mayen</Option>
+            <Option>Svalbard</Option>
+        </Options>
+        <Options key="SK">
+            <Option preferred="true">Slovaquie</Option>
+        </Options>
+        <Options key="SL">
+            <Option preferred="true">Sierra Leone</Option>
+        </Options>
+        <Options key="SM">
+            <Option preferred="true">Saint-Marin</Option>
+        </Options>
+        <Options key="SN">
+            <Option preferred="true">Sénégal</Option>
+        </Options>
+        <Options key="SO">
+            <Option preferred="true">Somalie</Option>
+        </Options>
+        <Options key="SR">
+            <Option preferred="true">Suriname</Option>
+        </Options>
+        <Options key="SS">
+            <Option preferred="true">Soudan du Sud</Option>
+        </Options>
+        <Options key="ST">
+            <Option preferred="true">Sao Tomé-et-Principe</Option>
+        </Options>
+        <Options key="SV">
+            <Option preferred="true">Salvador</Option>
+            <Option>El Salvador</Option>
+        </Options>
+        <Options key="SX">
+            <Option preferred="true">Saint-Martin (partie néerlandaise)</Option>
+        </Options>
+        <Options key="SY">
+            <Option preferred="true">Syrie</Option>
+            <Option>Syrienne</Option>
+            <Option>République arabe syrienne</Option>
+        </Options>
+        <Options key="SZ">
+            <Option preferred="true">Eswatini</Option>
+            <Option>Swaziland</Option>
+        </Options>
+        <Options key="TA">
+            <Option preferred="true">Tristan da Cunha</Option>
+        </Options>
+        <Options key="TC">
+            <Option preferred="true">Îles Turques-et-Caïques</Option>
+        </Options>
+        <Options key="TD">
+            <Option preferred="true">Tchad</Option>
+        </Options>
+        <Options key="TF">
+            <Option preferred="true">Terres australes françaises</Option>
+            <Option>Terres australes et antarctiques françaises</Option>
+        </Options>
+        <Options key="TG">
+            <Option preferred="true">Togo</Option>
+        </Options>
+        <Options key="TH">
+            <Option preferred="true">Thaïlande</Option>
+        </Options>
+        <Options key="TJ">
+            <Option preferred="true">Tadjikistan</Option>
+        </Options>
+        <Options key="TK">
+            <Option preferred="true">Tokelau</Option>
+        </Options>
+        <Options key="TL">
+            <Option preferred="true">Timor oriental</Option>
+            <Option>Timor-Leste</Option>
+        </Options>
+        <Options key="TM">
+            <Option preferred="true">Turkménistan</Option>
+        </Options>
+        <Options key="TN">
+            <Option preferred="true">Tunisie</Option>
+        </Options>
+        <Options key="TO">
+            <Option preferred="true">Tonga</Option>
+        </Options>
+        <Options key="TR">
+            <Option preferred="true">Turquie</Option>
+        </Options>
+        <Options key="TT">
+            <Option preferred="true">Trinité-et-Tobago</Option>
+        </Options>
+        <Options key="TV">
+            <Option preferred="true">Tuvalu</Option>
+        </Options>
+        <Options key="TW">
+            <Option preferred="true">Taïwan</Option>
+        </Options>
+        <Options key="TZ">
+            <Option preferred="true">Tanzanie</Option>
+            <Option>République-Unie de Tanzanie</Option>
+        </Options>
+        <Options key="UA">
+            <Option preferred="true">Ukraine</Option>
+        </Options>
+        <Options key="UG">
+            <Option preferred="true">Ouganda</Option>
+        </Options>
+        <Options key="UM">
+            <Option preferred="true">Îles mineures éloignées des États-Unis</Option>
+        </Options>
+        <Options key="US">
+            <Option preferred="true">États-Unis</Option>
+            <Option>Amérique</Option>
+            <Option>États-Unis d'Amérique</Option>
+        </Options>
+        <Options key="UY">
+            <Option preferred="true">Uruguay</Option>
+        </Options>
+        <Options key="UZ">
+            <Option preferred="true">Ouzbékistan</Option>
+        </Options>
+        <Options key="VA">
+            <Option preferred="true">État de la Cité du Vatican</Option>
+            <Option>Vatican</Option>
+        </Options>
+        <Options key="VC">
+            <Option preferred="true">Saint-Vincent-et-les-Grenadines</Option>
+        </Options>
+        <Options key="VE">
+            <Option preferred="true">Venezuela</Option>
+            <Option>Vénézuela</Option>
+            <Option>Venezuela (République bolivarienne du)</Option>
+        </Options>
+        <Options key="VG">
+            <Option preferred="true">Îles Vierges britanniques</Option>
+        </Options>
+        <Options key="VI">
+            <Option preferred="true">Îles Vierges des États-Unis</Option>
+            <Option>Îles Vierges</Option>
+        </Options>
+        <Options key="VN">
+            <Option preferred="true">Vietnam</Option>
+            <Option>Viêt Nam</Option>
+            <Option>Viet Nam</Option>
+        </Options>
+        <Options key="VU">
+            <Option preferred="true">Vanuatu</Option>
+        </Options>
+        <Options key="WF">
+            <Option preferred="true">Wallis-et-Futuna</Option>
+        </Options>
+        <Options key="WS">
+            <Option preferred="true">Samoa</Option>
+        </Options>
+        <Options key="XK">
+            <Option preferred="true">Kosovo</Option>
+        </Options>
+        <Options key="YE">
+            <Option preferred="true">Yémen</Option>
+        </Options>
+        <Options key="YT">
+            <Option preferred="true">Mayotte</Option>
+        </Options>
+        <Options key="ZA">
+            <Option preferred="true">Afrique du Sud</Option>
+        </Options>
+        <Options key="ZM">
+            <Option preferred="true">Zambie</Option>
+        </Options>
+        <Options key="ZW">
+            <Option preferred="true">Zimbabwe</Option>
+        </Options>
+    </Texts>
+    <Texts prefix="area">
+        <Text key="AF">Afrique</Text>
+        <Text key="AN">Antarctique</Text>
+        <Text key="AS">Asie</Text>
+        <Text key="EU">Europe</Text>
+        <Text key="NA">Amérique du Nord</Text>
+        <Text key="OC">Océanie</Text>
+        <Text key="SA">Amérique du Sud</Text>
+    </Texts>
+</Language>

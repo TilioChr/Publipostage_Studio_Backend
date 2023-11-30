@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffwmf xmlns="http://www.compart.com/ns/mff/wmf" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--A font is specified by the attributes "family", "weight" and
+                "style".-->
+
+   <fontlist>
+      <font family="arial" reftype="truetype">
+         <face weight="medium" style="upright" fontfile="arial" fontfiletype="truetype"/>
+         <face weight="bold" style="upright" fontfile="arialbd" fontfiletype="truetype"/>
+         <face weight="medium" style="italic" fontfile="ariali" fontfiletype="truetype"/>
+      </font>
+
+      <font family="times new roman" reftype="truetype">
+         <face weight="medium" style="upright" fontfile="times" fontfiletype="truetype"/>
+         <face weight="bold" style="upright" fontfile="timesbd" fontfiletype="truetype"/>
+         <face weight="medium" style="italic" fontfile="timesi" fontfiletype="truetype"/>
+      </font>
+   </fontlist>
+
+   <!-- = Files ==============================================================
+                type can be "TrueType", "Type1Font", "Type1Metrics" if it is not defined, the path
+                will be used for all types, extension can be emtpy, <extension> or wildcard
+                ======================================================================
+            -->
+
+   <resourcelist>
+      <fileslist>
+         <files path="c:\WINDOWS\Fonts" type="truetype" extension="ttf"/>
+         <files path="\resource" type="icc" extension="icc"/>
+         <files path="\resource" type="icc" extension="icm"/>
+      </fileslist>
+   </resourcelist>
+</mffwmf>

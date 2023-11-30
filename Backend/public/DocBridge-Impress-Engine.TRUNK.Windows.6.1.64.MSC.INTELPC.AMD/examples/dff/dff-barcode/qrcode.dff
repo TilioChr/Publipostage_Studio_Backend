@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+  xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+  <head>
+    <title>QR Code</title>
+    <style type="text/css">
+      @import url("../../common/cp-sample-style.css");
+      /* see https://developer.mozilla.org/de/docs/Web/CSS/image-rendering */
+      .cpbarcode {
+          image-rendering: -moz-crisp-edges; /* Firefox */
+          image-rendering: -o-crisp-edges; /* Opera */
+          image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+          image-rendering: crisp-edges;
+          -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+      }</style>
+  </head>
+  <body>
+    <xi:include href="../../common/standardheader.dfb"/>
+    <p><dff:barcode barcode-type="qrcode" width="3cm" height="3cm"
+        >http://www.comparting.de</dff:barcode></p>
+  </body>
+</html>

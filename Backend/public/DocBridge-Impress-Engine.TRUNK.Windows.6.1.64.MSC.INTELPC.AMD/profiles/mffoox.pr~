@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffoox xmlns="http://www.compart.com/ns/mff/oox" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+
+   <input>
+      <defaultsetting>
+         <!--The default pointsize setting, used if no other pointsize is
+                specified.-->
+
+         <pointsize value="10"/>
+
+         <!--Defines the default column width in an Excel file. The default
+                value is 0.72 inch. To find this value, go to File > Options > Advanced > Display >
+                and select an option from the Ruler Units list. Then got to View > Workbook Views
+                and select the view mode Page Layout. Finally, go to Home > Format > Default Width
+                to get the default column width value in the selected measurement
+                unit.-->
+
+         <ColumnWidth value="0.72 in"/>
+      </defaultsetting>
+
+      <!--Specifies the "pagedefinition" for page output.-->
+
+      <pagedefinitionlist>
+         <!--Set the default paper size. Letter for US and A4 for EU. It is recommended
+                to always use this setting. If <inputtray> is also specified in the profile,
+                the papersize will be overwritten by the value used in
+                <inputtray>-->
+
+         <pagedefinition name="Default">
+            <!--The declaration of a paper size. The paper size can be
+                specified by the name of a standard paper size with orientation or by numeric
+                specification of width and length.-->
+            <!--Attribute: format @comment: The name of a standard paper size. Examples for possible
+                values are "A4" and "LETTER". A complete list of the possible values is included in
+                the DocBridge Mill Manual. This attribute does not have a default
+                value.-->
+            <!--Attribute: orientation @comment: The orientation of a standard paper size. Possible values of
+                this attribute are "Portrait", "Landscape", "RevPortrait", and "RevLandscape". The
+                default value of this attribute is "Portrait".-->
+            <!--Attribute: height @comment: The height of the paper sheet. Valid length units are "tcm",
+                "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch", and
+                "ln".-->
+            <!--Attribute: width @comment: The width of the paper sheet. Valid length units are "tcm",
+                "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch", and
+                "ln".-->
+
+            <papersize format="A4" orientation="Portrait" height="29.7 cm" width="21 cm"/>
+         </pagedefinition>
+      </pagedefinitionlist>
+
+      <!--Settings for handling formfields-->
+
+      <formfields textonly="true" altfont="Courier"/>
+   </input>
+
+   <!--Die Definitionen für die Font-ZuordnungFont matching definitions-->
+
+   <fontlist>
+      <font family="Arial" reftype="TrueType">
+         <face weight="Medium" style="Upright" fontfile="arial" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Upright" fontfile="arialbd" fontfiletype="TrueType"/>
+         <face weight="Medium" style="Italic" fontfile="ariali" fontfiletype="TrueType"/>
+         <face weight="Bold" style="Italic" fontfile="arialbi" fontfiletype="TrueType"/>
+      </font>
+   </fontlist>
+
+   <!--Locations where the font resources are stored-->
+
+   <resourcelist>
+      <fileslist>
+         <!--Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type" and "extension" are optional.
+                However, the more detailed the settings are, the more specific the search will be.
+                Valid values for "type" are: "overlay", "pageSegment", "codedFont", "codePage",
+                "charSet", "formDef", "resourceLib", "pageDef", "object", "icc", "documentIndex". If
+                the type is not defined, the path will be used for all types. The "extension" can be
+                emtpy, <extension> or a wildcard. If the "resolution" is not specified,
+                resources with any resolution will be searched in the path. -->
+
+         <files path="." type="TrueType" extension="ttf"/>
+      </fileslist>
+   </resourcelist>
+</mffoox>

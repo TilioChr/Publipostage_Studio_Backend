@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/xfo">
+   <xs:element name="mffxfo">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen sowohl für die Eingabe als auch für
+                die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for both input and output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="generateoverlays" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">Write overlays (forms).</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Specifies how overlays are processed.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Definiert wie Overlays verarbeitet werden. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Eingabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for input</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="GermanOrthographyNew" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Nutzung der neuen deutschen Rechtschreibung</xs:documentation>
+                           <xs:documentation xml:lang="en-EN">Usage of the new german orthography</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="LeftOrientatedColumnBalance" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Auffüllen der Spalten von links bei mehrspaltiger Ausgabe mit
+                cpfo:column-balance</xs:documentation>
+                           <xs:documentation xml:lang="en-EN">Columns filled from the left for multi-column output with
+                cpfo:column-balance</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="DefaultTaggingRoles" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Automatisches Generieren der Rollen bzw. Tags für die
+                Dokumentstruktur</xs:documentation>
+                           <xs:documentation xml:lang="en-EN">Automatic generation of the roles (resp. tags) for the
+                document structure</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="RelaxTableCellNumber" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="colorprofilelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="colorprofile" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:attribute name="name" default="GenericRGB" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN">Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct or dummy device names must be specified </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="" type="xs:string"/>
+                                    <xs:attribute name="weight" default="medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="ultralight"/>
+                                             <xs:enumeration value="extralight"/>
+                                             <xs:enumeration value="light"/>
+                                             <xs:enumeration value="semilight"/>
+                                             <xs:enumeration value="medium"/>
+                                             <xs:enumeration value="semibold"/>
+                                             <xs:enumeration value="bold"/>
+                                             <xs:enumeration value="extrabold"/>
+                                             <xs:enumeration value="ultrabold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="upright"/>
+                                             <xs:enumeration value="italic"/>
+                                             <xs:enumeration value="underscore"/>
+                                             <xs:enumeration value="overstruck"/>
+                                             <xs:enumeration value="outline"/>
+                                             <xs:enumeration value="serif"/>
+                                             <xs:enumeration value="sansserif"/>
+                                             <xs:enumeration value="proportional"/>
+                                             <xs:enumeration value="monospaced"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="ultracondensed"/>
+                                             <xs:enumeration value="extracondensed"/>
+                                             <xs:enumeration value="condensed"/>
+                                             <xs:enumeration value="Semicondensed"/>
+                                             <xs:enumeration value="normal"/>
+                                             <xs:enumeration value="semiexpanded"/>
+                                             <xs:enumeration value="expanded"/>
+                                             <xs:enumeration value="extraexpanded"/>
+                                             <xs:enumeration value="ultraexpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="truetype">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="type1"/>
+                                             <xs:enumeration value="truetype"/>
+                                             <xs:enumeration value="pcl"/>
+                                             <xs:enumeration value="afpzfont"/>
+                                             <xs:enumeration value="xrx"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="default" default="false">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="true"/>
+                                             <xs:enumeration value="false"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="arial" type="xs:string"/>
+                           <xs:attribute name="reftype" default="truetype">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="type1"/>
+                                    <xs:enumeration value="truetype"/>
+                                    <xs:enumeration value="pcl"/>
+                                    <xs:enumeration value="afpzfont"/>
+                                    <xs:enumeration value="afp"/>
+                                    <xs:enumeration value="xrx"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="EN"> = Files ==============================================================
+                type can be "TrueType", "Type1Font", "Type1Metrics" if it is not defined, the path
+                will be used for all types, extension can be emtpy, &lt;extension&gt; or wildcard
+                ======================================================================
+            </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="en-US">Several directories can be specified for the search for
+                external resources. The "path" is mandatory. "Type", "extension" and "resolution"
+                are optional. However, the more detailed the settings are, the more specific the
+                search will be. </xs:documentation>
+                                    <xs:documentation xml:lang="de-DE">Es können mehrere Verzeichnisse für externe Ressourcen
+                bestimmt werden. Der Pfad ("path") muss angegeben werden. Typ ("type"),
+                Dateierweiterung ("extension") und Auflösung ("resolution") sind optional. Je mehr
+                Angaben gemacht werden, desto genauer wird die Suche eingegrenzt.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="" type="xs:string"/>
+                                    <xs:attribute name="type">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:NMTOKEN">
+                                             <xs:enumeration value="pagesegment"/>
+                                             <xs:enumeration value="overlay"/>
+                                             <xs:enumeration value="codepage"/>
+                                             <xs:enumeration value="imbedfiles"/>
+                                             <xs:enumeration value="codedfont"/>
+                                             <xs:enumeration value="charset"/>
+                                             <xs:enumeration value="formdef"/>
+                                             <xs:enumeration value="mediummap"/>
+                                             <xs:enumeration value="pagedef"/>
+                                             <xs:enumeration value="program"/>
+                                             <xs:enumeration value="resourcelib"/>
+                                             <xs:enumeration value="reslib"/>
+                                             <xs:enumeration value="object"/>
+                                             <xs:enumeration value="truetype"/>
+                                             <xs:enumeration value="type1font"/>
+                                             <xs:enumeration value="type1"/>
+                                             <xs:enumeration value="type1metrics"/>
+                                             <xs:enumeration value="pcl"/>
+                                             <xs:enumeration value="icc"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="extension" default="" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffxif xmlns="http://www.compart.com/ns/mff/xif" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct or dummy device names must be specified -->
+
+   <fontlist embed="Program">
+      <font family="CORPORATE">
+         <!--<face weight="Medium" width="Normal" style="Upright" fontfile="arial"
+               fontfiletype="Type1"/>-->
+         <!--<face weight="Bold" width="Normal" style="Upright" fontfile="CORPR___"
+               fontfiletype="Type1"/>-->
+      </font>
+   </fontlist>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--Resolve references to other pages (overlays, ...).-->
+
+      <resolveoverlays value="false"/>
+
+      <!--Specifies the output codepage used for input data translation and the xml
+                encoding of the output file by the iana codepage value.-->
+
+      <codepage iana="UTF-8"/>
+
+      <imagecompressions>
+         <!--Control image encoding in xif output. Multiple
+                xml-imagecompression-elements are allowed (basically one for every possible
+                (bitsperpixel, colorformat) pairing. Valid values for bits per pixel: "1", "8",
+                "24". Valid values for colorformat: "grayscale", "rgb". Monochrome is 1 bitperpixel
+                grayscale. Valid values for compression are: "default", "ppm_text". With the value
+                "default", the oringal image compression from input file will be kept. With the
+                value "ppm_text", the image will be uncompressed and encoded into ascii version of
+                ppm image for human readable output. -->
+
+         <imagecompression bitsperpixel="1" colorformat="GrayScale" compression="Default"/>
+         <imagecompression bitsperpixel="8" colorformat="GrayScale" compression="Default"/>
+         <imagecompression bitsperpixel="24" colorformat="Rgb" compression="Default"/>
+      </imagecompressions>
+
+      <!-- NONE - Generate core font name(Courier, Helvetica, Time) according to the
+                font attributes (weight, style etc), the fonts just reference(not embed).
+                WRITEFONTSIFISEMBEDDEDININPUT - Generate core font name in case that is not embedded
+                it in the input file, if the font is embedded in the input file then it will be
+                written. -->
+
+      <fonthandling default="None"/>
+   </output>
+
+   <traylist>
+      <inputtrays>
+         <!--The tray list maps the used tray names to names used by Compart
+                software.-->
+
+         <inputtray deviceid="1" name="Tray 1"/>
+         <inputtray deviceid="2" name="Tray 2"/>
+         <inputtray deviceid="3" name="Tray 3"/>
+         <inputtray deviceid="4" name="Tray 4"/>
+         <inputtray deviceid="5" name="Tray 5"/>
+         <inputtray deviceid="6" name="Tray 6"/>
+         <inputtray deviceid="7" name="Tray 7"/>
+         <inputtray deviceid="8" name="Tray 8"/>
+         <inputtray deviceid="9" name="Tray 9"/>
+      </inputtrays>
+   </traylist>
+</mffxif>

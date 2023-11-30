@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Images</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <h1>Image Formats</h1>
+        <p>This example shows how images with alternative texts are rendered without any additional
+            styling, with the default settings.</p>
+        <p>Add CSS for styling the images, although the width and height attriutes are also
+            supported.</p>
+        <p>Compart supports many different image formats. The Compart module IFF is used for image
+            handling. Please see the MFFIFF Filter documentation for more information on supported
+            image formats.</p>
+        <p>You can specify the images using absolute or relative file paths or http(s) URLs.</p>
+        <br />
+        <table>
+            <tbody>
+                <tr>
+                    <td>BMP</td>
+                    <td><img src="imagesources/images.bmp" alt="BMP image demo" /></td>
+                </tr>
+                <tr>
+                    <td>GIF</td>
+                    <td><img src="imagesources/images.gif" alt="GIF image demo" /></td>
+                </tr>
+                <tr>
+                    <td>HEIF</td>
+                    <td><img src="imagesources/images.heif" alt="HEIF image demo" /></td>
+                </tr>
+                <tr>
+                    <td>JP2</td>
+                    <td><img src="imagesources/images.jp2" alt="JP2 image demo" /></td>
+                </tr>
+                <tr>
+                    <td>JPG</td>
+                    <td><img src="imagesources/images.jpg" alt="JPG image demo" /></td>
+                </tr>
+                <tr>
+                    <td>PNG</td>
+                    <td><img src="imagesources/images.png" alt="PNG image demo" /></td>
+                </tr>
+                <tr>
+                    <td>TGA</td>
+                    <td><img src="imagesources/images.tga" alt="TGA image demo" /></td>
+                </tr>
+                <tr>
+                    <td>TIF</td>
+                    <td><img src="imagesources/images.tif" alt="TIF image demo" /></td>
+                </tr>
+                <tr>
+                    <td>WEBP</td>
+                    <td><img src="imagesources/images.webp" alt="WEBP image demo" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

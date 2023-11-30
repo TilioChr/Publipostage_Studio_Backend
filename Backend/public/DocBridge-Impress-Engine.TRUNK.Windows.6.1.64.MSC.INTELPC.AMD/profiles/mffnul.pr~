@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffnul xmlns="http://www.compart.com/ns/mff/nul" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+
+   <output>
+      <!--
+              TRUE:  MffInput filter reads the page
+              FALSE: MffInput filter will not read the page
+            -->
+
+      <forcepagereading value="false"/>
+   </output>
+</mffnul>

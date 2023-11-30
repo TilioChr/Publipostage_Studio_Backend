@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+    <head>
+        <title>Images</title>
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <h1>SVG in HTML</h1>
+        <p>SVG defines vector-based graphics in XML format.</p>
+        <p>You can use SVG in DFF documents by using svg images as img source or by adding svg
+            directly to the document.</p>
+        <p>For more information on Compart supported SVG elements see the SVG conformance list.</p>
+        <p>The examples below are adapted from W3Schools. For a beginner's introduction into SVG,
+            see <a href="https://www.w3schools.com/graphics/svg_intro.asp">SVG Tutorial</a></p>
+        <br />
+        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+        </svg>
+        <br />
+        <svg width="400" height="100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="100" style="fill:rgb(0,0,255);stroke-width:10;stroke:rgb(0,0,0)" />
+        </svg>
+        <br />
+        <svg width="400" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="50" y="20" rx="20" ry="20" width="150" height="150"
+                style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+        </svg>
+        <br />
+        <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="100,10 40,198 190,78 10,78 160,198"
+                style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+        </svg>
+    </body>
+    
+</html>

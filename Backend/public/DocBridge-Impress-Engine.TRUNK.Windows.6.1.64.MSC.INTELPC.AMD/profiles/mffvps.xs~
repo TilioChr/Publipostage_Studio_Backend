@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/vps">
+   <xs:element name="mffvps">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="Helvetica" type="xs:string"/>
+                                    <xs:attribute name="weight" default="Medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraLight"/>
+                                             <xs:enumeration value="ExtraLight"/>
+                                             <xs:enumeration value="Light"/>
+                                             <xs:enumeration value="SemiLight"/>
+                                             <xs:enumeration value="Medium"/>
+                                             <xs:enumeration value="SemiBold"/>
+                                             <xs:enumeration value="Bold"/>
+                                             <xs:enumeration value="ExtraBold"/>
+                                             <xs:enumeration value="UltraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="Normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="UltraCondensed"/>
+                                             <xs:enumeration value="ExtraCondensed"/>
+                                             <xs:enumeration value="Condensed"/>
+                                             <xs:enumeration value="SemiCondensed"/>
+                                             <xs:enumeration value="Normal"/>
+                                             <xs:enumeration value="SemiExpanded"/>
+                                             <xs:enumeration value="Expanded"/>
+                                             <xs:enumeration value="ExtraExpanded"/>
+                                             <xs:enumeration value="UltraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="Upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Upright"/>
+                                             <xs:enumeration value="Italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="fontfile" default="_a______" type="xs:string"/>
+                                    <xs:attribute name="fontfiletype" default="Type1">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="Type1"/>
+                                             <xs:enumeration value="TrueType"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="Helvetica" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                                   <xs:complexType>
+                                                      <xs:attribute name="format" default="A4">
+                                                         <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                               <xs:enumeration value="A0"/>
+                                                               <xs:enumeration value="A1"/>
+                                                               <xs:enumeration value="A2"/>
+                                                               <xs:enumeration value="A3"/>
+                                                               <xs:enumeration value="A4"/>
+                                                               <xs:enumeration value="B0"/>
+                                                               <xs:enumeration value="B1"/>
+                                                               <xs:enumeration value="B2"/>
+                                                               <xs:enumeration value="B3"/>
+                                                               <xs:enumeration value="B4"/>
+                                                               <xs:enumeration value="Letter"/>
+                                                               <xs:enumeration value="Legal"/>
+                                                            </xs:restriction>
+                                                         </xs:simpleType>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="orientation" default="Portrait">
+                                                         <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                               <xs:enumeration value="Portrait"/>
+                                                               <xs:enumeration value="Landscape"/>
+                                                            </xs:restriction>
+                                                         </xs:simpleType>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                             <xs:attribute name="name" default="Tray1" type="xs:string"/>
+                                             <xs:attribute name="deviceid" default="0" type="xs:integer"/>
+                                             <xs:attribute name="command" default="%Default" type="xs:string"/>
+                                             <xs:attribute name="insertsheet" default="false" type="xs:boolean"/>
+                                             <xs:attribute name="leadingedge" default="1" type="xs:string"/>
+                                             <xs:attribute name="manualfeed" default="true" type="xs:boolean"/>
+                                             <xs:attribute name="mediaclass" default="Envelope" type="xs:string"/>
+                                             <xs:attribute name="mediacolor" default="blue" type="xs:string"/>
+                                             <xs:attribute name="mediaposition" default="2" type="xs:integer"/>
+                                             <xs:attribute name="mediatype" default="office" type="xs:string"/>
+                                             <xs:attribute name="mediaweight" default="10" type="xs:integer"/>
+                                             <xs:attribute name="trayswitch" default="true" type="xs:boolean"/>
+                                             <xs:attribute name="deferredmediaselection" default="true" type="xs:boolean"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="outputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="outputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="EN">Page Delivery (see PostScript Reference Manual) * jog * 0 Do not jog pages
+                at all. 1 Jog at device deactivation. 2 Jog at the end of the job. Jogging between
+                jobs is controlled by the value of Jog for the page device that is current between
+                jobs. Thus, this feature can be turned on or off only by executing setpagedevice as
+                part of an unencapsulated job. 3 Jog after each page set (as defined by the Collate
+                parameter).</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="name" default="FistOutputTray" type="xs:string"/>
+                                             <xs:attribute name="collate" default="true" type="xs:boolean"/>
+                                             <xs:attribute name="jog" default="2" type="xs:string"/>
+                                             <xs:attribute name="numcopies" default="2" type="xs:string"/>
+                                             <xs:attribute name="device" default="" type="xs:string"/>
+                                             <xs:attribute name="faceup" default="true" type="xs:boolean"/>
+                                             <xs:attribute name="type" default="" type="xs:string"/>
+                                             <xs:attribute name="command" default="%Default" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="input" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="overlayasreference" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="createoverlay" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">TRUE : create overlays from the .eps on run opecd rator or from external
+                images (default) FALSE : doesn't create overlays</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="true" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="readcomments" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">FALSE : % comments are ignored (default) TRUE : Comments are
+                read</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="regexp" default="%Page" type="xs:string"/>
+                           <xs:attribute name="matchregexp" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="autopagesize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">true : choose the page size by DSC comment PageBoundingBox</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="traylist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="inputtrays" minOccurs="0" maxOccurs="1">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="inputtray" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="EN">If there are not any inputtray, it enables the virtual tray mode which is
+                useful to read the number and the attributes of the trays that there are on the
+                file</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:sequence>
+                                                <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                                   <xs:complexType>
+                                                      <xs:attribute name="format" default="A4">
+                                                         <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                               <xs:enumeration value="A0"/>
+                                                               <xs:enumeration value="A1"/>
+                                                               <xs:enumeration value="A2"/>
+                                                               <xs:enumeration value="A3"/>
+                                                               <xs:enumeration value="A4"/>
+                                                               <xs:enumeration value="B0"/>
+                                                               <xs:enumeration value="B1"/>
+                                                               <xs:enumeration value="B2"/>
+                                                               <xs:enumeration value="B3"/>
+                                                               <xs:enumeration value="B4"/>
+                                                               <xs:enumeration value="Letter"/>
+                                                               <xs:enumeration value="Legal"/>
+                                                            </xs:restriction>
+                                                         </xs:simpleType>
+                                                      </xs:attribute>
+                                                      <xs:attribute name="orientation" default="Portrait">
+                                                         <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                               <xs:enumeration value="Portrait"/>
+                                                               <xs:enumeration value="Landscape"/>
+                                                            </xs:restriction>
+                                                         </xs:simpleType>
+                                                      </xs:attribute>
+                                                   </xs:complexType>
+                                                </xs:element>
+                                             </xs:sequence>
+                                             <xs:attribute name="name" default="Tray1" type="xs:string"/>
+                                             <xs:attribute name="deviceid" default="0" type="xs:integer"/>
+                                             <xs:attribute name="command" default="%Default" type="xs:string"/>
+                                             <xs:attribute name="insertsheet" default="false" type="xs:boolean"/>
+                                             <xs:attribute name="leadingedge" default="1" type="xs:string"/>
+                                             <xs:attribute name="manualfeed" default="true" type="xs:boolean"/>
+                                             <xs:attribute name="mediaclass" default="Envelope" type="xs:string"/>
+                                             <xs:attribute name="mediacolor" default="blue" type="xs:string"/>
+                                             <xs:attribute name="mediaposition" default="2" type="xs:string"/>
+                                             <xs:attribute name="mediatype" default="office" type="xs:string"/>
+                                             <xs:attribute name="mediaweight" default="10" type="xs:string"/>
+                                             <xs:attribute name="trayswitch" default="true" type="xs:boolean"/>
+                                             <xs:attribute name="deferredmediaselection" default="true" type="xs:boolean"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="resourcelist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="fileslist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="files" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="path" default="." type="xs:string"/>
+                                    <xs:attribute name="type" default="Type1Font" type="xs:string"/>
+                                    <xs:attribute name="extension" default="pfb" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

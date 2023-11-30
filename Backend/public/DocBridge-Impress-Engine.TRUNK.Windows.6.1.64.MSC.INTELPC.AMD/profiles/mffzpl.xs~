@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="202104"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.compart.com/ns/mff/zpl">
+   <xs:element name="mffzpl">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="globals" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen sowohl für die Eingabe als auch für
+                die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for both input and output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="optimizepa" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="de-DE">Optimierung überlappender Grafikobjekte</xs:documentation>
+                           <xs:documentation xml:lang="en-EN">Optimization of overlapping graphics objects</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="ifDifferentTypes">
+                              <xs:annotation>
+                                 <xs:documentation xml:lang="de-DE">Steuerung der Optimierung überlappender
+                Grafikobjekte</xs:documentation>
+                                 <xs:documentation xml:lang="en-EN">control of optimization of overlapping graphics
+                objects</xs:documentation>
+                              </xs:annotation>
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="ifDifferentTypes"/>
+                                    <xs:enumeration value="always"/>
+                                    <xs:enumeration value="never"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="defaultchar" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">character to be used when the requested character is not in the printer resident
+        font</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="char" default="003F" type="xs:string"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="fontlist" minOccurs="0" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="face" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="devname" default="" type="xs:string"/>
+                                    <xs:attribute name="weight" default="medium">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="ultraLight"/>
+                                             <xs:enumeration value="extraLight"/>
+                                             <xs:enumeration value="light"/>
+                                             <xs:enumeration value="semiLight"/>
+                                             <xs:enumeration value="medium"/>
+                                             <xs:enumeration value="semiBold"/>
+                                             <xs:enumeration value="bold"/>
+                                             <xs:enumeration value="extraBold"/>
+                                             <xs:enumeration value="ultraBold"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="width" default="normal">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="ultraCondensed"/>
+                                             <xs:enumeration value="extraCondensed"/>
+                                             <xs:enumeration value="condensed"/>
+                                             <xs:enumeration value="semiCondensed"/>
+                                             <xs:enumeration value="normal"/>
+                                             <xs:enumeration value="semiExpanded"/>
+                                             <xs:enumeration value="expanded"/>
+                                             <xs:enumeration value="extraExpanded"/>
+                                             <xs:enumeration value="ultraExpanded"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" default="upright">
+                                       <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                             <xs:enumeration value="upright"/>
+                                             <xs:enumeration value="italic"/>
+                                          </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="family" default="" type="xs:string"/>
+                           <xs:attribute name="serifstyle" default="sansSerif">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="sansSerif"/>
+                                    <xs:enumeration value="serif"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="spacing" default="proportional">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="proportional"/>
+                                    <xs:enumeration value="monospaced"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="output" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation xml:lang="de-DE">Einstellungen für die Ausgabe</xs:documentation>
+                  <xs:documentation xml:lang="en-EN">settings for output</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="dithermethod" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines the Dithering method for conversions of color
+                images to black and white</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt die Dithering-Methode, um Farbbilder in
+                schwarz-weiße Images umzuwandeln</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="default" default="auto">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="auto"/>
+                                    <xs:enumeration value="dispersed"/>
+                                    <xs:enumeration value="floydSteinberg"/>
+                                    <xs:enumeration value="stucki"/>
+                                    <xs:enumeration value="jarvisJudiceninke"/>
+                                    <xs:enumeration value="threshold"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="parameter" default="4" type="xs:int"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="resolution" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Printer resolution in DPI. Permitted values are 152, 203, 304 and
+        609.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE"> Bestimmt die geräteabhängige Auflösung für eine Seite, also das
+        Raster, in dem Objekte auf der Seite platziert werden. </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="rx" default="203">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:int">
+                                    <xs:enumeration value="0"/>
+                                    <xs:enumeration value="152"/>
+                                    <xs:enumeration value="203"/>
+                                    <xs:enumeration value="304"/>
+                                    <xs:enumeration value="609"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="ry" default="203">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:int">
+                                    <xs:enumeration value="0"/>
+                                    <xs:enumeration value="152"/>
+                                    <xs:enumeration value="203"/>
+                                    <xs:enumeration value="304"/>
+                                    <xs:enumeration value="609"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="pagedefinitionlist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">The element "pagedefinition" determines the correct positioning of
+        text and images on the page.</xs:documentation>
+                           <xs:documentation xml:lang="en-US">Das Element "pagedefinition" bestimmt die korrekte Positionierung
+        von Text und Bildern auf der Seite.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="pagedefinition" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">Only one pagedefinition is allowed!</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="papersize" minOccurs="0" maxOccurs="1">
+                                          <xs:annotation>
+                                             <xs:documentation xml:lang="EN"> Paper size can be specified by "height" and "width".
+      </xs:documentation>
+                                          </xs:annotation>
+                                          <xs:complexType>
+                                             <xs:attribute name="width" default="4 in" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Breite des Papierbogens</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">width of paper sheet</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                             <xs:attribute name="height" default="6 in" type="xs:string">
+                                                <xs:annotation>
+                                                   <xs:documentation xml:lang="de-DE">Höhe des Papierbogens</xs:documentation>
+                                                   <xs:documentation xml:lang="en-EN">height of paper sheet</xs:documentation>
+                                                </xs:annotation>
+                                             </xs:attribute>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" default="label" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="barcodelist" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US"> Specifies the available barcode types of the printer </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="barcode" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" type="xs:string"/>
+                                    <xs:attribute name="type" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="adjustbarcodesize" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines how the barcode size is adjusted and
+        aligned.</xs:documentation>
+                           <xs:documentation xml:lang="de-DE">Bestimmt, wie die Größe und Positionierung von Barcodes angepasst
+        wird.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="false" type="xs:boolean"/>
+                           <xs:attribute name="minSize" default="90%" type="xs:string"/>
+                           <xs:attribute name="maxSize" default="100%" type="xs:string"/>
+                           <xs:attribute name="align" default="left">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="left"/>
+                                    <xs:enumeration value="center"/>
+                                    <xs:enumeration value="right"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="PrintMethod" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">Determines the printing method used. options: direct - Direct
+        thermal printing transfer - Thermal transfer printing default - Printer default
+      </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="default">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="default"/>
+                                    <xs:enumeration value="direct"/>
+                                    <xs:enumeration value="transfer"/>
+                                    <xs:enumeration value="asinput"/>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="codepagelist" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="codepage" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:annotation>
+                                    <xs:documentation xml:lang="EN">Definition of supported code pages of the print and the required setting to use
+        them</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexType>
+                                    <xs:attribute name="name" default="IBM 850" type="xs:string"/>
+                                    <xs:attribute name="iana" default="IBM850" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="characteraccuracy" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="en-US">max difference in points between source and target character
+        positions, 0 - take driver default, usually 0.5pt</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:attribute name="value" default="0.0" type="xs:double"/>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="PrinterSettingList" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                           <xs:documentation xml:lang="EN">list to control printer settings written on the first label</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="PrinterSetting" minOccurs="0" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                    <xs:attribute name="name" default="^LT" type="xs:string"/>
+                                    <xs:attribute name="writeCommand" default="true" type="xs:boolean"/>
+                                    <xs:attribute name="value" default="0" type="xs:string"/>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

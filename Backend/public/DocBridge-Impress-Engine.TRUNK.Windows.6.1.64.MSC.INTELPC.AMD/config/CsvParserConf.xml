@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Configuration file for CSV parser.
+    * The attribute 'delimiter' specifies the delimter used for parsing the CSV input.
+    * If attribute 'header' has value 'false'(default), then no header is read from the input
+      CSV file, if specified, the 'Field' 'name' attributes are used as XML element names,
+      otherwise default values '_Field1' are used. If the value is 'true' the first line
+      is read and the column names are used as XML element names, if valid.
+    * The attribute 'commentStart' marks the according line as comment line
+    * The attribute 'encoding' specifies the encoding of the CSV file, default is 'auto'
+    * The attribute 'onExtraField' with values 'fatal', 'error', 'warning'(default) and 'ignore'
+      specifies the behaviour if an extra CSV field occurs when parsing
+    * The attribute 'onMissingField' with values 'fatal', 'error'(default), 'warning' and 'ignore'
+      specifies the behaviour if a CSV field is missing
+    * The attribute 'onEmptyLine' with values 'fatal', 'error', 'warning'(default) and 'ignore'
+      specifies the behaviour if an empty line occurs-->
+
+<CsvParser xmlns="http://www.compart.com/ns/csvparser" xmlns:xs="http://www.w3.org/2001/XMLSchema" delimiter=";" header="false" commentStart="" encoding="auto" onExtraField="warning" onMissingField="error" onEmptyLine="warning" onUnquotedQuote="warning" onIllegalType="warning" onFieldNotFoundInHeader="warning">
+   <!--Global schema type definition. Can be used by referencing the 'name' attribute
+          in the 'type' attribute of a field.-->
+
+   <SimpleType name="userType">
+      <xs:restriction base="xs:integer">
+         <xs:pattern value="[0-9]"/>
+      </xs:restriction>
+   </SimpleType>
+
+   <!-- Definition for fields.
+       * The attribute 'rootName' specifies the name of the root element in the XML tree.
+       * The attribute 'recordName' specifies the name of the record elements in the XML tree. -->
+
+   <Fields recordName="Record" rootName="Root">
+      <!-- Definition for each field.
+          * The attribute 'name' specifies the name of the corresponding element in the XML tree.
+          * The attribute 'index' specifies the column number where the definition of this field
+            should be applied, if not specified the child order is used.
+          * The attribute 'trim' with values 'left', 'right', 'both' and 'none'(default)
+            specifies if surrounding whitespace of this field should be trimmed. It is inherited.
+          * The attributes 'trimQuoted' and 'trimUnquoted' with the same behaviour as 'trim' but
+            with higher priority and related only to quoted resp. unquoted whitespace.
+          * The attribute 'whitespace' with values 'preserve', 'collapse' and 'replace'(default)
+            specifies how surrounding whitespace of this field should be handled. It is inherited.
+          * The attributes 'whitespaceQuoted' and 'whitespaceUnquoted' with the same behaviour as
+            'whitespace' but with higher priority and related only to quoted resp. unquoted whitespace.
+          * The attribute 'type' specifies the schema type of the according column, can also be a
+            reference to a predefined type. The according fields are validated against its type definition.
+          * The attribute 'onUnquotedQuote' with values 'fatal', 'error', 'warning'(default) and 'ignore'
+            specifies the behaviour if an unquoted quote occurs. It is inherited.
+          * The attribute 'onIllegalType' with values 'fatal', 'error', 'warning'(default) and 'ignore'
+            specifies the behaviour if an invalid field content occurs. It is inherited.
+          * The attribute 'onFieldNotFoundInHeader' with values 'fatal', 'error', 'warning'(default) and 'ignore'
+            specifies the behaviour if not all field definitions found in the header line if header has the value true.
+            It is inherited.-->
+
+      <Field name="_Field1" index="0" trimQuoted="none" trimUnquoted="none" whitespaceQuoted="replace" whitespaceUnquoted="replace">
+         <!-- Schema type definition of the according column. The according fields
+            are validated against its type definition. -->
+
+         <SimpleType>
+            <xs:restriction base="xs:integer">
+               <xs:minLength value="3"/>
+            </xs:restriction>
+         </SimpleType>
+      </Field>
+
+      <Field name="_Field2" trim="none" whitespace="replace" type="userType"/>
+      <Field name="new_name" headerName="123_illegal_old_name"/>
+   </Fields>
+</CsvParser>

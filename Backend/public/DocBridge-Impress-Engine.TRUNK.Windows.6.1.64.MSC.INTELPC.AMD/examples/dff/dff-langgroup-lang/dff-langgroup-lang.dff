@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+    <head>
+        <dff:langgroup>
+            <dff:lang xml:lang="de">
+                <title>Mein erstes DFF-Dokument</title>
+            </dff:lang>
+            <dff:lang xml:lang="en">
+                <title>My First DFF Document</title>
+            </dff:lang>
+        </dff:langgroup>
+        <meta name="description" content="DFF Einführung" xml:lang="de" />
+        <meta name="description" content="DFF Introduction" xml:lang="en" />
+        <meta name="keywords" content="HTML,DFF" />
+        <meta name="author" content="Compart AG" />
+        <style type="text/css">
+            @import url("../../common/cp-sample-style.css");</style>
+    </head>
+    <body>
+        <xi:include href="../../common/standardheader.dfb"/>
+        <div>
+            <p>
+                <dff:langgroup>
+                    <dff:lang xml:lang="de">Sehr geehrte Leser!</dff:lang>
+                    <dff:lang xml:lang="en">Dear readers!</dff:lang>
+                </dff:langgroup>
+            </p>
+            <p>
+                <dff:langgroup>
+                    <dff:lang xml:lang="de">Das ist mein erster Versuch, ein mehrsprachiges
+                        DFF-Dokument zu erstellen.</dff:lang>
+                    <dff:lang xml:lang="en">This is my first attempt to create a multi-lingual DFF
+                        document.</dff:lang>
+                </dff:langgroup>
+            </p>
+            <p>
+                <dff:langgroup>
+                    <dff:lang xml:lang="de">Mit freundlichen Grüßen,</dff:lang>
+                    <dff:lang xml:lang="en">Best regards,</dff:lang>
+                </dff:langgroup>
+            </p>
+        </div>
+    </body>
+</html>

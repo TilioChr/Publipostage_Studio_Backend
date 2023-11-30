@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dff:lookup xmlns:dff="http://www.compart.com/ns/dff" xmlns="http://www.w3.org/1999/xhtml">
+    <dff:lookupentry id="SalutM">
+        <dff:langgroup>
+            <dff:lang xml:lang="de">Sehr geehrter Herr</dff:lang>
+            <dff:lang xml:lang="en">Dear Mr</dff:lang>
+            <dff:lang xml:lang="fr">Cher Monsieur</dff:lang>
+        </dff:langgroup>
+    </dff:lookupentry>
+    <dff:lookupentry id="SalutF">
+        <dff:langgroup>
+            <dff:lang xml:lang="de">Sehr geehrte Frau</dff:lang>
+            <dff:lang xml:lang="en">Dear Mrs</dff:lang>
+            <dff:lang xml:lang="fr">Chère Madame</dff:lang>
+        </dff:langgroup>
+    </dff:lookupentry>
+    <dff:lookupentry id="SalutD">
+        <dff:langgroup>
+            <dff:lang xml:lang="de">Sehr geehrte Damen und Herren!</dff:lang>
+            <dff:lang xml:lang="en">Dear ladies and gentlemen!</dff:lang>
+            <dff:lang xml:lang="fr">Chers mesdames et messieurs !</dff:lang>
+        </dff:langgroup>
+    </dff:lookupentry>
+    <dff:lookupentry id="Content">
+        <dff:langgroup>
+            <dff:lang xml:lang="de"><p>Bitte überprüfen Sie, ob Ihre Kontaktdaten aktuell sind:</p></dff:lang>
+            <dff:lang xml:lang="en"><p>Please check that your contact details are up to date:</p></dff:lang>
+            <dff:lang xml:lang="fr"><p>Veuillez vérifier que vos coordonnées sont à jour :</p></dff:lang>
+        </dff:langgroup>
+    </dff:lookupentry>
+    <dff:lookupentry id="SnailMail">
+        <dff:langgroup>
+            <dff:lang xml:lang="de">Postanschrift:</dff:lang>
+            <dff:lang xml:lang="en">Postal address:</dff:lang>
+            <dff:lang xml:lang="fr">Adresse postale :</dff:lang>
+        </dff:langgroup>
+    </dff:lookupentry>
+    <dff:lookupentry id="Greetings">
+        <dff:langgroup>
+            <dff:lang xml:lang="de"><p>Mit freundlichen Grüßen,</p></dff:lang>
+            <dff:lang xml:lang="en"><p>Kind regards,</p></dff:lang>
+            <dff:lang xml:lang="fr"><p>Cordialement,</p></dff:lang>
+        </dff:langgroup>
+    </dff:lookupentry>
+</dff:lookup>

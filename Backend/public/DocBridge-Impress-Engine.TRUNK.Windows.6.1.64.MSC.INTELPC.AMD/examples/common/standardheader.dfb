@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dff:block xmlns="http://www.w3.org/1999/xhtml" xmlns:dff="http://www.compart.com/ns/dff">
+    <div class="header">This is sample code provided for demonstration purposes or to assist
+        your development.<br />Sample code is provided "as is" and is not supported by Compart.<br /> 
+        Sample code is not intended to be indicative of the quality or usability of Compart
+        products.</div>
+</dff:block>

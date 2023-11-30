@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffsvg xmlns="http://www.compart.com/ns/mff/svg" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for input.-->
+
+   <input>
+      <!--Specifies the "pagedefinition" for page output.-->
+
+      <pagedefinitionlist>
+         <pagedefinition name="Default">
+            <!--The "papersize" can be specified either by a combination of
+                "format" and "orientation" or by a combination of "width" and "height".
+            -->
+            <!--Attribute: format @comment: The name of a standard paper size. Examples for possible
+                values are "A4" and "LETTER". A complete list of the possible values is included in
+                the DocBridge Mill Manual. This attribute does not have a default
+                value.-->
+            <!--Attribute: orientation @comment: The orientation of a standard paper size. Possible values of
+                this attribute are "Portrait", "Landscape", "RevPortrait", and "RevLandscape". The
+                default value of this attribute is "Portrait".-->
+            <!--Attribute: height @comment: The height of the paper sheet. Valid length units are "tcm",
+                "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch", and
+                "ln".-->
+            <!--Attribute: width @comment: The width of the paper sheet. Valid length units are "tcm",
+                "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch", and
+                "ln".-->
+
+            <papersize format="A4" orientation="Portrait" height="29.7 cm" width="21 cm"/>
+
+            <!--The declaration of sheet margins.-->
+            <!--Attribute: left @comment: The width of the left sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+            <!--Attribute: right @comment: The width of the right sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+            <!--Attribute: top @comment: The height of the top sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+            <!--Attribute: bottom @comment: The height of the bottom sheet margin. Valid length units are
+                "tcm", "mm", "cm", "dm", "m", "in", "inch", "mil", "thou", "pt", "tw", "cpbu", "ch",
+                and "ln".-->
+
+            <margins left="1.75 cm" right="1.75 cm" top="1 cm" bottom="1 cm"/>
+
+            <!--Pixel resolution for pixel values in dpi. The default value is
+                72 dpi.-->
+
+            <resolution rx="72" ry="72"/>
+         </pagedefinition>
+      </pagedefinitionlist>
+   </input>
+
+   <!--Settings for output.-->
+
+   <output>
+      <!--Specifies how fonts are handled for the creation of output documents. Valid
+                values of the attribute "default" are:
+                - AUTO (automatic selection)
+                - USESTANDARDFONTS (use only the 14 Type1 Adobe standard fonts)
+            -->
+
+      <fonthandling default="Auto"/>
+
+      <!--The attribute "embed" specifies whether the images that will be written to
+                the output document will be embedded or written as resource in the resource file.
+                Valid values of the attribute "embed" are: 
+                - Auto (default handling)
+                - Always (all images will be embedded)
+                - Never (all images will be written as resource)
+            -->
+
+      <ImageHandling embed="Auto"/>
+
+      <!--You can choose whether to use the tspan element in svg output
+                to write a text on several lines.-->
+      <!--Attribute: value @comment: Default is true.-->
+
+      <WriteSpannedText value="true"/>
+
+      <!--You can choose whether to rastered text should be written invisible on top.-->
+      <!--Attribute: value @comment: Default is false.-->
+
+      <WriteInvisibleText value="false"/>
+   </output>
+
+   <!--Font is specified by "family", "width" and "style". "subsetting" -
+                (only in output) - specifies, whether subsets of the embedded fonts should be
+                specified in the output files.-->
+
+   <fontlist>
+      <font family="arial" subsetting="true" reftype="truetype">
+         <face weight="medium" style="upright" fontfile="arial" fontfiletype="truetype"/>
+         <face weight="bold" style="upright" fontfile="arialbd" fontfiletype="truetype"/>
+         <face weight="medium" style="italic" fontfile="ariali" fontfiletype="truetype"/>
+      </font>
+
+      <font family="times new roman" reftype="truetype">
+         <face weight="medium" style="upright" fontfile="times" fontfiletype="truetype"/>
+         <face weight="bold" style="upright" fontfile="timesbd" fontfiletype="truetype"/>
+         <face weight="medium" style="italic" fontfile="timesi" fontfiletype="truetype"/>
+      </font>
+   </fontlist>
+
+   <!-- = Files ==============================================================
+                type can be "TrueType", "Type1Font", "Type1Metrics" if it is not defined, the path
+                will be used for all types, extension can be emtpy, <extension> or wildcard
+                ======================================================================
+            -->
+
+   <resourcelist>
+      <fileslist>
+         <files path="c:\WINDOWS\Fonts" type="truetype" extension="ttf"/>
+         <files path="\resource" type="icc" extension="icc"/>
+         <files path="\resource" type="icc" extension="icm"/>
+      </fileslist>
+   </resourcelist>
+</mffsvg>

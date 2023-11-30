@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mffxfo xmlns="http://www.compart.com/ns/mff/xfo" version="202104">
+   <!--
+      **************************************************************************
+
+      Copyright (C) Compart AG  2011
+
+      Release: 202104
+
+      **************************************************************************
+-->
+   <!--Settings for both input and output.-->
+
+   <globals>
+      <!--Write overlays (forms).-->
+
+      <generateoverlays value="false"/>
+
+      <!--Specifies how overlays are processed.-->
+
+      <overlayasreference value="false"/>
+   </globals>
+
+   <!--Settings for input.-->
+
+   <input>
+      <!--Specifies if the new German orthography should be used for
+                hyphenation.-->
+
+      <GermanOrthographyNew value="false"/>
+
+      <!--Specifies that columns are filled with the left side larger
+                than the right, if cpfo:column-balance is true.-->
+
+      <LeftOrientatedColumnBalance value="false"/>
+
+      <!--Specifies how the roles/tags for the document structure are
+                generated, if gendocumentstructure is used.-->
+
+      <DefaultTaggingRoles value="false"/>
+   </input>
+
+   <!--The colorprofilelist element contains one colorprofile element
+                per color space. An ICC profile is a standardized record that defines the color
+                space of a device. The ICC profiles can either have the file extension icc (Windows)
+                or icm (Mac). In addition to specifying the file name of the color profile, you can
+                use the resourcelist element to specify which directories are to be searched for the
+                specified color profiles. -->
+   <!--<colorprofilelist>        
+      <colorprofile name="GenericRGB"/>        
+      <colorprofile name="GenericCMYK"/>        
+      <colorprofile name="GenericGray"/>
+   </colorprofilelist>-->
+   <!--Font specified by "family", "width" and "style" can be rasterised To
+                rasterize the text, rasterize="always" has to be specified. Important: for all point
+                sizes correct or dummy device names must be specified -->
+
+   <fontlist>
+      <font family="arial" reftype="truetype">
+         <face weight="medium" style="upright" fontfile="arial" fontfiletype="truetype" default="true"/>
+         <face weight="bold" style="upright" fontfile="arialbd" fontfiletype="truetype"/>
+         <face weight="medium" style="italic" fontfile="ariali" fontfiletype="truetype"/>
+      </font>
+
+      <font family="times new roman" reftype="truetype">
+         <face weight="medium" style="upright" fontfile="times" fontfiletype="truetype"/>
+         <face weight="bold" style="upright" fontfile="timesbd" fontfiletype="truetype"/>
+         <face weight="medium" style="italic" fontfile="timesi" fontfiletype="truetype"/>
+      </font>
+   </fontlist>
+
+   <!-- = Files ==============================================================
+                type can be "TrueType", "Type1Font", "Type1Metrics" if it is not defined, the path
+                will be used for all types, extension can be emtpy, <extension> or wildcard
+                ======================================================================
+            -->
+
+   <resourcelist>
+      <fileslist>
+         <files path="c:\WINDOWS\Fonts" type="truetype" extension="ttf"/>
+         <files path="\resource" type="icc" extension="icc"/>
+         <files path="\resource" type="icc" extension="icm"/>
+      </fileslist>
+   </resourcelist>
+</mffxfo>
