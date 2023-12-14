@@ -20,7 +20,7 @@ LIC4216I License issue date is '2023-01-24'
 LIC4218I License last modified date is '2023-01-24'
 MFF4005I This software uses libraries from the FFmpeg project under the LGPLv2.1
 MPR1022W Resource path 'resource/font' doesn't exist
-DFF4007I Locale file 'C:\Users\tcr\Documents\GitHub\Backend\public\DocBridge-Impress-Engine.TRUNK.Windows.6.1.64.MSC.INTELPC.AMD\bin\locale.xml' is used
+DFF4007I Locale file 'C:\Users\tcr\Documents\GitHub\Publipostage_Studio_Backend\Backend\public\DocBridge-Impress-Engine.TRUNK.Windows.6.1.64.MSC.INTELPC.AMD\bin\locale.xml' is used
 XPL3001W COURRIERSIMPLEBIS.dff(5:25): Attribute 'mode' in element 'dff:data' is not used
 XPL3001W COURRIERSIMPLEBIS.dff(5:83): Attribute 'type' in element 'dff:data' is not used
 DFF4006I Disabling two pass
@@ -37,12 +37,7 @@ MPR1022W Resource path '.\Adobe ICC Profiles\RGB Profiles' doesn't exist
 XHM4004I Using parsing mode 'dom'
 XHM4001I Using default style sheet for 'HTML 4.0'
 XHM4005I Font file 'c:\WINDOWS\Fonts\arial.ttf' was loaded for family name 'arial'
-MFF3001W Profile for type 'TXT' not found in directory 'C:\Users\tcr\Documents\GitHub\Backend\public\profiles'
-TXT3011W Font not defined - fallback to default
-MGR4001I Font file 'c:\windows\fonts\cour.ttf' is found by using family name 'Courier New' in Font Manager database
-TXT4002I Will use page definition 'Default'
-MPR1022W Resource path 'resource/font' doesn't exist
 XHM4005I Font file 'c:\WINDOWS\Fonts\arial.ttf' was loaded for family name 'Arial'
-DFF4002I 49999 record(s) produced
-DFF4004I Time needed: 83.651 s; 49999 pages (597.710 pages/s based on 'cpu' time)
+DFF4002I 100000 record(s) produced
+DFF4004I Time needed: 79.638 s; 100000 pages (1255.682 pages/s based on 'cpu' time)
 DFF4001I Dff stopped (Rc='0')

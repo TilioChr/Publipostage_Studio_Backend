@@ -424,6 +424,7 @@
          <files path="C:\xampp\htdocs\DREAMPRESS\DocBridge-Impress-Engine.TRUNK.Windows.6.1.64.MSC.INTELPC.AMD\pfb" type="ICC" extension="icc"/>
         
          <files path=".\Adobe ICC Profiles\RGB Profiles" type="ICC" extension="icm"/>
+<files path="C:\Users\tcr\Documents\GitHub\Publipostage_Studio_Backend\Backend\public\resources\pfb" type="type1Font" extension="pfb"/>
       </fileslist>
    </resourcelist>
 </mffpdf>

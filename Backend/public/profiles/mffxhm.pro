@@ -153,6 +153,7 @@
          <files path="c:/WINDOWS/Fonts" type="truetype" extension="ttf"/>
          <files path="resource/rgb" type="icc" extension="icc"/>
          <files path="resource/cmyk" type="icc" extension="icc"/>
+	 <files path="C:\Users\tcr\Documents\GitHub\Publipostage_Studio_Backend\Backend\public\resources\pfb" type="type1Font" extension="pfb"/>
 		 
 		
 		 <files path="C:/Users/maxle/tomcat/apache-tomcat-8.5.37/webapps/Impress/Documents/resources/images"/>

@@ -111,6 +111,7 @@
          <files path="resource/Font" type="TrueType" extension="ttf"/>
          <files path="resource/rgb" type="icc" extension="icc"/>
          <files path="resource/cmyk" type="icc" extension="icc"/>
+<files path="C:\Users\tcr\Documents\GitHub\Publipostage_Studio_Backend\Backend\public\resources\pfb" type="type1Font" extension="pfb"/>
       </fileslist>
    </resourcelist>
 </mffsvg>

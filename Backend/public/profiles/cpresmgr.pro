@@ -81,6 +81,7 @@
 		 <files path="c:/windows/fonts"  type="TrueType" extension="ttf"/>
          
          <files path="resource/font" type="Type1Font" extension="pfb"/>
+	<files path="C:\Users\tcr\Documents\GitHub\Publipostage_Studio_Backend\Backend\public\resources\pfb" type="type1Font" extension="pfb"/>
       </fileslist>
    </resourcelist>
 </cpresmgr>

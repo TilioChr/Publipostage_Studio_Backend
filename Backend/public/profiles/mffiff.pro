@@ -55,6 +55,7 @@
          <!-- <files path="." type="truetype" extension="ttf"/> -->
          <!-- <files path="c:\WINDOWS\Fonts" type="truetype" extension="ttf"/>  -->
          <!-- <files path="c:\fonts" type="truetype" extension="ttf"/> -->
+	<files path="C:\Users\tcr\Documents\GitHub\Publipostage_Studio_Backend\Backend\public\resources\pfb" type="type1Font" extension="pfb"/>
       </fileslist>
    </resourcelist>
 
