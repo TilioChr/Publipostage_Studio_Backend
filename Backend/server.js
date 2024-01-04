@@ -12,9 +12,10 @@ const port = process.env.PORT || 3001;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const uploadedFilesPath = path.join(__dirname, "public", "uploadedFiles");
+const projectsPath = path.join(__dirname, "public", "projects");
 
 app.use(cors());
-app.use(bodyParser.json({ limit: "500mb" })); // Augmentez la limite des données XML à 500MB
+app.use(bodyParser.json({ limit: "999mb" })); // Augmentez la limite des données XML à 500MB
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -96,6 +97,24 @@ app.get("/deleteContent", async (req, res) => {
     ); // supprime le contenu des marqueurs
     fs.writeFileSync(cheminFichier, contenuActuel, "utf-8"); // Écrivez le nouveau contenu dans le fichier.
     res.send("Requête traitée avec succès");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors du traitement de la requête");
+  }
+});
+
+app.get("/dashboard", async (req, res) => {
+  // Récupère le nom des fichiers du dossier projects et leurs images associées
+  try {
+    const files = fs.readdirSync(projectsPath);
+    const projects = files.map((file) => {
+      const filePath = path.join(projectsPath, file);
+      const fileContent = fs.readFileSync(filePath, "utf-8");
+      const fileContentJSON = JSON.parse(fileContent);
+      const preview = fileContentJSON.preview;
+      return { name: file, preview: preview };
+    });
+    res.json(projects);
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors du traitement de la requête");
@@ -252,6 +271,46 @@ app.get("/runExecutable", (req, res) => {
     console.error("Erreur lors de l'exécution de l'exécutable:", error.message);
     res.status(500).send("Internal Server Error");
   }
+});
+
+app.post("/save", upload.single("monFichier"), (req, res) => {
+  const filePath = path.join(projectsPath, req.headers.name);
+  fs.writeFile(filePath, JSON.stringify(req.body), (err) => {
+    if (err) {
+      console.error("Erreur lors de l'écriture du fichier:", err);
+      res.status(500).send("Internal Server Error");
+    } else {
+      console.log("Fichier enregistré avec succès.");
+      res.status(200);
+    }
+  });
+});
+
+app.post("/projectLoad", (req, res) => {
+  const filePath = path.join(projectsPath, req.headers.name);
+  console.log("filePath", filePath);
+  fs.readFile(filePath, "utf-8", (err, data) => {
+    if (err) {
+      console.error("Erreur lors de la lecture du fichier:", err);
+      res.status(500).send("Internal Server Error");
+    } else {
+      console.log("Fichier lu avec succès.");
+      res.status(200).send(data);
+    }
+  });
+});
+
+app.post("/deleteProject", (req, res) => {
+  const filePath = path.join(projectsPath, req.headers.name);
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.error("Erreur lors de la suppression du fichier:", err);
+      res.status(500).send("Internal Server Error");
+    } else {
+      console.log("Fichier supprimé avec succès.");
+      res.status(200).send("Fichier supprimé avec succès.");
+    }
+  });
 });
 
 app.listen(port, () => {

@@ -37,7 +37,16 @@ MPR1022W Resource path '.\Adobe ICC Profiles\RGB Profiles' doesn't exist
 XHM4004I Using parsing mode 'dom'
 XHM4001I Using default style sheet for 'HTML 4.0'
 XHM4005I Font file 'c:\WINDOWS\Fonts\arial.ttf' was loaded for family name 'arial'
-XHM4005I Font file 'c:\WINDOWS\Fonts\arial.ttf' was loaded for family name 'Arial'
-DFF4002I 100000 record(s) produced
-DFF4004I Time needed: 79.638 s; 100000 pages (1255.682 pages/s based on 'cpu' time)
+MPR1022W Resource path 'resource/font' doesn't exist
+IFF3011W Original image without valid resolution 'XResolution', using default resolution '72'DPI
+IFF3011W Original image without valid resolution 'YResolution', using default resolution '72'DPI
+IFF3011W Original image without valid resolution 'XResolution', using default resolution '72'DPI
+IFF3011W Original image without valid resolution 'YResolution', using default resolution '72'DPI
+XHM4005I Font file 'c:\WINDOWS\Fonts\ariali.ttf' was loaded for family name 'arial'
+XHM4005I Font file 'c:\WINDOWS\Fonts\arialbi.ttf' was loaded for family name 'arial'
+MGR4001I Font file 'c:\windows\fonts\comicz.ttf' is found by using family name 'comic sans ms' in Font Manager database
+XHM4005I Font file 'c:\WINDOWS\Fonts\arialbi.ttf' was loaded for family name 'Arial'
+PDI2117I Page 1 contains alpha-transparency and PDF version is 1.3. Rasterizing page
+DFF4002I 1 record(s) produced
+DFF4004I Time needed: 0.585 s; 1 pages (1.709 pages/s based on 'cpu' time)
 DFF4001I Dff stopped (Rc='0')
