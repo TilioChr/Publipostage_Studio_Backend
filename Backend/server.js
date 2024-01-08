@@ -112,7 +112,14 @@ app.get("/dashboard", async (req, res) => {
       const fileContent = fs.readFileSync(filePath, "utf-8");
       const fileContentJSON = JSON.parse(fileContent);
       const preview = fileContentJSON.preview;
-      return { name: file, preview: preview };
+      const attachedPDF = fileContentJSON.attachedPDF; // Récupère le nom du fichier PDF attaché !!!!!!!!!!!!!!!!!!!!!!!!!! A MODIFIER !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      const attachedData = fileContentJSON.dataFileName;
+      return {
+        name: file,
+        preview: preview,
+        attachedPDF: attachedPDF,
+        attachedData: attachedData,
+      };
     });
     res.json(projects);
   } catch (error) {
@@ -254,9 +261,20 @@ app.post("/uploadPdf", upload.single("pdfFile"), (req, res) => {
       );
       fs.writeFileSync(dffFilePath, updatedDffContent2, "utf-8");
 
-      res.status(200).json({ message: "And write in DFF" });
+      res.status(200).json({ message: "BGPDF write in DFF" });
     }
   });
+});
+
+app.get("/unloadPdf", (req, res) => {
+  const dffFilePath = path.join(__dirname, "public", "COURRIERSIMPLEBIS.dff");
+  const dffContent = fs.readFileSync(dffFilePath, "utf-8");
+  const updatedDffContent = dffContent.replace(
+    /<!-- pdf -->[\s\S]*?<!-- endpdf -->/g,
+    "<!-- pdf --><!-- endpdf -->"
+  );
+  fs.writeFileSync(dffFilePath, updatedDffContent, "utf-8");
+  res.status(200).json({ message: "BGPDF write in DFF" });
 });
 
 app.get("/runExecutable", (req, res) => {
