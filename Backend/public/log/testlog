@@ -23,6 +23,9 @@ MPR1022W Resource path 'resource/font' doesn't exist
 DFF4007I Locale file 'C:\Users\tcr\Documents\GitHub\Publipostage_Studio_Backend\Backend\public\DocBridge-Impress-Engine.TRUNK.Windows.6.1.64.MSC.INTELPC.AMD\bin\locale.xml' is used
 XPL3001W COURRIERSIMPLEBIS.dff(5:25): Attribute 'mode' in element 'dff:data' is not used
 XPL3001W COURRIERSIMPLEBIS.dff(5:83): Attribute 'type' in element 'dff:data' is not used
+XPT2004E COURRIERSIMPLEBIS.dff(59:290): Illegal Operator 'postal'
+XPT2004E COURRIERSIMPLEBIS.dff(59:329): Illegal Operator 'de'
+XPT2004E COURRIERSIMPLEBIS.dff(70:126): Illegal Operator 'de'
 DFF4006I Disabling two pass
 MPR1022W Resource path 'resource/rgb' doesn't exist
 MPR1022W Resource path 'resource/cmyk' doesn't exist
@@ -40,15 +43,7 @@ XHM4005I Font file 'c:\WINDOWS\Fonts\arial.ttf' was loaded for family name 'aria
 MPR1022W Resource path 'resource/font' doesn't exist
 IFF3011W Original image without valid resolution 'XResolution', using default resolution '72'DPI
 IFF3011W Original image without valid resolution 'YResolution', using default resolution '72'DPI
-MGR4001I Font file 'c:\windows\fonts\verdana.ttf' is found by using family name 'verdana' in Font Manager database
-MGR3002W Font file (fontkey='family', name='geneva', type='truetype', weight='medium', width='normal', style='upright', serif-style='',spacing='') is not found by using Font manager database
-MGR3002W Font file (fontkey='family', name='geneva', type='type1', weight='medium', width='normal', style='upright', serif-style='',spacing='') is not found by using Font manager database
-XHM4005I Font file 'c:\WINDOWS\Fonts\arial.ttf' was loaded for family name 'Arial'
-MGR4001I Font file 'c:\windows\fonts\verdanab.ttf' is found by using family name 'verdana' in Font Manager database
-MGR3002W Font file (fontkey='family', name='geneva', type='truetype', weight='bold', width='normal', style='upright', serif-style='',spacing='') is not found by using Font manager database
-MGR3002W Font file (fontkey='family', name='geneva', type='type1', weight='bold', width='normal', style='upright', serif-style='',spacing='') is not found by using Font manager database
-XHM4005I Font file 'c:\WINDOWS\Fonts\arialbd.ttf' was loaded for family name 'Arial'
 PDI2117I Page 1 contains alpha-transparency and PDF version is 1.3. Rasterizing page
 DFF4002I 1 record(s) produced
-DFF4004I Time needed: 0.483 s; 1 pages (2.070 pages/s based on 'cpu' time)
+DFF4004I Time needed: 0.350 s; 1 pages (2.857 pages/s based on 'cpu' time)
 DFF4001I Dff stopped (Rc='0')

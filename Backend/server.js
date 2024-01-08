@@ -142,6 +142,19 @@ app.post("/importXML", async (req, res) => {
   }
 });
 
+app.get("/unloadXML", async (req, res) => {
+  try {
+    console.log("-------------- Requête reçue : unloadXML");
+    const cheminFichier = path.join(__dirname, "public", "input.xml");
+    const newContent = `<!-- XML --><Documents><Document><Empty>Empty</Empty></Document></Documents><!-- ENDXML -->`; // Ajoutez les données XML au fichier input.xml
+    fs.writeFileSync(cheminFichier, newContent, "utf-8"); // Écrivez le nouveau contenu dans le fichier.
+    res.send("Requête traitée avec succès");
+  } catch (error) {
+    console.error("Error processing request:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.post("/completDFF", async (req, res) => {
   const cheminFichier = path.join(__dirname, "public", "COURRIERSIMPLEBIS.dff"); // Récupérez le chemin vers le fichier.
 
@@ -274,7 +287,7 @@ app.get("/unloadPdf", (req, res) => {
     "<!-- pdf --><!-- endpdf -->"
   );
   fs.writeFileSync(dffFilePath, updatedDffContent, "utf-8");
-  res.status(200).json({ message: "BGPDF write in DFF" });
+  res.status(200);
 });
 
 app.get("/runExecutable", (req, res) => {
